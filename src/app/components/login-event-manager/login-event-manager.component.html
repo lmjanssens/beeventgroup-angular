@@ -1,0 +1,52 @@
+<app-header>
+</app-header>
+<div class="inlogCard">
+  <mat-card class="mat-card" style="background-color: white; border-radius: 20px">
+    <div class="headerEventmanager">
+    <img src="{{imagePath}}" alt="logo">
+    <span>{{rol}}</span>
+  </div>
+    <form class="form-container" #loginEventmanager="ngForm">
+      <div id="login-page" class="center-field">
+        <div class="container">
+          <div class="title">Inloggen</div>
+
+          <div>
+            <label class="text">Gebruikersnaam</label>
+            <input type="text"
+                   class="form-control"
+                   placeholder="Uw gebruikersnaam"
+                   name="username"
+                   [ngModel]="username"
+                   required
+            >
+            <div class="invalid-feedback">
+              Gebruikersnaam is verplicht
+            </div>
+          </div>
+
+          <label class="text" id="wachtwoord">Wachtwoord</label>
+          <input type="password"
+                 class="form-control"
+                 placeholder="Uw wachtwoord"
+                 name="password"
+                 [ngModel]="password"
+                 required
+          >
+          <div class="invalid-feedback">
+            Wachtwoord is verplicht
+
+          </div>
+          <div>
+
+            <div class="knop">
+              <button type="submit" class="btn" [disabled]="!loginEventmanager.valid">Inloggen</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </mat-card>
+</div>
