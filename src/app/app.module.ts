@@ -12,6 +12,8 @@ import {HomepageEventmanagerComponent} from './components/homepage-eventmanager/
 import {Globals} from './components/globals';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {LoginEventManagerComponent} from './components/login-event-manager/login-event-manager.component';
+import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import {LoginEventManagerComponent} from './components/login-event-manager/login
     HomepageComponent,
     LoginEventManagerComponent,
     HomepageEventmanagerComponent,
+    EventmanagerReserveringenComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import {LoginEventManagerComponent} from './components/login-event-manager/login
     ReactiveFormsModule,
     routing,
     AngularFontAwesomeModule,
-    MatGridListModule
+    MatGridListModule,
+    NgxPaginationModule
   ],
   providers: [Globals],
   bootstrap: [AppComponent]
