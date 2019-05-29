@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="reserveringenPage" style="padding: 3em 0 0 3em">
+  <h3 style="padding-bottom: 2em">Reserveringen Overzicht</h3>
+  <div>
+    <button style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Reservering<i class="fa fa-plus-circle fa-lg"
+                                                                          style="color: green; margin-left: 10px;"></i>
+    </button>
+    <input class="searchbar" style="background-image: url('../../../assets/img/search icon.png');">
+  </div>
+  <div class="fullTable" style="padding-top: 2em">
+    <table cellpadding="1">
+      <th class="tableID">ID</th>
+      <th class="tableEvenement">Evenement</th>
+      <th class="tableDatum">Datum</th>
+      <th class="tableEdit"></th>
+      <th class="tableVerwijder"></th>
+      <tr *ngFor="let dummy of tableFiller() | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+        <td>{{dummy.id}}</td>
+        <td>{{dummy.title}}</td>
+        <td>{{dummy.date}}</td>
+        <td class="tableEdit">
+          <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
+            class="fa fa-pencil fa-2x"
+            style="color: purple; "></i>
+          </button>
+        </td>
+        <td class="tableVerwijder">
+          <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
+            class="fa fa-trash fa-2x"
+            style="color: red;"></i></button>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <pagination-controls (pageChange)="firstPage = $event" autoHide="true"
+                           class="pagination"></pagination-controls>
+    </div>
+  </div>
+</div>
