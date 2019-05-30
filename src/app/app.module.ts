@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {Injectable, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -14,6 +14,7 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {LoginEventManagerComponent} from './components/login-event-manager/login-event-manager.component';
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {DummyFilterPipe} from './pipes/dummyfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginEventManagerComponent,
     HomepageEventmanagerComponent,
     EventmanagerReserveringenComponent,
+    DummyFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -5,7 +5,9 @@
     <button style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Reservering<i class="fa fa-plus-circle fa-lg"
                                                                           style="color: green; margin-left: 10px;"></i>
     </button>
-    <input class="searchbar" style="background-image: url('../../../assets/img/search icon.png');">
+    <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
+           style="background-image: url('../../../assets/img/search icon.png');"
+           type="text">
   </div>
   <div class="fullTable" style="padding-top: 2em">
     <table>
@@ -14,7 +16,8 @@
       <th class="tableDatum">Datum</th>
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
-      <tr *ngFor="let dummy of tableFiller() | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+      <tr
+        *ngFor="let dummy of tableFiller() | dummyFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{dummy.id}}</td>
         <td>{{dummy.title}}</td>
         <td>{{dummy.date}}</td>
@@ -26,7 +29,8 @@
         </td>
         <ng-template #disabledEditButton>
           <td>
-            <button disabled style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
               class="fa fa-pencil fa-2x"
               style="color: silver; "></i>
             </button>
@@ -39,7 +43,8 @@
         </td>
         <ng-template #disabledDeleteButton>
           <td>
-            <button disabled style="margin-left: -8px; width: 38px; height: 40px; border: none; background-color: white"><i
+            <button disabled
+                    style="margin-left: -8px; width: 38px; height: 40px; border: none; background-color: white"><i
               class="fa fa-trash fa-2x"
               style="color: silver;"></i></button>
           </td>

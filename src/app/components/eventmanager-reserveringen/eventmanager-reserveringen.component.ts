@@ -8,26 +8,27 @@ import {DummyModel} from '../../models/dummy.model';
 })
 export class EventmanagerReserveringenComponent implements OnInit {
   public dummylist: DummyModel[] = [
-    new DummyModel(1, 'lol', '323'),
-    new DummyModel(2, 'lol', '323'),
-    new DummyModel(3, 'lol', '323'),
-    new DummyModel(4, 'lol', '323'),
-    new DummyModel(5, 'lol', '323'),
-    new DummyModel(6, 'lol', '323'),
-    new DummyModel(7, 'lol', '323'),
-    new DummyModel(8, 'lol', '323'),
-    new DummyModel(9, 'lol', '323'),
-    new DummyModel(10, 'lol', '323'),
-    new DummyModel(11, 'lol', '323'),
-    new DummyModel(12, 'lol', '323'),
-    new DummyModel(13, 'lol', '323'),
-    new DummyModel(14, 'lol', '323'),
+    new DummyModel(1, 'lol', '1-1-1'),
+    new DummyModel(2, 'drol', '2-2-2'),
+    new DummyModel(3, 'bol', '3-3-3'),
+    new DummyModel(4, 'gol', '4-4-4'),
+    new DummyModel(5, 'zol', '5-5-5'),
+    new DummyModel(6, 'sol', '6-6-6'),
+    new DummyModel(7, 'fol', '7-7-7'),
+    new DummyModel(8, 'hol', '8-8-8'),
+    new DummyModel(9, 'kol', '9-9-9'),
+    new DummyModel(10, 'jol', '10-10-10'),
+    new DummyModel(11, 'pol', '11-11-11'),
+    new DummyModel(12, 'stol', '12-12-12'),
+    new DummyModel(13, 'eol', '13-13-13'),
+    new DummyModel(14, 'qol', '14-14-14'),
   ];
   rest: number;
   firstPage = 1;
   itemsPerPage = 5;
   teller = 0;
-  public amountRows = 0;
+  amountRows = 0;
+  searchTerm: string;
   legeDummy: DummyModel = new DummyModel(null, '', '');
 
 
