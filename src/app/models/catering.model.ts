@@ -1,3 +1,4 @@
+import {Supplier} from './supplier.model';
 
 export class Catering {
   public id: number;
