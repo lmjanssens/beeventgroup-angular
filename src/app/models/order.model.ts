@@ -2,6 +2,7 @@ import {Customer} from './customer.model';
 import {Quotation} from './quotation.model';
 import {Invoice} from './invoice.model';
 import {Event} from './event.model';
+import {CateringOrder} from './catering-order.model';
 
 
 export class Order {
