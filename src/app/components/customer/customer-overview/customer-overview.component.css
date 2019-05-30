@@ -1,0 +1,14 @@
+button {
+  background-color: white;
+  border: 2px solid #394365;
+  border-radius: 5px;
+  width: 12em;
+  height: 3em;
+  margin-top: 1em;
+}
+h1{
+  color: #394365;
+}
+.container{
+  margin-top: 1em;
+}

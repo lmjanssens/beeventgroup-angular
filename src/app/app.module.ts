@@ -12,6 +12,8 @@ import {HomepageEventmanagerComponent} from './components/homepage-eventmanager/
 import {Globals} from './components/globals';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {LoginEventManagerComponent} from './components/login-event-manager/login-event-manager.component';
+import { CustomerOverviewComponent } from './components/customer/customer-overview/customer-overview.component';
+import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import {LoginEventManagerComponent} from './components/login-event-manager/login
     HomepageComponent,
     LoginEventManagerComponent,
     HomepageEventmanagerComponent,
+    CustomerOverviewComponent,
+    CustomerCreateComponent,
   ],
   imports: [
     BrowserModule,

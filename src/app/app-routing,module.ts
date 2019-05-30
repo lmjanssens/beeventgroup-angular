@@ -1,10 +1,16 @@
 import {RouterModule, Routes} from '@angular/router';
 import {LoginEventManagerComponent} from './components/login-event-manager/login-event-manager.component';
 import {HomepageComponent} from './components/homepage/homepage.component';
+import {HomepageEventmanagerComponent} from './components/homepage-eventmanager/homepage-eventmanager.component';
+import {CustomerOverviewComponent} from './components/customer/customer-overview/customer-overview.component';
+import {CustomerCreateComponent} from './components/customer/customer-create/customer-create.component';
 
 const appRoutes: Routes = [
+  {path: '', component: HomepageComponent},
   {path: 'loginpage', component: LoginEventManagerComponent},
-  {path: '', component: HomepageComponent}
+  {path: 'homeeventmanager', component: HomepageEventmanagerComponent},
+  {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent},
+  {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

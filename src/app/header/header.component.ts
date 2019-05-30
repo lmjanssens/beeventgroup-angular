@@ -17,12 +17,15 @@ export class HeaderComponent implements OnInit {
 
   checkHeaderStyle() {
     document.getElementById('backIcon').style.visibility = 'hidden';
+    document.getElementById('uitlogKnop').style.visibility = 'hidden';
     document.getElementById('terugKnop').style.cursor = 'default';
     if (this.globals.getHuidigePagina() === 'loginPage') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
-
-
+      document.getElementById('uitlogKnop').style.visibility = 'hidden';
+    }
+    if (this.globals.getHuidigePagina() === 'homeeventmanager') {
+      document.getElementById('uitlogKnop').style.visibility = 'visible';
     }
   }
 }
