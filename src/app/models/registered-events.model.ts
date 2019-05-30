@@ -1,4 +1,5 @@
 import {Event} from './event.model';
+import {Instructor} from './instructor.model';
 
 export class RegisteredEvents {
   public id: number;
