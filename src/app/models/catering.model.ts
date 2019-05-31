@@ -1,4 +1,5 @@
 import {Supplier} from './supplier.model';
+import {SupplierContract} from './supplier-contract.model';
 
 export class Catering {
   public id: number;
@@ -13,7 +14,8 @@ export class Catering {
   public cateringPrice: number;
   public note: string;
 
-  constructor(id: number, supplier: Supplier, supplierContracts: SupplierContract[], cateringName: string, contactPerson: string, zipcode: string, address: string, city: string, phone: string, cateringPrice: number, note: string) {
+  constructor(id: number, supplier: Supplier, supplierContracts: SupplierContract[], cateringName: string,
+              contactPerson: string, zipcode: string, address: string, city: string, phone: string, cateringPrice: number, note: string) {
     this.id = id;
     this.supplier = supplier;
     this.supplierContracts = supplierContracts;

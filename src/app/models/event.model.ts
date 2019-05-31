@@ -2,6 +2,7 @@ import {Order} from './order.model';
 import {EventImage} from './event-image.model';
 import {EventLocation} from './event-location.model';
 import {RegisteredEvents} from './registered-events.model';
+import {Supplier} from './supplier.model';
 
 export class Event {
   public id: number;
