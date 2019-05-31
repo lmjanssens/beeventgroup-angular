@@ -18,6 +18,7 @@ import {EventmanagerReserveringenComponent} from './components/eventmanager-rese
 import {NgxPaginationModule} from 'ngx-pagination';
 import {DummyFilterPipe} from './pipes/dummyfilter.pipe';
 import {NavbarComponent} from './navbar/navbar.component';
+import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {NavbarComponent} from './navbar/navbar.component';
     CustomerCreateComponent,
     EventmanagerReserveringenComponent,
     DummyFilterPipe,
+    OrderFilterPipe,
     NavbarComponent
   ],
   imports: [
