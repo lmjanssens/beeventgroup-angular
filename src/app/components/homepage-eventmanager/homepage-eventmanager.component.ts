@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Globals} from '../globals';
 
 @Component({
   selector: 'app-homepage-eventmanager',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageEventmanagerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globals: Globals) {
+  }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('homeeventmanager');
   }
 
 }

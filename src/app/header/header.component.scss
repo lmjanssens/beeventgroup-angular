@@ -1,6 +1,6 @@
 mat-toolbar {
   border-bottom: 4px solid white;
-background-color: #394365;
+  background-color: #394365;
 }
 
 img {
@@ -14,9 +14,21 @@ span {
   font-size: 30px;
   display: inline-block;
   margin-top: 13px;
+  margin-right: -144px;
 }
 
 .header {
   margin: auto;
 }
+
+
+.button {
+  background-color: #394365;
+  color: white;
+  border: 2px solid white;
+  float: right;
+  width: 8em;
+  border-radius: 20px;
+}
+
 
