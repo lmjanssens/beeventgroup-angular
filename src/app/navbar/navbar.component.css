@@ -16,7 +16,7 @@ li {
 }
 
 li:hover {
-  border: 1px solid black;
-  background-color: rgba(10,10,10,0.6);
+  background-color: #394365;
+  opacity: 0.5;
   color: #FFFFFF;
 }
