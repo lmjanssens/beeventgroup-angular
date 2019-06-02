@@ -12,12 +12,14 @@ import {HomepageEventmanagerComponent} from './components/homepage-eventmanager/
 import {Globals} from './components/globals';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {LoginEventManagerComponent} from './components/login-event-manager/login-event-manager.component';
-import { CustomerOverviewComponent } from './components/customer/customer-overview/customer-overview.component';
-import { CustomerCreateComponent } from './components/customer/customer-create/customer-create.component';
+import {CustomerOverviewComponent} from './components/customer/customer-overview/customer-overview.component';
+import {CustomerCreateComponent} from './components/customer/customer-create/customer-create.component';
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {DummyFilterPipe} from './pipes/dummyfilter.pipe';
 import {NavbarComponent} from './navbar/navbar.component';
+import {OrderFilterPipe} from './pipes/orderfilter.pipe';
+import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {NavbarComponent} from './navbar/navbar.component';
     CustomerCreateComponent,
     EventmanagerReserveringenComponent,
     DummyFilterPipe,
+    OrderFilterPipe,
+    CustomerFilterPipe,
     NavbarComponent
   ],
   imports: [
