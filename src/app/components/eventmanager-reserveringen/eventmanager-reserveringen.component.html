@@ -12,15 +12,15 @@
   </div>
   <div class="fullTable" style="padding-top: 2em">
     <table>
-      <th class="tableID">ID</th>
       <th class="tableEvenement">Evenement</th>
+      <th class="tableCustomer">Klant</th>
       <th class="tableDatum">Datum</th>
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
       <tr
         *ngFor="let order of tableFiller() | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{order.orderId}}</td>
         <td>{{order.events}}</td>
+        <td>{{order.customer}}</td>
         <td>{{order.dateOrder}}</td>
         <td *ngIf="order.orderId != null; else disabledEditButton" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i

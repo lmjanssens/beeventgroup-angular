@@ -12,11 +12,8 @@ export class OrderFilterPipe implements PipeTransform {
       return item;
     }
     return item.filter(order => {
-      if (order.orderId != null) {
-        const id = order.orderId.toString().toLowerCase().includes(searchTerm.toLowerCase());
-        const date = order.dateOrder.toLowerCase().includes(searchTerm.toLowerCase());
-        return (id + date);
-      }
+      const date = order.dateOrder.toLowerCase().includes(searchTerm.toLowerCase());
+      return (date);
     });
   }
 
