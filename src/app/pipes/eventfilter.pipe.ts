@@ -13,7 +13,7 @@ export class EventFilterPipe implements PipeTransform {
     }
     return item.filter(event => {
       if (event.pricePerPerson != null) {
-        const price = event.pricePerPerson.toString().toLowerCase().includes(searchTerm.toLowerCase());
+        const price = event.pricePerPerson.toFixed(2).toLowerCase().includes(searchTerm.toLowerCase());
         return (price);
       }
     });
