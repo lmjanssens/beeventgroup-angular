@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Event} from '../../models/event.model';
+import {Globals} from '../globals';
+import {NavbarComponent} from '../../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-eventmanager-events',
@@ -39,7 +42,7 @@ export class EventmanagerEventsComponent implements OnInit {
     null, null, '');
 
 
-  constructor() {
+  constructor(private globals: Globals, private navbar: NavbarComponent) {
   }
 
   tableFiller() {
@@ -57,6 +60,8 @@ export class EventmanagerEventsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('Evenementen');
+    this.navbar.checkNavBarStyle()
   }
 
 }

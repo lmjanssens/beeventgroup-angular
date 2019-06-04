@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../../models/customer.model';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
 
 @Component({
   selector: 'app-customer-overview',
@@ -30,7 +32,7 @@ export class CustomerOverviewComponent implements OnInit {
   emptyCustomer: Customer = new Customer(null, '', '', '', '', '', '', '', '', '', null,
     null, null);
 
-  constructor() {
+  constructor(private globals: Globals, private navbar: NavbarComponent) {
   }
 
   tableFiller() {
@@ -48,6 +50,9 @@ export class CustomerOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('Klanten');
+    this.navbar.checkNavBarStyle()
+    console.log(this.globals.getHuidigePagina());
   }
 
 }

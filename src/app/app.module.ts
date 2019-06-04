@@ -22,6 +22,7 @@ import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
+import { SupplierOverviewComponent } from './components/supplier-overview/supplier-overview.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {EventFilterPipe} from './pipes/eventfilter.pipe';
     CustomerFilterPipe,
     EventFilterPipe,
     NavbarComponent,
-    EventmanagerEventsComponent
+    EventmanagerEventsComponent,
+    SupplierOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import {EventFilterPipe} from './pipes/eventfilter.pipe';
     MatGridListModule,
     NgxPaginationModule
   ],
-  providers: [Globals],
+  providers: [Globals, NavbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
