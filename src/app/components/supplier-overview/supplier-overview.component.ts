@@ -11,12 +11,12 @@ import {NavbarComponent} from '../../navbar/navbar.component';
 
 export class SupplierOverviewComponent implements OnInit {
   public supplierList: Supplier[] = [
-    new Supplier(1, 'a.BV', 'Mark', 'A', 'Bueno.nl', 'Kakalaan 12', 'plaatje1'),
-    new Supplier(2, 'b.BV', 'Joost', 'B', 'Winter.nl', 'Dolinchistraat 69', 'plaatje2'),
-    new Supplier(3, 'c.BV', 'Bashar', 'C', 'Farah.nl', 'Burakisanka 44', 'plaatje3'),
-    new Supplier(4, 'd.BV', 'Luuk', 'D', 'Janssens.nl', 'Patinchikito 2', 'plaatje4'),
-    new Supplier(5, 'e.NV', 'Robin', 'E', 'Silverio.nl', 'Dolodenbocul 5', 'plaatje5'),
-    new  Supplier(6, 'f.NV', 'Danny', 'F', 'Tol.nl', 'Loliawa 6', 'plaatje6')
+    new Supplier(1, 'a.BV', 'Mark', 'A', 'Bueno.nl', 'Kakalaan 12', null),
+    new Supplier(2, 'b.BV', 'Joost', 'B', 'Winter.nl', 'Dolinchistraat 69', null),
+    new Supplier(3, 'c.BV', 'Bashar', 'C', 'Farah.nl', 'Burakisanka 44', null),
+    new Supplier(4, 'd.BV', 'Luuk', 'D', 'Janssens.nl', 'Patinchikito 2', null),
+    new Supplier(5, 'e.NV', 'Robin', 'E', 'Silverio.nl', 'Dolodenbocul 5', null),
+    new  Supplier(6, 'f.NV', 'Danny', 'F', 'Tol.nl', 'Loliawa 6', null)
   ];
   rest: number;
   firstPage = 1;

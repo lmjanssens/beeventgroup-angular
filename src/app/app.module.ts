@@ -23,6 +23,7 @@ import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
 import { SupplierOverviewComponent } from './components/supplier-overview/supplier-overview.component';
+import {SupplierFilterPipe} from "./pipes/supplierfilter.pipe";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SupplierOverviewComponent } from './components/supplier-overview/suppli
     CustomerOverviewComponent,
     CustomerCreateComponent,
     EventmanagerReserveringenComponent,
+    SupplierFilterPipe,
     DummyFilterPipe,
     OrderFilterPipe,
     CustomerFilterPipe,

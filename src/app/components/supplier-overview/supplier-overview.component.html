@@ -12,7 +12,6 @@
   </div>
   <div class="fullTable" style="padding-top: 2em">
     <table>
-      <th class="tableId">Id</th>
       <th class="tableName">Naam</th>
       <th class="tableContactPerson">Contactpersoon</th>
       <th class="tableSupervisor">Leidinggevende</th>
@@ -22,7 +21,6 @@
       <th class="tableDelete"></th>
       <tr
         *ngFor="let supplier of tableFiller() | supplierFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{supplier.id}}</td>
         <td>{{supplier.name}}</td>
         <td>{{supplier.contactPerson}}</td>
         <td>{{supplier.supervisor}}</td>
