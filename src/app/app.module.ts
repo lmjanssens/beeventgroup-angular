@@ -22,6 +22,8 @@ import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
+import { EventmanagerEventmanagersComponent } from './components/eventmanager-eventmanagers/eventmanager-eventmanagers.component';
+import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {EventFilterPipe} from './pipes/eventfilter.pipe';
     CustomerFilterPipe,
     EventFilterPipe,
     NavbarComponent,
-    EventmanagerEventsComponent
+    EventmanagerEventsComponent,
+    EventmanagerEventmanagersComponent,
+    EventManagerFilterPipe
   ],
   imports: [
     BrowserModule,

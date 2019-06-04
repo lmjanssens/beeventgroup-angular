@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {split} from 'ts-node';
 
 
 @Pipe({
@@ -7,9 +6,9 @@ import {split} from 'ts-node';
 })
 export class CustomerFilterPipe implements PipeTransform {
   splitted: string[];
-  firstName;
-  infix;
-  lastName;
+  firstName: string;
+  infix; string;
+  lastName: string;
 
   transform(item: any, searchTerm: string): any {
     if (!item || !searchTerm) {
@@ -25,11 +24,9 @@ export class CustomerFilterPipe implements PipeTransform {
 
       if (this.splitted.length === 3) {
         this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
-        this.infix = customer.infix.toLowerCase().includes(this.splitted[1].toLowerCase());
         this.lastName = customer.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
       } else if (this.splitted.length === 2) {
         this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
-        this.infix = customer.infix.toLowerCase().includes(this.splitted[0].toLowerCase());
         this.lastName = customer.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
       } else {
 

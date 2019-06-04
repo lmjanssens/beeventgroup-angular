@@ -8,7 +8,7 @@ import {Customer} from '../../../models/customer.model';
 })
 export class CustomerOverviewComponent implements OnInit {
   public customerList: Customer[] = [
-    new Customer(1, '', 'Mark', '', 'Bueno', 'Kakalaan 12', '2314DD', 'Aruba', 'V', 'Den Haag', null,
+    new Customer(1, '', 'Mark', 'de', 'Bueno', 'Kakalaan 12', '2314DD', 'Aruba', 'V', 'Den Haag', null,
       null, null),
     new Customer(2, '', 'Joost', 'de', 'Winter', 'Dolinchistraat 69', '2314DC', 'Nederand', 'M', 'Haarlem', null,
       null, null),
