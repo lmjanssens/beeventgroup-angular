@@ -15,7 +15,7 @@ export class EventmanagerEventmanagersComponent implements OnInit {
     new Employee(3, null, 'Jon', '', 'Jhonson', null, null),
     new Employee(4, null, 'Peter', '', 'Jhonson', null, null),
     new Employee(5, null, 'Richard', '', 'Jhonson', null, null),
-    new Employee(5, null, 'Richard', '', 'Pizzaman', null, null),
+    new Employee(6, null, 'Richard', '', 'Pizzaman', null, null),
   ];
   rest: number;
   firstPage = 1;
