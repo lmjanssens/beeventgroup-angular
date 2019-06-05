@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../components/globals';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {Globals} from '../components/globals';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private globals: Globals) {
+  constructor(private globals: Globals, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,6 +27,35 @@ export class HeaderComponent implements OnInit {
     }
     if (this.globals.getHuidigePagina() === 'homeeventmanager') {
       document.getElementById('uitlogKnop').style.visibility = 'visible';
+    }
+    if (this.globals.getHuidigePagina() === 'Klanten' ||
+      this.globals.getHuidigePagina() === 'Reserveringen' ||
+      this.globals.getHuidigePagina() === 'Evenementen' ||
+      this.globals.getHuidigePagina() === 'Leveranciers' ||
+      this.globals.getHuidigePagina() === 'Horeca' ||
+      this.globals.getHuidigePagina() === 'Instructeurs' ||
+      this.globals.getHuidigePagina() === 'Werknemers') {
+      document.getElementById('backIcon').className = 'fa fa-home';
+      document.getElementById('backIcon').style.visibility = 'visible';
+      document.getElementById('backIcon').style.fontSize = '40px';
+      document.getElementById('uitlogKnop').style.visibility = 'visible';
+      document.getElementById('terugKnop').style.cursor = 'pointer';
+
+    }
+  }
+
+  terug() {
+    if (this.globals.getHuidigePagina() === 'loginPage') {
+      this.router.navigate(['/']);
+    }
+    if (this.globals.getHuidigePagina() === 'Klanten' ||
+      this.globals.getHuidigePagina() === 'Reserveringen' ||
+      this.globals.getHuidigePagina() === 'Evenementen' ||
+      this.globals.getHuidigePagina() === 'Leveranciers' ||
+      this.globals.getHuidigePagina() === 'Horeca' ||
+      this.globals.getHuidigePagina() === 'Instructeurs' ||
+      this.globals.getHuidigePagina() === 'Werknemers') {
+      this.router.navigate(['/homeeventmanager']);
     }
   }
 }
