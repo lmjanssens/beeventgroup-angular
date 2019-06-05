@@ -5,6 +5,10 @@ import {CustomerPhone} from '../../../models/customer-phone.model';
 import {CustomerService} from '../../../services/customer.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-customer-create',
@@ -20,6 +24,8 @@ export class CustomerCreateComponent implements OnInit {
 
   mails: CustomerEmail[] = [];
   tels: CustomerPhone[] = [];
+  constructor(private globals: Globals, private navbar: NavbarComponent) {
+  }
 
   constructor(private customerService: CustomerService, private router: Router) {
   }
@@ -31,6 +37,9 @@ export class CustomerCreateComponent implements OnInit {
       null, null);
     this.customer.emails = [];
     this.customer.phones = [];
+    this.globals.setHuidigePagina('Klanten');
+    this.navbar.checkNavBarStyle()
+    console.log(this.globals.getHuidigePagina());
   }
 
   onCreateMail() {
