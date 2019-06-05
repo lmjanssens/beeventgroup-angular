@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../../models/customer.model';
 import {CustomerEmail} from '../../../models/customer-email.model';
 import {CustomerPhone} from '../../../models/customer-phone.model';
 import {CustomerService} from '../../../services/customer.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 
@@ -24,11 +23,10 @@ export class CustomerCreateComponent implements OnInit {
 
   mails: CustomerEmail[] = [];
   tels: CustomerPhone[] = [];
-  constructor(private globals: Globals, private navbar: NavbarComponent) {
+
+  constructor(private globals: Globals, private navbar: NavbarComponent, private customerService: CustomerService, private router: Router) {
   }
 
-  constructor(private customerService: CustomerService, private router: Router) {
-  }
 
   ngOnInit() {
     // this.customer = new Customer(6, '', 'Danny', 'van', 'Tol', 'Loliawa 6', '2314DD', 'Nederand', 'M', 'Schiphol', this.mails,
@@ -38,7 +36,7 @@ export class CustomerCreateComponent implements OnInit {
     this.customer.emails = [];
     this.customer.phones = [];
     this.globals.setHuidigePagina('Klanten');
-    this.navbar.checkNavBarStyle()
+    this.navbar.checkNavBarStyle();
     console.log(this.globals.getHuidigePagina());
   }
 
