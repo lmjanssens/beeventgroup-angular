@@ -20,6 +20,7 @@ import {DummyFilterPipe} from './pipes/dummyfilter.pipe';
 import {NavbarComponent} from './navbar/navbar.component';
 import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
     DummyFilterPipe,
     OrderFilterPipe,
     CustomerFilterPipe,
-    NavbarComponent
+    NavbarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
     routing,
     AngularFontAwesomeModule,
     MatGridListModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [Globals],
   bootstrap: [AppComponent]

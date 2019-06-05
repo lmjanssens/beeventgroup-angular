@@ -1,0 +1,24 @@
+input{
+  width: 40%;
+  padding: 10px;
+  margin: 8px;
+  display: inline-block;
+  border: 1px solid #394365;
+  border-radius:4px ;
+
+}
+h1{
+  padding: 10px;
+}
+label{
+  margin-right: 20px;
+}
+.algemeen{
+  display: flex;
+}
+.fullTable{
+  display: flex;
+}
+button{
+  float: right;
+}
