@@ -27,14 +27,15 @@ export class CustomerCreateComponent implements OnInit {
   ngOnInit() {
     // this.customer = new Customer(6, '', 'Danny', 'van', 'Tol', 'Loliawa 6', '2314DD', 'Nederand', 'M', 'Schiphol', this.mails,
     //   null, this.tels);
-    this.customer = new Customer();
+    this.customer = new Customer(null, '', '', '', '', '', '', '', '', '', null,
+      null, null);
     this.customer.emails = [];
     this.customer.phones = [];
   }
 
   onCreateMail() {
     // this.newMail = new CustomerEmail(6, this.customer, 'das');
-    this.newMail = new CustomerEmail();
+    this.newMail = new CustomerEmail(null, null, '');
     this.mails.push(this.newMail);
     this.customer.emails = this.mails;
     if (this.mails.length > 7) {
@@ -50,7 +51,7 @@ export class CustomerCreateComponent implements OnInit {
 
   onCreateTel() {
     // this.newTel = new CustomerPhone(1, this.customer, '04128972');
-    this.newTel = new CustomerPhone();
+    this.newTel = new CustomerPhone(null, null, '');
     this.customer.phones.push(this.newTel);
     this.customer.phones = this.tels;
     if (this.tels.length > 7) {
@@ -64,7 +65,7 @@ export class CustomerCreateComponent implements OnInit {
 
   ngSubmit(f: NgForm) {
     if (f.form.valid) {
-      const data = <any>JSON.parse(JSON.stringify(this.customer));
+      const data = <any> JSON.parse(JSON.stringify(this.customer));
       this.customerService.save(data).subscribe(() => {
         this.router.navigate(['/app/customers']);
       });

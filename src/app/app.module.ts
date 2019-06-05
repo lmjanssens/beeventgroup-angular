@@ -22,11 +22,11 @@ import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
-import { EventmanagerEventmanagersComponent } from './components/eventmanager-eventmanagers/eventmanager-eventmanagers.component';
+import {EventmanagerEventmanagersComponent} from './components/eventmanager-eventmanagers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
-import { EventmanagerInstructeursComponent } from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 
 @NgModule({
   declarations: [

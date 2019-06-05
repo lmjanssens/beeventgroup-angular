@@ -17,22 +17,22 @@ export class Customer {
   public customerOrders: CustomerOrder[];
   public phones: CustomerPhone[];
 
-  // constructor(id: number, title: string, firstName: string, infix: string, lastName: string,
-  //             address: string, zipcode: string, country: string, gender: string, city: string,
-  //             emails: CustomerEmail[], customerOrders: CustomerOrder[], phones: CustomerPhone[]) {
-  //   this.id = id;
-  //   this.title = title;
-  //   this.firstName = firstName;
-  //   this.infix = infix;
-  //   this.lastName = lastName;
-  //   this.address = address;
-  //   this.zipcode = zipcode;
-  //   this.country = country;
-  //   this.gender = gender;
-  //   this.city = city;
-  //   this.emails = emails;
-  //   this.customerOrders = customerOrders;
-  //   this.phones = phones;
+  constructor(id: number, title: string, firstName: string, infix: string, lastName: string,
+              address: string, zipcode: string, country: string, gender: string, city: string,
+              emails: CustomerEmail[], customerOrders: CustomerOrder[], phones: CustomerPhone[]) {
+    this.id = id;
+    this.title = title;
+    this.firstName = firstName;
+    this.infix = infix;
+    this.lastName = lastName;
+    this.address = address;
+    this.zipcode = zipcode;
+    this.country = country;
+    this.gender = gender;
+    this.city = city;
+    this.emails = emails;
+    this.customerOrders = customerOrders;
+    this.phones = phones;
 
-  // }
+  }
 }

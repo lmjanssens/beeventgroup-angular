@@ -5,10 +5,10 @@ export class CustomerEmail {
   public customer: Customer;
   public email: string;
 
-  // constructor(id: number, customer: Customer, email: string) {
-  //   this.id = id;
-  //   this.customer = customer;
-  //   this.email = email;
-  //
-  // }
+  constructor(id: number, customer: Customer, email: string) {
+    this.id = id;
+    this.customer = customer;
+    this.email = email;
+
+  }
 }
