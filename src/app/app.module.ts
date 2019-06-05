@@ -22,6 +22,10 @@ import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
+import {SupplierOverviewComponent } from './components/supplier-overview/supplier-overview.component';
+import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
+import {CateringOverviewComponent } from './components/catering-overview/catering-overview.component';
+import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-eventmanagers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
@@ -38,16 +42,20 @@ import {EventmanagerInstructeursComponent} from './components/eventmanager-instr
     CustomerOverviewComponent,
     CustomerCreateComponent,
     EventmanagerReserveringenComponent,
+    SupplierFilterPipe,
     DummyFilterPipe,
     OrderFilterPipe,
     CustomerFilterPipe,
     EventFilterPipe,
+    CateringFilterPipe,
     NavbarComponent,
     EventmanagerEventsComponent,
     EventmanagerEventmanagersComponent,
     EventManagerFilterPipe,
     EventmanagerInstructeursComponent,
-    InstructorFilterPipe
+    InstructorFilterPipe,
+    SupplierOverviewComponent,
+    CateringOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +71,7 @@ import {EventmanagerInstructeursComponent} from './components/eventmanager-instr
     NgxPaginationModule,
     HttpClientModule
   ],
-  providers: [Globals],
+  providers: [Globals, NavbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

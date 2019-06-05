@@ -11,12 +11,13 @@ export class NavbarComponent implements OnInit {
   constructor( private globals: Globals) { }
 
   ngOnInit() {
-    this.checkNavBarStyle();
   }
   checkNavBarStyle() {
     const currentPage = this.globals.getHuidigePagina();
     console.log(currentPage);
-    // document.getElementById(currentPage).style.fontWeight = 'bold';
-
+    document.getElementById(currentPage).style.fontWeight = 'bold';
+    document.getElementById(currentPage).style.color = '#FFFFFF';
+    document.getElementById(currentPage).style.opacity = '0.5';
+    document.getElementById(currentPage).style.backgroundColor =  '#394365';
   }
 }

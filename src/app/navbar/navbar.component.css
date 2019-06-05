@@ -12,11 +12,12 @@ li {
   display: inline;
   padding: 10px;
   margin-left: 5px;
-  border: 1px solid white;
 }
 
 li:hover {
   background-color: #394365;
   opacity: 0.5;
   color: #FFFFFF;
+  cursor: pointer;
 }
+
