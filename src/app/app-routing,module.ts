@@ -7,6 +7,7 @@ import {CustomerCreateComponent} from './components/customer/customer-create/cus
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
+import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -17,6 +18,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent},
   {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent},
   {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent},
+  {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent},
+
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

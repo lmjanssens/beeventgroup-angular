@@ -22,8 +22,10 @@ import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
-import { SupplierOverviewComponent } from './components/supplier-overview/supplier-overview.component';
-import {SupplierFilterPipe} from "./pipes/supplierfilter.pipe";
+import {SupplierOverviewComponent } from './components/supplier-overview/supplier-overview.component';
+import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
+import {CateringOverviewComponent } from './components/catering-overview/catering-overview.component';
+import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -40,9 +42,11 @@ import {SupplierFilterPipe} from "./pipes/supplierfilter.pipe";
     OrderFilterPipe,
     CustomerFilterPipe,
     EventFilterPipe,
+    CateringFilterPipe,
     NavbarComponent,
     EventmanagerEventsComponent,
-    SupplierOverviewComponent
+    SupplierOverviewComponent,
+    CateringOverviewComponent
   ],
   imports: [
     BrowserModule,
