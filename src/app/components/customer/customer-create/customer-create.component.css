@@ -33,3 +33,8 @@ button {
   border-bottom: 3px solid #016b6d;
   border-radius: 3px;
 }
+
+button:disabled {
+  background-color: #bac1b8;
+  border-color: #a2a8a0;
+}
