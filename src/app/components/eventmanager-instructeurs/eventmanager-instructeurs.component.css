@@ -1,7 +1,7 @@
 table {
   table-layout: fixed;
   border: 1px solid;
-  width: 80%;
+  width: 60%;
 }
 
 th {
@@ -43,36 +43,25 @@ button {
 }
 
 .pagination {
-  margin-left: 26%;
+  margin-left: 19%;
 
   margin-top: 1em;
 }
-.tableID{
-  width: 5%;
-}
 
 .tableName{
-  width: 15%;
+  width: 30%;
 }
 
-.tableZipcode{
-  width: 12%;
-}
-
-.tableAddress{
-  width: 19%;
-}
-
-.tableCity{
-  width: 15%;
+.tableUser{
+  width: 20%;
 }
 
 .tablePhone{
-  width: 15%;
+  width: 20%;
 }
 
 .tableEmail{
-  width: 15%;
+  width: 20%;
 }
 
 .tableEdit{

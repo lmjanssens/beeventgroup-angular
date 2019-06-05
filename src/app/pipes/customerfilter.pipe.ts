@@ -5,23 +5,37 @@ import {Pipe, PipeTransform} from '@angular/core';
   name: 'customerFilter'
 })
 export class CustomerFilterPipe implements PipeTransform {
-
+  splitted: string[];
+  firstName: string;
+  infix; string;
+  lastName: string;
 
   transform(item: any, searchTerm: string): any {
     if (!item || !searchTerm) {
       return item;
     }
     return item.filter(customer => {
-      if (customer.id != null) {
-        const id = customer.id.toString().toLowerCase().includes(searchTerm.toLowerCase());
-        const firstName = customer.firstName.toLowerCase().includes(searchTerm.toLowerCase());
-        const infix = customer.infix.toLowerCase().includes(searchTerm.toLowerCase());
-        const lastName = customer.lastName.toLowerCase().includes(searchTerm.toLowerCase());
-        const zipcode = customer.zipcode.toLowerCase().includes(searchTerm.toLowerCase());
-        const address = customer.address.toLowerCase().includes(searchTerm.toLowerCase());
-        const city = customer.city.toLowerCase().includes(searchTerm.toLowerCase());
-        return (id + firstName + infix + lastName + zipcode + address + city);
+      this.splitted = searchTerm.split(' ', 3);
+      console.log(this.splitted);
+
+      const zipcode = customer.zipcode.toLowerCase().includes(searchTerm.toLowerCase());
+      const address = customer.address.toLowerCase().includes(searchTerm.toLowerCase());
+      const city = customer.city.toLowerCase().includes(searchTerm.toLowerCase());
+
+      if (this.splitted.length === 3) {
+        this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
+        this.lastName = customer.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
+      } else if (this.splitted.length === 2) {
+        this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
+        this.lastName = customer.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
+      } else {
+
+        this.firstName = customer.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+        this.infix = customer.infix.toLowerCase().includes(searchTerm.toLowerCase());
+        this.lastName = customer.lastName.toLowerCase().includes(searchTerm.toLowerCase());
       }
+
+      return (this.firstName + this.infix + this.lastName + zipcode + address + city);
     });
   }
 

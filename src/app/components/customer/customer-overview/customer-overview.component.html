@@ -12,7 +12,6 @@
   </div>
   <div class="fullTable" style="padding-top: 2em">
     <table>
-      <th class="tableID">ID</th>
       <th class="tableName">Naam</th>
       <th class="tableZipcode">Postcode</th>
       <th class="tableAddress">Adres</th>
@@ -23,7 +22,6 @@
       <th class="tableDelete"></th>
       <tr
         *ngFor="let customer of tableFiller() | customerFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{customer.id}}</td>
         <td>{{customer.firstName}} {{customer.infix}} {{customer.lastName}}</td>
         <td>{{customer.zipcode}}</td>
         <td>{{customer.address}}</td>

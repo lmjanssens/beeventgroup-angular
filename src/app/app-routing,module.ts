@@ -5,6 +5,9 @@ import {HomepageEventmanagerComponent} from './components/homepage-eventmanager/
 import {CustomerOverviewComponent} from './components/customer/customer-overview/customer-overview.component';
 import {CustomerCreateComponent} from './components/customer/customer-create/customer-create.component';
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
+import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
+import {EventmanagerEventmanagersComponent} from './components/eventmanager-eventmanagers/eventmanager-eventmanagers.component';
+import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -12,7 +15,10 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager', component: HomepageEventmanagerComponent},
   {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent},
   {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent},
-  {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent}
+  {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent},
+  {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent},
+  {path: 'homeeventmanager/eventmanagersoverview', component: EventmanagerEventmanagersComponent},
+  {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
