@@ -26,7 +26,7 @@ import {SupplierOverviewComponent } from './components/supplier-overview/supplie
 import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
 import {CateringOverviewComponent } from './components/catering-overview/catering-overview.component';
 import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
-import {EventmanagerEventmanagersComponent} from './components/eventmanager-eventmanagers/eventmanager-eventmanagers.component';
+import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';

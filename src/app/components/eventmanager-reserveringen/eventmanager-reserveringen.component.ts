@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DummyModel} from '../../models/dummy.model';
 import {Order} from '../../models/order.model';
+import {Globals} from '../globals';
+import {NavbarComponent} from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -29,10 +30,10 @@ export class EventmanagerReserveringenComponent implements OnInit {
   amountRows = 0;
   searchTerm: string;
   emptyOrder: Order = new Order(null, null, '', '',
-    '', '', '', null, null, null, null, null)
+    '', '', '', null, null, null, null, null);
 
 
-  constructor() {
+  constructor(private globals: Globals, private navbar: NavbarComponent) {
   }
 
   tableFiller() {
@@ -50,6 +51,9 @@ export class EventmanagerReserveringenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('Reserveringen');
+    this.navbar.checkNavBarStyle();
+    console.log(this.globals.getHuidigePagina());
   }
 
 }

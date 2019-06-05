@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Customer} from '../../models/customer.model';
 import {Employee} from '../../models/employee.model';
+import {Globals} from '../globals';
+import {NavbarComponent} from '../../navbar/navbar.component';
 
 @Component({
   selector: 'app-eventmanager-eventmanagers',
@@ -25,7 +27,7 @@ export class EventmanagerEventmanagersComponent implements OnInit {
   searchTerm: string;
   emptyEmployee: Employee = new Employee(null, null, '', '', '', null, null);
 
-  constructor() {
+  constructor(private globals: Globals, private navbar: NavbarComponent) {
   }
 
   tableFiller() {
@@ -43,6 +45,9 @@ export class EventmanagerEventmanagersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('Werknemers');
+    this.navbar.checkNavBarStyle();
+    console.log(this.globals.getHuidigePagina());
   }
 
 }
