@@ -35,9 +35,7 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers') {
-      document.getElementById('backIcon').className = 'fa fa-home';
       document.getElementById('backIcon').style.visibility = 'visible';
-      document.getElementById('backIcon').style.fontSize = '40px';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
 
