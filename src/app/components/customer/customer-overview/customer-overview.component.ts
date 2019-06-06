@@ -12,9 +12,9 @@ export class CustomerOverviewComponent implements OnInit {
   public customerList: Customer[] = [
     new Customer(1, '', 'Mark', 'de', 'Bueno', 'Kakalaan 12', '2314DD', 'Aruba', 'V', 'Den Haag', null,
       null, null),
-    new Customer(2, '', 'Joost', 'de', 'Winter', 'Dolinchistraat 69', '2314DC', 'Nederand', 'M', 'Haarlem', null,
+    new Customer(2, '', 'Joost', 'de', 'Bueno', 'Dolinchistraat 69', '2314DC', 'Nederand', 'M', 'Haarlem', null,
       null, null),
-    new Customer(3, '', 'Bashar', '', 'Farah', 'Burakisanka 44', '2314DD', 'Nederand', 'O', 'Hoofddorp', null,
+    new Customer(3, '', 'Joost', 'het', 'Bueno', 'Burakisanka 44', '2314DD', 'Nederand', 'O', 'Hoofddorp', null,
       null, null),
     new Customer(4, '', 'Luuk', '', 'Janssens', 'Patinchikito 2', '2314DC', 'Nederand', 'M', 'Nootdorp', null,
       null, null),
