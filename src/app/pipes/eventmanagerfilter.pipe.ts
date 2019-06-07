@@ -18,11 +18,13 @@ export class EventManagerFilterPipe implements PipeTransform {
       this.splitted = searchTerm.split(' ', 3);
       console.log(this.splitted);
       if (this.splitted.length === 3) {
-        this.firstName = eventmanager.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
-        this.lastName = eventmanager.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
+        this.firstName = eventmanager.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) &&
+          eventmanager.infix.toLowerCase().includes(this.splitted[1].toLowerCase())
+          && eventmanager.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
       } else if (this.splitted.length === 2) {
-        this.firstName = eventmanager.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
-        this.lastName = eventmanager.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.firstName = eventmanager.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) && eventmanager.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.infix = eventmanager.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) && eventmanager.infix.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.lastName = eventmanager.infix.toLowerCase().includes(this.splitted[0].toLowerCase()) && eventmanager.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
       } else {
         this.firstName = eventmanager.firstName.toLowerCase().includes(searchTerm.toLowerCase());
         this.infix = eventmanager.infix.toLowerCase().includes(searchTerm.toLowerCase());

@@ -35,8 +35,6 @@ export class CustomerCreateComponent implements OnInit {
       null, null);
     this.customer.emails = [];
     this.customer.phones = [];
-    this.globals.setHuidigePagina('Klanten');
-    this.navbar.checkNavBarStyle();
     console.log(this.globals.getHuidigePagina());
   }
 

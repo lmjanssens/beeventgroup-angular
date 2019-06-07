@@ -7,7 +7,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class CustomerFilterPipe implements PipeTransform {
   splitted: string[];
   firstName: string;
-  infix; string;
+  infix: string;
   lastName: string;
 
   transform(item: any, searchTerm: string): any {
@@ -23,11 +23,13 @@ export class CustomerFilterPipe implements PipeTransform {
       const city = customer.city.toLowerCase().includes(searchTerm.toLowerCase());
 
       if (this.splitted.length === 3) {
-        this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
-        this.lastName = customer.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
+        this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) &&
+          customer.infix.toLowerCase().includes(this.splitted[1].toLowerCase())
+          && customer.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
       } else if (this.splitted.length === 2) {
-        this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase());
-        this.lastName = customer.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.firstName = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) && customer.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.infix = customer.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) && customer.infix.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.lastName = customer.infix.toLowerCase().includes(this.splitted[0].toLowerCase()) && customer.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
       } else {
 
         this.firstName = customer.firstName.toLowerCase().includes(searchTerm.toLowerCase());

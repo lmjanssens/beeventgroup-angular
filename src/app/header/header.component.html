@@ -1,13 +1,14 @@
 <mat-toolbar class="mat-elevation-z4" style="height: 13%; ">
   <nav style="margin-top: 10px">
-    <a routerLink="/" id="terugKnop">
-      <i class="fa fa-chevron-left" id='backIcon' style="font-size: 30px; color:white; margin-left: 1em"></i>
+    <a (click)="terug()" id="terugKnop">
+      <i class="fa fa-chevron-left" id='backIcon' style="font-size: 30px; color:white; margin-left: 0.5em"></i>
     </a>
   </nav>
   <div class="header">
     <img src="..\assets\img\logo.png" style="display: inline-block;" alt="logo">
     <span style="color: white">Event Group</span>
   </div>
-    <button routerLink="/" id="uitlogKnop" class="button"><i class="fa fa-sign-out" style="font-size:24px"></i>
-  Uitloggen</button>
+  <button routerLink="/" id="uitlogKnop" class="button"><i class="fa fa-sign-out" style="font-size:24px"></i>
+    Uitloggen
+  </button>
 </mat-toolbar>

@@ -10,18 +10,18 @@ import {NavbarComponent} from '../../../navbar/navbar.component';
 })
 export class CustomerOverviewComponent implements OnInit {
   public customerList: Customer[] = [
-      new Customer(1, '', 'Mark', 'de', 'Bueno', 'Kakalaan 12', '2314DD', 'Aruba', 'V', 'Den Haag', null,
-        null, null),
-      new Customer(2, '', 'Joost', 'de', 'Winter', 'Dolinchistraat 69', '2314DC', 'Nederand', 'M', 'Haarlem', null,
-        null, null),
-      new Customer(3, '', 'Bashar', '', 'Farah', 'Burakisanka 44', '2314DD', 'Nederand', 'O', 'Hoofddorp', null,
-        null, null),
-      new Customer(4, '', 'Luuk', '', 'Janssens', 'Patinchikito 2', '2314DC', 'Nederand', 'M', 'Nootdorp', null,
-        null, null),
-      new Customer(5, '', 'Robin', '', 'Silverio', 'Dolodenbocul 5', '3314DD', 'Nederand', 'M', 'Schiphol', null,
-        null, null),
-      new Customer(6, '', 'Danny', 'van', 'Tol', 'Loliawa 6', '2314DD', 'Nederand', 'M', 'Schiphol', null,
-        null, null)
+    new Customer(1, '', 'Mark', 'de', 'Bueno', 'Kakalaan 12', '2314DD', 'Aruba', 'V', 'Den Haag', null,
+      null, null),
+    new Customer(2, '', 'Joost', 'de', 'Bueno', 'Dolinchistraat 69', '2314DC', 'Nederand', 'M', 'Haarlem', null,
+      null, null),
+    new Customer(3, '', 'Joost', 'het', 'Bueno', 'Burakisanka 44', '2314DD', 'Nederand', 'O', 'Hoofddorp', null,
+      null, null),
+    new Customer(4, '', 'Luuk', '', 'Janssens', 'Patinchikito 2', '2314DC', 'Nederand', 'M', 'Nootdorp', null,
+      null, null),
+    new Customer(5, '', 'Robin', '', 'Silverio', 'Dolodenbocul 5', '3314DD', 'Nederand', 'M', 'Schiphol', null,
+      null, null),
+    new Customer(6, '', 'Danny', 'van', 'Tol', 'Loliawa 6', '2314DD', 'Nederand', 'M', 'Schiphol', null,
+      null, null)
   ];
   rest: number;
   firstPage = 1;
@@ -30,8 +30,14 @@ export class CustomerOverviewComponent implements OnInit {
   amountRows = 0;
   searchTerm: string;
   emptyCustomer: Customer
-     = new Customer(null, '', '', '', '', '', '', '', '', '', null,
-      null, null)
+    = new Customer(
+    null,
+    '',
+    '',
+    '',
+    '',
+    '', '', '', '', '', null,
+    null, null)
   ;
 
   constructor(private globals: Globals, private navbar: NavbarComponent) {
@@ -46,14 +52,14 @@ export class CustomerOverviewComponent implements OnInit {
         this.teller = this.teller + 1;
       }
       return this.customerList;
-    } else {
-      return this.customerList;
     }
+    return this.customerList;
+
   }
 
   ngOnInit() {
     this.globals.setHuidigePagina('Klanten');
-    this.navbar.checkNavBarStyle()
+    this.navbar.checkNavBarStyle();
     console.log(this.globals.getHuidigePagina());
   }
 
