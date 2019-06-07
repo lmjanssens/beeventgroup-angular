@@ -1,0 +1,18 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="agendaPage" style="padding: 3em 3em 0 3em">
+  <h3 style="padding-bottom: 2em">Agenda</h3>
+  <div>
+    <full-calendar
+      defaultView="dayGridMonth"
+      [aspectRatio]="4"
+      [plugins]="calendarPlugins"
+      [weekends]="false"
+      [events]="[
+    { title: 'event 1', date: '2019-04-01' },
+    { title: 'event 2', date: '2019-04-02' }
+  ]"
+    ></full-calendar>
+  </div>
+</div>
+

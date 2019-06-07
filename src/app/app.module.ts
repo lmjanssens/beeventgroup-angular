@@ -22,15 +22,17 @@ import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
-import {SupplierOverviewComponent } from './components/supplier-overview/supplier-overview.component';
+import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
 import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
-import {CateringOverviewComponent } from './components/catering-overview/catering-overview.component';
+import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
 import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
+import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {EventmanagerInstructeursComponent} from './components/eventmanager-instr
     EventmanagerInstructeursComponent,
     InstructorFilterPipe,
     SupplierOverviewComponent,
-    CateringOverviewComponent
+    CateringOverviewComponent,
+    EventmanagerAgendaComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import {EventmanagerInstructeursComponent} from './components/eventmanager-instr
     AngularFontAwesomeModule,
     MatGridListModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule
   ],
   providers: [Globals, NavbarComponent],
   bootstrap: [AppComponent]
