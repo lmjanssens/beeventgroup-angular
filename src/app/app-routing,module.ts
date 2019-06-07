@@ -10,6 +10,7 @@ import {SupplierOverviewComponent} from './components/supplier-overview/supplier
 import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';;
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
+import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/werknemersoverview', component: EventmanagerEventmanagersComponent},
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent},
   {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent},
+  {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent},
 
 ];
 
