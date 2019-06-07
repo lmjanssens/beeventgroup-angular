@@ -30,6 +30,7 @@ import {EventmanagerEventmanagersComponent} from './components/eventmanager-werk
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
@@ -74,6 +75,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
     NgxPaginationModule,
     HttpClientModule,
     FullCalendarModule
+    AlertsModule.forRoot()
   ],
   providers: [Globals, NavbarComponent],
   bootstrap: [AppComponent]

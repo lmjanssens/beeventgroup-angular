@@ -6,10 +6,10 @@ export class CustomerOrder {
   public order: Order;
   public customer: Customer;
 
-  constructor(customerOrderId: number, order: Order, customer: Customer) {
-    this.customerOrderId = customerOrderId;
-    this.customer = customer;
-    this.order = order;
-
-  }
+  // constructor(customerOrderId: number, order: Order, customer: Customer) {
+  //   this.customerOrderId = customerOrderId;
+  //   this.customer = customer;
+  //   this.order = order;
+  //
+  // }
 }

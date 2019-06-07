@@ -5,17 +5,17 @@ import {CustomerPhone} from './customer-phone.model';
 export class Customer {
   public id: number;
   public title: string;
-  public firstName: string;
+  public first_name: string;
   public infix: string;
-  public lastName: string;
+  public last_name: string;
   public address: string;
   public zipcode: string;
   public country: string;
   public gender: string;
   public city: string;
-  public emails: CustomerEmail[];
-  public customerOrders: CustomerOrder[];
-  public phones: CustomerPhone[];
+  public email_addresses: CustomerEmail[];
+  public customer_orders: CustomerOrder[];
+  public phone_numbers: CustomerPhone[];
 
   constructor(id: number, title: string, firstName: string, infix: string, lastName: string,
               address: string, zipcode: string, country: string, gender: string, city: string,
