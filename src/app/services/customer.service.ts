@@ -19,15 +19,15 @@ export class CustomerService {
     return this.http.get<Customer>(environment.apiHostname + 'customers/' + id);
   }
 
-  updateContact(newCustomer: Customer): Observable<Customer> {
+  updateCustomer(newCustomer: Customer): Observable<Customer> {
     return this.http.put<Customer>(environment.apiHostname + 'customers/' + newCustomer.id, newCustomer);
   }
 
-  save(customer: any): Observable<Object> {
-    return this.http.post(environment.apiHostname + 'customers', customer);
+  save(customer: any): Observable< object > {
+    return this.http.post(environment.apiHostname + 'customers/', customer);
   }
 
-  delete(customer: any): Observable<Object> {
+  delete(customer: any): Observable<object> {
     return this.http.delete(environment.apiHostname + 'customers/' + customer.id);
   }
 }

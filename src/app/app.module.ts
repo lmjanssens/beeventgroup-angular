@@ -21,6 +21,7 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AlertsModule} from 'angular-alert-module';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     AngularFontAwesomeModule,
     MatGridListModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    AlertsModule.forRoot()
   ],
   providers: [Globals],
   bootstrap: [AppComponent]

@@ -7,13 +7,13 @@
     <div>
       <label for="title">Title</label>
       <input type="text" id="title" name="title" placeholder="title" style="margin-left: 71px;"
-            [(ngModel)]="customer.title"
+             [(ngModel)]="customer.title"
       >
     </div>
     <div>
       <label for="fname">Voornaam</label>
       <input type="text" id="fname" name="fname" placeholder="voornaam" style="margin-left: 27px;"
-             [(ngModel)]="customer.firstName">
+             [(ngModel)]="customer.first_name">
     </div>
     <div>
       <label for="infix">Tussenvoegsel</label>
@@ -23,7 +23,7 @@
     <div>
       <label for="lname">Achternaam</label>
       <input type="text" id="lname" name="lname" placeholder="achternaam" style="margin-left: 13px;"
-             [(ngModel)]="customer.lastName">
+             [(ngModel)]="customer.last_name">
     </div>
     <div>
       <label for="address">Adres</label>
@@ -51,49 +51,57 @@
       <input type="text" id="city" placeholder="stad" style="margin-left: 62px;"
              [(ngModel)]="customer.city" name="city">
     </div>
-  </form>
-  <form class="fullTable">
-    <table>
-      <th class="telefoons">Telefoons
-        <i class="fa fa-plus-circle fa-lg"
-           style="color: green; margin-left: 10px;
-            cursor: pointer"
-           (click)="onCreateTel()"
-           id="addTel"
-        ></i>
-        <i class="fa fa-minus-circle fa-lg" style="color: red;
-            cursor: pointer;" (click)="onDeleteTel()"
-        ></i>
 
-      </th>
-      <tr>
-        <td><input style="width: 70%;" class="input" id="phone"
-                   [(ngModel)]="customer.phones" name="phones"></td>
-      </tr>
-      <tr *ngFor="let tel of customer.phones">
-        {{tel.phone}}
-      </tr>
-    </table>
-    <table>
-      <th class="email">Emails
-        <i class="fa fa-plus-circle fa-lg"
-           style="color: green; margin-left: 30px;
+    <div class="fullTable">
+      <table>
+        <th class="telefoons">Telefoons
+          <i class="fa fa-plus-circle fa-lg"
+             style="color: green; margin-left: 10px;
+            cursor: pointer"
+             (click)="onCreateTel()"
+             id="addTel"
+          ></i>
+          <i class="fa fa-minus-circle fa-lg" style="color: red;
+            cursor: pointer;" (click)="onDeleteTel()"
+          ></i>
+        </th>
+        <tr>
+          <input style="width: 70%;" class="input" id="phone"
+                 [(ngModel)]="tel " name="phones">
+        </tr>
+        <tr *ngFor="let tel of customer.phone_numbers ">
+
+          {{tel.phonenumber}}
+        </tr>
+      </table>
+
+      <table>
+        <th class="email">Emails
+          <i class="fa fa-plus-circle fa-lg"
+             style="color: green; margin-left: 30px;
             cursor: pointer;"
-           (click)="onCreateMail()"
-           id="addMail"
-        ></i>
-        <i class="fa fa-minus-circle fa-lg" style="color: red;
+             (click)="onCreateMail()"
+             id="addMail"
+          ></i>
+          <i class="fa fa-minus-circle fa-lg" style="color: red;
             cursor: pointer;"
-        (click)="onDeleteMail()"></i>
-      </th>
-      <tr>
-        <td><input style="width: 70%;" class="input" id="email"
-                   [(ngModel)]="customer.emails" name="emails"></td>
-      </tr>
-      <tr *ngFor="let mail of customer.emails">
-        <td>{{mail.email}}</td>
-      </tr>
-    </table>
+             (click)="onDeleteMail()"
+          ></i>
+        </th>
+        <tr>
+          <input style="width: 70%;" class="input" id="email"
+                 [(ngModel)]="mail" name="emails">
+        </tr>
+        <tr *ngFor="let mail of customer.email_addresses">
+        {{mail.email}}
+        </tr>
+      </table>
+    </div>
+    <div>
+    <button class="btn btn-primary" type="submit">Toevoegen</button>
+    <button class="btn btn-warning" routerLink="/homeeventmanager/customeroverview">Annuleren</button>
+    <app-alerts></app-alerts>
+    </div>
   </form>
 </div>
-<button class="btn btn-primary" type="submit">Tovoegen</button>
+
