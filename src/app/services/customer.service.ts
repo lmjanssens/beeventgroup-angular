@@ -13,7 +13,7 @@ export class CustomerService {
 
   getAll(): Observable<Customer[]> {
     return this.http.get<Customer[]>(environment.apiHostname + 'customers');
-  }
+}
 
   getById(id: number): Observable<Customer> {
     return this.http.get<Customer>(environment.apiHostname + 'customers/' + id);
