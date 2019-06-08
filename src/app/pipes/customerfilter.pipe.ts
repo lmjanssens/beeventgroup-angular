@@ -10,6 +10,8 @@ export class CustomerFilterPipe implements PipeTransform {
   infix;
   infix2;
   last_name;
+  phone_number;
+  email;
 
   //naamgeving is slecht
 
@@ -30,7 +32,7 @@ export class CustomerFilterPipe implements PipeTransform {
           && customer.infix.toLowerCase().includes(this.splitted[1].toLowerCase())
           && customer.last_name.toLowerCase().includes(this.splitted[2].toLowerCase());
 
-        this.infix =  this.first_name = customer.infix.toLowerCase().includes(this.splitted[0].toLowerCase())
+        this.infix = this.first_name = customer.infix.toLowerCase().includes(this.splitted[0].toLowerCase())
           && customer.last_name.toLowerCase().includes(this.splitted[2].toLowerCase());
 
         this.infix2 = customer.first_name.toLowerCase().includes(this.splitted[0].toLowerCase())
@@ -54,9 +56,11 @@ export class CustomerFilterPipe implements PipeTransform {
         this.infix = customer.infix.toLowerCase().includes(searchTerm.toLowerCase());
         this.last_name = customer.last_name.toLowerCase().includes(searchTerm.toLowerCase());
         this.infix2 = customer.infix.toLowerCase().includes(searchTerm.toLowerCase());
+        this.phone_number = customer.phone_numbers[0].phonenumber.toLowerCase().includes(searchTerm.toLowerCase());
+        this.email = customer.email_addresses[0].email.toLowerCase().includes(searchTerm.toLowerCase());
       }
 
-      return (this.first_name + this.infix + this.last_name + zipcode + address + city + this.infix2);
+      return (this.first_name + this.infix + this.last_name + zipcode + address + city + this.infix2 + this.phone_number + this.email);
     });
   }
 
