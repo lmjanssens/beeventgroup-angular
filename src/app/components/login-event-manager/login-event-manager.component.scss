@@ -1,5 +1,5 @@
 mat-card {
-  width: 40%;
+  width: 500px;
   border-style: solid;
   border-color: #394365;
 }
@@ -48,14 +48,6 @@ form {
 .knop {
   text-align: center;
   margin-top: 40px;
-}
-
-.ng-valid[required], .ng-valid.required {
-  border-left: 5px solid green;
-}
-
-.ng-invalid:not(form) {
-  border-left: 5px solid red;
 }
 
 #wachtwoord {

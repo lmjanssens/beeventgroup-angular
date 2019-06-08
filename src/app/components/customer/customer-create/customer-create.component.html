@@ -1,0 +1,139 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 590px;">
+        <h3>
+          Klant toevoegen
+        </h3>
+        <div class="containerTables">
+          <table class="telTable">
+            <th class="telefoons">Telefoons
+              <img src="../assets/img/addIcon.png"
+                   style=" margin-left: 50px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer"
+                   (click)="onCreateTel()"
+                   id="addTel"
+                   *ngIf="tel != ''; else hidden"
+              >
+              <ng-template #hidden>
+                <img src="../assets/img/addIcon.png" style=" margin-left: 50px;
+                width: 20px;
+                height: 20px;
+                opacity: 0"
+                >
+              </ng-template>
+              <img src="../assets/img/removeIcon.png" style="color: red; margin-left: 30px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteTel()"
+              >
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     [(ngModel)]="tel " name="phones" required>
+            </tr>
+            <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
+
+              {{tel.phonenumber}}
+            </tr>
+          </table>
+
+          <table class="mailTable">
+            <thead>
+            <th>Emails
+              <img src="../assets/img/addIcon.png"
+                   style="margin-left: 72px;
+                width: 20px;
+                height: 20px;
+            cursor: pointer;"
+                   (click)="onCreateMail()"
+                   id="addMail"
+                   *ngIf="mail != ''; else hidden"
+              >
+              <img src="../assets/img/removeIcon.png" style="margin-left: 30px;
+            cursor: pointer;
+             width: 20px;
+              height: 20px;"
+
+                   (click)="onDeleteMail()"
+              >
+            </th>
+            </thead>
+            <tr>
+              <input class="input" id="email"
+                     [(ngModel)]="mail" name="emails" required>
+            </tr>
+            <tr *ngFor="let mail of customer.email_addresses">
+              {{mail.email}}
+            </tr>
+          </table>
+        </div>
+        <div>
+
+          <label for="title" class="col-sm-2">Title</label>
+          <input type="text" id="title" name="title" placeholder="title" required
+                 [(ngModel)]="customer.title">
+
+        </div>
+        <div>
+          <label class="col-sm-2" for="fname">Voornaam</label>
+          <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 [(ngModel)]="customer.first_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="infix">Tussenvoegsel</label>
+          <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
+                 [(ngModel)]="customer.infix">
+        </div>
+        <div>
+          <label class="col-sm-2" for="lname">Achternaam</label>
+          <input type="text" id="lname" name="lname" placeholder="achternaam" required
+
+                 [(ngModel)]="customer.last_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="address">Adres</label>
+          <input type="text" id="address" name="address " placeholder="adres" required
+
+                 [(ngModel)]="customer.address">
+        </div>
+        <div>
+          <label class="col-sm-2" for="zipcode">Postcode</label>
+          <input type="text" id="zipcode" name="zipode" placeholder="postcode" required
+
+                 [(ngModel)]="customer.zipcode">
+        </div>
+        <div>
+          <label class="col-sm-2" for="country">Land</label>
+          <input type="text" id="country" name="country" placeholder="land" required
+
+                 [(ngModel)]="customer.country">
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Geslacht</label>
+          <select id="geslacht" required>
+            <option value="m">Man</option>
+            <option value="v">Vrouw</option>
+          </select>
+        </div>
+        <div>
+          <label class=" col-sm-2" for="city">Stad</label>
+          <input type="text" id="city" placeholder="stad" required
+                 [(ngModel)]="customer.city" name="city">
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+
+      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
+        <i class="fa fa-close"></i> Annuleren
+      </button>
+      <button class="btn btn-primary" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i> Toevoegen</button>
+      <app-alerts></app-alerts>
+    </div>
+  </form>
+</div>

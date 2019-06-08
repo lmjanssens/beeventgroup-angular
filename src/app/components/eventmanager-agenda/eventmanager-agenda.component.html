@@ -1,0 +1,16 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="agendaPage" style="padding: 3em 3em 0 3em">
+  <h3 style="padding-bottom: 2em">Agenda</h3>
+  <div style="width: 80%; margin: auto;" >
+    <full-calendar
+      defaultView="dayGridMonth"
+      [aspectRatio]="1"
+      [height]="350"
+      [plugins]="calendarPlugins"
+      [events]="this.calenderEvents"
+      [eventTextColor]="'white'"
+    ></full-calendar>
+  </div>
+</div>
+

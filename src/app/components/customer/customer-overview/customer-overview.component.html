@@ -1,7 +1,67 @@
 <app-header></app-header>
-<div class="container">
-  <h1>Klanten Overzicht</h1>
+<app-navbar></app-navbar>
+<div class="klantenPage" style="padding: 3em 0 0 3em">
+  <h3 style="padding-bottom: 2em">Klanten Overzicht</h3>
   <div>
-    <button routerLink="createcustomer/">Nieuwe klant<i class="fa fa-plus" style=" margin-left: 13px; color: #394365"></i></button>
+    <button style="padding: 0.25em 1em 0.25em 1.5em" routerLink="createcustomer/">Nieuwe Klant<i class="fa fa-plus-circle fa-lg"
+                                                                          style="color: green; margin-left: 10px;"></i>
+    </button>
+    <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
+           style="background-image: url('../../../assets/img/search icon.png');"
+           type="text">
+  </div>
+  <div class="fullTable" style="padding-top: 2em">
+    <table>
+      <th class="tableName">Naam</th>
+      <th class="tableZipcode">Postcode</th>
+      <th class="tableAddress">Adres</th>
+      <th class="tableCity">Stad
+      <th class="tablePhone">Telefoon</th>
+      <th class="tableEmail">Email</th>
+      <th class="tableEdit"></th>
+      <th class="tableDelete"></th>
+      <tr
+        *ngFor="let customer of customerList | customerFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+        <td>{{customer.first_name}} {{customer.infix}} {{customer.last_name}}</td>
+        <td>{{customer.zipcode}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.city}}</td>
+        <td>{{customer.phone_numbers[0].phonenumber}}</td>
+        <td>{{customer.email_addresses[0].email}}</td>
+        <td *ngIf="customer.customerId != null; else disabledEditButton" class="tableEdit">
+          <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
+            class="fa fa-pencil fa-2x"
+            style="color: purple; "></i>
+          </button>
+        </td>
+        <ng-template #disabledEditButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-pencil fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
+        <td *ngIf="customer.customerId != null; else disabledDeleteButton" class="tableDelete">
+          <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
+            class="fa fa-trash fa-2x"
+            style="color: red;"></i></button>
+        </td>
+        <ng-template #disabledDeleteButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 38px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-trash fa-2x"
+              style="color: silver;"></i></button>
+          </td>
+        </ng-template>
+      </tr>
+    </table>
+    <div>
+      <pagination-controls (pageChange)="firstPage = $event" autoHide="true"
+                           class="pagination"></pagination-controls>
+    </div>
   </div>
 </div>
+
