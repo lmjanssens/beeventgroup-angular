@@ -4,11 +4,4 @@ export class CustomerPhone {
   public id: number;
   public customer: Customer;
   public phonenumber: string;
-
-  constructor(id: number, customer: Customer, phone: string) {
-    this.id = id;
-    this.customer = customer;
-    this.phone = phone;
-
-  }
 }

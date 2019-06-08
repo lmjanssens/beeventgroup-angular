@@ -18,21 +18,26 @@ import {AlertsService} from 'angular-alert-module';
 export class CustomerCreateComponent implements OnInit {
 
   customer: Customer;
-  tel;
-  mail;
+  tel = '';
+  mail = '';
   newMail: CustomerEmail = new CustomerEmail();
   newPhone: CustomerPhone = new CustomerPhone();
+  geslacht: string;
+  selectTag;
+  selectedItem;
 
   mails: CustomerEmail[] = [];
   tels: CustomerPhone[] = [];
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private customerService: CustomerService, private router: Router) {
+  constructor(private globals: Globals, private navbar: NavbarComponent,
+              private customerService: CustomerService, private router: Router, private alertService: AlertsService) {
   }
 
 
   ngOnInit() {
 
-    this.customer = new Customer();
+    this.customer = new Customer(null, '', '', '', '',
+      '', '', '', '', '', null, null, null);
     this.customer.email_addresses = [];
     this.customer.phone_numbers = [];
     this.customer.customer_orders = [];
@@ -45,8 +50,8 @@ export class CustomerCreateComponent implements OnInit {
     if (this.customer.email_addresses.length > 7) {
       document.getElementById('addMail').style.visibility = 'hidden';
     }
-    this.mail = null;
-    console.log(this.mail);
+    console.log(this.customer.email_addresses);
+    this.mail = '';
 
   }
 
@@ -61,14 +66,27 @@ export class CustomerCreateComponent implements OnInit {
     if (this.customer.phone_numbers.length > 7) {
       document.getElementById('addTel').style.visibility = 'hidden';
     }
-    this.tel = null;
+    this.tel = '';
   }
 
   onDeleteTel(tel) {
     this.customer.phone_numbers.splice(this.customer.phone_numbers.indexOf(tel), 1);
   }
 
+  setGeslacht() {
+    this.selectTag = document.getElementById('geslacht');
+    this.selectedItem = this.selectTag.options[this.selectTag.selectedIndex].value;
+    this.customer.gender = this.selectedItem;
+  }
+
   ngSubmit(f: NgForm) {
+    this.setGeslacht();
+    this.newMail = new CustomerEmail();
+    this.newMail.email = this.mail;
+    this.customer.email_addresses.push(this.newMail);
+    this.newPhone = new CustomerPhone();
+    this.newPhone.phonenumber = this.tel;
+    this.customer.phone_numbers.push(this.newPhone);
     if (f.form.valid) {
       const data = <any> JSON.parse(JSON.stringify(this.customer));
       this.customerService.save(data).subscribe(() => {

@@ -74,7 +74,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
     MatGridListModule,
     NgxPaginationModule,
     HttpClientModule,
-    FullCalendarModule
+    FullCalendarModule,
     AlertsModule.forRoot()
   ],
   providers: [Globals, NavbarComponent],

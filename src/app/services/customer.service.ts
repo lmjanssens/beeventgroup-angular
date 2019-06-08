@@ -20,7 +20,7 @@ export class CustomerService {
   }
 
   updateCustomer(newCustomer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(environment.apiHostname + 'customers/' + newCustomer.id, newCustomer);
+    return this.http.put<Customer>(environment.apiHostname + 'customers/' + newCustomer.customerId, newCustomer);
   }
 
   save(customer: any): Observable< object > {
