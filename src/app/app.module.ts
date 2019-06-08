@@ -54,7 +54,7 @@ import {AlertsModule} from 'angular-alert-module';
     HttpClientModule,
     AlertsModule.forRoot()
   ],
-  providers: [Globals],
+  providers: [Globals, NavbarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

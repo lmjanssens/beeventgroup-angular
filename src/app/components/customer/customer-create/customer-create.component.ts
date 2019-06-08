@@ -66,11 +66,11 @@ export class CustomerCreateComponent implements OnInit {
       const data = <any>JSON.parse(JSON.stringify(this.customer));
       this.customerService.save(data).subscribe(() => {
         this.router.navigate(['/homeeventmanager/customeroverview']);
-
+        this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
       });
-      this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
+
     } else {
-      this.alertService.setMessage('Vul de belangrijke velden in.', 'error');
+      this.alertService.setMessage('Alle velden moeten ingevuld worden.', 'error');
 
     }
   }
