@@ -10,6 +10,7 @@ import {SupplierOverviewComponent} from './components/supplier-overview/supplier
 import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
+import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 
 const appRoutes: Routes = [
@@ -25,6 +26,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent},
   {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent},
   {path: 'homeeventmanager/evenementenoverview/createevenement', component: EventsCreateComponent},
+  {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent},
+
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

@@ -7,6 +7,7 @@ import {NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
+import {AlertsService} from 'angular-alert-module';
 
 
 @Component({
@@ -15,67 +16,83 @@ import {NavbarComponent} from '../../../navbar/navbar.component';
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
-  mail;
-  tel;
+
   customer: Customer;
-  newMail: CustomerEmail;
-  newTel: CustomerPhone;
+  tel = '';
+  mail = '';
+  newMail: CustomerEmail = new CustomerEmail();
+  newPhone: CustomerPhone = new CustomerPhone();
+  selectTag;
+  selectedItem;
 
-  mails: CustomerEmail[] = [];
-  tels: CustomerPhone[] = [];
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private customerService: CustomerService, private router: Router) {
+  constructor(private globals: Globals, private navbar: NavbarComponent,
+              private customerService: CustomerService, private router: Router, private alertService: AlertsService) {
   }
 
 
   ngOnInit() {
-    // this.customer = new Customer(6, '', 'Danny', 'van', 'Tol', 'Loliawa 6', '2314DD', 'Nederand', 'M', 'Schiphol', this.mails,
-    //   null, this.tels);
-    this.customer = new Customer(null, '', '', '', '', '', '', '', '', '', null,
-      null, null);
-    this.customer.emails = [];
-    this.customer.phones = [];
+
+    this.globals.setHuidigePagina('klantenFormulier');
     console.log(this.globals.getHuidigePagina());
+    this.customer = new Customer(null, '', '', '', '',
+      '', '', '', '', '', null, null, null);
+    this.customer.email_addresses = [];
+    this.customer.phone_numbers = [];
+    this.customer.customer_orders = [];
   }
 
   onCreateMail() {
-    // this.newMail = new CustomerEmail(6, this.customer, 'das');
-    this.newMail = new CustomerEmail(null, null, '');
-    this.mails.push(this.newMail);
-    this.customer.emails = this.mails;
-    if (this.mails.length > 7) {
-      document.getElementById('addMail').style.visibility = 'hidden';
-    }
-    // console.log(this.newMail.email);
-    // console.log(this.customer.emails);
+    this.newMail = new CustomerEmail();
+    this.newMail.email = this.mail;
+    this.customer.email_addresses.push(this.newMail);
+    console.log(this.customer.email_addresses);
+    this.mail = '';
+
   }
 
   onDeleteMail(mail) {
-    this.customer.emails.splice(this.customer.emails.indexOf(mail), 1);
+    this.customer.email_addresses.splice(this.customer.email_addresses.indexOf(mail), 1);
   }
 
   onCreateTel() {
-    // this.newTel = new CustomerPhone(1, this.customer, '04128972');
-    this.newTel = new CustomerPhone(null, null, '');
-    this.customer.phones.push(this.newTel);
-    this.customer.phones = this.tels;
-    if (this.tels.length > 7) {
-      document.getElementById('addTel').style.visibility = 'hidden';
-    }
+    this.newPhone = new CustomerPhone();
+    this.newPhone.phonenumber = this.tel;
+    this.customer.phone_numbers.push(this.newPhone);
+    this.tel = '';
   }
 
   onDeleteTel(tel) {
-    this.customer.phones.splice(this.customer.phones.indexOf(tel), 1);
+    this.customer.phone_numbers.splice(this.customer.phone_numbers.indexOf(tel), 1);
+  }
+
+  setGeslacht() {
+    this.selectTag = document.getElementById('geslacht');
+    this.selectedItem = this.selectTag.options[this.selectTag.selectedIndex].value;
+    this.customer.gender = this.selectedItem;
   }
 
   ngSubmit(f: NgForm) {
+    this.setGeslacht();
+    this.newMail = new CustomerEmail();
+    this.newMail.email = this.mail;
+    this.customer.email_addresses.push(this.newMail);
+    this.newPhone = new CustomerPhone();
+    this.newPhone.phonenumber = this.tel;
+    this.customer.phone_numbers.push(this.newPhone);
     if (f.form.valid) {
       const data = <any> JSON.parse(JSON.stringify(this.customer));
       this.customerService.save(data).subscribe(() => {
-        this.router.navigate(['/app/customers']);
+        setTimeout(() => {
+          this.router.navigate(['/homeeventmanager/customeroverview']
+          );
+        }, 1000);
       });
+      (document.getElementById('submit') as HTMLInputElement).disabled = true;
+      this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
     } else {
-      alert('Geen data ingebuld');
+      this.alertService.setMessage('Vul de belangrijke velden in.', 'error');
+
     }
   }
 

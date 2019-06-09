@@ -20,17 +20,17 @@ export class InstructorFilterPipe implements PipeTransform {
       this.splitted = searchTerm.split(' ', 3);
       console.log(this.splitted);
       if (this.splitted.length === 3) {
-        this.firstName = instructor.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) &&
+        this.firstName = instructor.first_name.toLowerCase().includes(this.splitted[0].toLowerCase()) &&
           instructor.infix.toLowerCase().includes(this.splitted[1].toLowerCase())
-          && instructor.lastName.toLowerCase().includes(this.splitted[2].toLowerCase());
+          && instructor.last_name.toLowerCase().includes(this.splitted[2].toLowerCase());
       } else if (this.splitted.length === 2) {
-        this.firstName = instructor.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) && instructor.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
-        this.infix = instructor.firstName.toLowerCase().includes(this.splitted[0].toLowerCase()) && instructor.infix.toLowerCase().includes(this.splitted[1].toLowerCase());
-        this.lastName = instructor.infix.toLowerCase().includes(this.splitted[0].toLowerCase()) && instructor.lastName.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.firstName = instructor.first_name.toLowerCase().includes(this.splitted[0].toLowerCase()) && instructor.last_name.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.infix = instructor.first_name.toLowerCase().includes(this.splitted[0].toLowerCase()) && instructor.infix.toLowerCase().includes(this.splitted[1].toLowerCase());
+        this.lastName = instructor.infix.toLowerCase().includes(this.splitted[0].toLowerCase()) && instructor.last_name.toLowerCase().includes(this.splitted[1].toLowerCase());
       } else {
-        this.firstName = instructor.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+        this.firstName = instructor.first_name.toLowerCase().includes(searchTerm.toLowerCase());
         this.infix = instructor.infix.toLowerCase().includes(searchTerm.toLowerCase());
-        this.lastName = instructor.lastName.toLowerCase().includes(searchTerm.toLowerCase());
+        this.lastName = instructor.last_name.toLowerCase().includes(searchTerm.toLowerCase());
         this.phoneNumber = instructor.phoneNumber.toLowerCase().includes(searchTerm.toLowerCase());
         this.email = instructor.email.toLowerCase().includes(searchTerm.toLowerCase());
       }
