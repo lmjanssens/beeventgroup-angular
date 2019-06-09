@@ -26,15 +26,15 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
-    this.customerList = list;
+    return list;
   }
 
   ngOnInit() {
     this.globals.setHuidigePagina('Klanten');
     this.navbar.checkNavBarStyle();
-    console.log(this.globals.getHuidigePagina());
-    this.customerService.getAll().subscribe(customer => this.nullRemover(customer));
-    this.customerService.getAll().subscribe(customer => console.log(customer));
+    this.customerService.getAll().subscribe(customer => this.customerList = this.nullRemover(customer.sort((a, b) => (
+      a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
+      a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
   }
 
 }
