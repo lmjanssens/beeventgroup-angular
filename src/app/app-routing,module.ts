@@ -8,7 +8,7 @@ import {EventmanagerReserveringenComponent} from './components/eventmanager-rese
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
 import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';;
-import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
+import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 
