@@ -34,6 +34,11 @@ import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
+import {UserService} from "./services/user.service";
+import {CustomerService} from "./services/customer.service";
+import {ApiService} from "./services/api.service";
+import {AuthGuard} from "./services/auth.guard.service";
+import {AuthorizationService} from "./services/authorization.service";
 
 @NgModule({
   declarations: [
@@ -77,7 +82,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
     FullCalendarModule,
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

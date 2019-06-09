@@ -1,5 +1,5 @@
 import {Router} from '@angular/router';
-import {AuthorisationService} from './authorisation.service';
+import {AuthorizationService} from './authorization.service';
 import {ApiService} from './api.service';
 import {Injectable} from '@angular/core';
 import {User} from '../models/user.model';
@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(private router: Router,
               private apiService: ApiService,
-              private authService: AuthorisationService) {
+              private authService: AuthorizationService) {
 
   }
 

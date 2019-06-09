@@ -1,5 +1,5 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AuthorisationService} from "./authorisation.service";
+import {AuthorizationService} from "./authorization.service";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 
@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 export class ApiService {
 
 
-  constructor(private http: HttpClient, private authService: AuthorisationService) {
+  constructor(private http: HttpClient, private authService: AuthorizationService) {
 
   }
 

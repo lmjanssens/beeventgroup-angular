@@ -6,7 +6,7 @@ import {Subject} from "rxjs";
  * @author Robin Silverio
  */
 @Injectable()
-export class AuthorisationService {
+export class AuthorizationService {
 
   private login: string = null;
   private password: string = null;

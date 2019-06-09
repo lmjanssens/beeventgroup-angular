@@ -6,7 +6,7 @@
     <img src="{{imagePath}}" alt="logo">
     <span>{{rol}}</span>
   </div>
-    <form class="form-container" #loginEventmanager="ngForm">
+    <form class="form-container" [formGroup]="loginForm" (ngSubmit)="OnLogin()">
       <div id="login-page" class="center-field">
         <div class="container">
           <div class="title">Inloggen</div>
@@ -17,12 +17,13 @@
                    class="form-control"
                    placeholder="Uw gebruikersnaam"
                    name="username"
-                   [ngModel]="username"
-                   required
+                   formControlName="loginUsername"
+                   [ngClass]="{ 'is-invalid': !getLoginFormControls().loginUsername.valid && getLoginFormControls().loginUsername.dirty }"
             >
-            <div class="invalid-feedback">
-              Gebruikersnaam is verplicht
-            </div>
+            <span class="invalid-feedback" *ngIf="!getLoginFormControls().loginUsername.valid && getLoginFormControls().loginUsername.dirty">
+              <span *ngIf="getLoginFormControls().loginUsername.errors.required">Gebruikersnaam is verplicht</span>
+              <span *ngIf="getLoginFormControls().loginUsername.errors.pattern">Illegale karakters zijn niet toegestaan</span>
+            </span>
           </div>
 
           <label class="text" id="wachtwoord">Wachtwoord</label>
@@ -30,18 +31,16 @@
                  class="form-control"
                  placeholder="Uw wachtwoord"
                  name="password"
-                 [ngModel]="password"
-                 required
+                 formControlName="loginPassword"
+                 [ngClass]="{ 'is-invalid' : !getLoginFormControls().loginPassword.valid && getLoginFormControls().loginPassword.dirty }"
           >
-          <div class="invalid-feedback">
-            Wachtwoord is verplicht
-
-          </div>
+          <span class="invalid-feedback" *ngIf="!getLoginFormControls().loginPassword.valid && getLoginFormControls().loginPassword.dirty">
+            <span *ngIf="getLoginFormControls().loginPassword.errors.required">Wachtwoord is verplicht</span>
+          </span>
           <div>
 
             <div class="knop">
-              <button type="submit" class="btn" [disabled]="!loginEventmanager.valid" routerLink="/homeeventmanager">Inloggen</button>
-
+              <button type="submit" class="btn" [disabled]="!loginForm.valid">Inloggen</button>
             </div>
           </div>
         </div>
