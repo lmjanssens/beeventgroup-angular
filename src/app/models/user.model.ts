@@ -13,4 +13,8 @@ export class User {
     this.password = password;
     this.actions = actions;
   }
+
+  public getUsername(): string { return this.username; }
+  public getPassword(): string { return this.password; }
+
 }
