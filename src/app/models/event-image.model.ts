@@ -1,6 +1,7 @@
 import {Event} from './event.model';
+import {BaseModel} from './base.model';
 
-export class EventImage {
+export class EventImage implements BaseModel {
   public id: number;
   public event: Event;
   public imagePath: string;

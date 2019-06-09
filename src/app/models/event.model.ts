@@ -3,8 +3,9 @@ import {EventImage} from './event-image.model';
 import {EventLocation} from './event-location.model';
 import {RegisteredEvents} from './registered-events.model';
 import {Supplier} from './supplier.model';
+import {BaseModel} from './base.model';
 
-export class Event {
+export class Event implements BaseModel {
   public id: number;
   public supplier: Supplier;
   public location: EventLocation;

@@ -31,6 +31,7 @@ import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
+import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {EventmanagerInstructeursComponent} from './components/eventmanager-instr
     EventmanagerInstructeursComponent,
     InstructorFilterPipe,
     SupplierOverviewComponent,
-    CateringOverviewComponent
+    CateringOverviewComponent,
+    EventsCreateComponent
   ],
   imports: [
     BrowserModule,

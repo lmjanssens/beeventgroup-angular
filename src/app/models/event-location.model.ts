@@ -1,6 +1,7 @@
 import {Event} from './event.model';
+import {BaseModel} from './base.model';
 
-export class EventLocation {
+export class EventLocation implements BaseModel {
   public id: number;
   public name: Event;
   public description: string;
