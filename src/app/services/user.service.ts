@@ -21,7 +21,8 @@ export class UserService {
    * @param remember
    * @author Robin Silverio
    */
-  public login(user: User, remember: boolean): void {
+  public login(user: User, remember: boolean) {
+
     this.authService.setAuthorization(user.getUsername(), user.getPassword());
 
     this.apiService.get<User>('users/me').subscribe

@@ -1,20 +1,15 @@
 import {UserAction} from './user-action.model';
 
 export class User {
-  public id: number;
-  public username: string;
-  public password: string;
-  public actions: UserAction[];
-
-
-  constructor(id: number, username: string, password: string, actions: UserAction[]) {
-    this.id = id;
-    this.username = username;
-    this.password = password;
-    this.actions = actions;
-  }
+  
+  constructor(public id?: number,
+              public username?: string,
+              public password?: string,
+              public actions?: UserAction[]) {}
 
   public getUsername(): string { return this.username; }
+  public setUsername(username: string) { this.username = username; }
   public getPassword(): string { return this.password; }
+  public setPassword(password: string) { this.password = password; }
 
 }

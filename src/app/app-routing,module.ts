@@ -11,21 +11,22 @@ import {CateringOverviewComponent} from './components/catering-overview/catering
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
+import {AuthGuard} from "./services/auth.guard.service";
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'loginpage', component: LoginEventManagerComponent},
-  {path: 'homeeventmanager', component: HomepageEventmanagerComponent},
-  {path: 'homeeventmanager/supplieroverview', component: SupplierOverviewComponent},
-  {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent},
-  {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent},
-  {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent},
-  {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent},
-  {path: 'homeeventmanager/werknemersoverview', component: EventmanagerEventmanagersComponent},
-  {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent},
-  {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent},
-  {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent},
-
+  {path: 'homeeventmanager', component: HomepageEventmanagerComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview', component: SupplierOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
+  {path: '**', component: HomepageComponent}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
