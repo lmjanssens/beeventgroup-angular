@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../components/globals';
 import {Router} from '@angular/router';
+import {AuthorizationService} from "../services/authorization.service";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,9 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private globals: Globals, private router: Router) {
+  constructor(private globals: Globals,
+              private router: Router,
+              private authService: AuthorizationService) {
   }
 
   ngOnInit() {
@@ -62,5 +65,10 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/homeeventmanager']);
     }
 
+  }
+
+  OnLogOut() {
+    this.authService.deleteAuthorization();
+    this.router.navigate(['/']);
   }
 }

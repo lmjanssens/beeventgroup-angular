@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Employee} from '../../models/employee.model';
-import {Instructor} from '../../models/instructor.model';
-import {Globals} from '../globals';
-import {NavbarComponent} from '../../navbar/navbar.component';
+import {Employee} from '../../../models/employee.model';
+import {Instructor} from '../../../models/instructor.model';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
 
 @Component({
   selector: 'app-eventmanager-instructeurs',

@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../globals';
+import {Router} from '@angular/router';
+import {AuthorizationService} from '../../services/authorization.service';
+import {Role} from "../../enums/Role";
+import {UserService} from "../../services/user.service";
 
 
 @Component({
@@ -12,8 +16,45 @@ export class HomepageComponent implements OnInit {
   images = ['../assets/img/img4.jpg', '../assets/img/img1.png', '../assets/img/img2.jpg', '../assets/img/img3.jpg'];
   i = 0;
 
-  constructor(private globals: Globals) {
+  currentUser: any;
+  authenticated = false;
+
+  constructor(private globals: Globals,
+              private router: Router,
+              private authService: AuthorizationService) {
+    this.authenticated = authService.hasAuthorization();
+
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+
+    if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager']);
+    }
+    // else if (this.currentUser.role === Role.INSTRUCTOR) {
+    //   this.router.navigate([''])
+    // }
   }
+
+  private updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+
+      return;
+    }
+
+    const user: any = this.authService.getAuthenticator();
+
+    this.currentUser = user;
+  }
+
+
 
   ngOnInit() {
     this.globals.setHuidigePagina('homePage');

@@ -31,10 +31,16 @@ import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AlertsModule} from 'angular-alert-module';
-import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
+import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
+import {UserService} from "./services/user.service";
+import {CustomerService} from "./services/customer.service";
+import {ApiService} from "./services/api.service";
+import {AuthGuard} from "./services/auth.guard.service";
+import {AuthorizationService} from "./services/authorization.service";
+import { InstructorCreateComponent } from './components/instructor/instructor-create/instructor-create.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +68,7 @@ import {CustomerUpdateComponent} from './components/customer/customer-update/cus
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
     CustomerUpdateComponent,
+    InstructorCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +87,7 @@ import {CustomerUpdateComponent} from './components/customer/customer-update/cus
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

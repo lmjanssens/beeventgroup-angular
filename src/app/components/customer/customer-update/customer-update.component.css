@@ -84,3 +84,8 @@ th {
   color: white;
   border-radius: 10px;
 }
+
+app-alerts {
+  width: 1000px;
+}
+
