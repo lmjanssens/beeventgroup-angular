@@ -34,6 +34,7 @@ import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
+import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
     SupplierOverviewComponent,
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
+    CustomerUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
     NgxPaginationModule,
     HttpClientModule,
     FullCalendarModule,
+
     AlertsModule.forRoot()
   ],
   providers: [Globals, NavbarComponent],

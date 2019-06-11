@@ -32,7 +32,6 @@ export class CustomerCreateComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.globals.setHuidigePagina('klantenFormulier');
     console.log(this.globals.getHuidigePagina());
     this.customer = new Customer(null, '', '', '', '',

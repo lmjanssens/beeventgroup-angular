@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
-      this.globals.getHuidigePagina() === 'klantenFormulier') {
+      this.globals.getHuidigePagina() === 'klantenFormulier' ||
+      this.globals.getHuidigePagina() === 'klantupdate') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -46,8 +47,7 @@ export class HeaderComponent implements OnInit {
     if (this.globals.getHuidigePagina() === 'loginPage') {
       this.router.navigate(['/']);
     }
-    if (this.globals.getHuidigePagina() === 'Klanten' ||
-      this.globals.getHuidigePagina() === 'Reserveringen' ||
+    if (this.globals.getHuidigePagina() === 'Reserveringen' ||
       this.globals.getHuidigePagina() === 'Evenementen' ||
       this.globals.getHuidigePagina() === 'Leveranciers' ||
       this.globals.getHuidigePagina() === 'Horeca' ||
@@ -55,8 +55,12 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Werknemers') {
       this.router.navigate(['/homeeventmanager']);
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier') {
+    if (this.globals.getHuidigePagina() === 'klantenFormulier' || 'klantupdate') {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
+    if (this.globals.getHuidigePagina() === 'Klanten') {
+      this.router.navigate(['/homeeventmanager']);
+    }
+
   }
 }
