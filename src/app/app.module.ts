@@ -34,6 +34,7 @@ import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
+import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
 import {UserService} from "./services/user.service";
 import {CustomerService} from "./services/customer.service";
 import {ApiService} from "./services/api.service";
@@ -66,7 +67,8 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
     SupplierOverviewComponent,
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
-    InstructorCreateComponent,
+    CustomerUpdateComponent,
+    InstructorCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +84,7 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
     NgxPaginationModule,
     HttpClientModule,
     FullCalendarModule,
+
     AlertsModule.forRoot()
   ],
   providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService],
