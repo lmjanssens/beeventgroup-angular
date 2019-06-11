@@ -56,7 +56,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Leveranciers' ||
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
-      this.globals.getHuidigePagina() === 'Werknemers') {
+      this.globals.getHuidigePagina() === 'Werknemers' ||
+      this.globals.getHuidigePagina() === 'Klanten') {
       this.router.navigate(['/homeeventmanager']);
     }
     if (this.globals.getHuidigePagina() === 'klantenFormulier') {
