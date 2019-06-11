@@ -32,8 +32,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
-  {path: '**', component: HomepageComponent},
   {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
+  {path: '**', component: HomepageComponent},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

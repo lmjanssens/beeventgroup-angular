@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Werknemers') {
       this.router.navigate(['/homeeventmanager']);
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier' || 'klantupdate') {
+    if (this.globals.getHuidigePagina() === 'klantenFormulier') {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
     if (this.globals.getHuidigePagina() === 'instructeurFormulier') {
