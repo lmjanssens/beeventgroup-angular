@@ -35,7 +35,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
-      this.globals.getHuidigePagina() === 'klantenFormulier') {
+      this.globals.getHuidigePagina() === 'klantenFormulier' ||
+      this.globals.getHuidigePagina() === 'instructeurFormulier') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -57,6 +58,9 @@ export class HeaderComponent implements OnInit {
     }
     if (this.globals.getHuidigePagina() === 'klantenFormulier') {
       this.router.navigate(['/homeeventmanager/customeroverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'instructeurFormulier') {
+      this.router.navigate(['/homeeventmanager/instructeursoverview']);
     }
   }
 }
