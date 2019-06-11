@@ -80,20 +80,15 @@ export class CustomerCreateComponent implements OnInit {
     this.newPhone = new CustomerPhone();
     this.newPhone.phonenumber = this.tel;
     this.customer.phone_numbers.push(this.newPhone);
-    if (f.form.valid) {
-      const data = <any> JSON.parse(JSON.stringify(this.customer));
-      this.customerService.save(data).subscribe(() => {
-        setTimeout(() => {
-          this.router.navigate(['/homeeventmanager/customeroverview']
-          );
-        }, 1000);
-      });
-      (document.getElementById('submit') as HTMLInputElement).disabled = true;
-      this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
-    } else {
-      this.alertService.setMessage('Vul de belangrijke velden in.', 'error');
+    const data = JSON.parse(JSON.stringify(this.customer)) as any;
+    this.customerService.save(data).subscribe(() => {
+      setTimeout(() => {
+        this.router.navigate(['/homeeventmanager/customeroverview']
+        );
+      }, 1000);
+    });
+    (document.getElementById('submit') as HTMLInputElement).disabled = true;
+    this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
 
-    }
   }
-
 }
