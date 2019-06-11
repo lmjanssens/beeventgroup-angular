@@ -35,12 +35,13 @@ import {EventmanagerInstructeursComponent} from './components/instructor/eventma
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
-import {UserService} from "./services/user.service";
-import {CustomerService} from "./services/customer.service";
-import {ApiService} from "./services/api.service";
-import {AuthGuard} from "./services/auth.guard.service";
-import {AuthorizationService} from "./services/authorization.service";
-import { InstructorCreateComponent } from './components/instructor/instructor-create/instructor-create.component';
+import {UserService} from './services/user.service';
+import {CustomerService} from './services/customer.service';
+import {ApiService} from './services/api.service';
+import {AuthGuard} from './services/auth.guard.service';
+import {AuthorizationService} from './services/authorization.service';
+import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
+import {InstructorService} from './services/instructor.service';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,7 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

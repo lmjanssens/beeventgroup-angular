@@ -21,38 +21,22 @@
       <th class="tableDelete"></th>
       <tr
         *ngFor="let instructor of instructorList | instructorFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{instructor.firstName}} {{instructor.infix}} {{instructor.lastName}}</td>
-        <td>{{instructor.user}}</td>
-        <td>{{instructor.phoneNumber}}</td>
-        <td>{{instructor.email}}</td>
-        <td *ngIf="instructor.id != null; else disabledEditButton" class="tableEdit">
+        <td>{{instructor.first_name}} {{instructor.infix}} {{instructor.last_name}}</td>
+        <td>{{instructor.user_id.username}}</td>
+        <td>{{instructor.phone_number}}</td>
+        <td>{{instructor.email_address}}</td>
+        <td class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
             style="color: purple; "></i>
           </button>
         </td>
-        <ng-template #disabledEditButton>
-          <td>
-            <button disabled
-                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
-              class="fa fa-pencil fa-2x"
-              style="color: silver; "></i>
-            </button>
-          </td>
-        </ng-template>
-        <td *ngIf="instructor.id != null; else disabledDeleteButton" class="tableDelete">
-          <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
+        <td class="tableDelete">
+          <button (click)="onDelete(instructor.user_id.id ,instructor.last_name, instructor.first_name)"
+                  style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
             class="fa fa-trash fa-2x"
             style="color: red;"></i></button>
         </td>
-        <ng-template #disabledDeleteButton>
-          <td>
-            <button disabled
-                    style="margin-left: -8px; width: 38px; height: 40px; border: none; background-color: white"><i
-              class="fa fa-trash fa-2x"
-              style="color: silver;"></i></button>
-          </td>
-        </ng-template>
       </tr>
     </table>
     <div>

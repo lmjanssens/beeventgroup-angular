@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, pipe} from 'rxjs';
 import {Customer} from '../models/customer.model';
-import {environment} from '../../environments/environment';
 import {first, retry, tap} from 'rxjs/operators';
 import {ApiService} from './api.service';
 

@@ -14,7 +14,7 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="instructor.phoneNumber" name="phone" required>
+                     [(ngModel)]="instructor.phone_number" name="phone" required>
             </tr>
           </table>
 
@@ -25,14 +25,14 @@
             </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="instructor.email" name="email" required>
+                     [(ngModel)]="instructor.email_address" name="email" required>
             </tr>
           </table>
         </div>
         <div>
           <label class="col-sm-2" for="fname">Voornaam</label>
           <input type="text" id="fname" name="fname" placeholder="voornaam" required
-                 [(ngModel)]="instructor.firstName">
+                 [(ngModel)]="instructor.first_name">
         </div>
         <div>
           <label class="col-sm-2" for="infix">Tussenvoegsel</label>
@@ -43,10 +43,10 @@
           <label class="col-sm-2" for="lname">Achternaam</label>
           <input type="text" id="lname" name="lname" placeholder="achternaam" required
 
-                 [(ngModel)]="instructor.lastName">
+                 [(ngModel)]="instructor.last_name">
         </div>
         <div>
-          <label class="col-sm-2" for="username">Username</label>
+          <label class="col-sm-2" for="username">Gebruikersnaam</label>
           <input type="text" id="username" name="address " placeholder="username" required
 
                  [(ngModel)]="user.username">
@@ -67,13 +67,12 @@
 
         <div class="buttons" style="padding-top: 5em">
 
-        <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
+        <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/instructeursoverview">
           <i class="fa fa-close"></i> Annuleren
         </button>
         <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
           Toevoegen
         </button>
-        <app-alerts></app-alerts>
       </div>
 
       </div>
