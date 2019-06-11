@@ -57,7 +57,7 @@ export class LoginEventManagerComponent implements OnInit, AfterViewInit {
     user.setUsername(this.getLoginFormControls().loginUsername.value);
     user.setPassword(this.getLoginFormControls().loginPassword.value);
 
-    this.userService.login(user,false);
+    this.userService.login(user, false);
   }
 
 }

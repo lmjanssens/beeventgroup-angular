@@ -32,7 +32,7 @@ export class HomepageComponent implements OnInit {
 
     this.updateAuthentication();
 
-    if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+    if (this.currentUser.role === Role.ADMIN|| this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager']);
     }
     // else if (this.currentUser.role === Role.INSTRUCTOR) {

@@ -3,8 +3,9 @@
 <div class="eventmanagerPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Instructeurs Overzicht</h3>
   <div>
-    <button style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Instructeur<i class="fa fa-plus-circle fa-lg"
-                                                                           style="color: green; margin-left: 10px;"></i>
+    <button routerLink="/homeeventmanager/instructeursoverview/createinstructor"
+            style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Instructeur<i class="fa fa-plus-circle fa-lg"
+                                                                          style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
            style="background-image: url('../../../../assets/img/search icon.png');"
@@ -19,7 +20,7 @@
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
       <tr
-        *ngFor="let instructor of tableFiller() | instructorFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+        *ngFor="let instructor of instructorList | instructorFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{instructor.firstName}} {{instructor.infix}} {{instructor.lastName}}</td>
         <td>{{instructor.user}}</td>
         <td>{{instructor.phoneNumber}}</td>

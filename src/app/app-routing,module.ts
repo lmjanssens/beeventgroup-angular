@@ -7,12 +7,15 @@ import {CustomerCreateComponent} from './components/customer/customer-create/cus
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
-import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';;
+import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
+
+;
 import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
-import {AuthGuard} from "./services/auth.guard.service";
+import {AuthGuard} from './services/auth.guard.service';
+import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
-  {path: '**', component: HomepageComponent}
+  {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
+  {path: '**', component: HomepageComponent},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
