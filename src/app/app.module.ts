@@ -40,6 +40,7 @@ import {ApiService} from "./services/api.service";
 import {AuthGuard} from "./services/auth.guard.service";
 import {AuthorizationService} from "./services/authorization.service";
 import { InstructorCreateComponent } from './components/instructor/instructor-create/instructor-create.component';
+import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
     InstructorCreateComponent,
+    HomepageInstructorComponent,
   ],
   imports: [
     BrowserModule,

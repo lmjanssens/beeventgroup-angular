@@ -28,7 +28,8 @@ export class HeaderComponent implements OnInit {
       document.getElementById('terugKnop').style.cursor = 'pointer';
       document.getElementById('uitlogKnop').style.visibility = 'hidden';
     }
-    if (this.globals.getHuidigePagina() === 'homeeventmanager') {
+    if (this.globals.getHuidigePagina() === 'homeeventmanager' ||
+        this.globals.getHuidigePagina() === 'homeinstructor') {
       document.getElementById('uitlogKnop').style.visibility = 'visible';
     }
     if (this.globals.getHuidigePagina() === 'Klanten' ||
