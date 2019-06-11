@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../components/globals';
 import {Router} from '@angular/router';
-import {AuthorizationService} from "../services/authorization.service";
+import {AuthorizationService} from '../services/authorization.service';
 
 @Component({
   selector: 'app-header',
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
       this.globals.getHuidigePagina() === 'klantenFormulier' ||
-      this.globals.getHuidigePagina() === 'instructeurFormulier') {
+      this.globals.getHuidigePagina() === 'instructeurFormulier' ||
       this.globals.getHuidigePagina() === 'klantupdate') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';

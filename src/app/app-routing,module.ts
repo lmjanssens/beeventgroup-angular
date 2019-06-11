@@ -14,7 +14,7 @@ import {EventmanagerInstructeursComponent} from './components/instructor/eventma
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
-import {AuthGuard} from "./services/auth.guard.service";
+import {AuthGuard} from './services/auth.guard.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 
 const appRoutes: Routes = [
@@ -32,8 +32,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
-  {path: '**', component: HomepageComponent}
-  {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent},
+  {path: '**', component: HomepageComponent},
+  {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);
