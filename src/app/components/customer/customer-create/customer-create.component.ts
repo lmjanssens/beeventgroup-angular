@@ -25,14 +25,11 @@ export class CustomerCreateComponent implements OnInit {
   selectTag;
   selectedItem;
 
-
   constructor(private globals: Globals, private navbar: NavbarComponent,
               private customerService: CustomerService, private router: Router, private alertService: AlertsService) {
   }
 
-
   ngOnInit() {
-
     this.globals.setHuidigePagina('klantenFormulier');
     console.log(this.globals.getHuidigePagina());
     this.customer = new Customer(null, '', '', '', '',

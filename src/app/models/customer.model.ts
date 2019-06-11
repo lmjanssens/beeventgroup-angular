@@ -1,9 +1,10 @@
 import {CustomerEmail} from './customer-email.model';
 import {CustomerOrder} from './customer-order.model';
 import {CustomerPhone} from './customer-phone.model';
+import {BaseModel} from "./base.model";
 
-export class Customer {
-  public customerId: number;
+export class Customer implements BaseModel {
+  public id: number;
   public title: string;
   public first_name: string;
   public infix: string;
@@ -18,7 +19,7 @@ export class Customer {
   public phone_numbers: CustomerPhone[];
 
   constructor(customerId: number, title: string, first_name: string, infix: string, last_name: string, address: string, zipcode: string, country: string, gender: string, city: string, email_addresses: CustomerEmail[], customer_orders: CustomerOrder[], phone_numbers: CustomerPhone[]) {
-    this.customerId = customerId;
+    this.id = customerId;
     this.title = title;
     this.first_name = first_name;
     this.infix = infix;

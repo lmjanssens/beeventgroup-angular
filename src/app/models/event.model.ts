@@ -5,7 +5,7 @@ import {RegisteredEvents} from './registered-events.model';
 import {Supplier} from './supplier.model';
 import {BaseModel} from './base.model';
 
-export class Event implements BaseModel {
+export class EventModel implements BaseModel {
   public id: number;
   public supplier: Supplier;
   public location: EventLocation;
