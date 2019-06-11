@@ -3,43 +3,42 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, pipe} from 'rxjs';
 import {Customer} from '../models/customer.model';
 import {environment} from '../../environments/environment';
-import {retry, tap} from 'rxjs/operators';
+import {first, retry, tap} from 'rxjs/operators';
+import {ApiService} from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CustomerService {
-  constructor(private http: HttpClient) {
+
+  constructor(private apiService: ApiService) {
   }
 
   customer: Customer;
 
   getAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(environment.apiHostname + 'customers', {
-      headers: new HttpHeaders({
-        'Authorization': 'Basic Arthur abc'
-      })
-    });
+    return this.apiService.get<Customer[]>('customers');
   }
 
-  getById(id: number): Observable<Customer> {
-    return this.http.get<Customer>(environment.apiHostname + 'customers/' + id).pipe(
-      tap(selectedCustomer => console.log(`selectedCustomer = ${JSON.stringify(selectedCustomer)}`))
-    );
-
-
+  getById(id: number) {
+    const uri = 'customers';
+    return this.apiService.get(uri, id).pipe(first());
   }
 
   updateCustomer(updatedCustomer: Customer): Observable<Customer> {
-    return this.http.put<Customer>(environment.apiHostname + 'customers/' + updatedCustomer.customerId, updatedCustomer);
+    const uri = 'customers/';
+    return this.apiService.put<Customer>(uri + updatedCustomer.customerId, updatedCustomer);
   }
 
   save(customer: any): Observable<object> {
-    return this.http.post(environment.apiHostname + 'customers/', customer);
+    const uri = 'customers';
+    return this.apiService.post(uri, customer);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(environment.apiHostname + 'customers/' + id);
+
+  delete(id: number) {
+    const uri = 'customers/';
+    return this.apiService.delete<void>(uri + id);
   }
 }
