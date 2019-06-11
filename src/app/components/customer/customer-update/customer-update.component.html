@@ -6,7 +6,7 @@
 
       <div style="height: 590px;">
         <h3>
-          Klant toevoegen
+          Klant aanpassen
         </h3>
         <div class="containerTables">
           <table class="telTable">
@@ -34,7 +34,7 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel " name="phones" required>
+                     [(ngModel)]="customer.phone_numbers[customer.phone_numbers.length -1].phonenumber" name="phones" [disabled]="loading" >
             </tr>
             <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
 
@@ -65,9 +65,9 @@
             </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="mail" name="emails" required>
+                     [(ngModel)]="customer.email_addresses[customer.email_addresses.length -1].email" name="emails" [disabled]="loading">
             </tr>
-            <tr *ngFor="let mail of customer.email_addresses">
+            <tr *ngFor="let mail of customer.email_addresses" class="spacer" >
               {{mail.email}}
             </tr>
           </table>
@@ -76,46 +76,53 @@
 
           <label for="title" class="col-sm-2">Title</label>
           <input type="text" id="title" name="title" placeholder="title" required
-                 [(ngModel)]="customer.title">
+                 [(ngModel)]="customer.title"
+                 [disabled]="loading">
 
         </div>
         <div>
           <label class="col-sm-2" for="fname">Voornaam</label>
           <input type="text" id="fname" name="fname" placeholder="voornaam" required
-                 [(ngModel)]="customer.first_name">
+                 [(ngModel)]="customer.first_name"
+                 [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="infix">Tussenvoegsel</label>
           <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
-                 [(ngModel)]="customer.infix">
+                 [(ngModel)]="customer.infix"
+                 [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="lname">Achternaam</label>
           <input type="text" id="lname" name="lname" placeholder="achternaam" required
 
-                 [(ngModel)]="customer.last_name">
+                 [(ngModel)]="customer.last_name"
+                 [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="address">Adres</label>
           <input type="text" id="address" name="address " placeholder="adres" required
 
-                 [(ngModel)]="customer.address">
+                 [(ngModel)]="customer.address"
+                 [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
           <input type="text" id="zipcode" name="zipode" placeholder="postcode" required
 
-                 [(ngModel)]="customer.zipcode">
+                 [(ngModel)]="customer.zipcode"
+                 [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="country">Land</label>
           <input type="text" id="country" name="country" placeholder="land" required
 
-                 [(ngModel)]="customer.country">
+                 [(ngModel)]="customer.country"
+                 [disabled]="loading">
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Geslacht</label>
-          <select id="geslacht" required>
+          <select id="geslacht" [disabled]="loading" required>
             <option value="m">Man</option>
             <option value="v">Vrouw</option>
           </select>
@@ -123,7 +130,8 @@
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
           <input type="text" id="city" placeholder="stad" required
-                 [(ngModel)]="customer.city" name="city">
+                 [(ngModel)]="customer.city" name="city"
+                 [disabled]="loading">
         </div>
       </div>
     </div>
@@ -132,7 +140,8 @@
       <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
         <i class="fa fa-close"></i> Annuleren
       </button>
-      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-plus"></i> Toevoegen</button>
+      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i> Opslaan
+      </button>
       <app-alerts></app-alerts>
     </div>
   </form>
