@@ -22,12 +22,9 @@ export class CustomerCreateComponent implements OnInit {
   mail = '';
   newMail: CustomerEmail = new CustomerEmail();
   newPhone: CustomerPhone = new CustomerPhone();
-  geslacht: string;
   selectTag;
   selectedItem;
 
-  mails: CustomerEmail[] = [];
-  tels: CustomerPhone[] = [];
 
   constructor(private globals: Globals, private navbar: NavbarComponent,
               private customerService: CustomerService, private router: Router, private alertService: AlertsService) {
@@ -36,6 +33,8 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
 
+    this.globals.setHuidigePagina('klantenFormulier');
+    console.log(this.globals.getHuidigePagina());
     this.customer = new Customer(null, '', '', '', '',
       '', '', '', '', '', null, null, null);
     this.customer.email_addresses = [];
@@ -47,9 +46,6 @@ export class CustomerCreateComponent implements OnInit {
     this.newMail = new CustomerEmail();
     this.newMail.email = this.mail;
     this.customer.email_addresses.push(this.newMail);
-    if (this.customer.email_addresses.length > 7) {
-      document.getElementById('addMail').style.visibility = 'hidden';
-    }
     console.log(this.customer.email_addresses);
     this.mail = '';
 
@@ -63,9 +59,6 @@ export class CustomerCreateComponent implements OnInit {
     this.newPhone = new CustomerPhone();
     this.newPhone.phonenumber = this.tel;
     this.customer.phone_numbers.push(this.newPhone);
-    if (this.customer.phone_numbers.length > 7) {
-      document.getElementById('addTel').style.visibility = 'hidden';
-    }
     this.tel = '';
   }
 
@@ -87,17 +80,15 @@ export class CustomerCreateComponent implements OnInit {
     this.newPhone = new CustomerPhone();
     this.newPhone.phonenumber = this.tel;
     this.customer.phone_numbers.push(this.newPhone);
-    if (f.form.valid) {
-      const data = <any> JSON.parse(JSON.stringify(this.customer));
-      this.customerService.save(data).subscribe(() => {
-        this.router.navigate(['/homeeventmanager/customeroverview']);
+    const data = JSON.parse(JSON.stringify(this.customer)) as any;
+    this.customerService.save(data).subscribe(() => {
+      setTimeout(() => {
+        this.router.navigate(['/homeeventmanager/customeroverview']
+        );
+      }, 1000);
+    });
+    (document.getElementById('submit') as HTMLInputElement).disabled = true;
+    this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
 
-      });
-      this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
-    } else {
-      this.alertService.setMessage('Vul de belangrijke velden in.', 'error');
-
-    }
   }
-
 }
