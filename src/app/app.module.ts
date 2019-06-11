@@ -34,6 +34,7 @@ import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {FullCalendarModule} from '@fullcalendar/angular';
+import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {UserService} from "./services/user.service";
 import {CustomerService} from "./services/customer.service";
@@ -68,8 +69,9 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
     CateringOverviewComponent,
-    EventsCreateComponent
+    EventsCreateComponent,
     InstructorCreateComponent,
+    CustomerUpdateComponent,
   ],
   imports: [
     BrowserModule,

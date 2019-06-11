@@ -34,7 +34,7 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel" name="phones" [disabled]="loading" required>
+                     [(ngModel)]="customer.phone_numbers[customer.phone_numbers.length -1].phonenumber" name="phones" [disabled]="loading" >
             </tr>
             <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
 
@@ -65,9 +65,9 @@
             </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="mail" name="emails" [disabled]="loading" required>
+                     [(ngModel)]="customer.email_addresses[customer.email_addresses.length -1].email" name="emails" [disabled]="loading">
             </tr>
-            <tr *ngFor="let mail of customer.email_addresses">
+            <tr *ngFor="let mail of customer.email_addresses" class="spacer" >
               {{mail.email}}
             </tr>
           </table>
@@ -131,7 +131,7 @@
           <label class=" col-sm-2" for="city">Stad</label>
           <input type="text" id="city" placeholder="stad" required
                  [(ngModel)]="customer.city" name="city"
-          [disabled]="loading">
+                 [disabled]="loading">
         </div>
       </div>
     </div>
@@ -140,7 +140,8 @@
       <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
         <i class="fa fa-close"></i> Annuleren
       </button>
-      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i> Opslaan</button>
+      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i> Opslaan
+      </button>
       <app-alerts></app-alerts>
     </div>
   </form>

@@ -4,22 +4,22 @@ import {EmployeePhone} from './employee-phone.model';
 
 
 export class Employee {
-  public id: number;
-  public user: User;
-  public firstName: string;
+  public employeeId: number;
+  public user_id: User;
+  public first_name: string;
   public infix: string;
-  public lastName: string;
-  public emails: EmployeeEmail[];
-  public phones: EmployeePhone[];
+  public last_name: string;
+  public email_addresses: EmployeeEmail[];
+  public phone_numbers: EmployeePhone[];
 
 
-  constructor(id: number, user: User, firstName: string, infix: string, lastName: string, emails: EmployeeEmail[], phones: EmployeePhone[]) {
-    this.id = id;
-    this.user = user;
-    this.firstName = firstName;
+  constructor(employeeId: number, user_id: User, first_name: string, infix: string, last_name: string, email_addresses: EmployeeEmail[], phone_numbers: EmployeePhone[]) {
+    this.employeeId = employeeId;
+    this.user_id = user_id;
+    this.first_name = first_name;
     this.infix = infix;
-    this.lastName = lastName;
-    this.emails = emails;
-    this.phones = phones;
+    this.last_name = last_name;
+    this.email_addresses = email_addresses;
+    this.phone_numbers = phone_numbers;
   }
 }

@@ -11,5 +11,4 @@ export class User {
   public setUsername(username: string) { this.username = username; }
   public getPassword(): string { return this.password; }
   public setPassword(password: string) { this.password = password; }
-
 }

@@ -18,6 +18,7 @@ export class Customer implements BaseModel {
   public customer_orders: CustomerOrder[];
   public phone_numbers: CustomerPhone[];
 
+
   constructor(customerId: number, title: string, first_name: string, infix: string, last_name: string, address: string, zipcode: string, country: string, gender: string, city: string, email_addresses: CustomerEmail[], customer_orders: CustomerOrder[], phone_numbers: CustomerPhone[]) {
     this.id = customerId;
     this.title = title;
