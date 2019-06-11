@@ -41,6 +41,8 @@ import {ApiService} from "./services/api.service";
 import {AuthGuard} from "./services/auth.guard.service";
 import {AuthorizationService} from "./services/authorization.service";
 import { InstructorCreateComponent } from './components/instructor/instructor-create/instructor-create.component';
+import { DetailsComponent } from './components/customer/customer/details/details.component';
+import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
     CustomerUpdateComponent,
-    InstructorCreateComponent
+    InstructorCreateComponent,
+    DetailsComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
