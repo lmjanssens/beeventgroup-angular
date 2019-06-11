@@ -31,13 +31,6 @@ export class HomepageComponent implements OnInit {
     );
 
     this.updateAuthentication();
-
-    if (this.currentUser.role === Role.ADMIN|| this.currentUser.role === Role.EMPLOYEE) {
-      this.router.navigate(['/homeeventmanager']);
-    }
-    // else if (this.currentUser.role === Role.INSTRUCTOR) {
-    //   this.router.navigate([''])
-    // }
   }
 
   private updateAuthentication() {
@@ -52,6 +45,13 @@ export class HomepageComponent implements OnInit {
     const user: any = this.authService.getAuthenticator();
 
     this.currentUser = user;
+
+    if (this.currentUser != null && this.currentUser.role === Role.ADMIN || this.currentUser != null && this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager']);
+    }
+    // else if (this.currentUser.role === Role.INSTRUCTOR) {
+    //   this.router.navigate([''])
+    // }
   }
 
 
