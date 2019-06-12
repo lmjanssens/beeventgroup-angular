@@ -14,6 +14,7 @@ import {UserService} from '../../../services/user.service';
 export class EventmanagerInstructeursComponent implements OnInit {
 
   public instructorList: Instructor[] = [];
+  instructor: Instructor;
   firstPage = 1;
   itemsPerPage = 5;
   searchTerm: string;
@@ -33,14 +34,20 @@ export class EventmanagerInstructeursComponent implements OnInit {
     return list;
   }
 
-  onDelete(id, lastName, firstName) {
+  onDelete(id, userId, lastName, firstName) {
+    console.log(id);
+    console.log(userId);
     if (!confirm(`Wilt u de instructeur "${firstName + ' ' + lastName}" verwijderen ?`)) {
       return;
     }
-    this.userService.deleteUser(id).subscribe(() => {
-      console.log('Instructor with user_id ' + id + ' is deleted.');
-      this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
-    });
+    this.instructorService.delete(id).subscribe(
+      () => {
+        console.log('Instructor with id ' + id + ' is deleted.');
+        this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
+      });
+    // this.userService.deleteUser(id).subscribe(() => {
+    //   console.log('User with user_id ' + userId + ' is deleted.');
+    // });
   }
 
   sortByName(list) {
@@ -56,6 +63,7 @@ export class EventmanagerInstructeursComponent implements OnInit {
     this.globals.setHuidigePagina('Instructeurs');
     this.navbar.checkNavBarStyle();
     this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
+    this.instructorService.getAll().subscribe(instructor => console.log(instructor));
   }
 
   test(id) {

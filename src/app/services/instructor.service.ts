@@ -26,7 +26,7 @@ export class InstructorService {
 
   updateInstructor(updatedInstructor: Instructor): Observable<Instructor> {
     const uri = 'instructors/';
-    return this.apiService.put<Instructor>(uri + updatedInstructor.user_id.id, updatedInstructor);
+    return this.apiService.put<Instructor>(uri + updatedInstructor.instructor_id, updatedInstructor);
   }
 
   save(instructor: any): Observable<object> {

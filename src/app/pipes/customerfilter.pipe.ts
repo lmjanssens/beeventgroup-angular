@@ -20,7 +20,7 @@ export class CustomerFilterPipe implements PipeTransform {
       return item;
     }
     return item.filter(customer => {
-      this.splitted = searchTerm.split(' ', 3);
+      this.splitted = searchTerm.split(' ', 4);
       console.log(this.splitted);
 
       const zipcode = customer.zipcode.toLowerCase().includes(searchTerm.toLowerCase());
@@ -38,6 +38,8 @@ export class CustomerFilterPipe implements PipeTransform {
         this.infix2 = customer.first_name.toLowerCase().includes(this.splitted[0].toLowerCase())
           && customer.last_name.toLowerCase().includes(this.splitted[3].toLowerCase());
 
+        this.phone_number = customer.phone_numbers[0].phonenumber.toLowerCase().includes(searchTerm.toLowerCase());
+
       } else if (this.splitted.length === 2) {
         this.first_name = customer.first_name.toLowerCase().includes(this.splitted[0].toLowerCase())
           && customer.last_name.toLowerCase().includes(this.splitted[1].toLowerCase());
@@ -49,6 +51,8 @@ export class CustomerFilterPipe implements PipeTransform {
 
         this.last_name = customer.infix.toLowerCase().includes(this.splitted[0].toLowerCase())
           && customer.last_name.toLowerCase().includes(this.splitted[1].toLowerCase());
+
+        this.phone_number = customer.phone_numbers[0].phonenumber.toLowerCase().includes(searchTerm.toLowerCase());
 
       } else {
 

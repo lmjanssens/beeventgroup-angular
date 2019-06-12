@@ -7,6 +7,7 @@ import {CustomerService} from '../../../services/customer.service';
 import {Router} from '@angular/router';
 import {AlertsService} from 'angular-alert-module';
 import {InstructorService} from '../../../services/instructor.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-instructor-create',
@@ -18,6 +19,8 @@ export class InstructorCreateComponent implements OnInit {
   user: User = new User();
   password2: string;
   password1: string;
+  teller = 0;
+  userNameAvailable = true;
 
   constructor(private globals: Globals, private instructorService: InstructorService,
               private router: Router) {
@@ -27,31 +30,60 @@ export class InstructorCreateComponent implements OnInit {
     this.globals.setHuidigePagina('instructeurFormulier');
   }
 
+  userNameChecker(list) {
+    while (this.teller < list.length) {
+      if (this.user.username === list[this.teller].user_id.username) {
+        this.userNameAvailable = false;
+      }
+      this.teller = this.teller + 1;
+    }
+    return list;
+  }
+
+  formChecker() {
+    if (this.password1 === this.password2) {
+      this.instructor.user_id = this.user;
+      this.user.password = this.password1;
+    } else {
+      alert('Wachtwoord komen niet overeen');
+      return false;
+    }
+    if (this.instructor.phone_number.length < 10) {
+      alert('Telefoonnummer is te kort');
+      return false;
+    }
+    return true;
+  }
+
+
   toevoegAlert() {
-    if (this.instructor.infix !== undefined || this.instructor.infix !== '' || this.instructor.infix !== null) {
+    if (this.instructor.infix === undefined || this.instructor.infix === '' || this.instructor.infix === null) {
+      alert('De instructeur ' + this.instructor.first_name + ' ' + this.instructor.last_name + ' is toegevoegd.');
+    } else {
       alert('De instructeur ' + this.instructor.first_name + ' ' +
         this.instructor.infix + ' ' + this.instructor.last_name + ' is toegevoegd.');
-    } else {
-      alert('De instructeur ' + this.instructor.first_name + ' ' + this.instructor.last_name + ' is toegevoegd.');
     }
   }
 
   ngSubmit(f: NgForm) {
-    if (this.password1 === this.password2) {
+    if (this.formChecker()) {
       this.instructor.user_id = this.user;
       this.user.password = this.password1;
       const data = JSON.parse(JSON.stringify(this.instructor)) as any;
       console.log(data);
-      this.instructorService.save(data).subscribe(() => {
-        setTimeout(() => {
-          this.router.navigate(['/homeeventmanager/instructeursoverview']
-          );
-        }, 1000);
+      this.instructorService.getAll().subscribe(instructor => {
+        this.userNameChecker(instructor);
+        if (this.userNameAvailable === false) {
+          alert('Deze gebruikersnaam is niet beschikbaar');
+          this.userNameAvailable = true;
+        } else {
+          this.instructorService.save(data).subscribe(() => {
+            this.toevoegAlert();
+            this.router.navigate(['/homeeventmanager/instructeursoverview']
+            );
+          });
+        }
       });
-      (document.getElementById('submit') as HTMLInputElement).disabled = true;
-      this.toevoegAlert();
-    } else {
     }
-
   }
 }

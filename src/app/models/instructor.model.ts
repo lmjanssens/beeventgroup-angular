@@ -2,6 +2,7 @@ import {User} from './user.model';
 
 
 export class Instructor {
+  public instructor_id: number;
   public user_id: User;
   public first_name: string;
   public infix: string;
