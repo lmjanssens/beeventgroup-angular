@@ -36,6 +36,7 @@
     "ng-simple-slideshow": "^1.2.9",
     "ngx-pagination": "^3.2.1",
     "rxjs": "~6.3.3",
+    "temp": "^0.9.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
