@@ -39,24 +39,10 @@ export class InstructorUpdateComponent implements OnInit {
     });
   }
 
-  phoneChecker() {
-    if (this.instructor.phone_number.length < 10) {
-      alert('Telefoonnummer is te kort. De telefoonnummer moet 10 nummers bevatten');
-      return false;
-    }
-    if (this.instructor.phone_number.length > 10) {
-      alert('Telefoonnummer is te lang. De telefoonnummer moet 10 nummers bevatten');
-      return false;
-    }
-    return true;
-  }
-
   ngSubmit(f: NgForm) {
-    if (this.phoneChecker()) {
-      const data = JSON.parse(JSON.stringify(this.instructor)) as any;
-      this.instructorService.updateInstructor(data).subscribe(() => {
-        this.router.navigate(['/homeeventmanager/instructeursoverview']);
-      });
-    }
+    const data = JSON.parse(JSON.stringify(this.instructor)) as any;
+    this.instructorService.updateInstructor(data).subscribe(() => {
+      this.router.navigate(['/homeeventmanager/instructeursoverview']);
+    });
   }
 }

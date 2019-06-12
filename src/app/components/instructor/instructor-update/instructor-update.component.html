@@ -6,7 +6,7 @@
 
       <div style="height: 550px;">
         <h3 style="padding: 0 0 1em">
-          Instructeur toevoegen
+          Instructeur aanpassen
         </h3>
         <div class="containerTables">
           <table class="telTable">
@@ -14,7 +14,7 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="instructor.phone_number" name="phone" required>
+                     [(ngModel)]="instructor.phone_number" name="phone" required minlength="10" maxlength="10">
             </tr>
           </table>
 
