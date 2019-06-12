@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {AlertsService} from 'angular-alert-module';
 import {InstructorService} from '../../../services/instructor.service';
 import {Observable} from 'rxjs';
+import {UserService} from '../../../services/user.service';
 
 @Component({
   selector: 'app-instructor-create',
@@ -23,7 +24,7 @@ export class InstructorCreateComponent implements OnInit {
   userNameAvailable = true;
 
   constructor(private globals: Globals, private instructorService: InstructorService,
-              private router: Router) {
+              private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class InstructorCreateComponent implements OnInit {
 
   userNameChecker(list) {
     while (this.teller < list.length) {
-      if (this.user.username === list[this.teller].user_id.username) {
+      if (this.user.username === list[this.teller].username) {
         this.userNameAvailable = false;
       }
       this.teller = this.teller + 1;
@@ -67,8 +68,8 @@ export class InstructorCreateComponent implements OnInit {
       this.user.password = this.password1;
       const data = JSON.parse(JSON.stringify(this.instructor)) as any;
       console.log(data);
-      this.instructorService.getAll().subscribe(instructor => {
-        this.userNameChecker(instructor);
+      this.userService.getAllUsers().subscribe(users => {
+        this.userNameChecker(users);
         if (this.userNameAvailable === false) {
           alert('Deze gebruikersnaam is niet beschikbaar');
           this.userNameAvailable = true;
