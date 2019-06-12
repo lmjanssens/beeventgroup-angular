@@ -34,7 +34,7 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel " name="phones" required>
+                     [(ngModel)]="tel " name="phones" required minlength="10" maxlength="10">
             </tr>
             <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
 

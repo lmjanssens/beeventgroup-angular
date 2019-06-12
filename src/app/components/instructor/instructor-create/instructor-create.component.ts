@@ -40,20 +40,12 @@ export class InstructorCreateComponent implements OnInit {
     return list;
   }
 
-  formChecker() {
+  passwordChecker() {
     if (this.password1 === this.password2) {
       this.instructor.user_id = this.user;
       this.user.password = this.password1;
     } else {
       alert('Wachtwoord komen niet overeen');
-      return false;
-    }
-    if (this.instructor.phone_number.length < 10) {
-      alert('Telefoonnummer is te kort. De telefoonnummer moet 10 nummers bevatten');
-      return false;
-    }
-    if (this.instructor.phone_number.length > 10) {
-      alert('Telefoonnummer is te lang. De telefoonnummer moet 10 nummers bevatten');
       return false;
     }
     return true;
@@ -70,7 +62,7 @@ export class InstructorCreateComponent implements OnInit {
   }
 
   ngSubmit(f: NgForm) {
-    if (this.formChecker()) {
+    if (this.passwordChecker()) {
       this.instructor.user_id = this.user;
       this.user.password = this.password1;
       const data = JSON.parse(JSON.stringify(this.instructor)) as any;
