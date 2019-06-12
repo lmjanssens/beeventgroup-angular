@@ -3,6 +3,8 @@ import {Employee} from '../../../models/employee.model';
 import {Instructor} from '../../../models/instructor.model';
 import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
+import {AuthorizationService} from "../../../services/authorization.service";
+import {Role} from "../../../enums/Role";
 
 @Component({
   selector: 'app-eventmanager-instructeurs',
@@ -27,7 +29,30 @@ export class EventmanagerInstructeursComponent implements OnInit {
   searchTerm: string;
   emptyInstructor: Instructor = new Instructor(null, null, '', '', '', '', '');
 
-  constructor(private globals: Globals, private navbar: NavbarComponent) {
+  currentUser: any;
+  authenticated = false;
+
+  constructor(private globals: Globals, private navbar: NavbarComponent, private authService: AuthorizationService) {
+    this.authenticated = this.authService.hasAuthorization();
+
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   tableFiller() {
@@ -48,6 +73,10 @@ export class EventmanagerInstructeursComponent implements OnInit {
     this.globals.setHuidigePagina('Instructeurs');
     this.navbar.checkNavBarStyle();
     console.log(this.globals.getHuidigePagina());
+  }
+
+  getRoles() {
+    return Role;
   }
 
 }

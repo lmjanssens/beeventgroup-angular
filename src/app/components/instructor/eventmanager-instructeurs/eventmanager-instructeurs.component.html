@@ -3,7 +3,7 @@
 <div class="eventmanagerPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Instructeurs Overzicht</h3>
   <div>
-    <button style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Instructeur<i class="fa fa-plus-circle fa-lg"
+    <button *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Instructeur<i class="fa fa-plus-circle fa-lg"
                                                                            style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
@@ -16,15 +16,15 @@
       <th class="tableUser">User</th>
       <th class="tablePhone">Telefoon</th>
       <th class="tableEmail">Email</th>
-      <th class="tableEdit"></th>
-      <th class="tableDelete"></th>
+      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
+      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete"></th>
       <tr
         *ngFor="let instructor of tableFiller() | instructorFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{instructor.firstName}} {{instructor.infix}} {{instructor.lastName}}</td>
         <td>{{instructor.user}}</td>
         <td>{{instructor.phoneNumber}}</td>
         <td>{{instructor.email}}</td>
-        <td *ngIf="instructor.id != null; else disabledEditButton" class="tableEdit">
+        <td *ngIf="instructor.id != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledEditButton" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
             style="color: purple; "></i>
@@ -39,7 +39,7 @@
             </button>
           </td>
         </ng-template>
-        <td *ngIf="instructor.id != null; else disabledDeleteButton" class="tableDelete">
+        <td *ngIf="instructor.id != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledDeleteButton" class="tableDelete">
           <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
             class="fa fa-trash fa-2x"
             style="color: red;"></i></button>

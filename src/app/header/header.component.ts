@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../components/globals';
 import {Router} from '@angular/router';
-import {AuthorizationService} from "../services/authorization.service";
+import {AuthorizationService} from '../services/authorization.service';
+import {Role} from '../enums/Role';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,13 @@ import {AuthorizationService} from "../services/authorization.service";
 })
 export class HeaderComponent implements OnInit {
 
+  currentUser: any;
+
   constructor(private globals: Globals,
               private router: Router,
               private authService: AuthorizationService) {
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   ngOnInit() {
@@ -56,16 +61,18 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Leveranciers' ||
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
-      this.globals.getHuidigePagina() === 'Werknemers') {
-      this.router.navigate(['/homeeventmanager']);
+      this.globals.getHuidigePagina() === 'Werknemers' ||
+      this.globals.getHuidigePagina() === 'Klanten') {
+
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager']);
+      } else {
+        this.router.navigate(['/homeinstructor']);
+      }
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier') {
+    if (this.globals.getHuidigePagina() === 'klantenFormulier' && this.currentUser.role === Role.ADMIN && this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
-    if (this.globals.getHuidigePagina() === 'Klanten') {
-      this.router.navigate(['/homeeventmanager']);
-    }
-
   }
 
   OnLogOut() {

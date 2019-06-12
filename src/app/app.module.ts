@@ -71,7 +71,7 @@ import {HomepageInstructorComponent} from "./components/homepage-instructor/home
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
     CustomerUpdateComponent,
-    InstructorCreateComponent
+    InstructorCreateComponent,
     // DetailsComponent,
     // CustomerDetailsComponent
     InstructorCreateComponent,
