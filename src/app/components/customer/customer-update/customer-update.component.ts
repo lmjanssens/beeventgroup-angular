@@ -30,7 +30,7 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.setGeslacht();
-    this.globals.setHuidigePagina('klantupdate');
+    this.globals.setHuidigePagina('klantenFormulier');
     this.customer = new Customer(null, '', '', '', '',
       '', '', '', '', '', null, null, null);
     this.customer.first_name = '';
