@@ -28,7 +28,6 @@ export class InstructorUpdateComponent implements OnInit {
     this.instructor.first_name = '';
     this.instructor.infix = '';
     this.instructor.last_name = '';
-    this.instructor.phone_number = '';
     this.instructor.email_address = '';
 
     this.sub = this.route.params.subscribe(params => {
@@ -42,7 +41,11 @@ export class InstructorUpdateComponent implements OnInit {
 
   phoneChecker() {
     if (this.instructor.phone_number.length < 10) {
-      alert('Telefoonnummer is te kort');
+      alert('Telefoonnummer is te kort. De telefoonnummer moet 10 nummers bevatten');
+      return false;
+    }
+    if (this.instructor.phone_number.length > 10) {
+      alert('Telefoonnummer is te lang. De telefoonnummer moet 10 nummers bevatten');
       return false;
     }
     return true;

@@ -49,7 +49,11 @@ export class InstructorCreateComponent implements OnInit {
       return false;
     }
     if (this.instructor.phone_number.length < 10) {
-      alert('Telefoonnummer is te kort');
+      alert('Telefoonnummer is te kort. De telefoonnummer moet 10 nummers bevatten');
+      return false;
+    }
+    if (this.instructor.phone_number.length > 10) {
+      alert('Telefoonnummer is te lang. De telefoonnummer moet 10 nummers bevatten');
       return false;
     }
     return true;
