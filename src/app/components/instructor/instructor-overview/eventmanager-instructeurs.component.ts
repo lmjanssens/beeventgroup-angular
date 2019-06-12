@@ -58,6 +58,9 @@ export class EventmanagerInstructeursComponent implements OnInit {
     this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
   }
 
+  test(id) {
+    console.log(id);
+  }
 }
 
 
