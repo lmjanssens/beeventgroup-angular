@@ -43,6 +43,7 @@ import {AuthorizationService} from './services/authorization.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorService} from './services/instructor.service';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
+import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
 // import { DetailsComponent } from './components/customer/customer/details/details.component';
 // import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 
@@ -73,7 +74,8 @@ import { InstructorUpdateComponent } from './components/instructor/instructor-up
     EventmanagerAgendaComponent,
     CustomerUpdateComponent,
     InstructorCreateComponent,
-    InstructorUpdateComponent
+    InstructorUpdateComponent,
+    InstructorDetailsComponent
     // DetailsComponent,
     // CustomerDetailsComponent
   ],
