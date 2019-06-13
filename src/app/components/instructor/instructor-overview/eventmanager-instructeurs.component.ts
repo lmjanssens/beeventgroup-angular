@@ -45,9 +45,6 @@ export class EventmanagerInstructeursComponent implements OnInit {
         console.log('Instructor with id ' + id + ' is deleted.');
         this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
       });
-    // this.userService.deleteUser(id).subscribe(() => {
-    //   console.log('User with user_id ' + userId + ' is deleted.');
-    // });
   }
 
   sortByName(list) {
