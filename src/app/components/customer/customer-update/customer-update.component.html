@@ -34,7 +34,8 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="customer.phone_numbers[customer.phone_numbers.length -1].phonenumber" name="phones" [disabled]="loading" >
+                     [(ngModel)]="customer.phone_numbers[customer.phone_numbers.length -1].phonenumber" name="phones"
+                     [disabled]="loading">
             </tr>
             <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
 
@@ -65,9 +66,10 @@
             </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="customer.email_addresses[customer.email_addresses.length -1].email" name="emails" [disabled]="loading">
+                     [(ngModel)]="customer.email_addresses[customer.email_addresses.length -1].email" name="emails"
+                     [disabled]="loading">
             </tr>
-            <tr *ngFor="let mail of customer.email_addresses" class="spacer" >
+            <tr *ngFor="let mail of customer.email_addresses" class="spacer">
               {{mail.email}}
             </tr>
           </table>
@@ -132,17 +134,17 @@
           <input type="text" id="city" placeholder="stad" required
                  [(ngModel)]="customer.city" name="city"
                  [disabled]="loading">
+          <div class="buttons" style="padding-top: 1.5em">
+
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
+              <i class="fa fa-close"></i> Annuleren
+            </button>
+            <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+              Toevoegen
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="buttons">
-
-      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
-        <i class="fa fa-close"></i> Annuleren
-      </button>
-      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i> Opslaan
-      </button>
-      <app-alerts></app-alerts>
     </div>
   </form>
 </div>

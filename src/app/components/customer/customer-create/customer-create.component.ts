@@ -6,7 +6,6 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../../globals';
-import {NavbarComponent} from '../../../navbar/navbar.component';
 import {AlertsService} from 'angular-alert-module';
 
 
@@ -26,8 +25,8 @@ export class CustomerCreateComponent implements OnInit {
   selectedItem;
 
 
-  constructor(private globals: Globals, private navbar: NavbarComponent,
-              private customerService: CustomerService, private router: Router, private alertService: AlertsService) {
+  constructor(private globals: Globals,
+              private customerService: CustomerService, private router: Router) {
   }
 
 
@@ -71,6 +70,14 @@ export class CustomerCreateComponent implements OnInit {
     this.customer.gender = this.selectedItem;
   }
 
+  toevoegAlert() {
+    if (this.customer.infix !== undefined || this.customer.infix !== '') {
+      alert('De instructeur ' + this.customer.first_name + ' ' + this.customer.infix + ' ' + this.customer.last_name + ' is toegevoegd.');
+    } else {
+      alert('De instructeur ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.');
+    }
+  }
+
   ngSubmit(f: NgForm) {
     this.setGeslacht();
     this.newMail = new CustomerEmail();
@@ -87,7 +94,7 @@ export class CustomerCreateComponent implements OnInit {
       }, 1000);
     });
     (document.getElementById('submit') as HTMLInputElement).disabled = true;
-    this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
+    this.toevoegAlert();
 
   }
 }
