@@ -1,7 +1,7 @@
 table {
   table-layout: fixed;
   border: 1px solid;
-  width: 500px;
+  width: 1127px;
 }
 
 th {
@@ -50,16 +50,15 @@ button {
 }
 
 .tableCustomer {
-
-  width: 28%;
+  width: 100%;
 }
 
 .tableEvenement {
-  width: 28%;
+  width: 100%;
 }
 
 .tableDatum {
-  width: 28%;
+  width: 100%;
 }
 
 .tableEdit {
@@ -69,4 +68,8 @@ button {
 .tableDelete {
   width: 40px;
   border: 1px solid black;
+}
+
+.tableSubscribeEvent{
+  width: 100%;
 }

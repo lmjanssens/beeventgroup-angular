@@ -45,7 +45,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
       this.globals.getHuidigePagina() === 'klantenFormulier' ||
-      this.globals.getHuidigePagina() === 'klantupdate') {
+      this.globals.getHuidigePagina() === 'klantupdate' ||
+      this.globals.getHuidigePagina() === 'Agenda') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -62,7 +63,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
-      this.globals.getHuidigePagina() === 'Klanten') {
+      this.globals.getHuidigePagina() === 'Klanten' ||
+      this.globals.getHuidigePagina() === 'Agenda') {
 
       if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
         this.router.navigate(['/homeeventmanager']);
@@ -70,7 +72,7 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/homeinstructor']);
       }
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier' && this.currentUser.role === Role.ADMIN && this.currentUser.role === Role.EMPLOYEE) {
+    if (this.globals.getHuidigePagina() === 'klantenFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
   }

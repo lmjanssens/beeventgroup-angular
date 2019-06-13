@@ -15,8 +15,9 @@
       <th class="tableEvenement">Evenement</th>
       <th class="tableCustomer">Klant</th>
       <th class="tableDatum">Datum</th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete"></th>
+      <th class="tableEdit"></th>
+      <th class="tableDelete"></th>
+      <th *ngIf="currentUser.role === getRoles().INSTRUCTOR" class="tableSubscribeEvent"></th>
       <tr
         *ngFor="let order of tableFiller() | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{order.events}}</td>
@@ -50,6 +51,14 @@
               style="color: silver;"></i></button>
           </td>
         </ng-template>
+        <td *ngIf="order.orderId != null && currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
+          <button class="btn btn-outline-success" (click)="subscribeEvent(order.orderId);">Inschrijven voor evenement</button>
+        </td>
+
+        <ng-template #hideSubscribeEventCell>
+
+        </ng-template>
+
       </tr>
     </table>
     <div>

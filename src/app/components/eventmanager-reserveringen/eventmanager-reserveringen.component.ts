@@ -85,6 +85,10 @@ export class EventmanagerReserveringenComponent implements OnInit {
     return Role;
   }
 
+  subscribeEvent(eventNumber: number) {
+    console.log(eventNumber);
+  }
+
 }
 
 
