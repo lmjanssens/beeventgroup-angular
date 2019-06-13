@@ -24,11 +24,6 @@ export class InstructorUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('instructeurFormulier');
-    this.instructor.user_id = null;
-    this.instructor.first_name = '';
-    this.instructor.infix = '';
-    this.instructor.last_name = '';
-    this.instructor.email_address = '';
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.instructor_id;
