@@ -12,6 +12,12 @@ th {
   overflow: hidden;
 }
 
+tr:hover {
+  cursor: pointer;
+  background-color: #ddd;
+
+}
+
 td {
   padding: 0 0 0 0.5em;
   overflow: hidden;
@@ -49,31 +55,31 @@ button {
   margin-top: 1em;
 }
 
-.tableName{
+.tableName {
   width: 20%;
 }
 
-.tableContactPerson{
+.tableContactPerson {
   width: 20%;
 }
 
-.tableSupervisor{
+.tableSupervisor {
   width: 19%;
 }
 
-.tableWebsite{
+.tableWebsite {
   width: 15%;
 }
 
-.tableNote{
+.tableNote {
   width: 15%;
 }
 
-.tableEmail{
+.tableEmail {
   width: 15%;
 }
 
-.tableEdit{
+.tableEdit {
   width: 40px;
 }
 

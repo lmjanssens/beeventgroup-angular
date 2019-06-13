@@ -62,11 +62,6 @@ tr {
   text-align: center;
 }
 
-tr:hover {
-  background-color: #ddd;
-
-}
-
 .ng-valid[required], .ng-valid.required {
   border-left: 5px solid green;
 }

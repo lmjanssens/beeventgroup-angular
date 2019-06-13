@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 550px;">
+        <h3 style="padding: 0 0 1em">
+          Instructeur Overzicht
+        </h3>
+        <div class="containerTables">
+          <table class="telTable">
+            <th class="telefoons">Telefoon
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     [(ngModel)]="instructor.phone_number" name="phone" disabled minlength="10" maxlength="10">
+            </tr>
+          </table>
+
+          <table class="mailTable">
+            <thead>
+            <th>Email
+            </th>
+            </thead>
+            <tr>
+              <input class="input" id="email"
+                     [(ngModel)]="instructor.email_address" name="email" email disabled>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <label class="col-sm-2" for="fname">Voornaam</label>
+          <input type="text" id="fname" name="fname" disabled
+                 [(ngModel)]="instructor.first_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="infix">Tussenvoegsel</label>
+          <input type="text" id="infix" name="infix" disabled
+                 [(ngModel)]="instructor.infix">
+        </div>
+        <div style="padding: 0 0 2em">
+          <label class="col-sm-2" for="lname">Achternaam</label>
+          <input type="text" id="lname" name="lname" disabled
+
+                 [(ngModel)]="instructor.last_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="username">Gebruikersnaam</label>
+          <input type="text" id="username" name="address" disabled
+
+                 [(ngModel)]="instructor.user_id.username">
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>

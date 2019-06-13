@@ -7,11 +7,6 @@ input {
 
 }
 
-table{
-  table-layout: fixed;
-  width: 250px;
-}
-
 h1 {
   padding: 10px;
 }
@@ -63,15 +58,13 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-td {
-  padding: 0.25em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 tr {
   text-align: center;
+}
+
+tr:hover {
+  background-color: #ddd;
+
 }
 
 .ng-valid[required], .ng-valid.required {
