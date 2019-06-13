@@ -74,9 +74,7 @@ import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/
     EventmanagerAgendaComponent,
     CustomerUpdateComponent,
     InstructorCreateComponent,
-    InstructorUpdateComponent
-    // DetailsComponent,
-    // CustomerDetailsComponent
+    InstructorUpdateComponent,
     EventmanagerCreateComponent
   ],
   imports: [
