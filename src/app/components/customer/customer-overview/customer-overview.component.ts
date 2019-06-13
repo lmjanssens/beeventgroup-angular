@@ -31,6 +31,7 @@ export class CustomerOverviewComponent implements OnInit {
     }
     return list;
   }
+
   ngOnInit() {
     this.globals.setHuidigePagina('Klanten');
     this.navbar.checkNavBarStyle();
@@ -38,11 +39,15 @@ export class CustomerOverviewComponent implements OnInit {
       a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
       a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
   }
+
   onDelete(id, lastName, firstName) {
     if (!confirm(`Wilt u de klant "${firstName + ' ' + lastName}" verwijderen ?`)) {
+      console.log(id);
       return;
+
     }
     this.customerService.delete(id).subscribe(() => {
+      console.log(id);
       console.log('Customer with id ' + id + ' is deleted.');
       this.customerService.getAll().subscribe(customer => this.customerList = this.nullRemover(customer.sort((a, b) => (
         a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (

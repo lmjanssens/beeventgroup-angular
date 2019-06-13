@@ -79,7 +79,7 @@ export class CustomerCreateComponent implements OnInit {
     this.newPhone = new CustomerPhone();
     this.newPhone.phonenumber = this.tel;
     this.customer.phone_numbers.push(this.newPhone);
-    const data = JSON.parse(JSON.stringify(this.customer)) as any;
+      const data = JSON.parse(JSON.stringify(this.customer)) as any;
     this.customerService.save(data).subscribe(() => {
       setTimeout(() => {
         this.router.navigate(['/homeeventmanager/customeroverview']
