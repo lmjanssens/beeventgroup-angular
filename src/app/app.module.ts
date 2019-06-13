@@ -43,6 +43,8 @@ import {AuthorizationService} from './services/authorization.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorService} from './services/instructor.service';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
+// import { DetailsComponent } from './components/customer/customer/details/details.component';
+// import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { InstructorUpdateComponent } from './components/instructor/instructor-up
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent
+    // DetailsComponent,
+    // CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
