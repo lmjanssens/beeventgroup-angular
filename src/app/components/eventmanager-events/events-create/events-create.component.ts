@@ -25,6 +25,7 @@ export class EventsCreateComponent implements OnInit {
   suppliers: Supplier[];
   selectTag;
   ownEvent: string;
+  locationToDelete;
   selectedEvent;
   selectedLocation;
   selectedSupplier;
@@ -95,6 +96,12 @@ export class EventsCreateComponent implements OnInit {
 
     this.fetchEventLocations();
     this.newLocations = [];
+  }
+
+  onDeleteOldLocation(oldLocation) {
+    this.eventLocationService.delete(oldLocation.id).subscribe(() => {
+      this.alertService.setMessage('Oude locatie verwijderd.', 'success');
+    });
   }
 
   ngSubmit(f: NgForm) {
