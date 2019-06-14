@@ -32,7 +32,6 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('klantenFormulier');
-    console.log(this.globals.getHuidigePagina());
     this.customer = new Customer();
     this.customer.email_addresses = [];
     this.customer.phone_numbers = [];
@@ -70,10 +69,10 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   toevoegAlert() {
-    if (this.customer.infix !== undefined || this.customer.infix !== '') {
-      alert('De instructeur ' + this.customer.first_name + ' ' + this.customer.infix + ' ' + this.customer.last_name + ' is toegevoegd.');
+    if (this.customer.infix === undefined || this.customer.infix === '' || this.customer.infix === null) {
+      alert('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.');
     } else {
-      alert('De instructeur ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.');
+      alert('De klant ' + this.customer.first_name + ' ' + this.customer.infix + ' ' + this.customer.last_name + ' is toegevoegd.');
     }
   }
 
@@ -87,10 +86,7 @@ export class CustomerCreateComponent implements OnInit {
     this.customer.phone_numbers.push(this.newPhone);
     const data = JSON.parse(JSON.stringify(this.customer)) as any;
     this.customerService.save(data).subscribe(() => {
-      setTimeout(() => {
-        this.router.navigate(['/homeeventmanager/customeroverview']
-        );
-      }, 1000);
+      this.router.navigate(['/homeeventmanager/customeroverview']);
     });
     (document.getElementById('submit') as HTMLInputElement).disabled = true;
     this.toevoegAlert();

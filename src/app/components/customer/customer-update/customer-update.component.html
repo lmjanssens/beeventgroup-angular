@@ -30,11 +30,10 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="customer.phone_numbers[customer.phone_numbers.length - 1].phonenumber" name="phones" required minlength="10" maxlength="10" #phone="ngModel">
+                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel" >
             </tr>
             <tr *ngFor="let telephone of customer.phone_numbers" class="spacer">
-              <td
-                *ngIf=" customer.phone_numbers[customer.phone_numbers.length - 1].phonenumber !== telephone.phonenumber">
+              <td>
                 {{telephone.phonenumber}}
                 <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
             cursor: pointer;width: 20px;
@@ -59,10 +58,10 @@
             </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="customer.email_addresses[customer.email_addresses.length - 1].email" name="emails" email required #email="ngModel">
+                     [(ngModel)]="mail" name="emails" email required #email="ngModel">
             </tr>
             <tr *ngFor="let mail of customer.email_addresses">
-              <td *ngIf=" customer.email_addresses[customer.email_addresses.length - 1].email !== mail.email">
+              <td>
                 {{mail.email}}
                 <img src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
             cursor: pointer;
