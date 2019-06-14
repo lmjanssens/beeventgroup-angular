@@ -18,9 +18,13 @@ import {SupplierService} from '../../../services/supplier.service';
 })
 export class EventsCreateComponent implements OnInit {
   event: EventModel;
+  newLocation: EventLocation = new EventLocation();
+  newLocations: EventLocation[] = [];
+  locationName = '';
   eventLocations: EventLocation[];
   suppliers: Supplier[];
   selectTag;
+  ownEvent: string;
   selectedEvent;
   selectedLocation;
   selectedSupplier;
@@ -33,14 +37,19 @@ export class EventsCreateComponent implements OnInit {
   ngOnInit() {
     this.globals.setHuidigePagina('evenementFormulier');
     console.log(this.globals.getHuidigePagina());
-    this.event = new EventModel(null, null, null, null, null,
-      null, null, '', '', '', '', '',
-      0, 0, 0, '');
+    this.event = this.eventService.getEmptyEvent();
 
+    this.fetchSuppliers();
+    this.fetchEventLocations();
+  }
+
+  fetchSuppliers() {
     this.supplierService.getAll().subscribe(suppliers => {
       this.suppliers = suppliers;
     });
+  }
 
+  fetchEventLocations() {
     this.eventLocationService.getAll().subscribe(eventLocations => {
       this.eventLocations = eventLocations;
     });
@@ -55,9 +64,37 @@ export class EventsCreateComponent implements OnInit {
   }
 
   setOwnEvent() {
-    this.selectTag = document.getElementById('ownEvent');
-    this.selectedEvent = this.selectTag.options[this.selectTag.selectedIndex].value;
-    this.selectedEvent === 'J' ? this.event.ownEvent = true : this.event.ownEvent = false;
+    // this.selectTag = document.getElementById('ownEvent');
+    // this.selectedEvent = this.selectTag.options[this.selectTag.selectedIndex].value;
+    // this.selectedEvent === 'J' ? this.event.ownEvent = true : this.event.ownEvent = false;
+    this.event.ownEvent = this.ownEvent === 'Ja';
+  }
+
+  onCreateLocation() {
+    this.newLocation = new EventLocation();
+    this.newLocation.name = this.locationName;
+    this.locationName = '';
+    this.newLocations.push(this.newLocation);
+  }
+
+  onDeleteLocation() {
+    if (this.newLocations.length === 0) {
+      this.alertService.setMessage('Geen locatie om te verwijderen!', 'error');
+      return;
+    } else {
+      this.alertService.setMessage('Locatie succesvol verwijderd.', 'success');
+      this.newLocations.splice(0, 1);
+    }
+  }
+
+  addNewLocations() {
+    this.newLocations.forEach(location => {
+      this.eventLocationService.save(location).subscribe(() => console.log('Locatie toegevoegd.'));
+    });
+    this.alertService.setMessage('Locaties toegevoegd.', 'success');
+
+    this.fetchEventLocations();
+    this.newLocations = [];
   }
 
   ngSubmit(f: NgForm) {
@@ -67,7 +104,7 @@ export class EventsCreateComponent implements OnInit {
 
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
-      this.eventService.saveWithDetails(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
+      this.eventService.save(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
         setTimeout(() => {
           this.router.navigate(['/homeeventmanager/evenementenoverview']
           );

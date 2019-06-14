@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, pipe} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Customer} from '../models/customer.model';
-import {environment} from '../../environments/environment';
-import {first, retry, tap} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {ApiService} from './api.service';
 
 @Injectable({
@@ -28,14 +26,13 @@ export class CustomerService {
 
   updateCustomer(updatedCustomer: Customer): Observable<Customer> {
     const uri = 'customers/';
-    return this.apiService.put<Customer>(uri + updatedCustomer.customerId, updatedCustomer);
+    return this.apiService.put<Customer>(uri + updatedCustomer.id, updatedCustomer);
   }
 
   save(customer: any): Observable<object> {
     const uri = 'customers';
     return this.apiService.post(uri, customer);
   }
-
 
   delete(id: number) {
     const uri = 'customers/';

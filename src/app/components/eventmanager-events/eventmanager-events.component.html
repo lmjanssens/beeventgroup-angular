@@ -22,34 +22,18 @@
         <td>{{event.name}}</td>
         <td>{{eventLocation.name}}</td>
         <td>&euro; {{event.pricePerPerson | number :'1.2-2'}}</td>
-        <td *ngIf="event.id != null; else disabledEditButton" class="tableEdit">
+        <td class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
-            style="color: purple; "></i>
+            style="color: purple; " [routerLink]="['eventedit/'+ event.id]"></i>
           </button>
         </td>
-        <ng-template #disabledEditButton>
-          <td>
-            <button disabled
-                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
-              class="fa fa-pencil fa-2x"
-              style="color: silver; "></i>
-            </button>
-          </td>
-        </ng-template>
-        <td *ngIf="event.id != null; else disabledDeleteButton" class="tableDelete">
-          <button (click)="onDelete(event, event.name)" style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
+        <td class="tableDelete">
+          <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
             class="fa fa-trash fa-2x"
-            style="color: red;"></i></button>
+            style="color: red;" (click)="onDelete(event.id, event.name)"></i>
+          </button>
         </td>
-        <ng-template #disabledDeleteButton>
-          <td>
-            <button disabled
-                    style="margin-left: -8px; width: 38px; height: 40px; border: none; background-color: white"><i
-              class="fa fa-trash fa-2x"
-              style="color: silver;"></i></button>
-          </td>
-        </ng-template>
       </tr>
     </table>
     <div>

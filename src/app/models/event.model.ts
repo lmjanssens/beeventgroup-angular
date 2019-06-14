@@ -22,11 +22,12 @@ export class EventModel implements BaseModel {
   public priceBuyPerPerson: number;
   public btw: number;
   public note: string;
+  public maxInstructors: number;
 
   constructor(id: number, supplier: Supplier, location: EventLocation, order: Order, registeredEvents: RegisteredEvents[],
               eventImages: EventImage[], ownEvent: boolean, name: string, description: string, program: string,
               duration: string, options: string, pricePerPerson: number, priceBuyPerPerson: number,
-              btw: number, note: string) {
+              btw: number, note: string, maxInstructors: number) {
 
     this.id = id;
     this.supplier = supplier;
@@ -44,5 +45,6 @@ export class EventModel implements BaseModel {
     this.priceBuyPerPerson = priceBuyPerPerson;
     this.btw = btw;
     this.note = note;
+    this.maxInstructors = maxInstructors;
   }
 }

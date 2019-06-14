@@ -1,7 +1,7 @@
 import {CustomerEmail} from './customer-email.model';
 import {CustomerOrder} from './customer-order.model';
 import {CustomerPhone} from './customer-phone.model';
-import {BaseModel} from "./base.model";
+import {BaseModel} from './base.model';
 
 export class Customer implements BaseModel {
   public id: number;

@@ -8,14 +8,13 @@ import {EventmanagerReserveringenComponent} from './components/eventmanager-rese
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
 import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
-import {EventmanagerInstructeursComponent} from './components/eventmanager-instructeurs/eventmanager-instructeurs.component';
-import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';;
-import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
-import {AuthGuard} from "./services/auth.guard.service";
+import {AuthGuard} from './services/auth.guard.service';
+import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
+import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -30,7 +29,9 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
-  {path: 'homeeventmanager/evenementenoverview/createevenement', component: EventsCreateComponent, canActivate: {AuthGuard}},
+  {path: 'homeeventmanager/evenementenoverview/createevenement', component: EventsCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/evenementenoverview/eventedit', component: EventsUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/evenementenoverview/eventedit/:eventId', component: EventsUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: '**', component: HomepageComponent}
