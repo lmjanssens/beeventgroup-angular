@@ -1,7 +1,7 @@
 import {Component, OnInit } from '@angular/core';
-import {Catering} from '../../models/catering.model';
-import {Globals} from '../globals';
-import {NavbarComponent} from '../../navbar/navbar.component';
+import {Catering} from '../../../models/catering.model';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
 
 @Component({
   selector: 'app-catering-overview',

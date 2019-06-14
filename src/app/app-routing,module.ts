@@ -7,7 +7,7 @@ import {CustomerCreateComponent} from './components/customer/customer-create/cus
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
-import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
+import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 
 ;
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';

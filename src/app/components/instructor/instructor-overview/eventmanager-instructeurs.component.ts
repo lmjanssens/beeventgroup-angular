@@ -63,9 +63,6 @@ export class EventmanagerInstructeursComponent implements OnInit {
     this.instructorService.getAll().subscribe(instructor => console.log(instructor));
   }
 
-  test(id) {
-    console.log(id);
-  }
 }
 
 

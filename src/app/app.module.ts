@@ -24,7 +24,7 @@ import {EventmanagerEventsComponent} from './components/eventmanager-events/even
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
 import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
-import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
+import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
@@ -44,8 +44,7 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorService} from './services/instructor.service';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
-// import { DetailsComponent } from './components/customer/customer/details/details.component';
-// import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +74,8 @@ import { InstructorDetailsComponent } from './components/instructor/instructor-d
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent,
-    InstructorDetailsComponent
+    InstructorDetailsComponent,
+    CateringCreateComponent
     // DetailsComponent,
     // CustomerDetailsComponent
   ],
