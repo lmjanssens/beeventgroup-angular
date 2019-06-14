@@ -17,6 +17,7 @@ import {CustomerUpdateComponent} from './components/customer/customer-update/cus
 import {AuthGuard} from './services/auth.guard.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
+import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
 
 const appRoutes: Routes = [
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview/instructoredit/:instructor_id', component: InstructorUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/instructeursoverview/instructordetails/:instructor_id', component: InstructorDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/werknemersoverview/createeventmanager', component: EventmanagerCreateComponent, canActivate: [AuthGuard]},
   {path: '**', component: HomepageComponent},
 ];

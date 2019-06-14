@@ -1,17 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../../models/user.model';
 import {Instructor} from '../../../models/instructor.model';
+import {User} from '../../../models/user.model';
 import {InstructorService} from '../../../services/instructor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
-import {NgForm} from '@angular/forms';
 
 @Component({
-  selector: 'app-instructor-update',
-  templateUrl: './instructor-update.component.html',
-  styleUrls: ['./instructor-update.component.css']
+  selector: 'app-instructor-details',
+  templateUrl: './instructor-details.component.html',
+  styleUrls: ['./instructor-details.component.css']
 })
-export class InstructorUpdateComponent implements OnInit {
+export class InstructorDetailsComponent implements OnInit {
 
   instructor = new Instructor();
   user = new User();
@@ -34,10 +33,4 @@ export class InstructorUpdateComponent implements OnInit {
     });
   }
 
-  ngSubmit(f: NgForm) {
-    const data = JSON.parse(JSON.stringify(this.instructor)) as any;
-    this.instructorService.updateInstructor(data).subscribe(() => {
-      this.router.navigate(['/homeeventmanager/instructeursoverview']);
-    });
-  }
 }
