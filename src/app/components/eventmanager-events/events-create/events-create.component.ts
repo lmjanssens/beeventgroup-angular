@@ -94,7 +94,6 @@ export class EventsCreateComponent implements OnInit {
     });
     this.alertService.setMessage('Locaties toegevoegd.', 'success');
 
-    this.fetchEventLocations();
     this.newLocations = [];
   }
 
@@ -102,6 +101,7 @@ export class EventsCreateComponent implements OnInit {
     this.eventLocationService.delete(oldLocation.id).subscribe(() => {
       this.alertService.setMessage('Oude locatie verwijderd.', 'success');
     });
+    this.fetchEventLocations();
   }
 
   ngSubmit(f: NgForm) {

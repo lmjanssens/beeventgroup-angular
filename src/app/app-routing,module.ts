@@ -16,8 +16,8 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
 import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
-import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
+import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},

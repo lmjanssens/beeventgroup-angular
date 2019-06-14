@@ -131,13 +131,13 @@
       </table>
     </div>
   </form>
-  <form class="container" role="form" style="margin-top: 200px">
-    <div class="containerTables">
+  <form class="container" role="form">
+    <div class="containerTables" style="margin-top: -370px;">
       <table class="locationTableDel">
-        <th class="locations">Verwijder locatie
-        </th>
+        <th class="locations">Verwijder locatie</th>
         <tr>
-          <select id="delLocation" name="delLocation" [(ngModel)]="locationToDelete" style="margin-top: 10px;" required>
+          <select id="delLocation" name="delLocation" [(ngModel)]="locationToDelete" style="margin-top: 10px;"
+                  required>
             <option *ngFor="let delEventLocation of getEventLocations()" [ngValue]="delEventLocation">
               {{delEventLocation.name}}
             </option>
@@ -148,7 +148,8 @@
                 type="submit"
                 style="width: 50%;
                 margin-left: 25%;
-                margin-right: 25%"
+                margin-right: 25%;
+                margin-top: 2%;"
                 (click)="onDeleteOldLocation(locationToDelete)">
           <!--[disabled]="this.locationToDelete !== null">-->
           Verwijder
