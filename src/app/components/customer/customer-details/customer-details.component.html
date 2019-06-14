@@ -1,0 +1,100 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container">
+
+    <div class="page-content">
+
+      <div style="height: 590px;">
+        <h3>
+          Klant overzicht
+        </h3>
+        <div class="containerTables">
+          <table>
+            <thead>
+            <th class="telefoons">Telefoons
+            </th>
+            </thead>
+            <tr *ngFor="let tel of customer.phone_numbers">
+              <td>
+                {{tel.phonenumber}}
+              </td>
+            </tr>
+          </table>
+          <table>
+            <thead>
+            <th>Emails
+            </th>
+            </thead>
+            <tr *ngFor="let mail of customer.email_addresses">
+              <td>
+                {{mail.email}}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+
+          <label for="title" class="col-sm-2">Title</label>
+          <input type="text" id="title" name="title" placeholder="title"
+                 [(ngModel)]="customer.title" disabled>
+
+        </div>
+        <div>
+          <label class="col-sm-2" for="fname">Voornaam</label>
+          <input type="text" id="fname" name="fname" placeholder="voornaam"
+                 [(ngModel)]="customer.first_name" disabled>
+        </div>
+        <div>
+          <label class="col-sm-2" for="infix">Tussenvoegsel</label>
+          <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
+                 [(ngModel)]="customer.infix" disabled>
+        </div>
+        <div>
+          <label class="col-sm-2" for="lname">Achternaam</label>
+          <input type="text" id="lname" name="lname" placeholder="achternaam"
+
+                 [(ngModel)]="customer.last_name" disabled>
+        </div>
+        <div>
+          <label class="col-sm-2" for="address">Adres</label>
+          <input type="text" id="address" name="address " placeholder="adres"
+
+                 [(ngModel)]="customer.address"  disabled>
+        </div>
+        <div>
+          <label class="col-sm-2" for="zipcode">Postcode</label>
+          <input type="text" id="zipcode" name="zipode" placeholder="postcode"
+
+                 [(ngModel)]="customer.zipcode" disabled>
+        </div>
+        <div>
+          <label class="col-sm-2" for="country">Land</label>
+          <input type="text" id="country" name="country" placeholder="land"
+
+                 [(ngModel)]="customer.country"  disabled>
+        </div>
+        <div>
+          <label class="col-sm-2" for="gender">Land</label>
+          <input type="text" id="gender" name="gender" placeholder="gender"
+
+                 [(ngModel)]="customer.gender"  disabled>
+        </div>
+        <div>
+          <label class=" col-sm-2" for="city">Stad</label>
+          <input type="text" id="city" placeholder="stad"
+                 [(ngModel)]="customer.city" name="city"  disabled>
+
+          <div class="buttons" style="padding-top: 1em">
+
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
+              <i class="fa fa-close"></i> Annuleren
+            </button>
+            <button class="btn btn-primary" [routerLink]="['/homeeventmanager/customeroverview/customeredit/'+ customer.customerId]"><i class="fa fa-save"></i>
+              Bewerken
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
