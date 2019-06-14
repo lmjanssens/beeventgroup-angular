@@ -16,22 +16,22 @@ export class EventmanagerEventsComponent implements OnInit {
   public eventList: Event[] = [
     new Event(1, null, null,
       null, null, null, null, 'Pizza Event', '', '', null, '',
-      11.50, null, null, ''),
+      11.50, null, null, '', 5),
     new Event(2, null, null,
       null, null, null, null, 'Scheveningen Party', '', '', null, '',
-      1123.50, null, null, ''),
+      1123.50, null, null, '', 1),
     new Event(3, null, null,
       null, null, null, null, 'Kareoke Night', '', '', null, '',
-      1.50, null, null, ''),
+      1.50, null, null, '', 2),
     new Event(4, null, null,
       null, null, null, null, 'Date Night 2', '', '', null, '',
-      34.50, null, null, ''),
+      34.50, null, null, '', 3),
     new Event(5, null, null,
       null, null, null, null, 'Eminem Concert', '', '', null, '',
-      100, null, null, ''),
+      100, null, null, '', 4),
     new Event(6, null, null,
       null, null, null, null, 'UFC 235', '', '', null, '',
-      0, null, null, ''),
+      0, null, null, '', 5),
   ];
   rest: number;
   firstPage = 1;
@@ -41,7 +41,7 @@ export class EventmanagerEventsComponent implements OnInit {
   searchTerm: string;
   emptyEvent: Event = new Event(null, null, null,
     null, null, null, null, '', '', '', null, '', null,
-    null, null, '');
+    null, null, '', 20);
 
   currentUser: any;
   authenticated = false;

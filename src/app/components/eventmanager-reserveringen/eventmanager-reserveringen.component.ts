@@ -4,6 +4,9 @@ import {Globals} from '../globals';
 import {NavbarComponent} from '../../navbar/navbar.component';
 import {AuthorizationService} from '../../services/authorization.service';
 import {Role} from '../../enums/Role';
+import {ReservationService} from "../../services/reservation.service";
+import {AlertsService} from "angular-alert-module";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -11,19 +14,82 @@ import {Role} from '../../enums/Role';
   styleUrls: ['./eventmanager-reserveringen.component.css']
 })
 export class EventmanagerReserveringenComponent implements OnInit {
+
   public orderList: Order[] = [
-    new Order(1, null, '1-1-1', '',
-      '', '', '', null, null, null, null, null),
-    new Order(2, null, '1-1-1', '',
-      '', '', '', null, null, null, null, null),
-    new Order(3, null, '1-1-1', '',
-      '', '', '', null, null, null, null, null),
-    new Order(4, null, '1-1-1', '',
-      '', '', '', null, null, null, null, null),
-    new Order(5, null, '1-1-1', '',
-      '', '', '', null, null, null, null, null),
-    new Order(6, null, '1-1-1', '',
-      '', '', '', null, null, null, null, null)
+    {
+      orderId: 2,
+      customer: {
+        customerId: 2,
+        customer_orders: [],
+        title: 'mevrouw',
+        first_name: 'Nina',
+        infix: 'van der',
+        last_name: 'Hulde',
+        address: 'Bloemenlaan 57',
+        zipcode: '9284WL',
+        country: 'Nederland',
+        city: 'Nijmegen',
+        gender: 'v',
+        email_addresses: [
+          null
+        ],
+        phone_numbers: [
+          null
+        ]
+      },
+      dateorder: '2019-01-10',
+      dateevent : '2019-01-10',
+      note: 'test note',
+      starttime: '2019-01-10T13:37:42.000+0000',
+      endtime: '2019-01-10T13:37:42.000+0000',
+      catering_orders: [],
+      invoices: {
+          invoiceNumber: 2,
+          order: null,
+          dateinvoice: '2019-01-10',
+          paymentextras: 'dit kost te veel',
+          pricepp: 1242,
+          pricebtw: 12453,
+          othercosts: 120.0,
+          othercostsbtw: 190.0,
+          tobepaid: 1242.0,
+          paid: 4.0,
+          datepartpaid: '2019-01-10',
+          datefullpaid: '2019-01-10',
+          bankaccount: 'INGB13371337',
+          dateinvoicemailsent: '2019-01-10',
+          excludefrominvoicealert: true
+        },
+      events: {
+        id: 2,
+        supplier: null,
+        location: null,
+        order: null,
+        registeredEvents: null,
+        eventImages: null,
+        ownEvent: true,
+        name: 'Expeditie Hello World',
+        description: 'This is a great event',
+        program: 'Fietstocht',
+        duration: '1:30',
+        options: null,
+        pricePerPerson: 130.5,
+        priceBuyPerPerson: 0.0,
+        btw: 0.21,
+        note: null,
+        maxinstructor: 5
+      },
+      quotations: [
+        {
+          quotationNumber: 2,
+          order: null,
+          datequotation: '2019-01-10',
+          bankaccount: 'ABNA4200982',
+          pricebtw: 1212.0,
+          pricepp: 40.0
+        }
+      ]
+    }
   ];
   rest: number;
   firstPage = 1;
@@ -32,13 +98,18 @@ export class EventmanagerReserveringenComponent implements OnInit {
   amountRows = 0;
   searchTerm: string;
   emptyOrder: Order = new Order(null, null, '', '',
-    '', '', '', null, null, null, null, null);
+    '', '', '', null, null, null, null);
 
   currentUser: any;
   authenticated = false;
 
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private authService: AuthorizationService) {
+  constructor(private globals: Globals,
+              private navbar: NavbarComponent,
+              private router: Router,
+              private authService: AuthorizationService,
+              private reservationService: ReservationService,
+              private alertService: AlertsService) {
     this.authenticated = this.authService.hasAuthorization();
 
     this.authService.authorized$.subscribe(
@@ -85,10 +156,12 @@ export class EventmanagerReserveringenComponent implements OnInit {
     return Role;
   }
 
-  subscribeEvent(eventNumber: number) {
-    console.log(eventNumber);
+  OnSubscribeToEvent(orderId: number, eventId: number) {
+    this.reservationService.subscribeToEvent(orderId, eventId, this.currentUser.username).subscribe(() => {
+      alert('Uw registratie bij een evenement is succesvol verlopen.');
+      this.router.navigate(['/homeinstructor']);
+    });
   }
-
 }
 
 

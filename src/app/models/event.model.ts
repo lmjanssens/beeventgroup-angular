@@ -3,6 +3,7 @@ import {EventImage} from './event-image.model';
 import {EventLocation} from './event-location.model';
 import {RegisteredEvents} from './registered-events.model';
 import {Supplier} from './supplier.model';
+import {max} from "rxjs/operators";
 
 export class Event {
   public id: number;
@@ -21,11 +22,12 @@ export class Event {
   public priceBuyPerPerson: number;
   public btw: number;
   public note: string;
+  public maxinstructor: number;
 
   constructor(id: number, supplier: Supplier, location: EventLocation, order: Order, registeredEvents: RegisteredEvents[],
               eventImages: EventImage[], ownEvent: boolean, name: string, description: string, program: string,
               duration: string, options: string, pricePerPerson: number, priceBuyPerPerson: number,
-              btw: number, note: string) {
+              btw: number, note: string, maxinstructor: number) {
 
     this.id = id;
     this.supplier = supplier;
@@ -43,5 +45,6 @@ export class Event {
     this.priceBuyPerPerson = priceBuyPerPerson;
     this.btw = btw;
     this.note = note;
+    this.maxinstructor = maxinstructor;
   }
 }

@@ -61,7 +61,11 @@ button {
 }
 
 .tableDatum {
-  width: 100%;
+  width: 40%;
+}
+
+.tableMaxInstructor{
+  width: 50%;
 }
 
 .tableEdit {

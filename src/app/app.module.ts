@@ -44,6 +44,7 @@ import { InstructorCreateComponent } from './components/instructor/instructor-cr
 // import { DetailsComponent } from './components/customer/customer/details/details.component';
 // import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
+import {ReservationService} from "./services/reservation.service";
 
 @NgModule({
   declarations: [
@@ -94,7 +95,7 @@ import {HomepageInstructorComponent} from "./components/homepage-instructor/home
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
