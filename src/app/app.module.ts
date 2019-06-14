@@ -80,7 +80,7 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
     EventmanagerCreateComponent,
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
     CateringCreateComponent
   ],
   imports: [

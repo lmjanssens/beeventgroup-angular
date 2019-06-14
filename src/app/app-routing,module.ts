@@ -7,7 +7,6 @@ import {CustomerCreateComponent} from './components/customer/customer-create/cus
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
-import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
@@ -19,6 +18,7 @@ import {InstructorDetailsComponent} from './components/instructor/instructor-det
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
 import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
+import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
