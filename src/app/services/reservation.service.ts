@@ -36,6 +36,22 @@ export class ReservationService {
     return this.apiService.delete<void>(uri, id);
   }
 
+  /**
+   * With this we want to check if the instructoris already checked in for an event.
+   * @param instructor username of the instructor
+   */
+  checkAlreadyRegisteredEvent(orderId: number, instructor: string) {
+    
+    const uri = 'registeredevents/orderid';
+    return this.apiService.get(uri, orderId).pipe(first());
+  }
+
+  /**
+   * For subscribing an instructor to an event
+   * @param orderId id of order
+   * @param eventid id of event
+   * @param instructor username of instructor
+   */
   subscribeToEvent(orderId: number, eventid: number, instructor: string): Observable<object> {
     const uri = 'registeredevents/';
     const registeredEvent = {};

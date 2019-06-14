@@ -4,9 +4,9 @@ import {Globals} from '../globals';
 import {NavbarComponent} from '../../navbar/navbar.component';
 import {AuthorizationService} from '../../services/authorization.service';
 import {Role} from '../../enums/Role';
-import {ReservationService} from "../../services/reservation.service";
-import {AlertsService} from "angular-alert-module";
-import {Router} from "@angular/router";
+import {ReservationService} from '../../services/reservation.service';
+import {AlertsService} from 'angular-alert-module';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -157,10 +157,31 @@ export class EventmanagerReserveringenComponent implements OnInit {
   }
 
   OnSubscribeToEvent(orderId: number, eventId: number) {
-    this.reservationService.subscribeToEvent(orderId, eventId, this.currentUser.username).subscribe(() => {
-      alert('Uw registratie bij een evenement is succesvol verlopen.');
-      this.router.navigate(['/homeinstructor']);
-    });
+
+    this.reservationService.checkAlreadyRegisteredEvent(orderId, this.currentUser.username).subscribe(
+      data => {
+        let index = 0;
+        let duplicate = false;
+        while (index < data.length) {
+          if (data[index].order.orderId === orderId && data[index].instructor.first_name === this.currentUser.username) {
+            alert('U bent al ingeschreven op dit evenement');
+            duplicate = true;
+            break;
+          }
+          index++;
+        }
+
+        if (duplicate === false) {
+          this.reservationService.subscribeToEvent(orderId, eventId, this.currentUser.username).subscribe(() => {
+            alert('Uw registratie bij een evenement is succesvol verlopen.');
+            this.router.navigate(['/homeinstructor']);
+          });
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
 
