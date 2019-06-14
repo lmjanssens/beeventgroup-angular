@@ -44,6 +44,9 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorService} from './services/instructor.service';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
+import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
+import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
 
 @NgModule({
@@ -74,10 +77,11 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent,
+    EventmanagerCreateComponent,
     InstructorDetailsComponent,
+    EventmanagerUpdateComponent,
+    CustomerDetailsComponent
     CateringCreateComponent
-    // DetailsComponent,
-    // CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,

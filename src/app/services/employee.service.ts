@@ -22,21 +22,22 @@ export class EmployeeService {
     return this.apiService.get<Employee[]>('employees');
   }
 
-  // getById(id: number): Observable<Employee> {
-  //   return this.http.get<Employee>(environment.apiHostname + 'employees/' + id).pipe(
-  //     tap(selectedEmployee => console.log(`selectedEmployee = ${JSON.stringify(selectedEmployee)}`))
-  //   );
-  // }
-  //
-  // updateCustomer(updatedEmployee: Employee): Observable<Employee> {
-  //   return this.http.put<Employee>(environment.apiHostname + 'employees/' + updatedEmployee.employeeId, updatedEmployee);
-  // }
-  //
-  // save(employee: any): Observable<object> {
-  //   return this.http.post(environment.apiHostname + 'employees/', employee);
-  // }
-  //
-  // delete(id: number): Observable<void> {
-  //   return this.http.delete<void>(environment.apiHostname + 'employees/' + id);
-  // }
+  getById(id: number): Observable<Employee> {
+    return this.apiService.get<Employee>('employees/' + id).pipe(
+      tap(selectedEmployee => console.log(`selectedEmployee = ${JSON.stringify(selectedEmployee)}`))
+    );
+  }
+
+  updateEmployee(updatedEmployee: Employee): Observable<Employee> {
+    return this.apiService.put<Employee>('employees/' + updatedEmployee.employee_id, updatedEmployee);
+  }
+
+  save(employee: any): Observable<object> {
+    const uri = 'employees';
+    return this.apiService.post(uri, employee);
+  }
+
+  delete(id: number) {
+    return this.apiService.delete<void>( 'employees/' + id);
+  }
 }

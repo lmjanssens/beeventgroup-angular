@@ -23,10 +23,10 @@
       <th class="tableDelete"></th>
       <tr
         *ngFor="let customer of customerList | customerFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{customer.first_name}} {{customer.infix}} {{customer.last_name}}</td>
-        <td>{{customer.zipcode}}</td>
-        <td>{{customer.address}}</td>
-        <td>{{customer.city}}</td>
+        <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.first_name}} {{customer.infix}} {{customer.last_name}}</td>
+        <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.zipcode}}</td>
+        <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.address}}</td>
+        <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.city}}</td>
         <td>{{customer.phone_numbers[0].phonenumber}}</td>
         <td>{{customer.email_addresses[0].email}}</td>
         <td class="tableEdit">

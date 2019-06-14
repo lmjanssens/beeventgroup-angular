@@ -30,45 +30,48 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel" >
+                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel">
             </tr>
             <tr *ngFor="let telephone of customer.phone_numbers" class="spacer">
               <td>
                 {{telephone.phonenumber}}
                 <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
             cursor: pointer;width: 20px;
-                height: 20px;" (click)="onDeleteTel()"
+                height: 20px;" (click)="onDeleteTel(telephone)"
                 >
               </td>
             </tr>
           </table>
-          <table>
-            <thead>
-            <th>Emails
+          <table class="telTable">
+            <th class="telefoons">Emails
               <img src="../assets/img/addIcon.png"
-                   style="float:right; margin-right: 10px;
-                width: 23px;
-                height: 23px;
-            cursor: pointer;"
+                   style="    float:right; margin-right: 10px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer"
                    (click)="onCreateMail()"
                    id="addMail"
-                   *ngIf=" email.valid && mail != '' && customer.email_addresses.length < 3; else hidden"
+                   *ngIf=" email.valid && customer.email_addresses.length < 3; else hidden"
               >
+              <ng-template #hidden>
+                <img src="../assets/img/addIcon.png" style="
+                width: 20px;
+                height: 20px;
+                opacity: 0"
+                >
+              </ng-template>
             </th>
-            </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="mail" name="emails" email required #email="ngModel">
+                     [(ngModel)]="mail" name="email" required #email="ngModel" [disabled]="loading">
+
             </tr>
-            <tr *ngFor="let mail of customer.email_addresses">
+              <tr *ngFor="let mail of customer.email_addresses" class="spacer">
               <td>
                 {{mail.email}}
-                <img src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
-            cursor: pointer;
-             width: 20px;
-              height: 20px;"
-
-                     (click)="onDeleteMail(mail)"
+                <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteMail(mail)"
                 >
               </td>
             </tr>
