@@ -11,8 +11,11 @@ import {CateringOverviewComponent} from './components/catering-overview/catering
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
-import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {AuthGuard} from './services/auth.guard.service';
+import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
+import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
+import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
+import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {EventmanagerInstructeursComponent} from './components/instructor/eventmanager-instructeurs/eventmanager-instructeurs.component';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
 
@@ -34,7 +37,10 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/evenementenoverview/eventedit/:eventId', component: EventsUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
-  {path: '**', component: HomepageComponent}
+  {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/instructeursoverview/instructoredit/:instructor_id', component: InstructorUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/instructeursoverview/instructordetails/:instructor_id', component: InstructorDetailsComponent, canActivate: [AuthGuard]},
+  {path: '**', component: HomepageComponent},
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

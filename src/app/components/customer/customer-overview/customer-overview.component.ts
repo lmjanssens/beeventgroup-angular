@@ -29,24 +29,32 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
+    console.log(list)
     return list;
   }
+
   ngOnInit() {
     this.globals.setHuidigePagina('Klanten');
     this.navbar.checkNavBarStyle();
-    this.customerService.getAll().subscribe(customer => this.customerList = this.nullRemover(customer.sort((a, b) => (
-      a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
-      a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
+    this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));
   }
+
+  sortByName(list) {
+    list.sort((a, b) => (
+      a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0)).sort((a, b) => (
+      a.infix > b.infix ? 1 : b.infix > a.infix ? -1 : 0))
+      .sort((a, b) => (
+        a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0));
+    return list;
+  }
+
   onDelete(id, lastName, firstName) {
     if (!confirm(`Wilt u de klant "${firstName + ' ' + lastName}" verwijderen ?`)) {
       return;
     }
     this.customerService.delete(id).subscribe(() => {
       console.log('Customer with id ' + id + ' is deleted.');
-      this.customerService.getAll().subscribe(customer => this.customerList = this.nullRemover(customer.sort((a, b) => (
-        a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
-        a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
+      this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));
     });
   }
 

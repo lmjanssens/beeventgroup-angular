@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../components/globals';
 import {Router} from '@angular/router';
-import {AuthorizationService} from "../services/authorization.service";
+import {AuthorizationService} from '../services/authorization.service';
 
 @Component({
   selector: 'app-header',
@@ -39,7 +39,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
       this.globals.getHuidigePagina() === 'klantenFormulier' ||
-      this.globals.getHuidigePagina() === 'klantupdate') {
+      this.globals.getHuidigePagina() === 'instructeurFormulier' ||
+      this.globals.getHuidigePagina() === 'Agenda') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -55,16 +56,17 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Leveranciers' ||
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
-      this.globals.getHuidigePagina() === 'Werknemers') {
+      this.globals.getHuidigePagina() === 'Werknemers' ||
+      this.globals.getHuidigePagina() === 'Agenda' ||
+      this.globals.getHuidigePagina() === 'Klanten') {
       this.router.navigate(['/homeeventmanager']);
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier' || 'klantupdate') {
+    if (this.globals.getHuidigePagina() === 'klantenFormulier') {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
-    if (this.globals.getHuidigePagina() === 'Klanten') {
-      this.router.navigate(['/homeeventmanager']);
+    if (this.globals.getHuidigePagina() === 'instructeurFormulier') {
+      this.router.navigate(['/homeeventmanager/instructeursoverview']);
     }
-
   }
 
   OnLogOut() {

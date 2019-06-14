@@ -13,45 +13,29 @@ import {Globals} from '../../globals';
   styleUrls: ['./customer-update.component.css']
 })
 export class CustomerUpdateComponent implements OnInit {
-  customer: Customer;
+  customer: Customer = new Customer();
   tel = '';
   mail = '';
   newMail: CustomerEmail = new CustomerEmail();
   newPhone: CustomerPhone = new CustomerPhone();
+  emailList: CustomerEmail[] = [];
+  phoneList: CustomerPhone[] = [];
   loading: true;
   currentId;
   private sub: any;
   selectedItem;
   selectTag;
-  private updatedCustomer = false;
 
   constructor(private globals: Globals, private customerService: CustomerService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
     this.setGeslacht();
-    this.globals.setHuidigePagina('klantupdate');
-    this.customer = new Customer(null, '', '', '', '',
-      '', '', '', '', '', null, null, null);
-    this.customer.first_name = '';
-    this.customer.last_name = '';
-    this.customer.zipcode = '';
-    this.customer.city = '';
-    this.customer.gender = '';
-    this.customer.country = '';
-    this.customer.address = '';
-    this.customer.infix = '';
-    this.customer.title = '';
-    this.customer.email_addresses = [];
-    this.customer.phone_numbers = [];
-    this.customer.customer_orders = [];
-
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params['customerId'];
       console.log(this.currentId);
       this.customerService.getById(this.currentId).subscribe(customer => {
         this.customer = customer;
-        this.updatedCustomer = true;
       });
     });
   }
@@ -84,13 +68,16 @@ export class CustomerUpdateComponent implements OnInit {
   }
 
   ngSubmit(f: NgForm) {
-    if (f.form.valid) {
-      const data = <any>JSON.parse(JSON.stringify(this.customer));
-      this.customerService.updateCustomer(data).subscribe(() => {
-        this.router.navigate(['/homeeventmanager/customeroverview']);
-      });
-    } else {
-      alert('geen data ingevuld');
-    }
+    this.setGeslacht();
+    this.newMail = new CustomerEmail();
+    this.newMail.email = this.mail;
+    this.customer.email_addresses.push(this.newMail);
+    this.newPhone = new CustomerPhone();
+    this.newPhone.phonenumber = this.tel;
+    this.customer.phone_numbers.push(this.newPhone);
+    const data = <any> JSON.parse(JSON.stringify(this.customer));
+    this.customerService.updateCustomer(data).subscribe(() => {
+      this.router.navigate(['/homeeventmanager/customeroverview']);
+    });
   }
 }
