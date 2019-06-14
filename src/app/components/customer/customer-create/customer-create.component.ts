@@ -60,6 +60,7 @@ export class CustomerCreateComponent implements OnInit {
 
   onDeleteTel(tel) {
     this.customer.phone_numbers.splice(this.customer.phone_numbers.indexOf(tel), 1);
+    console.log(tel);
   }
 
   setGeslacht() {

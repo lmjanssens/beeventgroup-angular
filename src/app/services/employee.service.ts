@@ -27,11 +27,11 @@ export class EmployeeService {
       tap(selectedEmployee => console.log(`selectedEmployee = ${JSON.stringify(selectedEmployee)}`))
     );
   }
-  //
-  // updateCustomer(updatedEmployee: Employee): Observable<Employee> {
-  //   return this.http.put<Employee>(environment.apiHostname + 'employees/' + updatedEmployee.employeeId, updatedEmployee);
-  // }
-  //
+
+  updateEmployee(updatedEmployee: Employee): Observable<Employee> {
+    return this.apiService.put<Employee>('employees/' + updatedEmployee.employee_id, updatedEmployee);
+  }
+
   save(employee: any): Observable<object> {
     const uri = 'employees';
     return this.apiService.post(uri, employee);

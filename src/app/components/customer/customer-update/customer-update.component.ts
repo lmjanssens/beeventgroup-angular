@@ -18,8 +18,6 @@ export class CustomerUpdateComponent implements OnInit {
   mail = '';
   newMail: CustomerEmail = new CustomerEmail();
   newPhone: CustomerPhone = new CustomerPhone();
-  emailList: CustomerEmail[] = [];
-  phoneList: CustomerPhone[] = [];
   loading: true;
   currentId;
   private sub: any;
@@ -31,12 +29,15 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('klantenFormulier');
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params['customerId'];
       console.log(this.currentId);
       this.customerService.getById(this.currentId).subscribe(customer => {
         this.customer = customer;
-        this.tel = this.customer.phone_numbers[this.customer.phone_numbers.length - 1].phonenumber;
+        this.tel = this.customer.phone_numbers[0].phonenumber;
+        this.mail = this.customer.email_addresses[0].email;
+
       });
     });
   }
@@ -59,11 +60,11 @@ export class CustomerUpdateComponent implements OnInit {
   }
 
   onDeleteMail(mail) {
-    this.customer.email_addresses.splice(this.emailList.indexOf(mail), 1);
+    this.customer.email_addresses.splice(this.customer.email_addresses.indexOf(mail), 1);
   }
 
   onDeleteTel(tel) {
-    this.customer.phone_numbers.splice(this.phoneList.indexOf(tel), 1);
+    this.customer.phone_numbers.splice(this.customer.phone_numbers.indexOf(tel), 1);
   }
 
   setGeslacht() {
@@ -73,17 +74,11 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngSubmit(f: NgForm) {
     this.setGeslacht();
-    this.newMail = new CustomerEmail();
-    this.newMail.email = this.mail;
-    this.emailList.push(this.newMail);
-    console.log(this.emailList);
-    this.newPhone = new CustomerPhone();
-    this.newPhone.phonenumber = this.tel;
-    console.log(this.phoneList);
-    this.customer.phone_numbers.push(this.newPhone);
-    const data = <any> JSON.parse(JSON.stringify(this.customer));
+
+    const data = <any>JSON.parse(JSON.stringify(this.customer));
     this.customerService.updateCustomer(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     });
   }
+
 }

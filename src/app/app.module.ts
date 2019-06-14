@@ -44,9 +44,9 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorService} from './services/instructor.service';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
-// import { DetailsComponent } from './components/customer/customer/details/details.component';
-// import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
+import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +77,9 @@ import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/
     InstructorCreateComponent,
     InstructorUpdateComponent,
     EventmanagerCreateComponent,
-    InstructorDetailsComponent
+    InstructorDetailsComponent,
+    EventmanagerUpdateComponent,
+    CustomerDetailsComponent
   ],
   imports: [
     BrowserModule,
