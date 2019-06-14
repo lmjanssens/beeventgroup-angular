@@ -70,6 +70,14 @@ tr {
   border-left: 5px solid red;
 }
 
+td {
+  padding: 0.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -79,8 +87,3 @@ th {
   color: white;
   border-radius: 10px;
 }
-
-app-alerts {
-  width: 1000px;
-}
-
