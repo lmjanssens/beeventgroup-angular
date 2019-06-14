@@ -18,8 +18,6 @@ export class CustomerUpdateComponent implements OnInit {
   mail = '';
   newMail: CustomerEmail = new CustomerEmail();
   newPhone: CustomerPhone = new CustomerPhone();
-  emailList: CustomerEmail[] = [];
-  phoneList: CustomerPhone[] = [];
   loading: true;
   currentId;
   private sub: any;
@@ -30,26 +28,35 @@ export class CustomerUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setGeslacht();
+    this.globals.setHuidigePagina('klantenFormulier');
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params['customerId'];
       console.log(this.currentId);
       this.customerService.getById(this.currentId).subscribe(customer => {
         this.customer = customer;
+        this.tel = this.customer.phone_numbers[0].phonenumber;
+        this.mail = this.customer.email_addresses[0].email;
+
       });
     });
   }
 
+
   onCreateMail() {
-    this.newMail = new CustomerEmail();
-    this.newMail.email = this.mail;
-    this.customer.email_addresses.push(this.newMail);
+    if (this.customer.email_addresses.length < 4) {
+      this.newMail = new CustomerEmail();
+      this.newMail.email = this.mail;
+      this.customer.email_addresses.push(this.newMail);
+      this.newMail = null;
+    }
   }
 
   onCreateTel() {
     this.newPhone = new CustomerPhone();
     this.newPhone.phonenumber = this.tel;
     this.customer.phone_numbers.push(this.newPhone);
+    this.newPhone = null;
   }
 
   onDeleteMail(mail) {
@@ -63,21 +70,15 @@ export class CustomerUpdateComponent implements OnInit {
   setGeslacht() {
     this.selectTag = document.getElementById('geslacht');
     this.selectedItem = this.selectTag.options[this.selectTag.selectedIndex].value;
-    // this.customer.gender = this.selectedItem;
-    console.log(this.selectedItem);
   }
 
   ngSubmit(f: NgForm) {
     this.setGeslacht();
-    this.newMail = new CustomerEmail();
-    this.newMail.email = this.mail;
-    this.customer.email_addresses.push(this.newMail);
-    this.newPhone = new CustomerPhone();
-    this.newPhone.phonenumber = this.tel;
-    this.customer.phone_numbers.push(this.newPhone);
-    const data = <any> JSON.parse(JSON.stringify(this.customer));
+
+    const data = <any>JSON.parse(JSON.stringify(this.customer));
     this.customerService.updateCustomer(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     });
   }
+
 }
