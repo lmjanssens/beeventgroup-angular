@@ -29,7 +29,7 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
-    console.log(list)
+    console.log(list);
     return list;
   }
 

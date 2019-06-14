@@ -3,7 +3,7 @@
 <div class="leverancierPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Leveranciers Overzicht</h3>
   <div>
-    <button style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Leverancier<i class="fa fa-plus-circle fa-lg"
+    <button style="padding: 0.25em 1em 0.25em 1.5em" routerLink="createsupplier/">Nieuwe Leverancier<i class="fa fa-plus-circle fa-lg"
                                                                     style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
@@ -16,44 +16,30 @@
       <th class="tableContactPerson">Contactpersoon</th>
       <th class="tableSupervisor">Leidinggevende</th>
       <th class="tableWebsite">Website</th>
-      <th class="tableNote">Notitie</th>
+      <th class="tablePhone">Telefoon</th>
+      <th class="tableEmail">Email</th>
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
       <tr
-        *ngFor="let supplier of tableFiller() | supplierFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+        *ngFor="let supplier of supplierList | supplierFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{supplier.name}}</td>
-        <td>{{supplier.contactPerson}}</td>
+        <td>{{supplier.contact_person}}</td>
         <td>{{supplier.supervisor}}</td>
         <td>{{supplier.website}}</td>
-        <td>{{supplier.note}}</td>
-        <td *ngIf="supplier.id != null; else disabledEditButton" class="tableEdit">
+        <td>{{supplier.phone_numbers[0].phone}}</td>
+        <td>{{supplier.email_addresses[0].email}}</td>
+        <td class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
-            style="color: purple; "></i>
+            style="color: purple;" (click)="test(supplier.name)" [routerLink]="['supplieredit/'+ supplier.supplierid]"></i>
           </button>
         </td>
-        <ng-template #disabledEditButton>
-          <td>
-            <button disabled
-                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
-              class="fa fa-pencil fa-2x"
-              style="color: silver; "></i>
-            </button>
-          </td>
-        </ng-template>
-        <td *ngIf="supplier.id != null; else disabledDeleteButton" class="tableDelete">
+        <td class="tableDelete">
           <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
             class="fa fa-trash fa-2x"
-            style="color: red;"></i></button>
+            style="color: red;" (click)="onDelete(supplier.supplierid, supplier.name)"></i>
+          </button>
         </td>
-        <ng-template #disabledDeleteButton>
-          <td>
-            <button disabled
-                    style="margin-left: -8px; width: 38px; height: 40px; border: none; background-color: white"><i
-              class="fa fa-trash fa-2x"
-              style="color: silver;"></i></button>
-          </td>
-        </ng-template>
       </tr>
     </table>
     <div>

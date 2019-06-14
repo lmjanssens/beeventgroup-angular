@@ -71,9 +71,9 @@ export class CustomerCreateComponent implements OnInit {
 
   toevoegAlert() {
     if (this.customer.infix !== undefined || this.customer.infix !== '') {
-      alert('De instructeur ' + this.customer.first_name + ' ' + this.customer.infix + ' ' + this.customer.last_name + ' is toegevoegd.');
+      alert('De klant ' + this.customer.first_name + ' ' + this.customer.infix + ' ' + this.customer.last_name + ' is toegevoegd.');
     } else {
-      alert('De instructeur ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.');
+      alert('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.');
     }
   }
 

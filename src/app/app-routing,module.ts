@@ -9,7 +9,6 @@ import {EventmanagerEventsComponent} from './components/eventmanager-events/even
 import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
 import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
 
-;
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
@@ -18,12 +17,16 @@ import {AuthGuard} from './services/auth.guard.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
 import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
+import {SupplierCreateComponent} from './components/supplier-create/supplier-create.component';
+import {SupplierUpdateComponent} from './components/supplier-update/supplier-update.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'loginpage', component: LoginEventManagerComponent},
   {path: 'homeeventmanager', component: HomepageEventmanagerComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview', component: SupplierOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview/createsupplier', component: SupplierCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview/supplieredit/:supplierid', component: SupplierUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
@@ -32,7 +35,6 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
-  {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview/instructoredit/:instructor_id', component: InstructorUpdateComponent, canActivate: [AuthGuard]},

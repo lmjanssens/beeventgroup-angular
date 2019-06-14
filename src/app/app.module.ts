@@ -44,6 +44,9 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorService} from './services/instructor.service';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
+import { SupplierCreateComponent } from './components/supplier-create/supplier-create.component';
+import { SupplierUpdateComponent } from './components/supplier-update/supplier-update.component';
+import { SupplierDetailsComponent } from './components/supplier-details/supplier-details.component';
 // import { DetailsComponent } from './components/customer/customer/details/details.component';
 // import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 
@@ -75,7 +78,10 @@ import { InstructorDetailsComponent } from './components/instructor/instructor-d
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent,
-    InstructorDetailsComponent
+    InstructorDetailsComponent,
+    SupplierCreateComponent,
+    SupplierUpdateComponent,
+    SupplierDetailsComponent
     // DetailsComponent,
     // CustomerDetailsComponent
   ],
