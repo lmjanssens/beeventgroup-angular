@@ -45,9 +45,6 @@ export class EventmanagerEventsComponent implements OnInit {
   fetchEvents() {
     this.eventService.getAll().subscribe(events => {
       this.events = events;
-      events.forEach(value => {
-        value.location = this.eventLocation;
-      });
     });
   }
 }

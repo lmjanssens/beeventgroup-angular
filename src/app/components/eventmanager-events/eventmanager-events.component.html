@@ -20,7 +20,7 @@
       <tr
         *ngFor="let event of getEvents() | eventFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{event.name}}</td>
-        <td>{{eventLocation.name}}</td>
+        <td>{{event.location.name}}</td>
         <td>&euro; {{event.pricePerPerson | number :'1.2-2'}}</td>
         <td class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
