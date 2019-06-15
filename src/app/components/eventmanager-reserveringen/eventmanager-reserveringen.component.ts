@@ -7,6 +7,10 @@ import {Role} from '../../enums/Role';
 import {ReservationService} from '../../services/reservation.service';
 import {AlertsService} from 'angular-alert-module';
 import {Router} from '@angular/router';
+import {Customer} from "../../models/customer.model";
+import {Observable, pipe, Subject} from "rxjs";
+import {ApiService} from "../../services/api.service";
+import {first, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -15,82 +19,7 @@ import {Router} from '@angular/router';
 })
 export class EventmanagerReserveringenComponent implements OnInit {
 
-  public orderList: Order[] = [
-    {
-      orderId: 2,
-      customer: {
-        customerId: 2,
-        customer_orders: [],
-        title: 'mevrouw',
-        first_name: 'Nina',
-        infix: 'van der',
-        last_name: 'Hulde',
-        address: 'Bloemenlaan 57',
-        zipcode: '9284WL',
-        country: 'Nederland',
-        city: 'Nijmegen',
-        gender: 'v',
-        email_addresses: [
-          null
-        ],
-        phone_numbers: [
-          null
-        ]
-      },
-      dateorder: '2019-01-10',
-      dateevent : '2019-01-10',
-      note: 'test note',
-      starttime: '2019-01-10T13:37:42.000+0000',
-      endtime: '2019-01-10T13:37:42.000+0000',
-      catering_orders: [],
-      invoices: {
-          invoiceNumber: 2,
-          order: null,
-          dateinvoice: '2019-01-10',
-          paymentextras: 'dit kost te veel',
-          pricepp: 1242,
-          pricebtw: 12453,
-          othercosts: 120.0,
-          othercostsbtw: 190.0,
-          tobepaid: 1242.0,
-          paid: 4.0,
-          datepartpaid: '2019-01-10',
-          datefullpaid: '2019-01-10',
-          bankaccount: 'INGB13371337',
-          dateinvoicemailsent: '2019-01-10',
-          excludefrominvoicealert: true
-        },
-      events: {
-        id: 2,
-        supplier: null,
-        location: null,
-        order: null,
-        registeredEvents: null,
-        eventImages: null,
-        ownEvent: true,
-        name: 'Expeditie Hello World',
-        description: 'This is a great event',
-        program: 'Fietstocht',
-        duration: '1:30',
-        options: null,
-        pricePerPerson: 130.5,
-        priceBuyPerPerson: 0.0,
-        btw: 0.21,
-        note: null,
-        maxinstructor: 5
-      },
-      quotations: [
-        {
-          quotationNumber: 2,
-          order: null,
-          datequotation: '2019-01-10',
-          bankaccount: 'ABNA4200982',
-          pricebtw: 1212.0,
-          pricepp: 40.0
-        }
-      ]
-    }
-  ];
+  public orderList: any = [];
   rest: number;
   firstPage = 1;
   itemsPerPage = 5;
@@ -107,6 +36,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
   constructor(private globals: Globals,
               private navbar: NavbarComponent,
               private router: Router,
+              private apiService: ApiService,
               private authService: AuthorizationService,
               private reservationService: ReservationService,
               private alertService: AlertsService) {
@@ -132,24 +62,24 @@ export class EventmanagerReserveringenComponent implements OnInit {
     this.currentUser = this.authService.getAuthenticator();
   }
 
-  tableFiller() {
-    if (this.orderList.length !== 0 && this.orderList.length % this.itemsPerPage !== 0) {
-      this.rest = this.orderList.length % this.itemsPerPage;
-      this.amountRows = this.itemsPerPage - this.rest;
-      while (this.teller < this.amountRows) {
-        this.orderList.push(this.emptyOrder);
-        this.teller = this.teller + 1;
+  getOrders() {
+    this.orderList = [];
+    this.reservationService.getAll().subscribe((data: {}) => {
+      console.log(data);
+      this.orderList = data;
+      if (this.orderList.length !== 0 && this.orderList.length % this.itemsPerPage !== 0) {
+        this.rest = this.orderList.length % this.itemsPerPage;
+        this.amountRows = this.itemsPerPage - this.rest;
+        this.teller = this.teller + this.orderList.length;
       }
-      return this.orderList;
-    } else {
-      return this.orderList;
-    }
+    });
   }
 
   ngOnInit() {
     this.globals.setHuidigePagina('Reserveringen');
     this.navbar.checkNavBarStyle();
     console.log(this.globals.getHuidigePagina());
+    this.getOrders();
   }
 
   getRoles() {
@@ -174,7 +104,6 @@ export class EventmanagerReserveringenComponent implements OnInit {
         if (duplicate === false) {
           this.reservationService.subscribeToEvent(orderId, eventId, this.currentUser.username).subscribe(() => {
             alert('Uw registratie bij een evenement is succesvol verlopen.');
-            this.router.navigate(['/homeinstructor']);
           });
         }
       },
@@ -183,6 +112,13 @@ export class EventmanagerReserveringenComponent implements OnInit {
       }
     );
   }
+
+  OnDelete(orderId: number) {
+    this.reservationService.delete(orderId).subscribe(success => {
+      this.getOrders();
+    });
+  }
+
 }
 
 

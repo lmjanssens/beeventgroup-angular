@@ -11,8 +11,8 @@ export class ReservationService {
 
   }
 
-  getAll(): Observable<Order[]> {
-    return this.apiService.get<Order[]>('orders');
+  getAll() {
+    return this.apiService.get('orders').pipe(map(this.apiService.extractData));
   }
 
   getById(id: number) {
