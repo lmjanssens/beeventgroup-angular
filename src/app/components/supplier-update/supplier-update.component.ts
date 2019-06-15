@@ -6,6 +6,7 @@ import {SupplierEmail} from '../../models/supplier-email.model';
 import {SupplierPhone} from '../../models/supplier-phone.model';
 import {NgForm} from '@angular/forms';
 import {Globals} from '../globals';
+import {SupplierAddress} from '../../models/supplier-address.model';
 
 @Component({
   selector: 'app-supplier-update',
@@ -16,8 +17,12 @@ export class SupplierUpdateComponent implements OnInit {
   supplier: Supplier = new Supplier();
   tel = '';
   mail = '';
+  zipcode = '';
+  address = '';
+  city = '';
   newMail: SupplierEmail = new SupplierEmail();
   newPhone: SupplierPhone = new SupplierPhone();
+  newAddress: SupplierAddress = new SupplierAddress();
   emailList: SupplierEmail[] = [];
   phoneList: SupplierPhone[] = [];
   loading: true;
@@ -37,6 +42,10 @@ export class SupplierUpdateComponent implements OnInit {
         this.supplier = supplier;
         this.tel = this.supplier.phone_numbers[0].phone;
         this.mail = this.supplier.email_addresses[0].email;
+        this.zipcode = this.supplier.addresses[0].zipcode;
+        this.address = this.supplier.addresses[0].address;
+        this.city = this.supplier.addresses[0].city;
+
       });
     });
     console.log(this.supplier.email_addresses);
@@ -63,6 +72,11 @@ export class SupplierUpdateComponent implements OnInit {
     this.supplier.phone_numbers.splice(this.supplier.phone_numbers.indexOf(tel), 1);
   }
 
+
+  onDeleteAddress(zipcode) {
+    this.supplier.addresses.splice(this.supplier.addresses.indexOf(zipcode));
+  }
+
   ngSubmit(f: NgForm) {
     this.newMail = new SupplierEmail();
     this.newMail.email = this.mail;
@@ -70,6 +84,12 @@ export class SupplierUpdateComponent implements OnInit {
     this.newPhone = new SupplierPhone();
     this.newPhone.phone = this.tel;
     this.supplier.phone_numbers.push(this.newPhone);
+    this.onDeleteAddress(this.zipcode);
+    this.newAddress = new SupplierAddress();
+    this.newAddress.zipcode = this.zipcode;
+    this.newAddress.address = this.address;
+    this.newAddress.city = this.city;
+    this.supplier.addresses.push(this.newAddress);
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
     this.supplierService.updateSupplier(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/supplieroverview']);

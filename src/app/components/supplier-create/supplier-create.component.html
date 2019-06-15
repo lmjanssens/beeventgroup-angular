@@ -87,6 +87,21 @@
                  [(ngModel)]="supplier.contact_person">
         </div>
         <div>
+          <label class="col-sm-2" for="zipcode">Postcode</label>
+          <input type="text" id="zipcode" name="zipcode" placeholder="Postcode" required
+                 [(ngModel)]="zipcode">
+        </div>
+        <div>
+          <label class="col-sm-2" for="address">Adres</label>
+          <input type="text" id="address" name="address" placeholder="Adres" required
+                 [(ngModel)]="address">
+        </div>
+        <div>
+          <label class="col-sm-2" for="city">Stad</label>
+          <input type="text" id="city" name="city" placeholder="Stad"
+                 [(ngModel)]="city">
+        </div>
+        <div>
           <label class="col-sm-2" for="supervisor">Supervisor</label>
           <input type="text" id="supervisor" name="supervisor" placeholder="Leidinggevende"
                  [(ngModel)]="supplier.supervisor">

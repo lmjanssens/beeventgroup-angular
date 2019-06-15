@@ -1,6 +1,7 @@
 import {Supplier} from '../../models/supplier.model';
 import {SupplierEmail} from '../../models/supplier-email.model';
 import {SupplierPhone} from '../../models/supplier-phone.model';
+import {SupplierAddress} from '../../models/supplier-address.model';
 import {SupplierService} from '../../services/supplier.service';
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
@@ -18,8 +19,12 @@ export class SupplierCreateComponent implements OnInit {
   supplier: Supplier;
   tel = '';
   mail = '';
+  address = '';
+  zipcode = '';
+  city = '';
   newMail: SupplierEmail = new SupplierEmail();
   newPhone: SupplierPhone = new SupplierPhone();
+  newAddress: SupplierAddress = new SupplierAddress();
 
   constructor(private globals: Globals, private supplierService: SupplierService, private router: Router) {
   }
@@ -30,6 +35,7 @@ export class SupplierCreateComponent implements OnInit {
     this.supplier = new Supplier();
     this.supplier.email_addresses = [];
     this.supplier.phone_numbers = [];
+    this.supplier.addresses = [];
     this.supplier.contracts = [];
   }
 
@@ -62,6 +68,11 @@ export class SupplierCreateComponent implements OnInit {
 
   ngSubmit(f: NgForm) {
     this.newMail = new SupplierEmail();
+    this.newAddress = new SupplierAddress();
+    this.newAddress.address = this.address;
+    this.newAddress.city = this.city;
+    this.newAddress.zipcode = this.zipcode;
+    this.supplier.addresses.push(this.newAddress);
     this.newMail.email = this.mail;
     this.supplier.email_addresses.push(this.newMail);
     this.newPhone = new SupplierPhone();
