@@ -18,7 +18,6 @@ import {InstructorUpdateComponent} from './components/instructor/instructor-upda
 import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
-import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
 import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
