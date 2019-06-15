@@ -82,9 +82,7 @@
           <select id="location" name="location"
                   [(ngModel)]="selectedLocation" required
                   [disabled]="loading">
-            <option *ngFor="let eventLocation of getEventLocations()"
-                    [ngValue]="eventLocation">
-                    <!--[value]="event.location.name">-->
+            <option *ngFor="let eventLocation of getEventLocations()" [ngValue]="eventLocation">
               {{eventLocation.name}}
             </option>
           </select>

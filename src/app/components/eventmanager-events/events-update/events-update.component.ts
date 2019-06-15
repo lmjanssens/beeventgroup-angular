@@ -33,7 +33,6 @@ export class EventsUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.setOwnEvent();
     this.supplierService.getAll().subscribe(suppliers => {
       this.suppliers = suppliers;
     });
@@ -52,8 +51,6 @@ export class EventsUpdateComponent implements OnInit {
       this.eventService.getById(this.currentId).subscribe(event => {
         this.event = event;
         this.updatedEvent = true;
-        console.log(this.event.maxInstructors);
-        console.log(this.event.name);
       });
     });
   }
