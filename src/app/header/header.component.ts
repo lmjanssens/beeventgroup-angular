@@ -40,7 +40,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Werknemers' ||
       this.globals.getHuidigePagina() === 'klantenFormulier' ||
       this.globals.getHuidigePagina() === 'instructeurFormulier' ||
-      this.globals.getHuidigePagina() === 'Agenda') {
+      this.globals.getHuidigePagina() === 'Agenda' ||
+      this.globals.getHuidigePagina() === 'evenementFormulier') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -66,6 +67,9 @@ export class HeaderComponent implements OnInit {
     }
     if (this.globals.getHuidigePagina() === 'instructeurFormulier') {
       this.router.navigate(['/homeeventmanager/instructeursoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'evenementFormulier') {
+      this.router.navigate(['/homeeventmanager/evenementenoverview']);
     }
   }
 

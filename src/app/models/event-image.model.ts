@@ -1,11 +1,12 @@
-import {Event} from './event.model';
+import {EventModel} from './event.model';
+import {BaseModel} from './base.model';
 
-export class EventImage {
+export class EventImage implements BaseModel {
   public id: number;
-  public event: Event;
+  public event: EventModel;
   public imagePath: string;
 
-  constructor(id: number, event: Event, imagePath: string) {
+  constructor(id: number, event: EventModel, imagePath: string) {
     this.id = id;
     this.event = event;
     this.imagePath = imagePath;

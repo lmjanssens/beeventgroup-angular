@@ -29,7 +29,7 @@ import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
@@ -42,6 +42,12 @@ import {AuthGuard} from './services/auth.guard.service';
 import {AuthorizationService} from './services/authorization.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorService} from './services/instructor.service';
+import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
+import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
+// import { DetailsComponent } from './components/customer/customer/details/details.component';
+// import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
+import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
@@ -73,9 +79,15 @@ import { CustomerDetailsComponent } from './components/customer/customer-details
     SupplierOverviewComponent,
     CateringOverviewComponent,
     EventmanagerAgendaComponent,
+    CateringOverviewComponent,
+    EventsCreateComponent,
+    InstructorCreateComponent,
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent,
+    // DetailsComponent,
+    // CustomerDetailsComponent
+    EventsUpdateComponent,
     EventmanagerCreateComponent,
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
