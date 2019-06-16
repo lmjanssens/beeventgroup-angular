@@ -5,6 +5,8 @@ import {NavbarComponent} from '../../../navbar/navbar.component';
 import {Router} from '@angular/router';
 import {InstructorService} from '../../../services/instructor.service';
 import {UserService} from '../../../services/user.service';
+import {AuthorizationService} from "../../../services/authorization.service";
+import {Role} from "../../../enums/Role";
 
 @Component({
   selector: 'app-eventmanager-instructeurs',
@@ -20,8 +22,36 @@ export class EventmanagerInstructeursComponent implements OnInit {
   searchTerm: string;
   i = 0;
 
+  currentUser: any;
+  authenticated = false;
+
   constructor(private globals: Globals, private navbar: NavbarComponent,
-              private router: Router, private instructorService: InstructorService, private userService: UserService) {
+              private router: Router,
+              private instructorService: InstructorService,
+              private userService: UserService,
+              private authService: AuthorizationService) {
+
+    this.authenticated = this.authService.hasAuthorization();
+
+    this.authService.authorized$
+      .subscribe(
+        authorized => {
+          this.updateAuthentication();
+        }
+      );
+
+    this.updateAuthentication();
+
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated){
+      this.currentUser = {};
+      return;
+    }
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   nullRemover(list) {
@@ -42,7 +72,7 @@ export class EventmanagerInstructeursComponent implements OnInit {
     }
     this.instructorService.delete(id).subscribe(
       () => {
-        console.log('Instructor with id ' + id + ' is deleted.');
+        console.log('Instructor with supplierid ' + id + ' is deleted.');
         this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
       });
   }
@@ -66,6 +96,11 @@ export class EventmanagerInstructeursComponent implements OnInit {
   test(id) {
     console.log(id);
   }
+
+  getRoles() {
+    return Role;
+  }
+
 }
 
 

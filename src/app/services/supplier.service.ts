@@ -24,7 +24,7 @@ export class SupplierService {
 
   updateSupplier(updatedCustomer: Supplier): Observable<Supplier> {
     const uri = 'suppliers/';
-    return this.apiService.put<Supplier>(uri + updatedCustomer.id, updatedCustomer);
+    return this.apiService.put<Supplier>(uri + updatedCustomer.supplierid, updatedCustomer);
   }
 
   save(customer: any): Observable<object> {

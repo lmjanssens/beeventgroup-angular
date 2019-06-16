@@ -25,14 +25,17 @@ export class EventService {
     return this.apiService.get(uri, id).pipe(first());
   }
 
-  updateEvent(updatedCustomer: EventModel): Observable<EventModel> {
+  updateEvent(updatedCustomer: EventModel, linkedSupplier: Supplier, linkedLocation: EventLocation): Observable<EventModel> {
     const uri = 'events/';
-    return this.apiService.put<EventModel>(uri + updatedCustomer.id, updatedCustomer);
+    return this.apiService.put<EventModel>(
+      uri + updatedCustomer.id
+      + '/' + linkedSupplier.supplierid
+      + '/' + linkedLocation.id, updatedCustomer);
   }
 
   save(event: any, supplier: Supplier, eventLocation: EventLocation): Observable<object> {
     const uri = 'events';
-    return this.apiService.post(uri + '/' + supplier.id + '/' + eventLocation.id, event);
+    return this.apiService.post(uri + '/' + supplier.supplierid + '/' + eventLocation.id, event);
   }
 
   delete(id: number) {

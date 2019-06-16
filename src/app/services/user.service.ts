@@ -66,7 +66,7 @@ export class UserService {
 
   /**
    * For deleting a user
-   * @param id id of a user
+   * @param id supplierid of a user
    * @author Robin Silverio
    */
   public deleteUser(id: string) {

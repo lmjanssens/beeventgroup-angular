@@ -108,6 +108,8 @@ export class EventsCreateComponent implements OnInit {
     this.setOwnEvent();
     this.event.supplier = this.selectedSupplier;
     this.event.location = this.selectedLocation;
+    console.log(this.event.supplier);
+    console.log(this.event.location);
 
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
