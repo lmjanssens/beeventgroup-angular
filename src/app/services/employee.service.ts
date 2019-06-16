@@ -22,8 +22,8 @@ export class EmployeeService {
     return this.apiService.get<Employee[]>('employees');
   }
 
-  // getById(id: number): Observable<Employee> {
-  //   return this.http.get<Employee>(environment.apiHostname + 'employees/' + id).pipe(
+  // getById(supplierid: number): Observable<Employee> {
+  //   return this.http.get<Employee>(environment.apiHostname + 'employees/' + supplierid).pipe(
   //     tap(selectedEmployee => console.log(`selectedEmployee = ${JSON.stringify(selectedEmployee)}`))
   //   );
   // }
@@ -36,7 +36,7 @@ export class EmployeeService {
   //   return this.http.post(environment.apiHostname + 'employees/', employee);
   // }
   //
-  // delete(id: number): Observable<void> {
-  //   return this.http.delete<void>(environment.apiHostname + 'employees/' + id);
+  // delete(supplierid: number): Observable<void> {
+  //   return this.http.delete<void>(environment.apiHostname + 'employees/' + supplierid);
   // }
 }

@@ -42,7 +42,7 @@ export class EventmanagerInstructeursComponent implements OnInit {
     }
     this.instructorService.delete(id).subscribe(
       () => {
-        console.log('Instructor with id ' + id + ' is deleted.');
+        console.log('Instructor with supplierid ' + id + ' is deleted.');
         this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
       });
   }

@@ -29,7 +29,7 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
-    console.log(list)
+    console.log(list);
     return list;
   }
 
@@ -53,7 +53,7 @@ export class CustomerOverviewComponent implements OnInit {
       return;
     }
     this.customerService.delete(id).subscribe(() => {
-      console.log('Customer with id ' + id + ' is deleted.');
+      console.log('Customer with supplierid ' + id + ' is deleted.');
       this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));
     });
   }

@@ -58,8 +58,8 @@ export class EventmanagerEventmanagersComponent implements OnInit {
     // if (!confirm(`Wilt u de werknemer "${firstName + ' ' + lastName}" verwijderen ?`)) {
     //   return;
     // }
-    // this.employeeService.delete(id).subscribe(() => {
-    //   console.log('Employee with id ' + id + ' is deleted.');
+    // this.employeeService.delete(supplierid).subscribe(() => {
+    //   console.log('Employee with supplierid ' + supplierid + ' is deleted.');
     //   this.employeeService.getAll().subscribe(employee => this.employeeList = this.nullRemover(employee.sort((a, b) => (
     //     a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
     //     a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
