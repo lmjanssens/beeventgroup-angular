@@ -17,8 +17,8 @@
       <th class="tableSupervisor">Leidinggevende</th>
       <th class="tableWebsite">Website</th>
       <th class="tableNote">Notitie</th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete"></th>
+      <th class="tableEdit"></th>
+      <th class="tableDelete"></th>
       <tr
         *ngFor="let supplier of tableFiller() | supplierFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{supplier.name}}</td>

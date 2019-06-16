@@ -12,63 +12,68 @@
           <table class="telTable">
             <th class="telefoons">Telefoons
               <img src="../assets/img/addIcon.png"
-                   style=" margin-left: 50px;
+                   style="    float:right; margin-right: 10px;
                 width: 20px;
                 height: 20px;
                 cursor: pointer"
                    (click)="onCreateTel()"
                    id="addTel"
-                   *ngIf="tel != '' && customer.phone_numbers.length < 6; else hidden"
+                   *ngIf="tel.length == 10 && tel != '' && customer.phone_numbers.length < 3; else hidden"
               >
               <ng-template #hidden>
-                <img src="../assets/img/addIcon.png" style=" margin-left: 50px;
+                <img src="../assets/img/addIcon.png" style="
                 width: 20px;
                 height: 20px;
                 opacity: 0"
                 >
               </ng-template>
-              <img src="../assets/img/removeIcon.png" style="color: red; margin-left: 30px;
-            cursor: pointer;width: 20px;
-                height: 20px;" (click)="onDeleteTel()"
-              >
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="customer.phone_numbers[customer.phone_numbers.length -1].phonenumber" name="phones" [disabled]="loading" >
+                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel">
             </tr>
-            <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
-
-              {{tel.phonenumber}}
+            <tr *ngFor="let telephone of customer.phone_numbers" class="spacer">
+              <td>
+                {{telephone.phonenumber}}
+                <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteTel(telephone)"
+                >
+              </td>
             </tr>
           </table>
-
-          <table class="mailTable">
-            <thead>
-            <th>Emails
+          <table class="telTable">
+            <th class="telefoons">Emails
               <img src="../assets/img/addIcon.png"
-                   style="margin-left: 72px;
+                   style="    float:right; margin-right: 10px;
                 width: 20px;
                 height: 20px;
-            cursor: pointer;"
+                cursor: pointer"
                    (click)="onCreateMail()"
                    id="addMail"
-                   *ngIf="mail != '' && customer.email_addresses.length < 6; else hidden"
+                   *ngIf=" email.valid && customer.email_addresses.length < 3; else hidden"
               >
-              <img src="../assets/img/removeIcon.png" style="margin-left: 30px;
-            cursor: pointer;
-             width: 20px;
-              height: 20px;"
-
-                   (click)="onDeleteMail()"
-              >
+              <ng-template #hidden>
+                <img src="../assets/img/addIcon.png" style="
+                width: 20px;
+                height: 20px;
+                opacity: 0"
+                >
+              </ng-template>
             </th>
-            </thead>
             <tr>
               <input class="input" id="email"
-                     [(ngModel)]="customer.email_addresses[customer.email_addresses.length -1].email" name="emails" [disabled]="loading">
+                     [(ngModel)]="mail" name="email" required #email="ngModel" [disabled]="loading">
+
             </tr>
-            <tr *ngFor="let mail of customer.email_addresses" class="spacer" >
-              {{mail.email}}
+              <tr *ngFor="let mail of customer.email_addresses" class="spacer">
+              <td>
+                {{mail.email}}
+                <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteMail(mail)"
+                >
+              </td>
             </tr>
           </table>
         </div>
@@ -132,17 +137,17 @@
           <input type="text" id="city" placeholder="stad" required
                  [(ngModel)]="customer.city" name="city"
                  [disabled]="loading">
+          <div class="buttons" style="padding-top: 1.5em">
+
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
+              <i class="fa fa-close"></i> Annuleren
+            </button>
+            <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+              Toevoegen
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="buttons">
-
-      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
-        <i class="fa fa-close"></i> Annuleren
-      </button>
-      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i> Opslaan
-      </button>
-      <app-alerts></app-alerts>
     </div>
   </form>
 </div>

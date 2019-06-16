@@ -1,4 +1,6 @@
-export class Supplier {
+import {BaseModel} from './base.model';
+
+export class Supplier implements BaseModel {
   public id: number;
   public name: string;
   public contactPerson: string;

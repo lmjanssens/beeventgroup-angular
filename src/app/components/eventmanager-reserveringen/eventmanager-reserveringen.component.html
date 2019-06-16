@@ -21,10 +21,10 @@
       <th *ngIf="currentUser.role === getRoles().INSTRUCTOR" class="tableSubscribeEvent"></th>
       <tr
         *ngFor="let order of orderList | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{order.eventid.name}}</td>
+        <td>{{order.events.name}}</td>
         <td>{{order.customerid.first_name}}</td>
         <td>{{order.dateorder}}</td>
-        <td>{{order.eventid.maxInstructors}}</td>
+        <td>{{order.events.maxInstructors}}</td>
         <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledEditButton" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
@@ -40,7 +40,7 @@
             </button>
           </td>
         </ng-template>
-        <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledDeleteButton" class="tableDelete">
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledDeleteButton" class="tableDelete">
           <button (click)="OnDelete(order.orderId)" style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
             class="fa fa-trash fa-2x"
             style="color: red;"></i></button>
@@ -53,7 +53,7 @@
               style="color: silver;"></i></button>
           </td>
         </ng-template>
-        <td *ngIf="order.orderId != null && currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
+        <td *ngIf="currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
           <button class="btn btn-outline-success" (click)="OnSubscribeToEvent(order.orderId, order.events.id);">Inschrijven voor evenement</button>
         </td>
 

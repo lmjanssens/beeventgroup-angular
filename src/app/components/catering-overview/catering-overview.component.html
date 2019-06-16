@@ -18,8 +18,8 @@
       <th class="tableCity">Plaats</th>
       <th class="tablePhone">Telefoon</th>
       <th class="tableNote">Notitie</th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete"></th>
+      <th class="tableEdit"></th>
+      <th class="tableDelete"></th>
       <tr
         *ngFor="let catering of tableFiller() | cateringFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{catering.cateringName}}</td>

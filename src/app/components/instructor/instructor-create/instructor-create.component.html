@@ -1,3 +1,82 @@
-<p>
-  instructor-create works!
-</p>
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 590px;">
+        <h3 style="padding: 0 0 1em">
+          Instructeur toevoegen
+        </h3>
+        <div class="containerTables">
+          <table class="telTable">
+            <th class="telefoons">Telefoon
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     minlength="10" maxlength="10"
+                     [(ngModel)]="instructor.phone_number" name="phone" required>
+            </tr>
+          </table>
+
+          <table class="mailTable">
+            <thead>
+            <th>Email
+            </th>
+            </thead>
+            <tr>
+              <input class="input" type="email" id="email"
+                     [(ngModel)]="instructor.email_address" name="email" email required>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <label class="col-sm-2" for="fname">Voornaam</label>
+          <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 [(ngModel)]="instructor.first_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="infix">Tussenvoegsel</label>
+          <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
+                 [(ngModel)]="instructor.infix">
+        </div>
+        <div style="padding: 0 0 2em">
+          <label class="col-sm-2" for="lname">Achternaam</label>
+          <input type="text" id="lname" name="lname" placeholder="achternaam" required
+
+                 [(ngModel)]="instructor.last_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="username">Gebruikersnaam</label>
+          <input type="text" id="username" name="address " placeholder="username" required
+
+                 [(ngModel)]="user.username">
+        </div>
+        <div>
+          <label class="col-sm-2" for="password">Wachtwoord</label>
+          <input type="password" id="password" name="password" placeholder="password" required
+
+                 [(ngModel)]="password1">
+        </div>
+
+        <div>
+          <label class="col-sm-2" for="password2">Herhaal Wachtwoord</label>
+          <input type="password" id="password2" name="password2" placeholder="password" required
+
+                 [(ngModel)]="password2">
+        </div>
+
+        <div class="buttons" style="padding-top: 5em">
+
+        <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/instructeursoverview">
+          <i class="fa fa-close"></i> Annuleren
+        </button>
+        <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+          Toevoegen
+        </button>
+      </div>
+
+      </div>
+    </div>
+  </form>
+</div>

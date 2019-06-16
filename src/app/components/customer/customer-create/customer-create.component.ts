@@ -6,7 +6,6 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../../globals';
-import {NavbarComponent} from '../../../navbar/navbar.component';
 import {AlertsService} from 'angular-alert-module';
 
 
@@ -26,16 +25,14 @@ export class CustomerCreateComponent implements OnInit {
   selectedItem;
 
 
-  constructor(private globals: Globals, private navbar: NavbarComponent,
-              private customerService: CustomerService, private router: Router, private alertService: AlertsService) {
+  constructor(private globals: Globals,
+              private customerService: CustomerService, private router: Router) {
   }
 
 
   ngOnInit() {
     this.globals.setHuidigePagina('klantenFormulier');
-    console.log(this.globals.getHuidigePagina());
-    this.customer = new Customer(null, '', '', '', '',
-      '', '', '', '', '', null, null, null);
+    this.customer = new Customer();
     this.customer.email_addresses = [];
     this.customer.phone_numbers = [];
     this.customer.customer_orders = [];
@@ -63,12 +60,21 @@ export class CustomerCreateComponent implements OnInit {
 
   onDeleteTel(tel) {
     this.customer.phone_numbers.splice(this.customer.phone_numbers.indexOf(tel), 1);
+    console.log(tel);
   }
 
   setGeslacht() {
     this.selectTag = document.getElementById('geslacht');
     this.selectedItem = this.selectTag.options[this.selectTag.selectedIndex].value;
     this.customer.gender = this.selectedItem;
+  }
+
+  toevoegAlert() {
+    if (this.customer.infix === undefined || this.customer.infix === '' || this.customer.infix === null) {
+      alert('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.');
+    } else {
+      alert('De klant ' + this.customer.first_name + ' ' + this.customer.infix + ' ' + this.customer.last_name + ' is toegevoegd.');
+    }
   }
 
   ngSubmit(f: NgForm) {
@@ -79,15 +85,12 @@ export class CustomerCreateComponent implements OnInit {
     this.newPhone = new CustomerPhone();
     this.newPhone.phonenumber = this.tel;
     this.customer.phone_numbers.push(this.newPhone);
-    const data = JSON.parse(JSON.stringify(this.customer)) as any;
+      const data = JSON.parse(JSON.stringify(this.customer)) as any;
     this.customerService.save(data).subscribe(() => {
-      setTimeout(() => {
-        this.router.navigate(['/homeeventmanager/customeroverview']
-        );
-      }, 1000);
+      this.router.navigate(['/homeeventmanager/customeroverview']);
     });
     (document.getElementById('submit') as HTMLInputElement).disabled = true;
-    this.alertService.setMessage('De klant ' + this.customer.first_name + ' ' + this.customer.last_name + ' is toegevoegd.', 'success');
+    this.toevoegAlert();
 
   }
 }

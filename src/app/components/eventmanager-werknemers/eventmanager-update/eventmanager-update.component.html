@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 550px;">
+        <h3 style="padding: 0 0 1em">
+          Eventmanager aanpassen
+        </h3>
+        <div class="containerTables">
+          <table class="telTable">
+            <th class="telefoons">Telefoons
+              <img src="../assets/img/addIcon.png"
+                   style="    float:right; margin-right: 10px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer"
+                   (click)="onCreateTel()"
+                   id="addTel"
+                   *ngIf="tel.length == 10 && tel != '' && employee.phone_numbers.length < 3; else hidden"
+              >
+              <ng-template #hidden>
+                <img src="../assets/img/addIcon.png" style="
+                width: 20px;
+                height: 20px;
+                opacity: 0"
+                >
+              </ng-template>
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel" >
+            </tr>
+            <tr *ngFor="let telephone of employee.phone_numbers" class="spacer">
+              <td>
+                {{telephone.phone}}
+                <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteTel()"
+                >
+              </td>
+            </tr>
+          </table>
+          <table>
+            <thead>
+            <th>Emails
+              <img src="../assets/img/addIcon.png"
+                   style="float:right; margin-right: 10px;
+                width: 23px;
+                height: 23px;
+            cursor: pointer;"
+                   (click)="onCreateMail()"
+                   id="addMail"
+                   *ngIf=" email.valid && mail != '' && employee.email_addresses.length < 3; else hidden"
+              >
+            </th>
+            </thead>
+            <tr>
+              <input class="input" id="email"
+                     [(ngModel)]="mail" name="emails" email required #email="ngModel">
+            </tr>
+            <tr *ngFor="let mail of employee.email_addresses">
+              <td>
+                {{mail.email}}
+                <img src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
+            cursor: pointer;
+             width: 20px;
+              height: 20px;"
+
+                     (click)="onDeleteMail(mail)"
+                >
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <label class="col-sm-2" for="fname">Voornaam</label>
+          <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 [(ngModel)]="employee.first_name">
+        </div>
+        <div>
+          <label class="col-sm-2" for="infix">Tussenvoegsel</label>
+          <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
+                 [(ngModel)]="employee.infix">
+        </div>
+        <div style="padding: 0 0 2em">
+          <label class="col-sm-2" for="lname">Achternaam</label>
+          <input type="text" id="lname" name="lname" placeholder="achternaam" required
+
+                 [(ngModel)]="employee.last_name">
+        </div>
+
+      </div>
+    </div>
+    <div class="buttons" style="margin-right: -5.5%">
+
+      <button class="btn btn-warning" style="margin-right: 10px"
+              routerLink="/homeeventmanager/werknemersoverview">
+        <i class="fa fa-close"></i> Annuleren
+      </button>
+      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+        Toevoegen
+      </button>
+    </div>
+  </form>
+</div>
