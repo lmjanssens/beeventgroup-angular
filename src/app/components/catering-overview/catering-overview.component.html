@@ -23,7 +23,7 @@
       <tr
         *ngFor="let catering of tableFiller() | cateringFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{catering.cateringName}}</td>
-        <td>{{catering.contactPerson}}</td>
+        <td>{{catering.contact_person}}</td>
         <td>{{catering.address}}</td>
         <td>{{catering.city}}</td>
         <td>{{catering.phone}}</td>

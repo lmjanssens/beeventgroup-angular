@@ -22,7 +22,7 @@
       <tr
         *ngFor="let supplier of tableFiller() | supplierFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{supplier.name}}</td>
-        <td>{{supplier.contactPerson}}</td>
+        <td>{{supplier.contact_person}}</td>
         <td>{{supplier.supervisor}}</td>
         <td>{{supplier.website}}</td>
         <td>{{supplier.note}}</td>
