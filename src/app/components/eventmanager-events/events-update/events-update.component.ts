@@ -71,9 +71,11 @@ export class EventsUpdateComponent implements OnInit {
 
   ngSubmit(f: NgForm) {
     this.setOwnEvent();
+    this.event.location = this.selectedLocation;
+    this.event.supplier = this.selectedSupplier;
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
-      this.eventService.updateEvent(data).subscribe(() => {
+      this.eventService.updateEvent(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
         this.router.navigate(['/homeeventmanager/evenementenoverview']);
         console.log(data);
       });
