@@ -3,7 +3,7 @@
 <div class="eventmanagerPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Werknemers Overzicht</h3>
   <div>
-    <button style="padding: 0.25em 1em 0.25em 1.5em"
+    <button *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em"
             routerLink="createeventmanager/">Nieuwe Eventmanager
       <i class="fa fa-plus-circle fa-lg"
          style="color: green; margin-left: 10px;"
@@ -18,20 +18,20 @@
       <th class="tableName">Naam</th>
       <th class="tablePhone">Telefoon</th>
       <th class="tableEmail">Email</th>
-      <th class="tableEdit"></th>
-      <th class="tableDelete"></th>
+      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
+      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete"></th>
       <tr
         *ngFor="let employee of employeeList | eventmanagerFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{employee.first_name}} {{employee.infix}} {{employee.last_name}}</td>
         <td>{{employee.phone_numbers[0].phone}}</td>
         <td>{{employee.email_addresses[0].email}}</td>
-        <td class="tableEdit">
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
             style="color: purple; " [routerLink]="['employeeedit/' + employee.employee_id]"></i>
           </button>
         </td>
-        <td class="tableDelete">
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete">
           <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"><i
             class="fa fa-trash fa-2x"
             style="color: red;" (click)="onDelete( employee.employee_id, employee.first_name,employee.last_name)"></i>

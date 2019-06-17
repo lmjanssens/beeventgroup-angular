@@ -48,10 +48,9 @@ export class HomepageComponent implements OnInit {
 
     if (this.currentUser != null && this.currentUser.role === Role.ADMIN || this.currentUser != null && this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager']);
+    } else if (this.currentUser != null && this.currentUser.role === Role.INSTRUCTOR) {
+      this.router.navigate(['/homeinstructor']);
     }
-    // else if (this.currentUser.role === Role.INSTRUCTOR) {
-    //   this.router.navigate([''])
-    // }
   }
 
 

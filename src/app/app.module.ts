@@ -29,7 +29,7 @@ import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {AlertsModule} from 'angular-alert-module';
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
@@ -42,11 +42,17 @@ import {AuthGuard} from './services/auth.guard.service';
 import {AuthorizationService} from './services/authorization.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorService} from './services/instructor.service';
-import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
-import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
+import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
+import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
+// import { DetailsComponent } from './components/customer/customer/details/details.component';
+// import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
+import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
-import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
-import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
+import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
+import {ReservationService} from "./services/reservation.service";
 
 @NgModule({
   declarations: [
@@ -71,11 +77,18 @@ import { CustomerDetailsComponent } from './components/customer/customer-details
     EventmanagerInstructeursComponent,
     InstructorFilterPipe,
     SupplierOverviewComponent,
-    CateringOverviewComponent,
     EventmanagerAgendaComponent,
+    CateringOverviewComponent,
+    EventsCreateComponent,
+    InstructorCreateComponent,
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent,
+    // DetailsComponent,
+    // CustomerDetailsComponent
+    InstructorCreateComponent,
+    HomepageInstructorComponent,
+    EventsUpdateComponent,
     EventmanagerCreateComponent,
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
@@ -98,7 +111,7 @@ import { CustomerDetailsComponent } from './components/customer/customer-details
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

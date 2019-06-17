@@ -3,8 +3,9 @@ import {EventImage} from './event-image.model';
 import {EventLocation} from './event-location.model';
 import {RegisteredEvents} from './registered-events.model';
 import {Supplier} from './supplier.model';
+import {BaseModel} from './base.model';
 
-export class Event {
+export class EventModel implements BaseModel {
   public id: number;
   public supplier: Supplier;
   public location: EventLocation;
@@ -21,11 +22,12 @@ export class Event {
   public priceBuyPerPerson: number;
   public btw: number;
   public note: string;
+  public maxInstructors: number;
 
   constructor(id: number, supplier: Supplier, location: EventLocation, order: Order, registeredEvents: RegisteredEvents[],
               eventImages: EventImage[], ownEvent: boolean, name: string, description: string, program: string,
               duration: string, options: string, pricePerPerson: number, priceBuyPerPerson: number,
-              btw: number, note: string) {
+              btw: number, note: string, maxInstructors: number) {
 
     this.id = id;
     this.supplier = supplier;
@@ -43,5 +45,6 @@ export class Event {
     this.priceBuyPerPerson = priceBuyPerPerson;
     this.btw = btw;
     this.note = note;
+    this.maxInstructors = maxInstructors;
   }
 }

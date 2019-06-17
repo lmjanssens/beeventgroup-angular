@@ -51,14 +51,14 @@ export class ApiService {
   public get<T>(path: string, queryParameters?: Object): Observable<any> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
-    return this.http.get<Object>(uri, { headers: headers });
+    return this.http.get<Object>(uri, {headers: headers});
   }
 
-  public post (path: string, object: Object, queryParameters?: Object): Observable<any> {
+  public post(path: string, object: Object, queryParameters?: Object): Observable<any> {
     const uri = this.createURI(path, queryParameters);
     const reqHeader = this.createRequestHeaders();
 
-    return this.http.post(uri, object, {headers : reqHeader});
+    return this.http.post(uri, object, {headers: reqHeader});
   }
 
   public put<T>(path: string, object: Object, queryParameters?: Object): Observable<any> {
@@ -66,14 +66,18 @@ export class ApiService {
 
     const reqHeader = this.createRequestHeaders();
 
-    return this.http.put(uri, object, { headers: reqHeader });
+    return this.http.put(uri, object, {headers: reqHeader});
   }
 
   public delete<T>(path: string, queryParameters?: Object): Observable<any> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
 
-    return this.http.delete(uri, { headers: headers });
+    return this.http.delete(uri, {headers: headers});
   }
 
+  public extractData(res: Response) {
+    const body = res;
+    return body || { };
+  }
 }

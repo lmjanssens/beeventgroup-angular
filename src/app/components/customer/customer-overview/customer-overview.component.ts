@@ -4,6 +4,8 @@ import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 import {CustomerService} from '../../../services/customer.service';
 import {Router} from '@angular/router';
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from "../../../enums/Role";
 
 @Component({
   selector: 'app-customer-overview',
@@ -19,7 +21,36 @@ export class CustomerOverviewComponent implements OnInit {
   searchTerm: string;
   customer: Customer;
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private router: Router, private customerService: CustomerService) {
+  currentUser: any;
+  authenticated = false;
+
+  constructor(private globals: Globals,
+              private navbar: NavbarComponent,
+              private router: Router,
+              private customerService: CustomerService,
+              private authService: AuthorizationService) {
+
+    this.authenticated = this.authService.hasAuthorization();
+
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   nullRemover(list) {
@@ -29,7 +60,7 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
-    console.log(list)
+    console.log(list);
     return list;
   }
 
@@ -55,10 +86,13 @@ export class CustomerOverviewComponent implements OnInit {
 
     }
     this.customerService.delete(id).subscribe(() => {
-      console.log(id);
-      console.log('Customer with id ' + id + ' is deleted.');
+      console.log('Customer with supplierid ' + id + ' is deleted.');
       this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));
     });
+  }
+
+  getRoles() {
+    return Role;
   }
 
 }
