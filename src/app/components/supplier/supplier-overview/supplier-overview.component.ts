@@ -1,11 +1,11 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import {Supplier} from '../../models/supplier.model';
-import {Globals} from '../globals';
-import {NavbarComponent} from '../../navbar/navbar.component';
-import {SupplierService} from '../../services/supplier.service';
+import {Supplier} from '../../../models/supplier.model';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
+import {SupplierService} from '../../../services/supplier.service';
 import {Router} from '@angular/router';
-import {AuthorizationService} from "../../services/authorization.service";
-import {Role} from "../../enums/Role";
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-supplier-overview',
@@ -19,14 +19,13 @@ export class SupplierOverviewComponent implements OnInit {
   firstPage = 1;
   itemsPerPage = 5;
   searchTerm: string;
-  emptySupplier: Supplier = new Supplier(null, '', '', '', '', '', '');
 
   currentUser: any;
   authenticated = false;
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private authService: AuthorizationService) {
+  constructor(private globals: Globals, private navbar: NavbarComponent,
+              private authService: AuthorizationService, private  supplierService: SupplierService) {
     this.authenticated = this.authService.hasAuthorization();
-
     this.authService.authorized$.subscribe(
       authorized => {
         this.updateAuthentication();
@@ -47,28 +46,13 @@ export class SupplierOverviewComponent implements OnInit {
     this.currentUser = this.authService.getAuthenticator();
   }
 
-  tableFiller() {
-    if (this.supplierList.length !== 0 && this.supplierList.length % this.itemsPerPage !== 0) {
-      this.rest = this.supplierList.length % this.itemsPerPage;
-      this.amountRows = this.itemsPerPage - this.rest;
-      while (this.teller < this.amountRows) {
-        this.supplierList.push(this.emptySupplier);
-        this.teller = this.teller + 1;
-  nullRemover(list) {
-    while (this.i < list.length) {
-      if (list[this.i].infix === null) {
-        list[this.i].infix = '';
-      }
-      this.i = this.i + 1;
-    }
-    console.log(list);
-    return list;
-  }
-
   ngOnInit() {
     this.globals.setHuidigePagina('Leveranciers');
     this.navbar.checkNavBarStyle();
-    this.supplierService.getAll().subscribe(supplier => this.supplierList = this.sortByName(this.nullRemover(supplier)));
+    this.supplierService.getAll().subscribe(supplier => {
+      this.supplierList = this.sortByName(supplier);
+      console.log(supplier);
+    });
   }
 
   sortByName(list) {
@@ -82,9 +66,10 @@ export class SupplierOverviewComponent implements OnInit {
     }
     this.supplierService.delete(supplierid).subscribe(() => {
       console.log('Supplier with supplierid ' + supplierid + ' is deleted.');
-      this.supplierService.getAll().subscribe(supplier => this.supplierList = this.sortByName(this.nullRemover(supplier)));
+      this.supplierService.getAll().subscribe(supplier => this.supplierList = this.sortByName(supplier));
     });
   }
+
   test(a) {
     console.log('TEST' + a);
   }

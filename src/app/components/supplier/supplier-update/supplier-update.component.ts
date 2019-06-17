@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {SupplierService} from '../../services/supplier.service';
+import {SupplierService} from '../../../services/supplier.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Supplier} from '../../models/supplier.model';
-import {SupplierEmail} from '../../models/supplier-email.model';
-import {SupplierPhone} from '../../models/supplier-phone.model';
+import {Supplier} from '../../../models/supplier.model';
+import {SupplierEmail} from '../../../models/supplier-email.model';
+import {SupplierPhone} from '../../../models/supplier-phone.model';
 import {NgForm} from '@angular/forms';
-import {Globals} from '../globals';
-import {SupplierAddress} from '../../models/supplier-address.model';
+import {Globals} from '../../globals';
+import {SupplierAddress} from '../../../models/supplier-address.model';
 
 @Component({
   selector: 'app-supplier-update',
@@ -48,8 +48,6 @@ export class SupplierUpdateComponent implements OnInit {
 
       });
     });
-    console.log(this.supplier.email_addresses);
-
   }
 
   onCreateMail() {

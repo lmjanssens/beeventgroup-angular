@@ -6,7 +6,7 @@ import {CustomerOverviewComponent} from './components/customer/customer-overview
 import {CustomerCreateComponent} from './components/customer/customer-create/customer-create.component';
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
-import {SupplierOverviewComponent} from './components/supplier-overview/supplier-overview.component';
+import {SupplierOverviewComponent} from './components/supplier/supplier-overview/supplier-overview.component';
 import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
@@ -17,8 +17,8 @@ import {HomepageInstructorComponent} from './components/homepage-instructor/home
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
 import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
-import {SupplierCreateComponent} from './components/supplier-create/supplier-create.component';
-import {SupplierUpdateComponent} from './components/supplier-update/supplier-update.component';
+import {SupplierCreateComponent} from './components/supplier/supplier-create/supplier-create.component';
+import {SupplierUpdateComponent} from './components/supplier/supplier-update/supplier-update.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
