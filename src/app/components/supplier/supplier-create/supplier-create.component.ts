@@ -1,4 +1,3 @@
-
 import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
@@ -8,7 +7,6 @@ import {SupplierAddress} from '../../../models/supplier-address.model';
 import {SupplierPhone} from '../../../models/supplier-phone.model';
 import {Globals} from '../../globals';
 import {SupplierService} from '../../../services/supplier.service';
-
 
 
 @Component({
@@ -65,7 +63,7 @@ export class SupplierCreateComponent implements OnInit {
   }
 
   toevoegAlert() {
-      alert('De leverancier ' + this.supplier.name + ' is toegevoegd.');
+    alert('De leverancier ' + this.supplier.name + ' is toegevoegd.');
   }
 
   ngSubmit(f: NgForm) {
@@ -82,10 +80,8 @@ export class SupplierCreateComponent implements OnInit {
     this.supplier.phone_numbers.push(this.newPhone);
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
     this.supplierService.save(data).subscribe(() => {
-      setTimeout(() => {
-        this.router.navigate(['/homeeventmanager/supplieroverview']
-        );
-      }, 1000);
+      this.router.navigate(['/homeeventmanager/supplieroverview']
+      );
     });
     (document.getElementById('submit') as HTMLInputElement).disabled = true;
     this.toevoegAlert();

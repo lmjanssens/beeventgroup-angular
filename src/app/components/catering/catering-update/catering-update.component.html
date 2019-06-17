@@ -44,8 +44,8 @@
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Leverancier</label>
-          <select id="supplier" name="supplier" [(ngModel)]="selectedSupplier" required>
-            <option *ngFor="let supplier of getSuppliers()" [ngValue]="supplier">
+          <select id="supplier" name="supplier" [(ngModel)]="selectedSupplier" [value]="catering.supplier.name" required>
+            <option *ngFor="let supplier of getSuppliers()">
               {{supplier.name}}
             </option>
           </select>

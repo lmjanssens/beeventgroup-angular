@@ -114,10 +114,8 @@ export class EventsCreateComponent implements OnInit {
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
       this.eventService.save(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
-        setTimeout(() => {
           this.router.navigate(['/homeeventmanager/evenementenoverview']
           );
-        }, 1000);
       });
       (document.getElementById('submit') as HTMLInputElement).disabled = true;
       this.alertService.setMessage('Het evenement ' + this.event.name + ' is toegevoegd.', 'success');

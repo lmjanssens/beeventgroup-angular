@@ -8,7 +8,7 @@ import {EventmanagerReserveringenComponent} from './components/eventmanager-rese
 import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier/supplier-overview/supplier-overview.component';
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
-import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
+import {EventmanagerEventmanagersComponent} from './components/werknemers/eventmanager-overview/eventmanager-eventmanagers.component';
 import {EventmanagerAgendaComponent} from './components/eventmanager-agenda/eventmanager-agenda.component';
 import {CustomerUpdateComponent} from './components/customer/customer-update/customer-update.component';
 import {AuthGuard} from './services/auth.guard.service';
@@ -20,11 +20,13 @@ import {SupplierCreateComponent} from './components/supplier/supplier-create/sup
 import {SupplierUpdateComponent} from './components/supplier/supplier-update/supplier-update.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
-import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
-import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import {EventmanagerCreateComponent} from './components/werknemers/eventmanager-create/eventmanager-create.component';
+import {EventmanagerUpdateComponent} from './components/werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
 import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
+import {CateringDetailsComponent} from './components/catering/catering-details/catering-details.component';
+import {CateringUpdateComponent} from './components/catering/catering-update/catering-update.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -41,6 +43,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/horecaoverview', component: CateringOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/horecaoverview/createcatering', component: CateringCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/horecaoverview/cateringedit/:id', component: CateringUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/horecaoverview/cateringdetails/:id', component: CateringDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview/createevenement', component: EventsCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview/eventedit', component: EventsUpdateComponent, canActivate: [AuthGuard]},

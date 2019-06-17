@@ -15,6 +15,7 @@ export class CateringOverviewComponent implements OnInit {
   firstPage = 1;
   itemsPerPage = 5;
   searchTerm: string;
+  catering: Catering;
 
   constructor(private globals: Globals, private navbar: NavbarComponent, private cateringService: CateringService) {
   }
