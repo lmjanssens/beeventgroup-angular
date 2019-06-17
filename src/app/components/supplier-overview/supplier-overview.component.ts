@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Supplier} from '../../models/supplier.model';
 import {Globals} from '../globals';
 import {NavbarComponent} from '../../navbar/navbar.component';
+import {SupplierService} from '../../services/supplier.service';
+import {Router} from '@angular/router';
 import {AuthorizationService} from "../../services/authorization.service";
 import {Role} from "../../enums/Role";
 
@@ -12,19 +14,10 @@ import {Role} from "../../enums/Role";
 })
 
 export class SupplierOverviewComponent implements OnInit {
-  public supplierList: Supplier[] = [
-    new Supplier(1, 'a.BV', 'Mark', 'A', 'Bueno.nl', 'Kakalaan 12', null),
-    new Supplier(2, 'b.BV', 'Joost', 'B', 'Winter.nl', 'Dolinchistraat 69', null),
-    new Supplier(3, 'c.BV', 'Bashar', 'C', 'Farah.nl', 'Burakisanka 44', null),
-    new Supplier(4, 'd.BV', 'Luuk', 'D', 'Janssens.nl', 'Patinchikito 2', null),
-    new Supplier(5, 'e.NV', 'Robin', 'E', 'Silverio.nl', 'Dolodenbocul 5', null),
-    new  Supplier(6, 'f.NV', 'Danny', 'F', 'Tol.nl', 'Loliawa 6', null)
-  ];
-  rest: number;
+  public supplierList: Supplier[] = [];
+  i = 0;
   firstPage = 1;
   itemsPerPage = 5;
-  teller = 0;
-  amountRows = 0;
   searchTerm: string;
   emptySupplier: Supplier = new Supplier(null, '', '', '', '', '', '');
 
@@ -61,17 +54,39 @@ export class SupplierOverviewComponent implements OnInit {
       while (this.teller < this.amountRows) {
         this.supplierList.push(this.emptySupplier);
         this.teller = this.teller + 1;
+  nullRemover(list) {
+    while (this.i < list.length) {
+      if (list[this.i].infix === null) {
+        list[this.i].infix = '';
       }
-      return this.supplierList;
-    } else {
-      return this.supplierList;
+      this.i = this.i + 1;
     }
+    console.log(list);
+    return list;
   }
 
   ngOnInit() {
     this.globals.setHuidigePagina('Leveranciers');
-    this.navbar.checkNavBarStyle()
-    console.log(this.globals.getHuidigePagina());
+    this.navbar.checkNavBarStyle();
+    this.supplierService.getAll().subscribe(supplier => this.supplierList = this.sortByName(this.nullRemover(supplier)));
+  }
+
+  sortByName(list) {
+    list.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    return list;
+  }
+
+  onDelete(supplierid, name) {
+    if (!confirm(`Wilt u de leverancier "${name}" verwijderen ?`)) {
+      return;
+    }
+    this.supplierService.delete(supplierid).subscribe(() => {
+      console.log('Supplier with supplierid ' + supplierid + ' is deleted.');
+      this.supplierService.getAll().subscribe(supplier => this.supplierList = this.sortByName(this.nullRemover(supplier)));
+    });
+  }
+  test(a) {
+    console.log('TEST' + a);
   }
 
   getRoles() {

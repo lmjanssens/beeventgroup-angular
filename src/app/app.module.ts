@@ -42,12 +42,13 @@ import {AuthGuard} from './services/auth.guard.service';
 import {AuthorizationService} from './services/authorization.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorService} from './services/instructor.service';
-import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
-import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
-// import { DetailsComponent } from './components/customer/customer/details/details.component';
-// import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
-import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
+import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
+import { SupplierDetailsComponent } from './components/supplier-details/supplier-details.component';
+import { SupplierUpdateComponent } from './components/supplier-update/supplier-update.component';
+import { SupplierCreateComponent } from './components/supplier-create/supplier-create.component';
+import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
+import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
 import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
@@ -84,9 +85,10 @@ import {ReservationService} from "./services/reservation.service";
     CustomerUpdateComponent,
     InstructorCreateComponent,
     InstructorUpdateComponent,
-    // DetailsComponent,
-    // CustomerDetailsComponent
-    InstructorCreateComponent,
+    InstructorDetailsComponent,
+    SupplierCreateComponent,
+    SupplierUpdateComponent,
+    SupplierDetailsComponent,
     HomepageInstructorComponent,
     EventsUpdateComponent,
     EventmanagerCreateComponent,
