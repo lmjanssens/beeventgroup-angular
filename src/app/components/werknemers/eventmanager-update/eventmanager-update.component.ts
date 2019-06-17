@@ -57,7 +57,7 @@ export class EventmanagerUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globals.setHuidigePagina('instructeurFormulier');
+    this.globals.setHuidigePagina('werknemerFormulier');
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.employeeId;

@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 550px;">
+        <h3 style="padding: 0 0 1em">
+          Eventmanager Overzicht
+        </h3>
+        <div class="containerTables">
+          <table>
+            <thead>
+            <th class="telefoons">Telefoons
+            </th>
+            </thead>
+            <tr *ngFor="let tel of employee.phone_numbers">
+              <td>
+                {{tel.phone}}
+              </td>
+            </tr>
+          </table>
+          <table>
+            <thead>
+            <th>Emails
+            </th>
+            </thead>
+            <tr *ngFor="let mail of employee.email_addresses">
+              <td>
+                {{mail.email}}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <div>
+            <label class="col-sm-2" for="fname">Voornaam</label>
+            <input type="text" id="fname" name="fname" placeholder="voornaam" disabled
+                   [(ngModel)]="employee.first_name">
+          </div>
+          <div>
+            <label class="col-sm-2" for="infix">Tussenvoegsel</label>
+            <input type="text" id="infix" name="infix" disabled
+                   [(ngModel)]="employee.infix">
+          </div>
+          <div style="padding: 0 0 2em">
+            <label class="col-sm-2" for="lname">Achternaam</label>
+            <input type="text" id="lname" name="lname" disabled
+
+                   [(ngModel)]="employee.last_name">
+          </div>
+          <div>
+            <label class="col-sm-2" for="username">Gebruikersnaam</label>
+            <input type="text" id="username" name="address" disabled
+
+                   [(ngModel)]="employee.user_id.username">
+          </div>
+        </div>
+      </div>
+      <div class="buttons" style="margin-top: 0.5em">
+
+        <button style="background-color: red; color: white" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
+          <i class="fa fa-trash"></i> Verwijderen
+        </button>
+        <button style="background-color: #651BC8" class="btn btn-primary" [routerLink]="['/homeeventmanager/werknemersoverview/employeeedit/' + employee.employee_id]"><i class="fa fa-pencil"></i>
+          Bewerken
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

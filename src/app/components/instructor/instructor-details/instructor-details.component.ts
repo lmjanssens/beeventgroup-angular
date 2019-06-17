@@ -4,6 +4,7 @@ import {User} from '../../../models/user.model';
 import {InstructorService} from '../../../services/instructor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-instructor-details',
@@ -18,7 +19,7 @@ export class InstructorDetailsComponent implements OnInit {
   currentId: number;
 
   constructor(private instructorService: InstructorService,
-              private route: ActivatedRoute, private router: Router, private globals: Globals) {
+              private route: ActivatedRoute, private router: Router, private globals: Globals, private location: Location) {
   }
 
   ngOnInit() {
@@ -33,4 +34,12 @@ export class InstructorDetailsComponent implements OnInit {
     });
   }
 
+  onDelete() {
+    if (!confirm(`Wilt u de instructeur "${this.instructor.first_name + ' ' + this.instructor.last_name}" verwijderen ?`)) {
+      return;
+    }
+    this.instructorService.delete(this.currentId).subscribe(() => {
+      this.location.back();
+    });
+  }
 }
