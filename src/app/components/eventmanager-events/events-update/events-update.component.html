@@ -1,0 +1,102 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+    <div class="page-content">
+      <div style="height: 590px;">
+        <h3>
+          Evenement bewerken
+        </h3>
+        <div>
+          <label for="name" class="col-sm-2">Naam</label>
+          <input type="text" id="name" name="name" placeholder="Naam" required
+                 [(ngModel)]="event.name"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="maxInstructors">Hoeveel instructeurs?</label>
+          <input type="number" id="maxInstructors" name="maxInstructors" placeholder="Max. instructeurs"
+                 [(ngModel)]="event.maxInstructors"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="btw">BTW</label>
+          <input type="text" id="btw" name="btw" placeholder="BTW"
+                 [(ngModel)]="event.btw"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="duration">Tijdsduur</label>
+          <input type="text" id="duration" name="duration" placeholder="Tijdsduur" required
+                 [(ngModel)]="event.duration"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="pricePerPerson">Prijs per persoon</label>
+          <input type="text" id="pricePerPerson" name="pricePerPerson" placeholder="Prijs per persoon" required
+                 [(ngModel)]="event.pricePerPerson"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="program">Programma</label>
+          <input type="text" id="program" name="program" placeholder="Programma" required
+                 [(ngModel)]="event.program"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="description">Beschrijving</label>
+          <input type="text" id="description" name="description" placeholder="Beschrijving" required
+                 [(ngModel)]="event.description"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="options">Opties</label>
+          <input type="text" id="options" name="options" placeholder="Opties"
+                 [(ngModel)]="event.options"
+                 [disabled]="loading">
+        </div>
+        <div>
+          <label class="col-sm-2" for="note">Notities</label>
+          <input type="text" id="note" name="note" placeholder="Notities"
+                 [(ngModel)]="event.note"
+                 [disabled]="loading">
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Eigen evenement?</label>
+          <select id="ownEvent" required>
+            <option value="true">Ja</option>
+            <option value="false">Nee</option>
+          </select>
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Leverancier</label>
+          <select id="supplier" name="supplier"
+                  [(ngModel)]="selectedSupplier" required
+                  [disabled]="loading">
+            <option *ngFor="let supplier of getSuppliers()" [ngValue]="supplier">
+              {{supplier.name}}
+            </option>
+          </select>
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Locatie</label>
+          <select id="location" name="location"
+                  [(ngModel)]="selectedLocation" required
+                  [disabled]="loading">
+            <option *ngFor="let eventLocation of getEventLocations()" [ngValue]="eventLocation">
+              {{eventLocation.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/evenementenoverview">
+        <i class="fa fa-close"></i> Annuleren
+      </button>
+      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+        Toevoegen
+      </button>
+      <app-alerts></app-alerts>
+    </div>
+  </form>
+</div>

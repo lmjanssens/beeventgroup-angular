@@ -13,12 +13,12 @@ export class CateringFilterPipe implements PipeTransform {
     }
     return item.filter(catering => {
       const naam = catering.cateringName.toLowerCase().includes(searchTerm.toLowerCase());
-      const contactPerson = catering.contactPerson.toLowerCase().includes(searchTerm.toLowerCase());
+      const contactPerson = catering.contact_person.toLowerCase().includes(searchTerm.toLowerCase());
       const address = catering.address.toLowerCase().includes(searchTerm.toLowerCase());
       const city = catering.city.toLowerCase().includes(searchTerm.toLowerCase());
       // const phone = catering.phone.toLowerCase().includes(searchTerm.toLowerCase());
       // const note = catering.note.toLowerCase().includes(searchTerm.toLowerCase());
-      // return (naam + contactPerson + address + city + phone + note);
+      // return (naam + contact_person + address + city + phone + note);
       return (naam + contactPerson + address + city);
 
     });

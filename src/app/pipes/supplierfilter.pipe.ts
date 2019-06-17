@@ -13,7 +13,7 @@ export class SupplierFilterPipe implements PipeTransform {
     }
     return item.filter(supplier => {
       const naam = supplier.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const contactPerson = supplier.contactPerson.toLowerCase().includes(searchTerm.toLowerCase());
+      const contactPerson = supplier.contact_person.toLowerCase().includes(searchTerm.toLowerCase());
       const supervisor = supplier.supervisor.toLowerCase().includes(searchTerm.toLowerCase());
       const website = supplier.website.toLowerCase().includes(searchTerm.toLowerCase());
       const note = supplier.note.toLowerCase().includes(searchTerm.toLowerCase());
