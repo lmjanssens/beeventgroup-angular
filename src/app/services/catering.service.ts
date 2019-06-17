@@ -4,6 +4,8 @@ import {Customer} from '../models/customer.model';
 import {first, retry, tap} from 'rxjs/operators';
 import {ApiService} from './api.service';
 import {Catering} from '../models/catering.model';
+import {SupplierOverviewComponent} from '../components/supplier/supplier-overview/supplier-overview.component';
+import {Supplier} from '../models/supplier.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +32,9 @@ export class CateringService {
     return this.apiService.put<Catering>(uri + updatedCatering.id, updatedCatering);
   }
 
-  save(catering: any): Observable<object> {
-    const uri = 'customers';
-    return this.apiService.post(uri, catering);
+  save(catering: any, supplier: Supplier): Observable<object> {
+    const uri = 'caterings';
+    return this.apiService.post(uri + '/' + supplier.supplierid, catering);
   }
 
 
