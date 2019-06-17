@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 <div class="eventmanagerPage" style="padding: 3em 0 0 3em">
-  <h3 style="padding-bottom: 2em">Werknemers Overzicht</h3>
+  <h3 style="padding-bottom: 2em">Werknemers</h3>
   <div>
     <button *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em"
             routerLink="createeventmanager/">Nieuwe Eventmanager
