@@ -10,12 +10,13 @@
       ></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
-           style="background-image: url('../../../assets/img/search icon.png');"
+           style="background-image: url('../../../../assets/img/search icon.png');"
            type="text">
   </div>
   <div class="fullTable" style="padding-top: 2em;">
     <table>
       <th class="tableName">Naam</th>
+      <th class="tableUser">Gebruikersnaam</th>
       <th class="tablePhone">Telefoon</th>
       <th class="tableEmail">Email</th>
       <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
@@ -23,6 +24,7 @@
       <tr
         *ngFor="let employee of employeeList | eventmanagerFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{employee.first_name}} {{employee.infix}} {{employee.last_name}}</td>
+        <td>{{employee.user_id.username}}</td>
         <td>{{employee.phone_numbers[0].phone}}</td>
         <td>{{employee.email_addresses[0].email}}</td>
         <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit">
