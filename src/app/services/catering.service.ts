@@ -27,9 +27,9 @@ export class CateringService {
     return this.apiService.get(uri, id).pipe(first());
   }
 
-  updateCustomer(updatedCatering: Catering): Observable<Catering> {
+  updateCatering(updatedCatering: Catering, supplier: Supplier): Observable<Catering> {
     const uri = 'caterings/';
-    return this.apiService.put<Catering>(uri + updatedCatering.id, updatedCatering);
+    return this.apiService.put<Catering>(uri + updatedCatering.id + '/' + supplier.supplierid, updatedCatering);
   }
 
   save(catering: any, supplier: Supplier): Observable<object> {

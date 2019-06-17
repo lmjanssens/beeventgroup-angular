@@ -22,14 +22,14 @@
       <th class="tableDelete"></th>
       <tr
         *ngFor="let catering of cateringList | cateringFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{catering.cateringName}}</td>
-        <td>{{catering.contactPerson}}</td>
-        <td>{{catering.address}}</td>
-        <td>{{catering.city}}</td>
-        <td>{{catering.phone}}</td>
-        <td>{{catering.supplier.name}}</td>
+        <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.cateringName}}</td>
+        <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.contactPerson}}</td>
+        <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.address}}</td>
+        <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.city}}</td>
+        <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.phone}}</td>
+        <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.supplier.name}}</td>
         <td *ngIf="catering.id != null; else disabledEditButton" class="tableEdit">
-          <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
+          <button [routerLink]="['cateringedit/' + catering.id]" style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
             style="color: purple; "></i>
           </button>

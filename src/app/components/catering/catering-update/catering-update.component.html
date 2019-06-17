@@ -1,0 +1,91 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 590px;">
+        <h3>
+          Horeca toevoegen
+        </h3>
+        <div class="containerTables">
+          <table class="telTable">
+            <th class="telefoons">Telefoons
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     [(ngModel)]="catering.phone" name="phone" required minlength="10" maxlength="10"
+                     placeholder="telefoonnummer">
+            </tr>
+          </table>
+          <br>
+          <table>
+            <th class="noteHeader"><label class="col-sm-2">Notitie</label>
+            </th>
+            <tr>
+              <td>
+                <textarea name="note" type="text" [(ngModel)]="catering.note"></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+
+          <label for="name" class="col-sm-2">Naam</label>
+          <input type="text" id="name" name="name" placeholder="naam" required
+                 [(ngModel)]="catering.cateringName">
+
+        </div>
+        <div>
+          <label class="col-sm-2" for="fname">Contactpersoon</label>
+          <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 [(ngModel)]="catering.contactPerson">
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Leverancier</label>
+          <select id="supplier" name="supplier" [(ngModel)]="selectedSupplier" [value]="catering.supplier.name" required>
+            <option *ngFor="let supplier of getSuppliers()">
+              {{supplier.name}}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label class="col-sm-2" for="address">Horecaprijs</label>
+          <input type="text" id="price" name="price" placeholder="horecaprijs" required
+
+                 [(ngModel)]="catering.cateringPrice">
+        </div>
+
+        <div>
+          <label class="col-sm-2" for="address">Adres</label>
+          <input type="text" id="address" name="address " placeholder="adres" required
+
+                 [(ngModel)]="catering.address">
+        </div>
+
+        <div>
+          <label class="col-sm-2" for="zipcode">Postcode</label>
+          <input type="text" id="zipcode" name="zipode" placeholder="postcode" required
+
+                 [(ngModel)]=catering.zipcode>
+        </div>
+
+        <div>
+          <label class=" col-sm-2" for="city">Stad</label>
+          <input type="text" id="city" placeholder="stad" required
+                 [(ngModel)]="catering.city" name="city">
+        </div>
+        <div class="buttons" style="padding-top: 1em">
+
+          <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/horecaoverview">
+            <i class="fa fa-close"></i> Annuleren
+          </button>
+          <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+            Toevoegen
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -56,6 +56,8 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
 import {CateringService} from './services/catering.service';
 import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
 import {ReservationService} from "./services/reservation.service";
+import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
+import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import {ReservationService} from "./services/reservation.service";
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
     CustomerDetailsComponent,
-    CateringCreateComponent
+    CateringCreateComponent,
+    CateringDetailsComponent,
+    CateringUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +120,7 @@ import {ReservationService} from "./services/reservation.service";
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService, CateringService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
