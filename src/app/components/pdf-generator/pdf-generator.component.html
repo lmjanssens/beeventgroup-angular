@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
-<div style="margin-top: 75px; position: relative;">
-<div style="position:absolute;left:50%;margin-left:-421px;top:0px;width:842px;height:595px;border-style:outset;overflow:hidden">
+<div style="margin-top: 75px; position: relative;" >
+<div style="position:absolute;left:50%;margin-left:-421px;top:0px;width:842px;height:595px;border-style:outset;overflow:hidden" id="content" #content>
   <div style="position:absolute;left:0px;top:0px">
     <img src="../assets/img/background1.jpg" width=842 height=595></div>
   <div style="position:absolute;left:369.92px;top:43.40px" class="cls_002"><span class="cls_002">Offerte voor:</span></div>
@@ -130,4 +130,5 @@
   <div style="position:absolute;left:340.06px;top:524.44px" class="cls_007"><span class="cls_007">Deze optie/offerte is geldig tm:</span></div>
   <div style="position:absolute;left:685.25px;top:524.44px" class="cls_007"><span class="cls_007">Telefoonnummer:</span></div>
 </div>
+  <button class="btn btn-primary" (click)="downloadPDF()">Downloaden als naar pdf</button>
 </div>
