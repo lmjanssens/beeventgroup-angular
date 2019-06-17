@@ -32,7 +32,7 @@ export class EventmanagerCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.globals.setHuidigePagina('klantenFormulier');
+    this.globals.setHuidigePagina('werknemerFormulier');
   }
 
   ngSubmit(f: NgForm) {

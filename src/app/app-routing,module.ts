@@ -27,6 +27,7 @@ import {CateringOverviewComponent} from './components/catering/catering-overview
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
 import {CateringDetailsComponent} from './components/catering/catering-details/catering-details.component';
 import {CateringUpdateComponent} from './components/catering/catering-update/catering-update.component';
+import {WerknemersDetailsComponent} from './components/werknemers/werknemers-details/werknemers-details.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -80,6 +81,11 @@ const appRoutes: Routes = [
   {
     path: 'homeeventmanager/werknemersoverview/employeeedit/:employeeId',
     component: EventmanagerUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'homeeventmanager/werknemersoverview/employeedetails/:employeeId',
+    component: WerknemersDetailsComponent,
     canActivate: [AuthGuard]
   },
 

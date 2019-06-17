@@ -4,6 +4,7 @@ import {Globals} from '../../globals';
 import {Catering} from '../../../models/catering.model';
 import {Supplier} from '../../../models/supplier.model';
 import {CateringService} from '../../../services/catering.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-catering-details',
@@ -17,7 +18,7 @@ export class CateringDetailsComponent implements OnInit {
   currentId: number;
 
   constructor(private cateringService: CateringService,
-              private route: ActivatedRoute, private router: Router, private globals: Globals) {
+              private route: ActivatedRoute, private router: Router, private globals: Globals, private location: Location) {
   }
 
   ngOnInit() {
@@ -32,4 +33,12 @@ export class CateringDetailsComponent implements OnInit {
     });
   }
 
+  onDelete() {
+    if (!confirm(`Wilt u de horeca "${this.catering.cateringName}" verwijderen ?`)) {
+      return;
+    }
+    this.cateringService.delete(this.currentId).subscribe(() => {
+      this.location.back();
+    });
+  }
 }

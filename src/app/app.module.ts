@@ -58,6 +58,7 @@ import {HomepageInstructorComponent} from "./components/homepage-instructor/home
 import {ReservationService} from "./services/reservation.service";
 import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
 import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
+import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { CateringUpdateComponent } from './components/catering/catering-update/c
     CustomerDetailsComponent,
     CateringCreateComponent,
     CateringDetailsComponent,
-    CateringUpdateComponent
+    CateringUpdateComponent,
+    WerknemersDetailsComponent
   ],
   imports: [
     BrowserModule,

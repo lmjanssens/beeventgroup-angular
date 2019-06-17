@@ -73,13 +73,16 @@
           <input type="text" id="city" placeholder="stad" disabled
                  [(ngModel)]="catering.city" name="city">
         </div>
-        <div class="buttons" style="padding-top: 1em">
+        <div class="buttons" style="margin-top: 4em">
 
-          <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/horecaoverview">
-            <i class="fa fa-close"></i> Annuleren
+          <button style="background-color: red; color: white" class="btn btn-danger" style="margin-right: 10px"
+                  (click)="onDelete()">
+            <i class="fa fa-trash"></i> Verwijderen
           </button>
-          <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
-            Toevoegen
+          <button style="background-color: #651BC8" class="btn btn-primary"
+                  [routerLink]="['/homeeventmanager/horecaoverview/cateringedit/' + catering.id]"><i
+            class="fa fa-pencil"></i>
+            Bewerken
           </button>
         </div>
       </div>
