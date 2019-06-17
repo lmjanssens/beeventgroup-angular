@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Catering} from '../../../models/catering.model';
+import {Globals} from '../../globals';
+import {Router} from '@angular/router';
+import {CateringService} from '../../../services/catering.service';
 
 @Component({
   selector: 'app-catering-create',
@@ -6,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catering-create.component.css']
 })
 export class CateringCreateComponent implements OnInit {
+  private catering: Catering;
 
-  constructor() { }
+  constructor(private globals: Globals,
+              private cateringService: CateringService, private router: Router) {
+  }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('horecaFormulier');
+    this.catering = new Catering();
   }
 
 }

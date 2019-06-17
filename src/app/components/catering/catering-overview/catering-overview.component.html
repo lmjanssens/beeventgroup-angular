@@ -3,7 +3,7 @@
 <div class="horecaPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Horeca</h3>
   <div>
-    <button style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Horeca<i class="fa fa-plus-circle fa-lg"
+    <button style="padding: 0.25em 1em 0.25em 1.5em" routerLink="createcatering">Nieuwe Horeca<i class="fa fa-plus-circle fa-lg"
                                                                           style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
@@ -21,7 +21,7 @@
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
       <tr
-        *ngFor="let catering of tableFiller() | cateringFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+        *ngFor="let catering of cateringList | cateringFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{catering.cateringName}}</td>
         <td>{{catering.contactPerson}}</td>
         <td>{{catering.address}}</td>

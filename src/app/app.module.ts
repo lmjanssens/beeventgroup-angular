@@ -48,6 +48,7 @@ import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/
 import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
 import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
+import {CateringService} from './services/catering.service';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,7 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, CateringService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

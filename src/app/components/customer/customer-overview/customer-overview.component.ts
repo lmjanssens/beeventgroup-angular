@@ -29,7 +29,6 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
-    console.log(list)
     return list;
   }
 
@@ -50,13 +49,10 @@ export class CustomerOverviewComponent implements OnInit {
 
   onDelete(id, lastName, firstName) {
     if (!confirm(`Wilt u de klant "${firstName + ' ' + lastName}" verwijderen ?`)) {
-      console.log(id);
       return;
 
     }
     this.customerService.delete(id).subscribe(() => {
-      console.log(id);
-      console.log('Customer with id ' + id + ' is deleted.');
       this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));
     });
   }
