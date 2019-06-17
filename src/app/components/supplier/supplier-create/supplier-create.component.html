@@ -1,10 +1,12 @@
 <app-header></app-header>
 <div class="page">
   <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
     <div class="page-content">
+
       <div style="height: 590px;">
         <h3>
-          Klant toevoegen
+          Leverancier toevoegen
         </h3>
         <div class="containerTables">
           <table class="telTable">
@@ -16,7 +18,7 @@
                 cursor: pointer"
                    (click)="onCreateTel()"
                    id="addTel"
-                   *ngIf="tel.length == 10 && tel != '' && customer.phone_numbers.length < 3; else hidden"
+                   *ngIf="tel.length == 10 && tel != '' && supplier.phone_numbers.length < 3; else hidden"
               >
               <ng-template #hidden>
                 <img src="../assets/img/addIcon.png" style="
@@ -30,9 +32,9 @@
               <input class="input" id="phone"
                      [(ngModel)]="tel " name="phones" required minlength="10" maxlength="10">
             </tr>
-            <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
+            <tr *ngFor="let tel of supplier.phone_numbers" class="spacer">
               <td>
-                {{tel.phonenumber}}
+                {{tel.phone}}
                 <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
             cursor: pointer;width: 20px;
                 height: 20px;" (click)="onDeleteTel(tel)"
@@ -50,7 +52,7 @@
             cursor: pointer;"
                    (click)="onCreateMail()"
                    id="addMail"
-                   *ngIf=" email.valid && mail != '' && customer.email_addresses.length < 3; else hidden"
+                   *ngIf=" email.valid && mail != '' && supplier.email_addresses.length < 3; else hidden"
               >
             </th>
             </thead>
@@ -58,7 +60,7 @@
               <input class="input" id="email"
                      [(ngModel)]="mail" name="emails" email required #email="ngModel">
             </tr>
-            <tr *ngFor="let mail of customer.email_addresses">
+            <tr *ngFor="let mail of supplier.email_addresses">
               <td>
                 {{mail.email}}
                 <img src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
@@ -74,69 +76,64 @@
         </div>
         <div>
 
-          <label for="title" class="col-sm-2">Title</label>
-          <input type="text" id="title" name="title" placeholder="title" required
-                 [(ngModel)]="customer.title">
+          <label for="name" class="col-sm-2">Naam</label>
+          <input type="text" id="name" name="name" placeholder="Naam" required
+                 [(ngModel)]="supplier.name">
 
         </div>
         <div>
-          <label class="col-sm-2" for="fname">Voornaam</label>
-          <input type="text" id="fname" name="fname" placeholder="voornaam" required
-                 [(ngModel)]="customer.first_name">
-        </div>
-        <div>
-          <label class="col-sm-2" for="infix">Tussenvoegsel</label>
-          <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
-                 [(ngModel)]="customer.infix">
-        </div>
-        <div>
-          <label class="col-sm-2" for="lname">Achternaam</label>
-          <input type="text" id="lname" name="lname" placeholder="achternaam" required
-
-                 [(ngModel)]="customer.last_name">
-        </div>
-        <div>
-          <label class="col-sm-2" for="address">Adres</label>
-          <input type="text" id="address" name="address " placeholder="adres" required
-
-                 [(ngModel)]="customer.address">
+          <label class="col-sm-2" for="contactperson">Contactpersoon</label>
+          <input type="text" id="contactperson" name="contactperson" placeholder="Contactpersoon" required
+                 [(ngModel)]="supplier.contact_person">
         </div>
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
-          <input type="text" id="zipcode" name="zipcode" placeholder="postcode" required
-
-                 [(ngModel)]="customer.zipcode">
+          <input type="text" id="zipcode" name="zipcode" placeholder="Postcode" required
+                 [(ngModel)]="zipcode">
         </div>
         <div>
-          <label class="col-sm-2" for="country">Land</label>
-          <input type="text" id="country" name="country" placeholder="land" required
-
-                 [(ngModel)]="customer.country">
-        </div>
-        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
-          <label class="col-sm-2">Geslacht</label>
-          <select id="geslacht" required>
-            <option value="m">Man</option>
-            <option value="v">Vrouw</option>
-          </select>
-
+          <label class="col-sm-2" for="address">Adres</label>
+          <input type="text" id="address" name="address" placeholder="Adres" required
+                 [(ngModel)]="address">
         </div>
         <div>
-          <label class=" col-sm-2" for="city">Stad</label>
-          <input type="text" id="city" placeholder="stad" required
-                 [(ngModel)]="customer.city" name="city">
+          <label class="col-sm-2" for="city">Stad</label>
+          <input type="text" id="city" name="city" placeholder="Stad"
+                 [(ngModel)]="city" required>
+        </div>
+        <div>
+          <label class="col-sm-2" for="supervisor">Leidinggevende</label>
+          <input type="text" id="supervisor" name="supervisor" placeholder="Leidinggevende"
+                 [(ngModel)]="supplier.supervisor">
+        </div>
+        <div>
+          <label class="col-sm-2" for="website">Website</label>
+          <input type="text" id="website" name="website" placeholder="Website"
 
+                 [(ngModel)]="supplier.website">
+        </div>
+        <div>
+          <label class="col-sm-2" for="note">Notitie</label>
+          <input type="text" id="note" name="note " placeholder="Notitie"
+
+                 [(ngModel)]="supplier.note">
+        </div>
+        <div>
+          <label class="col-sm-2" for="image">Image</label>
+          <input type="text" id="image" name="image" placeholder="Image"
+
+                 [(ngModel)]="supplier.image">
+        </div>
           <div class="buttons" style="padding-top: 1em">
-
-            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/customeroverview">
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/supplieroverview">
               <i class="fa fa-close"></i> Annuleren
             </button>
             <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
               Toevoegen
             </button>
           </div>
-        </div>
       </div>
     </div>
   </form>
 </div>
+

@@ -127,7 +127,7 @@
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Geslacht</label>
-          <select id="geslacht" [disabled]="loading" required>
+          <select id="geslacht" [disabled]="loading" [value]="customer.gender" required>
             <option value="m">Man</option>
             <option value="v">Vrouw</option>
           </select>

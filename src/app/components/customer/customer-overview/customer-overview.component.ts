@@ -5,7 +5,7 @@ import {NavbarComponent} from '../../../navbar/navbar.component';
 import {CustomerService} from '../../../services/customer.service';
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../../../services/authorization.service';
-import {Role} from "../../../enums/Role";
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-customer-overview',
@@ -60,7 +60,6 @@ export class CustomerOverviewComponent implements OnInit {
       }
       this.i = this.i + 1;
     }
-    console.log(list);
     return list;
   }
 
@@ -81,12 +80,9 @@ export class CustomerOverviewComponent implements OnInit {
 
   onDelete(id, lastName, firstName) {
     if (!confirm(`Wilt u de klant "${firstName + ' ' + lastName}" verwijderen ?`)) {
-      console.log(id);
       return;
-
     }
     this.customerService.delete(id).subscribe(() => {
-      console.log('Customer with supplierid ' + id + ' is deleted.');
       this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));
     });
   }
