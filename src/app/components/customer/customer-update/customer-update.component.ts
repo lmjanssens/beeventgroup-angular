@@ -32,9 +32,9 @@ export class CustomerUpdateComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params['customerId'];
-      console.log(this.currentId);
       this.customerService.getById(this.currentId).subscribe(customer => {
         this.customer = customer;
+        console.log(customer)
         this.tel = this.customer.phone_numbers[0].phonenumber;
         this.mail = this.customer.email_addresses[0].email;
 
@@ -70,12 +70,14 @@ export class CustomerUpdateComponent implements OnInit {
   setGeslacht() {
     this.selectTag = document.getElementById('geslacht');
     this.selectedItem = this.selectTag.options[this.selectTag.selectedIndex].value;
+    this.customer.gender = this.selectedItem;
   }
 
   ngSubmit(f: NgForm) {
     this.setGeslacht();
 
     const data = <any>JSON.parse(JSON.stringify(this.customer));
+    console.log(data);
     this.customerService.updateCustomer(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     });

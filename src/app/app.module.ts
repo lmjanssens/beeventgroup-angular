@@ -24,7 +24,7 @@ import {EventmanagerEventsComponent} from './components/eventmanager-events/even
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
 import {SupplierOverviewComponent} from './components/supplier/supplier-overview/supplier-overview.component';
 import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
-import {CateringOverviewComponent} from './components/catering-overview/catering-overview.component';
+import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
 import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
@@ -50,8 +50,10 @@ import { SupplierCreateComponent } from './components/supplier/supplier-create/s
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
-import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
-import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
+import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
+import {CateringService} from './services/catering.service';
 import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
 import {ReservationService} from "./services/reservation.service";
 
@@ -94,7 +96,8 @@ import {ReservationService} from "./services/reservation.service";
     EventmanagerCreateComponent,
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    CateringCreateComponent
   ],
   imports: [
     BrowserModule,
