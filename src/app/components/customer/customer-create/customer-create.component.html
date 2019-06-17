@@ -1,9 +1,7 @@
 <app-header></app-header>
 <div class="page">
   <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
-
     <div class="page-content">
-
       <div style="height: 590px;">
         <h3>
           Klant toevoegen
@@ -105,7 +103,7 @@
         </div>
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
-          <input type="text" id="zipcode" name="zipode" placeholder="postcode" required
+          <input type="text" id="zipcode" name="zipcode" placeholder="postcode" required
 
                  [(ngModel)]="customer.zipcode">
         </div>

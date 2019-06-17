@@ -1,0 +1,139 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 590px;">
+        <h3>
+          Leverancier toevoegen
+        </h3>
+        <div class="containerTables">
+          <table class="telTable">
+            <th class="telefoons">Telefoons
+              <img src="../assets/img/addIcon.png"
+                   style="    float:right; margin-right: 10px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer"
+                   (click)="onCreateTel()"
+                   id="addTel"
+                   *ngIf="tel.length == 10 && tel != '' && supplier.phone_numbers.length < 3; else hidden"
+              >
+              <ng-template #hidden>
+                <img src="../assets/img/addIcon.png" style="
+                width: 20px;
+                height: 20px;
+                opacity: 0"
+                >
+              </ng-template>
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     [(ngModel)]="tel " name="phones" required minlength="10" maxlength="10">
+            </tr>
+            <tr *ngFor="let tel of supplier.phone_numbers" class="spacer">
+              <td>
+                {{tel.phone}}
+                <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteTel(tel)"
+                >
+              </td>
+            </tr>
+          </table>
+          <table>
+            <thead>
+            <th>Emails
+              <img src="../assets/img/addIcon.png"
+                   style="float:right; margin-right: 10px;
+                width: 23px;
+                height: 23px;
+            cursor: pointer;"
+                   (click)="onCreateMail()"
+                   id="addMail"
+                   *ngIf=" email.valid && mail != '' && supplier.email_addresses.length < 3; else hidden"
+              >
+            </th>
+            </thead>
+            <tr>
+              <input class="input" id="email"
+                     [(ngModel)]="mail" name="emails" email required #email="ngModel">
+            </tr>
+            <tr *ngFor="let mail of supplier.email_addresses">
+              <td>
+                {{mail.email}}
+                <img src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
+            cursor: pointer;
+             width: 20px;
+              height: 20px;"
+
+                     (click)="onDeleteMail(mail)"
+                >
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+
+          <label for="name" class="col-sm-2">Naam</label>
+          <input type="text" id="name" name="name" placeholder="Naam" required
+                 [(ngModel)]="supplier.name">
+
+        </div>
+        <div>
+          <label class="col-sm-2" for="contactperson">Contactpersoon</label>
+          <input type="text" id="contactperson" name="contactperson" placeholder="Contactpersoon" required
+                 [(ngModel)]="supplier.contact_person">
+        </div>
+        <div>
+          <label class="col-sm-2" for="zipcode">Postcode</label>
+          <input type="text" id="zipcode" name="zipcode" placeholder="Postcode" required
+                 [(ngModel)]="zipcode">
+        </div>
+        <div>
+          <label class="col-sm-2" for="address">Adres</label>
+          <input type="text" id="address" name="address" placeholder="Adres" required
+                 [(ngModel)]="address">
+        </div>
+        <div>
+          <label class="col-sm-2" for="city">Stad</label>
+          <input type="text" id="city" name="city" placeholder="Stad"
+                 [(ngModel)]="city" required>
+        </div>
+        <div>
+          <label class="col-sm-2" for="supervisor">Leidinggevende</label>
+          <input type="text" id="supervisor" name="supervisor" placeholder="Leidinggevende"
+                 [(ngModel)]="supplier.supervisor">
+        </div>
+        <div>
+          <label class="col-sm-2" for="website">Website</label>
+          <input type="text" id="website" name="website" placeholder="Website"
+
+                 [(ngModel)]="supplier.website">
+        </div>
+        <div>
+          <label class="col-sm-2" for="note">Notitie</label>
+          <input type="text" id="note" name="note " placeholder="Notitie"
+
+                 [(ngModel)]="supplier.note">
+        </div>
+        <div>
+          <label class="col-sm-2" for="image">Image</label>
+          <input type="text" id="image" name="image" placeholder="Image"
+
+                 [(ngModel)]="supplier.image">
+        </div>
+          <div class="buttons" style="padding-top: 1em">
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/supplieroverview">
+              <i class="fa fa-close"></i> Annuleren
+            </button>
+            <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+              Toevoegen
+            </button>
+          </div>
+      </div>
+    </div>
+  </form>
+</div>
+

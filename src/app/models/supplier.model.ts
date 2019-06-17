@@ -1,19 +1,18 @@
+import {SupplierEmail} from './supplier-email.model';
+import {SupplierContract} from './supplier-contract.model';
+import {SupplierPhone} from './supplier-phone.model';
+import {SupplierAddress} from './supplier-address.model';
+
 export class Supplier {
-  public id: number;
+  public supplierid: number;
   public name: string;
-  public contactPerson: string;
+  public contact_person: string;
   public supervisor: string;
   public website: string;
   public note: string;
   public image: string;
-
-  constructor(id: number, name: string, contactPerson: string, supervisor: string, website: string, note: string, image: string) {
-    this.id = id;
-    this.name = name;
-    this.contactPerson = contactPerson;
-    this.supervisor = supervisor;
-    this.website = website;
-    this.note = note;
-    this.image = image;
-  }
+  public email_addresses: SupplierEmail[];
+  public phone_numbers: SupplierPhone[];
+  public contracts: SupplierContract[];
+  public addresses: SupplierAddress[];
 }
