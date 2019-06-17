@@ -104,7 +104,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
       error1 => {
         console.log(error1);
       }
-    )
+    );
   }
 
   OnDelete(orderId: number) {
@@ -118,9 +118,9 @@ export class EventmanagerReserveringenComponent implements OnInit {
     let index = 0;
     let duplicate = false;
 
-    while (index < order.registeredevents.length) {
+    while (index < order.registeredEvents.length) {
 
-      if (order.registeredevents[index].instructor.first_name === this.currentUser.username) {
+      if (order.registeredEvents[index].instructor.first_name === this.currentUser.username) {
         duplicate = true;
         break;
       }

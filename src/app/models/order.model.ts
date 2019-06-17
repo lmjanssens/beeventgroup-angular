@@ -14,12 +14,12 @@ export class Order {
   public note: string;
   public startTime: any;
   public endTime: any;
-  public maxInstructors: number;
+  public maxinstructors: number;
   public cateringsOrders: CateringOrder[];
   public invoices: Invoice[];
-  public events: EventModel[];
+  public eventid: EventModel[];
   public quotations: Quotation[];
-  public registeredevents: RegisteredEvents[];
+  public registeredEvents: RegisteredEvents[];
 
   constructor(orderId: number, customer: Customer, dateOrder: any, dateEvent: any, note: string,
               startTime: any, endTime: any, cateringsOrders: CateringOrder[], invoices: Invoice[],
@@ -33,7 +33,7 @@ export class Order {
     this.endTime = endTime;
     this.cateringsOrders = cateringsOrders;
     this.invoices = invoices;
-    this.events = events;
+    this.eventid = events;
     this.quotations = quotations;
   }
 }
