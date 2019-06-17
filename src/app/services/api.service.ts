@@ -76,4 +76,8 @@ export class ApiService {
     return this.http.delete(uri, {headers: headers});
   }
 
+  public extractData(res: Response) {
+    const body = res;
+    return body || { };
+  }
 }

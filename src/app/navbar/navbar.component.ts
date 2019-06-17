@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Globals} from '../components/globals';
+import {AuthorizationService} from '../services/authorization.service';
+import {Role} from '../enums/Role';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +10,11 @@ import {Globals} from '../components/globals';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor( private globals: Globals) { }
+  currentUser: any;
+
+  constructor( private globals: Globals, private authService: AuthorizationService) {
+    this.currentUser = this.authService.getAuthenticator();
+  }
 
   ngOnInit() {
   }
@@ -20,4 +26,15 @@ export class NavbarComponent implements OnInit {
     document.getElementById(currentPage).style.opacity = '0.5';
     document.getElementById(currentPage).style.backgroundColor =  '#394365';
   }
+
+  getRoleRootLink() {
+    let roleRootLink = 'homeeventmanager';
+
+    if (this.currentUser.role === Role.INSTRUCTOR) {
+      roleRootLink = 'homeinstructor';
+    }
+
+    return roleRootLink;
+  }
+
 }

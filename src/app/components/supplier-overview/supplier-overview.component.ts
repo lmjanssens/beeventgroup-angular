@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Supplier} from '../../models/supplier.model';
 import {Globals} from '../globals';
 import {NavbarComponent} from '../../navbar/navbar.component';
+import {AuthorizationService} from "../../services/authorization.service";
+import {Role} from "../../enums/Role";
 
 @Component({
   selector: 'app-supplier-overview',
@@ -26,7 +28,30 @@ export class SupplierOverviewComponent implements OnInit {
   searchTerm: string;
   emptySupplier: Supplier = new Supplier(null, '', '', '', '', '', '');
 
-  constructor(private globals: Globals, private navbar: NavbarComponent) {
+  currentUser: any;
+  authenticated = false;
+
+  constructor(private globals: Globals, private navbar: NavbarComponent, private authService: AuthorizationService) {
+    this.authenticated = this.authService.hasAuthorization();
+
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   tableFiller() {
@@ -47,6 +72,10 @@ export class SupplierOverviewComponent implements OnInit {
     this.globals.setHuidigePagina('Leveranciers');
     this.navbar.checkNavBarStyle()
     console.log(this.globals.getHuidigePagina());
+  }
+
+  getRoles() {
+    return Role;
   }
 
 }

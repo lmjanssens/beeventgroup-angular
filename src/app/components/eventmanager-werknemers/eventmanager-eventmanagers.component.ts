@@ -4,6 +4,8 @@ import {Globals} from '../globals';
 import {NavbarComponent} from '../../navbar/navbar.component';
 import {EmployeeService} from '../../services/employee.service';
 import {ApiService} from '../../services/api.service';
+import {AuthorizationService} from "../../services/authorization.service";
+import {Role} from "../../enums/Role";
 
 @Component({
   selector: 'app-eventmanager-eventmanagers',
@@ -18,8 +20,30 @@ export class EventmanagerEventmanagersComponent implements OnInit {
   i = 0;
   employee: Employee;
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private employeeService: EmployeeService, private apiService: ApiService) {
+  currentUser: any;
+  authenticated = false;
 
+  constructor(private globals: Globals, private navbar: NavbarComponent, private employeeService: EmployeeService, private authService: AuthorizationService, private apiService: ApiService) {
+    this.authenticated = this.authService.hasAuthorization();
+
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
 
@@ -53,6 +77,9 @@ export class EventmanagerEventmanagersComponent implements OnInit {
     });
   }
 
+  getRoles() {
+    return Role;
+  }
 
 }
 

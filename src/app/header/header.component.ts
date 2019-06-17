@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Globals} from '../components/globals';
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../services/authorization.service';
+import {Role} from '../enums/Role';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,13 @@ import {AuthorizationService} from '../services/authorization.service';
 })
 export class HeaderComponent implements OnInit {
 
+  currentUser: any;
+
   constructor(private globals: Globals,
               private router: Router,
               private authService: AuthorizationService) {
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   ngOnInit() {
@@ -28,7 +33,8 @@ export class HeaderComponent implements OnInit {
       document.getElementById('terugKnop').style.cursor = 'pointer';
       document.getElementById('uitlogKnop').style.visibility = 'hidden';
     }
-    if (this.globals.getHuidigePagina() === 'homeeventmanager') {
+    if (this.globals.getHuidigePagina() === 'homeeventmanager' ||
+        this.globals.getHuidigePagina() === 'homeinstructor') {
       document.getElementById('uitlogKnop').style.visibility = 'visible';
     }
     if (this.globals.getHuidigePagina() === 'Klanten' ||
@@ -41,7 +47,10 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'klantenFormulier' ||
       this.globals.getHuidigePagina() === 'instructeurFormulier' ||
       this.globals.getHuidigePagina() === 'Agenda' ||
-      this.globals.getHuidigePagina() === 'evenementFormulier') {
+      this.globals.getHuidigePagina() === 'evenementFormulier' ||
+      this.globals.getHuidigePagina() === 'eventupdate' ||
+      this.globals.getHuidigePagina() === 'klantupdate' ||
+      this.globals.getHuidigePagina() === 'Agenda') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -58,17 +67,22 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Horeca' ||
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
-      this.globals.getHuidigePagina() === 'Agenda' ||
-      this.globals.getHuidigePagina() === 'Klanten') {
-      this.router.navigate(['/homeeventmanager']);
+      this.globals.getHuidigePagina() === 'Klanten' ||
+      this.globals.getHuidigePagina() === 'Agenda') {
+
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager']);
+      } else {
+        this.router.navigate(['/homeinstructor']);
+      }
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier') {
+    if (this.globals.getHuidigePagina() === 'klantenFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
-    if (this.globals.getHuidigePagina() === 'instructeurFormulier') {
+    if (this.globals.getHuidigePagina() === 'instructeurFormulier'  && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/instructeursoverview']);
     }
-    if (this.globals.getHuidigePagina() === 'evenementFormulier') {
+    if (this.globals.getHuidigePagina() === 'evenementFormulier' || this.globals.getHuidigePagina() === 'eventupdate' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/evenementenoverview']);
     }
   }

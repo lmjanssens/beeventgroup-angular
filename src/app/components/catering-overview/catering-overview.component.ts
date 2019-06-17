@@ -2,6 +2,8 @@ import {Component, OnInit } from '@angular/core';
 import {Catering} from '../../models/catering.model';
 import {Globals} from '../globals';
 import {NavbarComponent} from '../../navbar/navbar.component';
+import {AuthorizationService} from "../../services/authorization.service";
+import {Role} from "../../enums/Role";
 
 @Component({
   selector: 'app-catering-overview',
@@ -25,7 +27,31 @@ export class CateringOverviewComponent implements OnInit {
   searchTerm: string;
   emptyCatering: Catering = new Catering(null, null, null, '', '', '', '', '', '', null, '');
 
-  constructor(private globals: Globals, private navbar: NavbarComponent) {
+  currentUser: any;
+  authenticated = false;
+
+  constructor(private globals: Globals, private navbar: NavbarComponent, private authService: AuthorizationService) {
+    this.authenticated = this.authService.hasAuthorization();
+
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   tableFiller() {
@@ -46,6 +72,10 @@ export class CateringOverviewComponent implements OnInit {
     this.globals.setHuidigePagina('Horeca');
     this.navbar.checkNavBarStyle()
     console.log(this.globals.getHuidigePagina());
+  }
+
+  getRoles() {
+    return Role;
   }
 
 }
