@@ -9,15 +9,27 @@
           Horeca toevoegen
         </h3>
         <div class="containerTables">
-                    <table class="telTable">
-                      <th class="telefoons">Telefoons
-                      </th>
-                      <tr>
-                        <input class="input" id="phone"
-                               [(ngModel)]="catering.phone" name="phone" required minlength="10" maxlength="10" placeholder="telefoonnummer">
-                      </tr>
-                    </table>
+          <table class="telTable">
+            <th class="telefoons">Telefoons
+            </th>
+            <tr>
+              <input class="input" id="phone"
+                     [(ngModel)]="catering.phone" name="phone" required minlength="10" maxlength="10"
+                     placeholder="telefoonnummer">
+            </tr>
+          </table>
+          <br>
+          <table>
+            <th class="noteHeader"><label class="col-sm-2">Notitie</label>
+            </th>
+            <tr>
+              <td>
+                <textarea name="note" type="text" [(ngModel)]="catering.note"></textarea>
+              </td>
+            </tr>
+          </table>
         </div>
+
         <div>
 
           <label for="name" class="col-sm-2">Naam</label>
