@@ -44,19 +44,18 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorService} from './services/instructor.service';
 import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
 import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
-import { SupplierDetailsComponent } from './components/supplier/supplier-details/supplier-details.component';
-import { SupplierUpdateComponent } from './components/supplier/supplier-update/supplier-update.component';
-import { SupplierCreateComponent } from './components/supplier/supplier-create/supplier-create.component';
-import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
-import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
+import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
+import {SupplierUpdateComponent} from './components/supplier/supplier-update/supplier-update.component';
+import {SupplierCreateComponent} from './components/supplier/supplier-create/supplier-create.component';
+import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
+import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
-import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
-import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
-import {CateringService} from './services/catering.service';
-import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
-import {ReservationService} from "./services/reservation.service";
-import { PdfGeneratorComponent } from './components/pdf-generator/pdf-generator.component';
+import {HomepageInstructorComponent} from './components/homepage-instructor/homepage-instructor.component';
+import {ReservationService} from './services/reservation.service';
+import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +97,7 @@ import { PdfGeneratorComponent } from './components/pdf-generator/pdf-generator.
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
     CustomerDetailsComponent,
-    PdfGeneratorComponent
+    PdfGeneratorComponent,
     CustomerDetailsComponent,
     CateringCreateComponent
   ],
