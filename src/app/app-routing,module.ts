@@ -22,6 +22,7 @@ import {EventsUpdateComponent} from './components/eventmanager-events/events-upd
 import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
 import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
+import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -72,6 +73,7 @@ const appRoutes: Routes = [
     component: EventmanagerUpdateComponent,
     canActivate: [AuthGuard]
   },
+  {path: 'homeeventmanager/reserveringenoverview/html_template', component: PdfGeneratorComponent, canActivate: [AuthGuard]},
 
   {path: '**', component: HomepageComponent},
 ];

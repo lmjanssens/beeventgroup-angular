@@ -53,6 +53,7 @@ import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
 import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
 import {ReservationService} from "./services/reservation.service";
+import { PdfGeneratorComponent } from './components/pdf-generator/pdf-generator.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import {ReservationService} from "./services/reservation.service";
     EventmanagerCreateComponent,
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    PdfGeneratorComponent
   ],
   imports: [
     BrowserModule,
