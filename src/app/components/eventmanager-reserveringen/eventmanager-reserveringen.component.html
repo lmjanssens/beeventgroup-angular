@@ -54,7 +54,8 @@
           </td>
         </ng-template>
         <td *ngIf="currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
-          <button class="btn btn-outline-success" (click)="OnSubscribeToEvent(order.orderId, order.events.id);">Inschrijven voor evenement</button>
+          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success" (click)="OnSubscribeToEvent(order, order.events.id);">Inschrijven voor evenement</button>
+          <button *ngIf="checkIfAlreadySubscribed(order)" class="btn btn-outline-danger" (click)="OnUnsubscribeToEvent(order.registeredevents[0].id);">Uitschrijven</button>
         </td>
 
         <ng-template #hideSubscribeEventCell>

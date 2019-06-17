@@ -57,4 +57,9 @@ export class ReservationService {
     const registeredEvent = {};
     return this.apiService.post(uri + orderId + '/' + eventid + '/' + instructor, registeredEvent);
   }
+
+  unsubscribeToEvent(registeredEventId: number) {
+    const uri = 'registeredevents';
+    return this.apiService.delete(uri, registeredEventId);
+  }
 }
