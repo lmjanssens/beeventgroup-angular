@@ -3,6 +3,7 @@ import {Catering} from '../../../models/catering.model';
 import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 import {CateringService} from '../../../services/catering.service';
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-catering-overview',
@@ -15,6 +16,7 @@ export class CateringOverviewComponent implements OnInit {
   itemsPerPage = 5;
   searchTerm: string;
   catering: Catering;
+  currentUser: any;
 
   constructor(private globals: Globals, private navbar: NavbarComponent, private cateringService: CateringService) {
   }
@@ -43,5 +45,9 @@ export class CateringOverviewComponent implements OnInit {
         this.cateringList = this.sortByName(catering);
       });
     });
+  }
+
+  getRoles() {
+    return Role;
   }
 }
