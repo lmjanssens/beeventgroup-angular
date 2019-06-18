@@ -25,12 +25,16 @@ import {EventmanagerUpdateComponent} from './components/eventmanager-werknemers/
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
 import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
+import {SupplierContractOverviewComponent} from './components/supplier/supplier-contract-overview/supplier-contract-overview.component';
+import {SupplierContractUpdateComponent} from './components/supplier/supplier-contract-update/supplier-contract-update.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'loginpage', component: LoginEventManagerComponent},
   {path: 'homeeventmanager', component: HomepageEventmanagerComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview', component: SupplierOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview/suppliercontract/:supplierid', component: SupplierContractOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview/suppliercontract/:supplierid/suppliercontractedit/:supplierid/:id', component: SupplierContractUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/createsupplier', component: SupplierCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/supplieredit/:supplierid', component: SupplierUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent, canActivate: [AuthGuard]},

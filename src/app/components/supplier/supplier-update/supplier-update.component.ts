@@ -54,12 +54,15 @@ export class SupplierUpdateComponent implements OnInit {
     this.newMail = new SupplierEmail();
     this.newMail.email = this.mail;
     this.supplier.email_addresses.push(this.newMail);
+    this.newMail = null;
+
   }
 
   onCreateTel() {
     this.newPhone = new SupplierPhone();
     this.newPhone.phone = this.tel;
     this.supplier.phone_numbers.push(this.newPhone);
+    this.newPhone = null;
   }
 
   onDeleteMail(mail) {
@@ -76,12 +79,6 @@ export class SupplierUpdateComponent implements OnInit {
   }
 
   ngSubmit(f: NgForm) {
-    this.newMail = new SupplierEmail();
-    this.newMail.email = this.mail;
-    this.supplier.email_addresses.push(this.newMail);
-    this.newPhone = new SupplierPhone();
-    this.newPhone.phone = this.tel;
-    this.supplier.phone_numbers.push(this.newPhone);
     this.onDeleteAddress(this.zipcode);
     this.newAddress = new SupplierAddress();
     this.newAddress.zipcode = this.zipcode;

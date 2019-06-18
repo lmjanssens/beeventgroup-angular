@@ -56,6 +56,8 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
 import {CateringService} from './services/catering.service';
 import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
 import {ReservationService} from "./services/reservation.service";
+import { SupplierContractOverviewComponent } from './components/supplier/supplier-contract-overview/supplier-contract-overview.component';
+import { SupplierContractUpdateComponent } from './components/supplier/supplier-contract-update/supplier-contract-update.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import {ReservationService} from "./services/reservation.service";
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
     CustomerDetailsComponent,
-    CateringCreateComponent
+    CateringCreateComponent,
+    SupplierContractOverviewComponent,
+    SupplierContractUpdateComponent
   ],
   imports: [
     BrowserModule,
