@@ -26,7 +26,7 @@ import {SupplierOverviewComponent} from './components/supplier/supplier-overview
 import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
 import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 import {CateringFilterPipe} from './pipes/cateringfilter.pipe';
-import {EventmanagerEventmanagersComponent} from './components/eventmanager-werknemers/eventmanager-eventmanagers.component';
+import {EventmanagerEventmanagersComponent} from './components/werknemers/eventmanager-overview/eventmanager-eventmanagers.component';
 import {EventManagerFilterPipe} from './pipes/eventmanagerfilter.pipe';
 import {InstructorFilterPipe} from './pipes/instructorfilter.pipe';
 import {HttpClientModule} from '@angular/common/http';
@@ -49,15 +49,19 @@ import { SupplierUpdateComponent } from './components/supplier/supplier-update/s
 import { SupplierCreateComponent } from './components/supplier/supplier-create/supplier-create.component';
 import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
 import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
-import {EventmanagerCreateComponent} from './components/eventmanager-werknemers/eventmanager-create/eventmanager-create.component';
-import { EventmanagerUpdateComponent } from './components/eventmanager-werknemers/eventmanager-update/eventmanager-update.component';
+import {EventmanagerCreateComponent} from './components/werknemers/eventmanager-create/eventmanager-create.component';
+import { EventmanagerUpdateComponent } from './components/werknemers/eventmanager-update/eventmanager-update.component';
 import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
 import {CateringService} from './services/catering.service';
-import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
-import {ReservationService} from "./services/reservation.service";
+import {HomepageInstructorComponent} from './components/homepage-instructor/homepage-instructor.component';
+import {ReservationService} from './services/reservation.service';
 import { SupplierContractOverviewComponent } from './components/supplier/supplier-contract-overview/supplier-contract-overview.component';
 import { SupplierContractUpdateComponent } from './components/supplier/supplier-contract-update/supplier-contract-update.component';
+import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
+import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
+import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
+
 
 @NgModule({
   declarations: [
@@ -101,7 +105,10 @@ import { SupplierContractUpdateComponent } from './components/supplier/supplier-
     CustomerDetailsComponent,
     CateringCreateComponent,
     SupplierContractOverviewComponent,
-    SupplierContractUpdateComponent
+    SupplierContractUpdateComponent,
+    CateringDetailsComponent,
+    CateringUpdateComponent,
+    WerknemersDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +127,7 @@ import { SupplierContractUpdateComponent } from './components/supplier/supplier-
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService, CateringService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

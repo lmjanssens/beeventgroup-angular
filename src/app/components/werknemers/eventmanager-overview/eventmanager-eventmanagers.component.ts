@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Employee} from '../../models/employee.model';
-import {Globals} from '../globals';
-import {NavbarComponent} from '../../navbar/navbar.component';
-import {EmployeeService} from '../../services/employee.service';
-import {ApiService} from '../../services/api.service';
-import {AuthorizationService} from "../../services/authorization.service";
-import {Role} from "../../enums/Role";
+import {Employee} from '../../../models/employee.model';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
+import {EmployeeService} from '../../../services/employee.service';
+import {ApiService} from '../../../services/api.service';
+import {AuthorizationService} from "../../../services/authorization.service";
+import {Role} from "../../../enums/Role";
 
 @Component({
   selector: 'app-eventmanager-eventmanagers',

@@ -86,29 +86,23 @@ export class EventmanagerReserveringenComponent implements OnInit {
     return Role;
   }
 
-  OnSubscribeToEvent(orderId: number, eventId: number) {
+  OnSubscribeToEvent(order: Order, eventId: number) {
 
-    this.reservationService.checkAlreadyRegisteredEvent(orderId, this.currentUser.username).subscribe(
-      data => {
-        let index = 0;
-        let duplicate = false;
-        while (index < data.length) {
-          if (data[index].order.orderId === orderId && data[index].instructor.first_name === this.currentUser.username) {
-            alert('U bent al ingeschreven op dit evenement');
-            duplicate = true;
-            break;
-          }
-          index++;
-        }
+    console.log(order);
+    this.reservationService.subscribeToEvent(order.orderId, eventId, this.currentUser.username).subscribe(() => {
+      alert('Uw registratie bij een evenement is succesvol verlopen.');
+      this.ngOnInit();
+    });
 
-        if (duplicate === false) {
-          this.reservationService.subscribeToEvent(orderId, eventId, this.currentUser.username).subscribe(() => {
-            alert('Uw registratie bij een evenement is succesvol verlopen.');
-          });
-        }
+  }
+
+  OnUnsubscribeToEvent(eventId: number) {
+    this.reservationService.unsubscribeToEvent(eventId).subscribe(
+      success => {
+        this.ngOnInit();
       },
-      error => {
-        console.log(error);
+      error1 => {
+        console.log(error1);
       }
     );
   }
@@ -117,6 +111,24 @@ export class EventmanagerReserveringenComponent implements OnInit {
     this.reservationService.delete(orderId).subscribe(success => {
       this.getOrders();
     });
+  }
+
+  checkIfAlreadySubscribed(order: Order) {
+
+    let index = 0;
+    let duplicate = false;
+
+    while (index < order.registeredEvents.length) {
+
+      if (order.registeredEvents[index].instructor.first_name === this.currentUser.username) {
+        duplicate = true;
+        break;
+      }
+      index++;
+
+    }
+
+    return duplicate;
   }
 
 }

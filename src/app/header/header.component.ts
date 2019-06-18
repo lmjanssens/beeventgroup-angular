@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
       document.getElementById('uitlogKnop').style.visibility = 'hidden';
     }
     if (this.globals.getHuidigePagina() === 'homeeventmanager' ||
-        this.globals.getHuidigePagina() === 'homeinstructor') {
+      this.globals.getHuidigePagina() === 'homeinstructor') {
       document.getElementById('uitlogKnop').style.visibility = 'visible';
     }
     if (this.globals.getHuidigePagina() === 'Klanten' ||
@@ -50,6 +50,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'evenementFormulier' ||
       this.globals.getHuidigePagina() === 'eventupdate' ||
       this.globals.getHuidigePagina() === 'klantupdate' ||
+      this.globals.getHuidigePagina() === 'werknemerFormulier' ||
+
       this.globals.getHuidigePagina() === 'Agenda') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
@@ -79,7 +81,7 @@ export class HeaderComponent implements OnInit {
     if (this.globals.getHuidigePagina() === 'klantenFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     }
-    if (this.globals.getHuidigePagina() === 'instructeurFormulier'  && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+    if (this.globals.getHuidigePagina() === 'instructeurFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/instructeursoverview']);
     }
     if (this.globals.getHuidigePagina() === 'horecaFormulier') {
@@ -87,6 +89,9 @@ export class HeaderComponent implements OnInit {
     }
     if (this.globals.getHuidigePagina() === 'evenementFormulier' || this.globals.getHuidigePagina() === 'eventupdate' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/evenementenoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'werknemerFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager/werknemersoverview']);
     }
   }
 

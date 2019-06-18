@@ -62,6 +62,11 @@ tr {
   text-align: center;
 }
 
+tr:hover {
+  background-color: #ddd;
+
+}
+
 .ng-valid[required], .ng-valid.required {
   border-left: 5px solid green;
 }
@@ -69,14 +74,6 @@ tr {
 .ng-invalid:not(form) {
   border-left: 5px solid red;
 }
-
-td {
-  padding: 0.25em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 
 th {
   padding-top: 12px;
@@ -86,20 +83,5 @@ th {
   background-color: #394365;
   color: white;
   border-radius: 10px;
-}
-
-textarea {
-  padding: 10px;
-  width: 225px;
-  height: 100px;
-  border: 1px solid #394365;
-  border-radius: 4px;
-
-}
-
-.noteHeader {
-  font-size: 16px;
-  font-weight: normal;
-  color: black;
-  background: transparent;
+  width: 250px;
 }
