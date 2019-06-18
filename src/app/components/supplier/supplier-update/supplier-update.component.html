@@ -75,7 +75,7 @@
             cursor: pointer;
              width: 20px;
               height: 20px;"
-              (click)="onDeleteMail(mail)">
+                     (click)="onDeleteMail(mail)">
               </td>
             </tr>
           </table>
@@ -138,7 +138,6 @@
 
                  [(ngModel)]="supplier.image"
                  [disabled]="loading">
-        </div>
 
           <div class="buttons" style="padding-top: 1.5em">
 
@@ -148,7 +147,10 @@
             <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
               Toevoegen
             </button>
+          </div>
+
         </div>
+
       </div>
     </div>
   </form>
