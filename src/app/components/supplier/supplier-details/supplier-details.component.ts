@@ -31,6 +31,7 @@ export class SupplierDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('leverancierFormulier');
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       console.log(this.currentId);

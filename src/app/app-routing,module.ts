@@ -28,6 +28,7 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
 import {CateringDetailsComponent} from './components/catering/catering-details/catering-details.component';
 import {CateringUpdateComponent} from './components/catering/catering-update/catering-update.component';
 import {WerknemersDetailsComponent} from './components/werknemers/werknemers-details/werknemers-details.component';
+import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/supplieroverview', component: SupplierOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/createsupplier', component: SupplierCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/supplieredit/:supplierid', component: SupplierUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview/supplierdetails/:supplierid', component: SupplierDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview', component: CustomerOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
