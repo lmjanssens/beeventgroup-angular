@@ -92,16 +92,17 @@ export class EventsCreateComponent implements OnInit {
     this.newLocations.forEach(location => {
       this.eventLocationService.save(location).subscribe(() => console.log('Locatie toegevoegd.'));
     });
-    this.alertService.setMessage('Locaties toegevoegd.', 'success');
-
+    alert('Locaties toegevoegd.');
+    window.location.reload();
     this.newLocations = [];
   }
 
   onDeleteOldLocation(oldLocation) {
     this.eventLocationService.delete(oldLocation.id).subscribe(() => {
-      this.alertService.setMessage('Oude locatie verwijderd.', 'success');
+      alert('Oude locatie verwijderd.');
     });
     this.fetchEventLocations();
+    window.location.reload();
   }
 
   ngSubmit(f: NgForm) {
