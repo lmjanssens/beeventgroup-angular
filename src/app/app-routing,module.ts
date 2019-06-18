@@ -5,7 +5,7 @@ import {HomepageEventmanagerComponent} from './components/homepage-eventmanager/
 import {CustomerOverviewComponent} from './components/customer/customer-overview/customer-overview.component';
 import {CustomerCreateComponent} from './components/customer/customer-create/customer-create.component';
 import {EventmanagerReserveringenComponent} from './components/eventmanager-reserveringen/eventmanager-reserveringen.component';
-import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
+import {EventmanagerEventsComponent} from './components/event/event-overview/eventmanager-events.component';
 import {SupplierOverviewComponent} from './components/supplier/supplier-overview/supplier-overview.component';
 import {EventmanagerInstructeursComponent} from './components/instructor/instructor-overview/eventmanager-instructeurs.component';
 import {EventmanagerEventmanagersComponent} from './components/werknemers/eventmanager-overview/eventmanager-eventmanagers.component';
@@ -18,8 +18,8 @@ import {InstructorUpdateComponent} from './components/instructor/instructor-upda
 import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
 import {SupplierCreateComponent} from './components/supplier/supplier-create/supplier-create.component';
 import {SupplierUpdateComponent} from './components/supplier/supplier-update/supplier-update.component';
-import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
-import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
+import {EventsCreateComponent} from './components/event/events-create/events-create.component';
+import {EventsUpdateComponent} from './components/event/events-update/events-update.component';
 import {EventmanagerCreateComponent} from './components/werknemers/eventmanager-create/eventmanager-create.component';
 import {EventmanagerUpdateComponent} from './components/werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
@@ -29,6 +29,7 @@ import {CateringDetailsComponent} from './components/catering/catering-details/c
 import {CateringUpdateComponent} from './components/catering/catering-update/catering-update.component';
 import {WerknemersDetailsComponent} from './components/werknemers/werknemers-details/werknemers-details.component';
 import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
+import {EventDetailsComponent} from './components/event/event-details/event-details.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/evenementenoverview/createevenement', component: EventsCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview/eventedit', component: EventsUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview/eventedit/:eventId', component: EventsUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/evenementenoverview/eventdetails/:eventId', component: EventDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor', component: HomepageInstructorComponent, canActivate: [AuthGuard]},

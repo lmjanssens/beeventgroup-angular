@@ -73,21 +73,24 @@
               {{eventLocation.name}}
             </option>
           </select>
+          <div class="buttons">
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/evenementenoverview">
+              <i class="fa fa-close"></i> Annuleren
+            </button>
+            <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+              Toevoegen
+            </button>
+            <app-alerts></app-alerts>
+          </div>
         </div>
       </div>
     </div>
-    <div class="buttons">
-      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/evenementenoverview">
-        <i class="fa fa-close"></i> Annuleren
-      </button>
-      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
-        Toevoegen
-      </button>
-      <app-alerts></app-alerts>
-    </div>
   </form>
+
+
+  <div>
   <form class="container" role="form" #fo="ngForm" (ngSubmit)="addNewLocations(fo)">
-    <div class="containerTables">
+    <div class="containerTables" style="margin-bottom: 10em">
       <table class="locationTable">
         <th class="locations">Locaties
           <img src="../assets/img/addIcon.png"
@@ -156,4 +159,5 @@
       </table>
     </div>
   </form>
+</div>
 </div>
