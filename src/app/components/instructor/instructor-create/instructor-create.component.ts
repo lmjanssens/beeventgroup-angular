@@ -3,11 +3,8 @@ import {Instructor} from '../../../models/instructor.model';
 import {User} from '../../../models/user.model';
 import {NgForm} from '@angular/forms';
 import {Globals} from '../../globals';
-import {CustomerService} from '../../../services/customer.service';
 import {Router} from '@angular/router';
-import {AlertsService} from 'angular-alert-module';
 import {InstructorService} from '../../../services/instructor.service';
-import {Observable} from 'rxjs';
 import {UserService} from '../../../services/user.service';
 
 @Component({
@@ -73,6 +70,7 @@ export class InstructorCreateComponent implements OnInit {
         if (this.userNameAvailable === false) {
           alert('Deze gebruikersnaam is niet beschikbaar');
           this.userNameAvailable = true;
+          this.teller = 0;
         } else {
           this.instructorService.save(data).subscribe(() => {
             this.toevoegAlert();
