@@ -56,6 +56,10 @@ import {CateringCreateComponent} from './components/catering/catering-create/cat
 import {CateringService} from './services/catering.service';
 import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
 import {ReservationService} from "./services/reservation.service";
+import { FormUploadComponent } from './components/form-upload/form-upload.component';
+import {UploadFileService} from "./services/upload-file.service";
+import { ListUploadComponent } from './components/list-upload/list-upload.component';
+import { DetailsUploadComponent } from './components/details-upload/details-upload.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +101,10 @@ import {ReservationService} from "./services/reservation.service";
     InstructorDetailsComponent,
     EventmanagerUpdateComponent,
     CustomerDetailsComponent,
-    CateringCreateComponent
+    CateringCreateComponent,
+    FormUploadComponent,
+    ListUploadComponent,
+    DetailsUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +123,7 @@ import {ReservationService} from "./services/reservation.service";
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService, UploadFileService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -48,10 +48,31 @@ export class ApiService {
     return headers;
   }
 
+  /**
+   * This is only for uploading files and images
+   */
+  private createRequestHeadersForUploadingFiles(): HttpHeaders {
+
+    let headers = new HttpHeaders();
+
+    if (this.authService.hasAuthorization()) {
+      headers = headers.set('Authorization', this.authService.createAuthorizationString())
+        .set('Accept', 'application/json');
+    }
+
+    return headers;
+  }
+
   public get<T>(path: string, queryParameters?: Object): Observable<any> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();
     return this.http.get<Object>(uri, {headers: headers});
+  }
+
+  public getFile<T>(path: string, queryParameters?: Object): Observable<any> {
+    const uri = this.createURI(path, queryParameters);
+    const headers = this.createRequestHeaders();
+    return this.http.get(uri, {headers: headers, responseType: 'blob' as 'json'});
   }
 
   public post(path: string, object: Object, queryParameters?: Object): Observable<any> {
@@ -59,6 +80,13 @@ export class ApiService {
     const reqHeader = this.createRequestHeaders();
 
     return this.http.post(uri, object, {headers: reqHeader});
+  }
+
+  public postImageFile(path: string, object: Object, queryParameters?: Object): Observable<any> {
+    const uri = this.createURI(path, queryParameters);
+    const reqHeader = this.createRequestHeadersForUploadingFiles();
+
+    return this.http.post(uri, object, {headers: reqHeader, responseType: 'text'});
   }
 
   public put<T>(path: string, object: Object, queryParameters?: Object): Observable<any> {

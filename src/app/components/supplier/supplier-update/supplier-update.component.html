@@ -133,11 +133,8 @@
                  [disabled]="loading">
         </div>
         <div>
-          <label class="col-sm-2" for="image">Image</label>
-          <input type="text" id="image" name="image" placeholder="Image"
-
-                 [(ngModel)]="supplier.image"
-                 [disabled]="loading">
+          <label class="col-sm-2">Image</label>
+          <app-form-upload [entity]="'supplier'" [entityId]="currentId"></app-form-upload>
         </div>
 
           <div class="buttons" style="padding-top: 1.5em">
