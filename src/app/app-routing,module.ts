@@ -31,6 +31,7 @@ import {WerknemersDetailsComponent} from './components/werknemers/werknemers-det
 import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
 import {EventDetailsComponent} from './components/event/event-details/event-details.component';
 import {ReserveringenCreateComponent} from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
+import {ReserveringenUpdateComponent} from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -44,6 +45,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview/createorder', component: ReserveringenCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/reserveringenoverview/orderedit', component: ReserveringenUpdateComponent , canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/reserveringenoverview/orderedit/:orderId', component: ReserveringenUpdateComponent , canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
@@ -60,6 +63,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/customeroverview/customeredit/:customerId', component: CustomerUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor', component: HomepageInstructorComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/supplieroverview', component: SupplierOverviewComponent, canActivate: [AuthGuard]},
+  {path: 'homeinstructor/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/customeroverview', component: CustomerOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},

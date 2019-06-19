@@ -24,9 +24,12 @@ export class ReservationService {
     return this.apiService.get(uri, id).pipe(first());
   }
 
-  updateReservation(updatedOrder: Order): Observable<Order> {
-    const uri = 'orders';
-    return this.apiService.put<Order>(uri + updatedOrder.orderId, updatedOrder);
+  updateReservation(updatedOrder: Order, customer: Customer, event: EventModel): Observable<Order> {
+    const uri = 'orders/';
+    return this.apiService.put<Order>(
+      uri + updatedOrder.orderId
+      + '/' + customer.customerId
+      + '/' + event.id, updatedOrder);
   }
 
   save(order: Order, customer: Customer, event: EventModel): Observable<object> {

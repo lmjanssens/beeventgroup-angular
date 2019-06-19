@@ -33,25 +33,35 @@ export class EventsUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.supplierService.getAll().subscribe(suppliers => {
-      this.suppliers = suppliers;
-    });
-
-    this.eventLocationService.getAll().subscribe(eventLocations => {
-      this.eventLocations = eventLocations;
-    });
+    this.fetchSuppliers();
+    this.fetchLocations();
 
     this.globals.setHuidigePagina('eventupdate');
 
     this.event = this.eventService.getEmptyEvent();
 
     this.sub = this.route.params.subscribe(params => {
-      this.currentId = params['eventId'];
-      console.log(this.currentId);
-      this.eventService.getById(this.currentId).subscribe(event => {
-        this.event = event;
-        this.updatedEvent = true;
-      });
+      this.currentId = params.eventId;
+      this.fetchEventById();
+    });
+  }
+
+  fetchSuppliers() {
+    this.supplierService.getAll().subscribe(suppliers => {
+      this.suppliers = suppliers;
+    });
+  }
+
+  fetchLocations() {
+    this.eventLocationService.getAll().subscribe(eventLocations => {
+      this.eventLocations = eventLocations;
+    });
+  }
+
+  fetchEventById() {
+    this.eventService.getById(this.currentId).subscribe(event => {
+      this.event = event;
+      this.updatedEvent = true;
     });
   }
 
@@ -69,10 +79,15 @@ export class EventsUpdateComponent implements OnInit {
     this.selectedEvent === 'J' ? this.event.ownEvent = true : this.event.ownEvent = false;
   }
 
-  ngSubmit(f: NgForm) {
+  linkLocationSuppliersOwnEvent() {
     this.setOwnEvent();
     this.event.location = this.selectedLocation;
     this.event.supplier = this.selectedSupplier;
+  }
+
+  ngSubmit(f: NgForm) {
+    this.linkLocationSuppliersOwnEvent();
+
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
       this.eventService.updateEvent(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
