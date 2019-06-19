@@ -133,8 +133,8 @@
                  [disabled]="loading">
         </div>
         <div>
-          <label class="col-sm-2">Image</label>
-          <app-image-upload [entity]="'supplier'" [entityId]="currentId" [imagePath]="supplier.image"></app-image-upload>
+          <label class="col-sm-2">Afbeelding</label>
+          <app-image-upload [imagePath]="supplier.image" (valueChange)="updateImageName($event)"  #imageUpload></app-image-upload>
         </div>
 
           <div class="buttons" style="padding-top: 1.5em">

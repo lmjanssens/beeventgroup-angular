@@ -1,9 +1,0 @@
-<!--<app-header></app-header>-->
-
-<label class="btn btn-default">
-  <input type="file" (change)="selectFile($event)">
-</label>
-
-<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
-
-<app-list-upload [anotherEntityId]="entityId" ></app-list-upload>

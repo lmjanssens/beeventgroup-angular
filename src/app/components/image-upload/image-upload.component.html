@@ -6,13 +6,11 @@
   </label>
 
   <input type="file" id="image_uploader" (change)="selectFile($event)" style="display: none;">
-
-  <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
 </span>
 
 <ng-template #showUploadedImage>
   <span class="input">{{ this.imagePath.length >= 15 ? this.imagePath.substr(0, 15) + '...' : this.imagePath }}</span>
-  <button class="btn btn-danger"  (click)="delete()">Verwijder</button>
+  <button type="button" class="btn btn-danger" (click)="removeImage()">Verwijder</button>
 
   <br>
 

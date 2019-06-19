@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "./api.service";
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {AuthorizationService} from "./authorization.service";
+import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { AuthorizationService } from './authorization.service';
+import { Form } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadFileService {
 
+  private apiPath = 'images';
+
   constructor(private authService: AuthorizationService, private apiService: ApiService) {
 
   }
 
-  pushFileToStorage(file: File, entity: string, entityId: number) {
+  pushFileToStorage(file: File) {
 
-    const uri = 'images/post/' + entity + '/' + entityId;
+    const uri = this.apiPath + '/post';
 
     const formData = new FormData();
     formData.append('file', file);
@@ -24,14 +27,10 @@ export class UploadFileService {
 
   }
 
-  getFiles() {
-    const uri = 'images';
-    return this.apiService.get(uri);
-  }
+  deleteFile(fileName: string) {
+     const uri = this.apiPath + '/delete/' + fileName;
 
-  getFile(id: number){
-    const uri = 'images';
-    return this.apiService.getFile(uri, id);
+     return this.apiService.deleteImageFile(uri);
   }
 
 }

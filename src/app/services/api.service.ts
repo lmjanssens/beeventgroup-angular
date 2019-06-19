@@ -89,6 +89,13 @@ export class ApiService {
     return this.http.post(uri, object, {headers: reqHeader, responseType: 'text'});
   }
 
+  public deleteImageFile(path: string, queryParameters?: Object): Observable<any> {
+    const uri = this.createURI(path, queryParameters);
+    const reqHeader = this.createRequestHeadersForUploadingFiles();
+
+    return this.http.delete(uri, {headers: reqHeader, responseType: 'text'});
+  }
+
   public put<T>(path: string, object: Object, queryParameters?: Object): Observable<any> {
     const uri = this.createURI(path, queryParameters);
 
