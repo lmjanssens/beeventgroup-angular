@@ -133,11 +133,9 @@
                     [disabled]="loading"></textarea>
         </div>
         <div>
-          <label class="col-sm-2" for="image">Image</label>
-          <input type="text" id="image" name="image" placeholder="Image"
-
-                 [(ngModel)]="supplier.image"
-                 [disabled]="loading">
+          <label class="col-sm-2">Afbeelding</label>
+          <app-image-upload [imagePath]="supplier.image" (valueChange)="updateImageName($event)"  #imageUpload></app-image-upload>
+        </div>
 
           <div class="buttons" style="padding-top: 1.5em">
 
@@ -147,10 +145,7 @@
             <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
               Toevoegen
             </button>
-          </div>
-
         </div>
-
       </div>
     </div>
   </form>

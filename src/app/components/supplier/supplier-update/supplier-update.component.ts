@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {SupplierService} from '../../../services/supplier.service';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Supplier} from '../../../models/supplier.model';
-import {SupplierEmail} from '../../../models/supplier-email.model';
-import {SupplierPhone} from '../../../models/supplier-phone.model';
-import {NgForm} from '@angular/forms';
-import {Globals} from '../../globals';
-import {SupplierAddress} from '../../../models/supplier-address.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SupplierService } from '../../../services/supplier.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Supplier } from '../../../models/supplier.model';
+import { SupplierEmail } from '../../../models/supplier-email.model';
+import { SupplierPhone } from '../../../models/supplier-phone.model';
+import { NgForm } from '@angular/forms';
+import { Globals } from '../../globals';
+import { SupplierAddress } from '../../../models/supplier-address.model';
+import { ImageUploadComponent } from '../../image-upload/image-upload.component';
 
 @Component({
   selector: 'app-supplier-update',
@@ -30,6 +31,9 @@ export class SupplierUpdateComponent implements OnInit {
   private sub: any;
   selectedItem;
   selectTag;
+
+  @ViewChild(ImageUploadComponent)
+  public imageUpload: ImageUploadComponent;
 
   constructor(private globals: Globals, private supplierService: SupplierService, private route: ActivatedRoute, private router: Router) {
   }
@@ -76,6 +80,9 @@ export class SupplierUpdateComponent implements OnInit {
   }
 
   ngSubmit(f: NgForm) {
+    this.imageUpload.delete();
+    this.imageUpload.upload();
+
     this.newMail = new SupplierEmail();
     this.newMail.email = this.mail;
     this.supplier.email_addresses.push(this.newMail);
@@ -92,6 +99,10 @@ export class SupplierUpdateComponent implements OnInit {
     this.supplierService.updateSupplier(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/supplieroverview']);
     });
+  }
+
+  updateImageName(imageName: string) {
+    this.supplier.image = imageName;
   }
 }
 
