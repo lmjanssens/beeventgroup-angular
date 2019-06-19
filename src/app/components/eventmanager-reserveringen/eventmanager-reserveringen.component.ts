@@ -17,14 +17,9 @@ import {ApiService} from '../../services/api.service';
 export class EventmanagerReserveringenComponent implements OnInit {
 
   orderList: Order[] = [];
-  rest: number;
   firstPage = 1;
   itemsPerPage = 5;
-  teller = 0;
-  amountRows = 0;
   searchTerm: string;
-  emptyOrder: Order = new Order(null, null, '', '',
-    '', '', '', null, null, null);
 
   currentUser: any;
   authenticated = false;
