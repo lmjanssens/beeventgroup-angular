@@ -9,7 +9,8 @@ export class SupplierContract {
   public typeContract: boolean;
   public title: string;
   public description: string;
-  public incluBtw: string;
+  public incluBtw: number;
+  public excluBtw: number;
   public percentage: number;
   public preconditions: string;
   public insurance: string;
@@ -17,7 +18,7 @@ export class SupplierContract {
   public extras: string;
 
   constructor(id: number, supplier: Supplier, catering: Catering, typeContract: boolean, title: string,
-              description: string, incluBtw: string, percentage: number, preconditions: string,
+              description: string, incluBtw: number, exclBtw: number,  percentage: number, preconditions: string,
               insurance: string, responsibility: string, extras: string) {
     this.id = id;
     this.supplier = supplier;
@@ -26,6 +27,7 @@ export class SupplierContract {
     this.title = title;
     this.description = description;
     this.incluBtw = incluBtw;
+    this.excluBtw = exclBtw;
     this.percentage = percentage;
     this.preconditions = preconditions;
     this.insurance = insurance;
