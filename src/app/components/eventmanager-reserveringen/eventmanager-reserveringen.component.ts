@@ -57,6 +57,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
   fetchOrders() {
     this.reservationService.getAll().subscribe(data => {
       this.orderList = data;
+      console.log(data);
     });
   }
 
