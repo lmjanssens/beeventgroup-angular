@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
 import {Employee} from '../../../models/employee.model';
 import {Location} from '@angular/common';
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-werknemers-details',
@@ -14,11 +16,31 @@ export class WerknemersDetailsComponent implements OnInit {
   private employee: Employee;
   private currentId: any;
   private sub: any;
+  currentUser: any;
+  authenticated = false;
 
-  constructor(private employeeService: EmployeeService,
+  constructor(private employeeService: EmployeeService, private authService: AuthorizationService,
               private route: ActivatedRoute, private router: Router, private globals: Globals, private location: Location) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
   }
 
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
+  }
   ngOnInit() {
     this.globals.setHuidigePagina('werknemerFormulier');
 
@@ -39,5 +61,8 @@ export class WerknemersDetailsComponent implements OnInit {
     this.employeeService.delete(this.currentId).subscribe(() => {
       this.location.back();
     });
+  }
+  getRoles() {
+    return Role;
   }
 }

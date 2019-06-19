@@ -4,6 +4,7 @@ import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 import {CateringService} from '../../../services/catering.service';
 import {Role} from '../../../enums/Role';
+import {AuthorizationService} from "../../../services/authorization.service";
 
 @Component({
   selector: 'app-catering-overview',
@@ -17,8 +18,28 @@ export class CateringOverviewComponent implements OnInit {
   searchTerm: string;
   catering: Catering;
   currentUser: any;
+  authenticated = false;
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private cateringService: CateringService) {
+  constructor(private globals: Globals, private navbar: NavbarComponent, private cateringService: CateringService,  private authService: AuthorizationService) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   ngOnInit() {

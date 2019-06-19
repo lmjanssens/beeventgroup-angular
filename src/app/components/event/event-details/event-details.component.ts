@@ -8,6 +8,8 @@ import {EventModel} from '../../../models/event.model';
 import {EventLocation} from '../../../models/event-location.model';
 import {Supplier} from '../../../models/supplier.model';
 import {Location} from '@angular/common';
+import {Role} from "../../../enums/Role";
+import {AuthorizationService} from "../../../services/authorization.service";
 
 @Component({
   selector: 'app-event-details',
@@ -21,12 +23,32 @@ export class EventDetailsComponent implements OnInit {
   loading: true;
   private sub: any;
   currentId;
+  currentUser: any;
+  authenticated = false;
 
   constructor(private globals: Globals, private eventLocationService: EventlocationService,
-              private supplierService: SupplierService, private router: Router,
+              private supplierService: SupplierService, private router: Router, private authService: AuthorizationService,
               private eventService: EventService, private route: ActivatedRoute, private location: Location) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
   }
 
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
+  }
 
   ngOnInit() {
 
@@ -52,5 +74,8 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.delete(this.event.id).subscribe(() => {
       this.location.back();
     });
+  }
+  getRoles() {
+    return Role;
   }
 }

@@ -5,6 +5,8 @@ import {InstructorService} from '../../../services/instructor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
 import {Location} from '@angular/common';
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from "../../../enums/Role";
 
 @Component({
   selector: 'app-instructor-details',
@@ -17,9 +19,30 @@ export class InstructorDetailsComponent implements OnInit {
   user = new User();
   private sub: any;
   currentId: number;
+  currentUser: any;
+  authenticated = false;
 
-  constructor(private instructorService: InstructorService,
+  constructor(private instructorService: InstructorService, private authService: AuthorizationService,
               private route: ActivatedRoute, private router: Router, private globals: Globals, private location: Location) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   ngOnInit() {
@@ -41,5 +64,9 @@ export class InstructorDetailsComponent implements OnInit {
     this.instructorService.delete(this.currentId).subscribe(() => {
       this.location.back();
     });
+  }
+
+  getRoles() {
+    return Role;
   }
 }

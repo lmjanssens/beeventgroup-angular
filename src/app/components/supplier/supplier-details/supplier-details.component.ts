@@ -4,6 +4,8 @@ import {Globals} from '../../globals';
 import {SupplierService} from '../../../services/supplier.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {Role} from '../../../enums/Role';
+import {AuthorizationService} from '../../../services/authorization.service';
 
 @Component({
   selector: 'app-supplier-details',
@@ -19,9 +21,33 @@ export class SupplierDetailsComponent implements OnInit {
   city = '';
   currentId;
   private sub: any;
+  authenticated = false;
+  currentUser: any;
 
-  constructor(private globals: Globals, private supplierService: SupplierService, private route: ActivatedRoute, private router: Router, private location: Location) {
+
+  constructor(private globals: Globals, private supplierService: SupplierService, private authService: AuthorizationService,
+              private route: ActivatedRoute, private router: Router, private location: Location) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
   }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
+  }
+
 
   ngOnInit() {
     this.globals.setHuidigePagina('leverancierFormulier');
@@ -49,5 +75,7 @@ export class SupplierDetailsComponent implements OnInit {
     });
   }
 
-
+  getRoles() {
+    return Role;
+  }
 }

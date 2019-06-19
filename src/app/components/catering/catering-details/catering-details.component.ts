@@ -5,6 +5,8 @@ import {Catering} from '../../../models/catering.model';
 import {Supplier} from '../../../models/supplier.model';
 import {CateringService} from '../../../services/catering.service';
 import {Location} from '@angular/common';
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from "../../../enums/Role";
 
 @Component({
   selector: 'app-catering-details',
@@ -16,9 +18,30 @@ export class CateringDetailsComponent implements OnInit {
   supplier = new Supplier();
   private sub: any;
   currentId: number;
+  currentUser: any;
+  authenticated = false;
 
-  constructor(private cateringService: CateringService,
+  constructor(private cateringService: CateringService, private authService: AuthorizationService,
               private route: ActivatedRoute, private router: Router, private globals: Globals, private location: Location) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
+  }
+
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
   }
 
   ngOnInit() {
@@ -40,5 +63,9 @@ export class CateringDetailsComponent implements OnInit {
     this.cateringService.delete(this.currentId).subscribe(() => {
       this.location.back();
     });
+  }
+
+  getRoles() {
+    return Role;
   }
 }
