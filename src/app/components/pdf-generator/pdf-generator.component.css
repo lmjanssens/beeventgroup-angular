@@ -1,0 +1,34 @@
+p{
+  margin-top: 0;
+  margin-bottom: 0rem;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*table {*/
+  /*table-layout: inherit;*/
+  /*border: 1px solid;*/
+  /*width: 100%;*/
+
+/*}*/
+
+/*th {*/
+  /*background-color: #394365;*/
+  /*color: white;*/
+  /*border-right: 1px solid white;*/
+  /*padding: 0 0 0 0.5em;*/
+  /*overflow: hidden;*/
+/*}*/
+
+/*tr:hover {*/
+  /*cursor: pointer;*/
+  /*background-color: #ddd;*/
+
+/*}*/
+
+/*td {*/
+  /*padding: 0 0 0 0.5em;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*/
+  /*border: 1px solid;*/
+/*}*/
