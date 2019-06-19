@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+    <div class="page-content">
+      <div style="height: 590px;">
+        <h3>
+          Reservering toevoegen
+        </h3>
+        <div>
+          <label for="dateevent" class="col-sm-2">Datum evenement</label>
+          <input type="date" id="dateevent" name="dateevent" placeholder="Datum evenement" required
+                 [(ngModel)]="order.dateevent">
+        </div>
+        <div>
+          <label class="col-sm-2" for="dateorder">Datum reservering</label>
+          <input type="date" id="dateorder" name="dateorder" placeholder="Datum reservering" required
+                 [(ngModel)]="order.dateorder">
+        </div>
+        <div>
+          <label class="col-sm-2" for="startTime">Starttijd</label>
+          <input type="time" id="startTime" name="startTime" placeholder="Starttijd"
+                 [(ngModel)]="order.startTime">
+        </div>
+        <div>
+          <label class="col-sm-2" for="endTime">Eindtijd</label>
+          <input type="time" id="endTime" name="endTime" placeholder="Eindtijd"
+                 [(ngModel)]="order.endTime">
+        </div>
+        <div>
+          <label class="col-sm-2" for="note">Notitie</label>
+          <input type="text" id="note" name="note" placeholder="Notitie"
+                 [(ngModel)]="order.note">
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Klant</label>
+          <select id="customer" name="customer" [(ngModel)]="selectedCustomer" required>
+            <option *ngFor="let customer of getCustomers()" [ngValue]="customer">
+              {{customer.first_name}}
+            </option>
+          </select>
+        </div>
+        <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+          <label class="col-sm-2">Evenement</label>
+          <select id="event" name="event" [(ngModel)]="selectedEvent" required>
+            <option *ngFor="let event of getEvents()" [ngValue]="event">
+              {{event.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/evenementenoverview">
+        <i class="fa fa-close"></i> Annuleren
+      </button>
+      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+        Toevoegen
+      </button>
+      <app-alerts></app-alerts>
+    </div>
+  </form>
+</div>

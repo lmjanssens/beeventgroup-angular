@@ -59,6 +59,8 @@ import {ReservationService} from "./services/reservation.service";
 import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
 import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
 import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
+import { ReserveringenCreateComponent } from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
+import { ReserveringenUpdateComponent } from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +105,9 @@ import { WerknemersDetailsComponent } from './components/werknemers/werknemers-d
     CateringCreateComponent,
     CateringDetailsComponent,
     CateringUpdateComponent,
-    WerknemersDetailsComponent
+    WerknemersDetailsComponent,
+    ReserveringenCreateComponent,
+    ReserveringenUpdateComponent
   ],
   imports: [
     BrowserModule,
