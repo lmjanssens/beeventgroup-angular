@@ -35,10 +35,17 @@ export class InstructorDetailsComponent implements OnInit {
   }
 
   onDelete() {
-    if (!confirm(`Wilt u de instructeur "${this.instructor.first_name + ' ' + this.instructor.last_name}" verwijderen ?`)) {
-      return;
+    if (this.instructor.infix === '' || this.instructor.infix === undefined || this.instructor.infix === null) {
+      if (!confirm(`Wilt u de instructeur "${this.instructor.first_name + ' ' + this.instructor.last_name}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de instructeur "${this.instructor.first_name + ' ' +
+      this.instructor.infix + ' ' + this.instructor.last_name}" verwijderen ?`)) {
+        return;
+      }
     }
-    this.instructorService.delete(this.currentId).subscribe(() => {
+    this.instructorService.delete(this.instructor.instructor_id).subscribe(() => {
       this.location.back();
     });
   }

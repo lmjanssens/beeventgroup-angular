@@ -35,10 +35,17 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   onDelete() {
-    if (!confirm(`Wilt u de klant "${this.customer.first_name + ' ' + this.customer.last_name}" verwijderen ?`)) {
-      return;
+    if (this.customer.infix === '' || this.customer.infix === undefined || this.customer.infix === null) {
+      if (!confirm(`Wilt u de klant "${this.customer.first_name + ' ' + this.customer.last_name}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de klant "${this.customer.first_name + ' ' +
+      this.customer.infix + ' ' + this.customer.last_name}" verwijderen ?`)) {
+        return;
+      }
     }
-    this.customerService.delete(this.currentId).subscribe(() => {
+    this.customerService.delete(this.customer.customerId).subscribe(() => {
       this.location.back();
     });
   }

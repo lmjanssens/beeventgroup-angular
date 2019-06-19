@@ -4,8 +4,8 @@ import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 import {EmployeeService} from '../../../services/employee.service';
 import {ApiService} from '../../../services/api.service';
-import {AuthorizationService} from "../../../services/authorization.service";
-import {Role} from "../../../enums/Role";
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-eventmanager-eventmanagers',
@@ -60,20 +60,30 @@ export class EventmanagerEventmanagersComponent implements OnInit {
   ngOnInit() {
     this.globals.setHuidigePagina('Werknemers');
     this.navbar.checkNavBarStyle();
-    this.employeeService.getAll().subscribe(employee => this.employeeList = this.nullRemover(employee.sort((a, b) => (
-      a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
-      a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
+    this.employeeService.getAll().subscribe(customer => this.employeeList = this.sortByName(this.nullRemover(customer)));
   }
 
-  onDelete(id, firstName, lastName) {
-    if (!confirm(`Wilt u de werknemer "${firstName + ' ' + lastName}" verwijderen ?`)) {
-      return;
+  sortByName(list) {
+    list.sort((a, b) => (
+      a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0)).sort((a, b) => (
+      a.infix > b.infix ? 1 : b.infix > a.infix ? -1 : 0))
+      .sort((a, b) => (
+        a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0));
+    return list;
+  }
+
+  onDelete(id, firstName, infix, lastName) {
+    if (infix === '' || infix === undefined) {
+      if (!confirm(`Wilt u de werknemer "${firstName + ' ' + lastName}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de werknemer "${firstName + ' ' + infix + ' ' + lastName}" verwijderen ?`)) {
+        return;
+      }
     }
     this.employeeService.delete(id).subscribe(() => {
-      console.log('Employee with id ' + id + ' is deleted.');
-      this.employeeService.getAll().subscribe(employee => this.employeeList = this.nullRemover(employee.sort((a, b) => (
-        a.last_name > b.last_name ? 1 : b.last_name > a.last_name ? -1 : 0))).sort((a, b) => (
-        a.first_name > b.first_name ? 1 : b.first_name > a.first_name ? -1 : 0)));
+      this.employeeService.getAll().subscribe(customer => this.employeeList = this.sortByName(this.nullRemover(customer)));
     });
   }
 
