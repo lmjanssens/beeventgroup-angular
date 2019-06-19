@@ -1,0 +1,14 @@
+<!--<app-header></app-header>-->
+
+<span *ngIf="!imagePath; else showUploadedImage">
+  <label for="image_uploader" style="cursor: pointer">
+    <span class="input btn btn-success">Upload een afbeelding</span>
+  </label>
+
+  <input type="file" id="image_uploader" (change)="selectFile($event)" style="display: none;">
+</span>
+
+<ng-template #showUploadedImage>
+  <span class="input">{{ this.imagePath.length >= 15 ? this.imagePath.substr(0, 15) + '...' : this.imagePath }}</span>
+  <button type="button" class="btn btn-danger" (click)="removeImage()">Verwijder</button>
+</ng-template>
