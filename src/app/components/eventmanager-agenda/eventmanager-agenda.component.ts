@@ -29,7 +29,7 @@ export class EventmanagerAgendaComponent implements OnInit {
       this.getInstructors(list[this.i]);
       this.calendarComponent.getApi().addEvent({
         title: list[this.i].event.name + '\n' + ' ' +
-          '\n' + 'Instructeurs: ' + this.instructorsString, start: list[this.i].dateevent, color: '#394365'
+          '\n' + 'Instructeurs: ' +  this.instructorsString, start: list[this.i].dateevent, color: '#394365'
       });
       this.i = this.i + 1;
     }
@@ -57,7 +57,7 @@ export class EventmanagerAgendaComponent implements OnInit {
         this.j = this.j + 1;
       }
     }
-    this.j = this.j + 1;
+    this.j = 0;
   }
 
   ngOnInit() {
