@@ -52,10 +52,12 @@ import { InstructorDetailsComponent } from './components/instructor/instructor-d
 import { EventmanagerCreateComponent } from './components/werknemers/eventmanager-create/eventmanager-create.component';
 import { EventmanagerUpdateComponent } from './components/werknemers/eventmanager-update/eventmanager-update.component';
 import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
-import { CateringCreateComponent } from './components/catering/catering-create/catering-create.component';
-import { CateringService } from './services/catering.service';
-import { HomepageInstructorComponent } from './components/homepage-instructor/homepage-instructor.component';
-import { ReservationService } from './services/reservation.service';
+import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
+import {CateringService} from './services/catering.service';
+import {HomepageInstructorComponent} from './components/homepage-instructor/homepage-instructor.component';
+import {ReservationService} from './services/reservation.service';
+import { SupplierContractOverviewComponent } from './components/supplier/supplier-contract-overview/supplier-contract-overview.component';
+import { SupplierContractUpdateComponent } from './components/supplier/supplier-contract-update/supplier-contract-update.component';
 import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
 import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
 import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
@@ -66,6 +68,7 @@ import { UploadFileService } from './services/upload-file.service';
 import { DetailsUploadComponent } from './components/details-upload/details-upload.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
+
 
 @NgModule({
   declarations: [
@@ -108,6 +111,8 @@ import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.co
     EventmanagerUpdateComponent,
     CustomerDetailsComponent,
     CateringCreateComponent,
+    SupplierContractOverviewComponent,
+    SupplierContractUpdateComponent,
     CateringDetailsComponent,
     CateringUpdateComponent,
     WerknemersDetailsComponent,

@@ -79,23 +79,47 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/homeinstructor']);
       }
     }
-    if (this.globals.getHuidigePagina() === 'klantenFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
-      this.router.navigate(['/homeeventmanager/customeroverview']);
+    if (this.globals.getHuidigePagina() === 'klantenFormulier') {
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/customeroverview']);
+      } else {
+        this.router.navigate(['homeinstructor/customeroverview']);
+      }
     }
-    if (this.globals.getHuidigePagina() === 'instructeurFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
-      this.router.navigate(['/homeeventmanager/instructeursoverview']);
+    if (this.globals.getHuidigePagina() === 'instructeurFormulier') {
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/instructeursoverview']);
+      } else {
+        this.router.navigate(['homeinstructor/instructeursoverview']);
+      }
     }
     if (this.globals.getHuidigePagina() === 'horecaFormulier') {
-      this.router.navigate(['/homeeventmanager/horecaoverview']);
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/horecaoverview']);
+      } else {
+        this.router.navigate(['homeinstructor/horecaoverview']);
+      }
     }
-    if (this.globals.getHuidigePagina() === 'evenementFormulier' || this.globals.getHuidigePagina() === 'eventupdate' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
-      this.router.navigate(['/homeeventmanager/evenementenoverview']);
+    if (this.globals.getHuidigePagina() === 'evenementFormulier' || this.globals.getHuidigePagina() === 'eventupdate') {
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/evenementenoverview']);
+      } else {
+        this.router.navigate(['homeinstructor/evenementenoverview']);
+      }
     }
-    if (this.globals.getHuidigePagina() === 'werknemerFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
-      this.router.navigate(['/homeeventmanager/werknemersoverview']);
+    if (this.globals.getHuidigePagina() === 'werknemerFormulier') {
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/werknemersoverview']);
+      } else {
+        this.router.navigate(['homeinstructor/werknemersoverview']);
+      }
     }
-    if (this.globals.getHuidigePagina() === 'leverancierFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
-      this.router.navigate(['/homeeventmanager/supplieroverview']);
+    if (this.globals.getHuidigePagina() === 'leverancierFormulier') {
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/supplieroverview']);
+      } else {
+        this.router.navigate(['homeinstructor/supplieroverview']);
+      }
     }
     if (this.globals.getHuidigePagina() === 'htmlFormulier ' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/reserveringenoverview']);
