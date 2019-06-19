@@ -89,12 +89,12 @@
 
 
   <div>
-  <form class="container" role="form" #fo="ngForm" (ngSubmit)="addNewLocations(fo)">
-    <div class="containerTables" style="margin-bottom: 10em">
+  <form role="form" #fo="ngForm" (ngSubmit)="addNewLocations()">
+    <div class="containerTables">
       <table class="locationTable">
         <th class="locations">Locaties
           <img src="../assets/img/addIcon.png"
-               *ngIf="this.newLocations.length < 5; else hidden"
+               *ngIf="this.newLocations.length < 5 && locationName.length != 0; else hidden"
                style=" margin-left: 50px;
                 width: 20px;
                 height: 20px;
@@ -134,7 +134,7 @@
       </table>
     </div>
   </form>
-  <form class="container" role="form">
+  <form class="container" role="form"  #fa="ngForm">
     <div class="containerTables" style="margin-top: -370px;">
       <table class="locationTableDel">
         <th class="locations">Verwijder locatie</th>
@@ -146,7 +146,7 @@
             </option>
           </select>
         </tr>
-        <button class="btn btn-primary"
+        <button [disabled]="!fa.valid" class="btn btn-primary"
                 id="deleteLocation"
                 type="submit"
                 style="width: 50%;
