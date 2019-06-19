@@ -7,10 +7,7 @@ import {Role} from '../../enums/Role';
 import {ReservationService} from '../../services/reservation.service';
 import {AlertsService} from 'angular-alert-module';
 import {Router} from '@angular/router';
-import {Customer} from "../../models/customer.model";
-import {Observable, pipe, Subject} from "rxjs";
-import {ApiService} from "../../services/api.service";
-import {first, map} from "rxjs/operators";
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -19,7 +16,7 @@ import {first, map} from "rxjs/operators";
 })
 export class EventmanagerReserveringenComponent implements OnInit {
 
-  public orderList: any = [];
+  orderList: Order[] = [];
   rest: number;
   firstPage = 1;
   itemsPerPage = 5;
@@ -27,7 +24,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
   amountRows = 0;
   searchTerm: string;
   emptyOrder: Order = new Order(null, null, '', '',
-    '', '', '', null, null, null, null);
+    '', '', '', null, null, null);
 
   currentUser: any;
   authenticated = false;
@@ -63,15 +60,8 @@ export class EventmanagerReserveringenComponent implements OnInit {
   }
 
   getOrders() {
-    this.orderList = [];
-    this.reservationService.getAll().subscribe((data: {}) => {
-      console.log(data);
+    this.reservationService.getAll().subscribe(data => {
       this.orderList = data;
-      if (this.orderList.length !== 0 && this.orderList.length % this.itemsPerPage !== 0) {
-        this.rest = this.orderList.length % this.itemsPerPage;
-        this.amountRows = this.itemsPerPage - this.rest;
-        this.teller = this.teller + this.orderList.length;
-      }
     });
   }
 
