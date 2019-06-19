@@ -17,19 +17,6 @@ export class EventmanagerAgendaComponent implements OnInit {
   calendarPlugins = [dayGridPlugin];
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
-  public orderList: Order[] = [
-    new Order(1, null, '1-1-1', '2019-07-01',
-      '', '', '', null, null, null),
-    new Order(2, null, '1-1-1', '2019-07-02',
-      '', '', '', null, null, null),
-    new Order(3, null, '1-1-1', '2019-07-03',
-      '', '', '', null, null, null),
-    new Order(4, null, '1-1-1', '2019-07-04',
-      '', '', '', null, null, null),
-    new Order(5, null, '1-1-1', '2019-07-05',
-      '', '', '', null, null, null),
-    new Order(6, null, '1-1-1', '2019-07-06',
-      '', '', '', null, null, null)];
 
   constructor(private globals: Globals, private navbar: NavbarComponent, private reservationService: ReservationService) {
   }
@@ -37,7 +24,10 @@ export class EventmanagerAgendaComponent implements OnInit {
   fillCalenderEvents(list) {
     console.log(list);
     while (this.i < list.length) {
-      this.calendarComponent.getApi().addEvent({title: list[this.i].event.name, start: list[this.i].dateevent});
+      this.calendarComponent.getApi().addEvent({
+        title: 'Evenement: ' + list[this.i].event.name + '' +
+          '\n' + 'Instructeurs:', start: list[this.i].dateevent, color: '#394365'
+      });
       this.i = this.i + 1;
     }
 
