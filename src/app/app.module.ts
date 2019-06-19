@@ -20,7 +20,7 @@ import {DummyFilterPipe} from './pipes/dummyfilter.pipe';
 import {NavbarComponent} from './navbar/navbar.component';
 import {OrderFilterPipe} from './pipes/orderfilter.pipe';
 import {CustomerFilterPipe} from './pipes/customerfilter.pipe';
-import {EventmanagerEventsComponent} from './components/eventmanager-events/eventmanager-events.component';
+import {EventmanagerEventsComponent} from './components/event/event-overview/eventmanager-events.component';
 import {EventFilterPipe} from './pipes/eventfilter.pipe';
 import {SupplierOverviewComponent} from './components/supplier/supplier-overview/supplier-overview.component';
 import {SupplierFilterPipe} from './pipes/supplierfilter.pipe';
@@ -42,8 +42,8 @@ import {AuthGuard} from './services/auth.guard.service';
 import {AuthorizationService} from './services/authorization.service';
 import {InstructorCreateComponent} from './components/instructor/instructor-create/instructor-create.component';
 import {InstructorService} from './services/instructor.service';
-import {EventsUpdateComponent} from './components/eventmanager-events/events-update/events-update.component';
-import {EventsCreateComponent} from './components/eventmanager-events/events-create/events-create.component';
+import {EventsUpdateComponent} from './components/event/events-update/events-update.component';
+import {EventsCreateComponent} from './components/event/events-create/events-create.component';
 import { SupplierDetailsComponent } from './components/supplier/supplier-details/supplier-details.component';
 import { SupplierUpdateComponent } from './components/supplier/supplier-update/supplier-update.component';
 import { SupplierCreateComponent } from './components/supplier/supplier-create/supplier-create.component';
@@ -61,6 +61,7 @@ import { SupplierContractUpdateComponent } from './components/supplier/supplier-
 import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
 import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
 import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
+import { EventDetailsComponent } from './components/event/event-details/event-details.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { WerknemersDetailsComponent } from './components/werknemers/werknemers-d
     SupplierContractUpdateComponent,
     CateringDetailsComponent,
     CateringUpdateComponent,
-    WerknemersDetailsComponent
+    WerknemersDetailsComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,

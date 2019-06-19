@@ -1,7 +1,5 @@
 
 import {Supplier} from './supplier.model';
-import {Catering} from './catering.model';
-
 export class SupplierContract {
   public id: number;
   public supplier: Supplier;
@@ -17,4 +15,5 @@ export class SupplierContract {
   public extras: string;
   public startDate: Date;
   public endDate: Date;
+
 }

@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Supplier} from '../../../models/supplier.model';
-import {SupplierEmail} from '../../../models/supplier-email.model';
-import {SupplierPhone} from '../../../models/supplier-phone.model';
-import {SupplierAddress} from '../../../models/supplier-address.model';
 import {Globals} from '../../globals';
 import {SupplierService} from '../../../services/supplier.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-supplier-details',
@@ -19,18 +17,14 @@ export class SupplierDetailsComponent implements OnInit {
   zipcode = '';
   address = '';
   city = '';
-  newMail: SupplierEmail = new SupplierEmail();
-  newPhone: SupplierPhone = new SupplierPhone();
-  newAddress: SupplierAddress = new SupplierAddress();
-  emailList: SupplierEmail[] = [];
-  phoneList: SupplierPhone[] = [];
   currentId;
   private sub: any;
 
-  constructor(private globals: Globals, private supplierService: SupplierService, private route: ActivatedRoute, private router: Router) {
+  constructor(private globals: Globals, private supplierService: SupplierService, private route: ActivatedRoute, private router: Router, private location: Location) {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('leverancierFormulier');
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       console.log(this.currentId);
@@ -43,6 +37,15 @@ export class SupplierDetailsComponent implements OnInit {
         this.city = this.supplier.addresses[0].city;
 
       });
+    });
+  }
+
+  onDelete() {
+    if (!confirm(`Wilt u de leverancier "${this.supplier.name}" verwijderen ?`)) {
+      return;
+    }
+    this.supplierService.delete(this.currentId).subscribe(() => {
+      this.location.back();
     });
   }
 

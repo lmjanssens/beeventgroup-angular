@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'eventupdate' ||
       this.globals.getHuidigePagina() === 'klantupdate' ||
       this.globals.getHuidigePagina() === 'werknemerFormulier' ||
-
+      this.globals.getHuidigePagina() === 'leverancierFormulier' ||
       this.globals.getHuidigePagina() === 'Agenda') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
@@ -92,6 +92,9 @@ export class HeaderComponent implements OnInit {
     }
     if (this.globals.getHuidigePagina() === 'werknemerFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/werknemersoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'leverancierFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager/supplieroverview']);
     }
   }
 

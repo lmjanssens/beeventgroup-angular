@@ -41,9 +41,10 @@ select {
 }
 
 .containerTables {
+
   float: right;
   margin-right: -64px;
-  margin-top: -530px;
+
 }
 
 .buttons {
@@ -82,9 +83,5 @@ th {
   background-color: #394365;
   color: white;
   border-radius: 10px;
-}
-
-app-alerts {
-  width: 1000px;
 }
 
