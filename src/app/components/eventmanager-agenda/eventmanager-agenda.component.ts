@@ -16,6 +16,7 @@ export class EventmanagerAgendaComponent implements OnInit {
   i = 0;
   j = 0;
   calendarPlugins = [dayGridPlugin];
+  instructorsString;
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
 
@@ -27,8 +28,8 @@ export class EventmanagerAgendaComponent implements OnInit {
     while (this.i < list.length) {
       this.getInstructors(list[this.i]);
       this.calendarComponent.getApi().addEvent({
-        title: 'Evenement: ' + list[this.i].event.name + '' +
-          '\n' + 'Instructeurs:', start: list[this.i].dateevent, color: '#394365'
+        title: list[this.i].event.name + '\n' + ' ' +
+          '\n' + 'Instructeurs: ' + this.instructorsString, start: list[this.i].dateevent, color: '#394365'
       });
       this.i = this.i + 1;
     }
@@ -43,10 +44,20 @@ export class EventmanagerAgendaComponent implements OnInit {
   }
 
   getInstructors(order) {
-    while (this.j < order.registeredEvents.length) {
-      console.log('hier ' + order.registeredEvents[this.j].instructor.first_name);
-      this.j = this.j + 1;
+    this.instructorsString = '';
+    if (order.registeredEvents.length > 0) {
+      while (this.j < order.registeredEvents.length) {
+        if (order.registeredEvents[this.j].instructor.infix === null) {
+          this.instructorsString = this.instructorsString + '\n' + order.registeredEvents[this.j].instructor.first_name
+            + ' ' + order.registeredEvents[this.j].instructor.last_name;
+        } else {
+          this.instructorsString = this.instructorsString + '\n' + order.registeredEvents[this.j].instructor.first_name
+            + ' ' + order.registeredEvents[this.j].instructor.infix + ' ' + order.registeredEvents[this.j].instructor.last_name;
+        }
+        this.j = this.j + 1;
+      }
     }
+    this.j = this.j + 1;
   }
 
   ngOnInit() {
