@@ -54,7 +54,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
     this.currentUser = this.authService.getAuthenticator();
   }
 
-  getOrders() {
+  fetchOrders() {
     this.reservationService.getAll().subscribe(data => {
       this.orderList = data;
     });
@@ -64,7 +64,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
     this.globals.setHuidigePagina('Reserveringen');
     this.navbar.checkNavBarStyle();
     console.log(this.globals.getHuidigePagina());
-    this.getOrders();
+    this.fetchOrders();
   }
 
   getRoles() {
@@ -92,9 +92,12 @@ export class EventmanagerReserveringenComponent implements OnInit {
     );
   }
 
-  OnDelete(orderId: number) {
-    this.reservationService.delete(orderId).subscribe(success => {
-      this.getOrders();
+  OnDelete(orderId) {
+    if (!confirm(`Wilt deze reservering verwijderen?`)) {
+      return;
+    }
+    this.reservationService.delete(orderId).subscribe(() => {
+      this.fetchOrders();
     });
   }
 

@@ -1,0 +1,17 @@
+.input {
+  padding: 10px;
+  margin: 8px;
+  display: inline-block;
+  border: 1px solid #394365;
+  border-radius: 4px;
+  width: 191px;
+  /*overflow-x: hidden;*/
+}
+
+.buttons {
+  float: right;
+  margin-right: -53px;
+  margin-bottom: 1em;
+
+}
+
