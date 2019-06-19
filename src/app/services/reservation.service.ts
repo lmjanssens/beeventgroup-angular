@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
-import {first, map} from 'rxjs/operators';
+import {first} from 'rxjs/operators';
 import {Order} from '../models/order.model';
+import {Customer} from '../models/customer.model';
+import {EventModel} from '../models/event.model';
 
 @Injectable()
 export class ReservationService {
@@ -11,8 +13,10 @@ export class ReservationService {
 
   }
 
-  getAll() {
-    return this.apiService.get('orders').pipe(map(this.apiService.extractData));
+  newOrder: Order;
+
+  getAll(): Observable<Order[]> {
+    return this.apiService.get<Order[]>('orders');
   }
 
   getById(id: number) {
@@ -25,9 +29,9 @@ export class ReservationService {
     return this.apiService.put<Order>(uri + updatedOrder.orderId, updatedOrder);
   }
 
-  save(customer: any): Observable<object> {
+  save(order: Order, customer: Customer, event: EventModel): Observable<object> {
     const uri = 'orders';
-    return this.apiService.post(uri, customer);
+    return this.apiService.post(uri + '/' + customer.customerId + '/' + event.id, order);
   }
 
 
@@ -41,7 +45,7 @@ export class ReservationService {
    * @param instructor username of the instructor
    */
   checkAlreadyRegisteredEvent(orderId: number, instructor: string) {
-    
+
     const uri = 'registeredevents/orderid';
     return this.apiService.get(uri, orderId).pipe(first());
   }
@@ -61,5 +65,11 @@ export class ReservationService {
   unsubscribeToEvent(registeredEventId: number) {
     const uri = 'registeredevents';
     return this.apiService.delete(uri, registeredEventId);
+  }
+
+  getEmptyOrder() {
+    this.newOrder = new Order(null, null, null, null, null,
+      null, null, null, null, null);
+    return this.newOrder;
   }
 }

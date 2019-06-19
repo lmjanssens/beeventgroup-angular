@@ -41,10 +41,9 @@ select {
 }
 
 .containerTables {
-
   float: right;
   margin-right: -64px;
-
+  margin-top: -530px;
 }
 
 .buttons {
@@ -87,19 +86,5 @@ th {
 
 app-alerts {
   width: 1000px;
-}
-
-.page-content div div:nth-child(8), .page-content div div:nth-child(10) {
-  display: flex;
-  padding: 20px 0px;
-}
-
-#description, #note {
-  padding: 10px;
-  margin: 0px 8px;
-  display: inline-block;
-  border-radius: 4px;
-  width: 400px;
-  height: 160px;
 }
 

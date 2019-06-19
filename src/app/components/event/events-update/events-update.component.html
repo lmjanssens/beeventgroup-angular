@@ -44,9 +44,9 @@
         </div>
         <div>
           <label class="col-sm-2" for="description">Beschrijving</label>
-          <input type="text" id="description" name="description" placeholder="Beschrijving" required
+          <textarea type="text" id="description" name="description" placeholder="Beschrijving" required
                  [(ngModel)]="event.description"
-                 [disabled]="loading">
+                    [disabled]="loading"></textarea>
         </div>
         <div>
           <label class="col-sm-2" for="options">Opties</label>
@@ -56,9 +56,9 @@
         </div>
         <div>
           <label class="col-sm-2" for="note">Notities</label>
-          <input type="text" id="note" name="note" placeholder="Notities"
+          <textarea type="text" id="note" name="note" placeholder="Notities"
                  [(ngModel)]="event.note"
-                 [disabled]="loading">
+                    [disabled]="loading"></textarea>
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Eigen evenement?</label>

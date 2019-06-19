@@ -3,7 +3,9 @@
 <div class="reserveringenPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Reserveringen</h3>
   <div>
-    <button *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Reservering<i class="fa fa-plus-circle fa-lg"
+    <button *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE"
+            routerLink="createorder/"
+            style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Reservering<i class="fa fa-plus-circle fa-lg"
                                                                           style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
@@ -13,7 +15,6 @@
   <div class="fullTable" style="padding-top: 2em">
     <table>
       <th class="tableEvenement">Evenement</th>
-      <th class="tableCustomer">Klant</th>
       <th class="tableDatum">Datum</th>
       <th class="tableMaxInstructor">Max instructor</th>
       <th class="tableEdit"></th>
@@ -21,10 +22,9 @@
       <th *ngIf="currentUser.role === getRoles().INSTRUCTOR" class="tableSubscribeEvent"></th>
       <tr
         *ngFor="let order of orderList | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
-        <td>{{order.eventid.name}}</td>
-        <td>{{order.customerid.first_name}}</td>
+        <td>{{order.event.name}}</td>
         <td>{{order.dateorder}}</td>
-        <td>{{order.eventid.maxinstructors}}</td>
+        <td>{{order.event.maxinstructors}}</td>
         <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledEditButton" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
@@ -54,7 +54,7 @@
           </td>
         </ng-template>
         <td *ngIf="currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
-          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success" (click)="OnSubscribeToEvent(order, order.eventid.id);">Inschrijven voor evenement</button>
+          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success" (click)="OnSubscribeToEvent(order, order.event.id);">Inschrijven voor evenement</button>
           <button *ngIf="checkIfAlreadySubscribed(order)" class="btn btn-outline-danger" (click)="OnUnsubscribeToEvent(order.registeredEvents[0].id);">Uitschrijven</button>
         </td>
 

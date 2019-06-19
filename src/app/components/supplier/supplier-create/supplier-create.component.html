@@ -112,11 +112,11 @@
 
                  [(ngModel)]="supplier.website">
         </div>
-        <div>
+        <div id="note-div">
           <label class="col-sm-2" for="note">Notitie</label>
-          <input type="text" id="note" name="note " placeholder="Notitie"
+          <textarea type="text" id="note" name="note " placeholder="Notitie"
 
-                 [(ngModel)]="supplier.note">
+                    [(ngModel)]="supplier.note"></textarea>
         </div>
         <div>
           <label class="col-sm-2" for="image">Image</label>

@@ -91,3 +91,17 @@ th {
   color: white;
   border-radius: 10px;
 }
+
+#note-div {
+  display: flex;
+  padding: 20px 0px;
+}
+
+#note {
+  padding: 10px;
+  margin: 0px 8px;
+  display: inline-block;
+  border-radius: 4px;
+  width: 400px;
+  height: 160px;
+}
