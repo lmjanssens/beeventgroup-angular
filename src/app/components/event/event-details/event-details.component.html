@@ -4,7 +4,7 @@
     <div class="page-content">
       <div style="height: 590px;">
         <h3>
-          Evenement overicht
+          Evenement overzicht
         </h3>
         <div>
           <label for="name" class="col-sm-2">Naam</label>
@@ -14,7 +14,7 @@
         <div>
           <label class="col-sm-2" for="maxInstructors">Hoeveel instructeurs?</label>
           <input type="number" id="maxInstructors" name="maxInstructors"
-                 [(ngModel)]="event.maxInstructors" disabled>
+                 [(ngModel)]="event.maxinstructors" disabled>
         </div>
         <div>
           <label class="col-sm-2" for="btw">BTW</label>
@@ -38,9 +38,9 @@
         </div>
         <div>
           <label class="col-sm-2" for="description">Beschrijving</label>
-          <input type="text" id="description" name="description" disabled
+          <textarea type="text" id="description" name="description" disabled
                  [(ngModel)]="event.description"
-                 [disabled]="loading">
+                    [disabled]="loading"></textarea>
         </div>
         <div>
           <label class="col-sm-2" for="options">Opties</label>
@@ -50,9 +50,9 @@
         </div>
         <div>
           <label class="col-sm-2" for="note">Notities</label>
-          <input type="text" id="note" name="note"
+          <textarea type="text" id="note" name="note"
                  [(ngModel)]="event.note"
-                 disabled>
+                    disabled></textarea>
         </div>
         <div>
           <label class="col-sm-2">Eigen evenement?</label>
@@ -62,7 +62,7 @@
         <div>
           <label class="col-sm-2">Leverancier</label>
           <input type="text" id="supplier" name="supplier"
-                 [(ngModel)]="event.supplier" disabled>
+                 [(ngModel)]="event.supplier.name" disabled>
         </div>
         <div style="padding-bottom: 1em">
           <label class="col-sm-2">Locatie</label>

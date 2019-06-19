@@ -14,7 +14,7 @@
         <div>
           <label class="col-sm-2" for="btw">Hoeveel instructeurs?</label>
           <input type="number" id="maxInstructors" name="maxInstructors" placeholder="Max. instructeurs"
-                 [(ngModel)]="event.maxInstructors">
+                 [(ngModel)]="event.maxinstructors">
         </div>
         <div>
           <label class="col-sm-2" for="btw">BTW</label>
@@ -38,8 +38,8 @@
         </div>
         <div>
           <label class="col-sm-2" for="description">Beschrijving</label>
-          <input type="text" id="description" name="description" placeholder="Beschrijving" required
-                 [(ngModel)]="event.description">
+          <textarea type="text" id="description" name="description" placeholder="Beschrijving" required
+                    [(ngModel)]="event.description"></textarea>
         </div>
         <div>
           <label class="col-sm-2" for="options">Opties</label>
@@ -48,8 +48,8 @@
         </div>
         <div>
           <label class="col-sm-2" for="note">Notities</label>
-          <input type="text" id="note" name="note" placeholder="Notities"
-                 [(ngModel)]="event.note">
+          <textarea type="text" id="note" name="note" placeholder="Notities"
+                    [(ngModel)]="event.note"></textarea>
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Eigen evenement?</label>
