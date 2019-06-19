@@ -80,10 +80,10 @@ export class EventsCreateComponent implements OnInit {
 
   onDeleteLocation() {
     if (this.newLocations.length === 0) {
-      this.alertService.setMessage('Geen locatie om te verwijderen!', 'error');
+      alert('Geen locatie om te verwijderen!');
       return;
     } else {
-      this.alertService.setMessage('Locatie succesvol verwijderd.', 'success');
+      alert('Locatie succesvol verwijderd.');
       this.newLocations.splice(0, 1);
     }
   }
@@ -92,16 +92,17 @@ export class EventsCreateComponent implements OnInit {
     this.newLocations.forEach(location => {
       this.eventLocationService.save(location).subscribe(() => console.log('Locatie toegevoegd.'));
     });
-    this.alertService.setMessage('Locaties toegevoegd.', 'success');
-
+    alert('Locaties toegevoegd.');
+    window.location.reload();
     this.newLocations = [];
   }
 
   onDeleteOldLocation(oldLocation) {
     this.eventLocationService.delete(oldLocation.id).subscribe(() => {
-      this.alertService.setMessage('Oude locatie verwijderd.', 'success');
+      alert('Oude locatie verwijderd.');
     });
     this.fetchEventLocations();
+    window.location.reload();
   }
 
   ngSubmit(f: NgForm) {

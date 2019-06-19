@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {EventModel} from '../../models/event.model';
-import {Globals} from '../globals';
-import {NavbarComponent} from '../../navbar/navbar.component';
-import {EventService} from '../../services/event.service';
-import {EventLocation} from '../../models/event-location.model';
-import {Role} from "../../enums/Role";
-import {AuthorizationService} from "../../services/authorization.service";
+import {EventModel} from '../../../models/event.model';
+import {Globals} from '../../globals';
+import {NavbarComponent} from '../../../navbar/navbar.component';
+import {EventService} from '../../../services/event.service';
+import {EventLocation} from '../../../models/event-location.model';
+import {Role} from "../../../enums/Role";
+import {AuthorizationService} from "../../../services/authorization.service";
 
 
 @Component({

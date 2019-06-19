@@ -33,6 +33,7 @@ export class CateringUpdateComponent implements OnInit {
       console.log(this.currentId);
       this.cateringService.getById(this.currentId).subscribe(catering => {
         this.catering = catering;
+        this.selectedSupplier = this.catering.supplier;
       });
     });
     this.fetchSuppliers();
@@ -50,10 +51,11 @@ export class CateringUpdateComponent implements OnInit {
   }
 
   ngSubmit(f: NgForm) {
+    console.log(this.selectedSupplier)
     this.catering.supplier = this.selectedSupplier;
     const data = JSON.parse(JSON.stringify(this.catering)) as any;
     console.log(data);
-    this.cateringService.updateCatering(data, this.selectedSupplier).subscribe(() => {
+    this.cateringService.updateCatering(data, this.catering.supplier).subscribe(() => {
       this.router.navigate(['/homeeventmanager/horecaoverview']
       );
     });

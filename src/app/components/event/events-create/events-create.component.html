@@ -73,25 +73,28 @@
               {{eventLocation.name}}
             </option>
           </select>
+          <div class="buttons">
+            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/evenementenoverview">
+              <i class="fa fa-close"></i> Annuleren
+            </button>
+            <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+              Toevoegen
+            </button>
+            <app-alerts></app-alerts>
+          </div>
         </div>
       </div>
     </div>
-    <div class="buttons">
-      <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/evenementenoverview">
-        <i class="fa fa-close"></i> Annuleren
-      </button>
-      <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
-        Toevoegen
-      </button>
-      <app-alerts></app-alerts>
-    </div>
   </form>
-  <form class="container" role="form" #fo="ngForm" (ngSubmit)="addNewLocations(fo)">
+
+
+  <div>
+  <form role="form" #fo="ngForm" (ngSubmit)="addNewLocations()">
     <div class="containerTables">
       <table class="locationTable">
         <th class="locations">Locaties
           <img src="../assets/img/addIcon.png"
-               *ngIf="this.newLocations.length < 5; else hidden"
+               *ngIf="this.newLocations.length < 5 && locationName.length != 0; else hidden"
                style=" margin-left: 50px;
                 width: 20px;
                 height: 20px;
@@ -131,7 +134,7 @@
       </table>
     </div>
   </form>
-  <form class="container" role="form">
+  <form class="container" role="form"  #fa="ngForm">
     <div class="containerTables" style="margin-top: -370px;">
       <table class="locationTableDel">
         <th class="locations">Verwijder locatie</th>
@@ -143,7 +146,7 @@
             </option>
           </select>
         </tr>
-        <button class="btn btn-primary"
+        <button [disabled]="!fa.valid" class="btn btn-primary"
                 id="deleteLocation"
                 type="submit"
                 style="width: 50%;
@@ -156,4 +159,5 @@
       </table>
     </div>
   </form>
+</div>
 </div>
