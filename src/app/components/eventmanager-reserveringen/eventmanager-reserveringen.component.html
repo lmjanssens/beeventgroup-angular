@@ -24,7 +24,7 @@
         *ngFor="let order of orderList | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td>{{order.event.name}}</td>
         <td>{{order.dateorder}}</td>
-        <td>{{order.event.maxInstructors}}</td>
+        <td>{{order.event.maxinstructors}}</td>
         <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledEditButton" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"

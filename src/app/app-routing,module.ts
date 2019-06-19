@@ -30,7 +30,7 @@ import {CateringUpdateComponent} from './components/catering/catering-update/cat
 import {WerknemersDetailsComponent} from './components/werknemers/werknemers-details/werknemers-details.component';
 import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
 import {EventDetailsComponent} from './components/event/event-details/event-details.component';
-import {ReserveringenCreateComponent} from "./components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component";
+import {ReserveringenCreateComponent} from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},

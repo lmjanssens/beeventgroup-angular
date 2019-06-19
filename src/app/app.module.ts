@@ -44,24 +44,24 @@ import {InstructorCreateComponent} from './components/instructor/instructor-crea
 import {InstructorService} from './services/instructor.service';
 import {EventsUpdateComponent} from './components/event/events-update/events-update.component';
 import {EventsCreateComponent} from './components/event/events-create/events-create.component';
-import { SupplierDetailsComponent } from './components/supplier/supplier-details/supplier-details.component';
-import { SupplierUpdateComponent } from './components/supplier/supplier-update/supplier-update.component';
-import { SupplierCreateComponent } from './components/supplier/supplier-create/supplier-create.component';
-import { InstructorUpdateComponent } from './components/instructor/instructor-update/instructor-update.component';
-import { InstructorDetailsComponent } from './components/instructor/instructor-details/instructor-details.component';
+import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
+import {SupplierUpdateComponent} from './components/supplier/supplier-update/supplier-update.component';
+import {SupplierCreateComponent} from './components/supplier/supplier-create/supplier-create.component';
+import {InstructorUpdateComponent} from './components/instructor/instructor-update/instructor-update.component';
+import {InstructorDetailsComponent} from './components/instructor/instructor-details/instructor-details.component';
 import {EventmanagerCreateComponent} from './components/werknemers/eventmanager-create/eventmanager-create.component';
-import { EventmanagerUpdateComponent } from './components/werknemers/eventmanager-update/eventmanager-update.component';
-import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import {EventmanagerUpdateComponent} from './components/werknemers/eventmanager-update/eventmanager-update.component';
+import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
 import {CateringService} from './services/catering.service';
-import {HomepageInstructorComponent} from "./components/homepage-instructor/homepage-instructor.component";
-import {ReservationService} from "./services/reservation.service";
-import { CateringDetailsComponent } from './components/catering/catering-details/catering-details.component';
-import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
-import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
-import { EventDetailsComponent } from './components/event/event-details/event-details.component';
-import { ReserveringenCreateComponent } from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
-import { ReserveringenUpdateComponent } from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
+import {HomepageInstructorComponent} from './components/homepage-instructor/homepage-instructor.component';
+import {ReservationService} from './services/reservation.service';
+import {CateringDetailsComponent} from './components/catering/catering-details/catering-details.component';
+import {CateringUpdateComponent} from './components/catering/catering-update/catering-update.component';
+import {WerknemersDetailsComponent} from './components/werknemers/werknemers-details/werknemers-details.component';
+import {EventDetailsComponent} from './components/event/event-details/event-details.component';
+import {ReserveringenCreateComponent} from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
+import {ReserveringenUpdateComponent} from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +108,7 @@ import { ReserveringenUpdateComponent } from './components/eventmanager-reserver
     CateringUpdateComponent,
     WerknemersDetailsComponent,
     ReserveringenCreateComponent,
-    ReserveringenUpdateComponent
+    ReserveringenUpdateComponent,
     WerknemersDetailsComponent,
     EventDetailsComponent
   ],
@@ -129,7 +129,8 @@ import { ReserveringenUpdateComponent } from './components/eventmanager-reserver
 
     AlertsModule.forRoot()
   ],
-  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService, InstructorService, ReservationService, CateringService],
+  providers: [Globals, NavbarComponent, UserService, CustomerService, ApiService, AuthGuard, AuthorizationService,
+    InstructorService, ReservationService, CateringService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

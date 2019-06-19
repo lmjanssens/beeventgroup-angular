@@ -69,9 +69,9 @@ export class ReserveringenCreateComponent implements OnInit {
         );
       });
       (document.getElementById('submit') as HTMLInputElement).disabled = true;
-      this.alertService.setMessage('De reservering is toegevoegd.', 'success');
+      alert('De reservering is toegevoegd.');
     } else {
-      this.alertService.setMessage('Vul de belangrijke velden in.', 'error');
+      alert('Vul de belangrijke velden in.');
     }
   }
 }
