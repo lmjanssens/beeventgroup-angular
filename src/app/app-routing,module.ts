@@ -23,6 +23,7 @@ import {EventsUpdateComponent} from './components/event/events-update/events-upd
 import {EventmanagerCreateComponent} from './components/werknemers/eventmanager-create/eventmanager-create.component';
 import {EventmanagerUpdateComponent} from './components/werknemers/eventmanager-update/eventmanager-update.component';
 import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
+import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
 import {CateringOverviewComponent} from './components/catering/catering-overview/catering-overview.component';
 import {CateringCreateComponent} from './components/catering/catering-create/catering-create.component';
 import {CateringDetailsComponent} from './components/catering/catering-details/catering-details.component';
@@ -92,6 +93,7 @@ const appRoutes: Routes = [
     component: EventmanagerUpdateComponent,
     canActivate: [AuthGuard]
   },
+  {path: 'homeeventmanager/reserveringenoverview/html_template', component: PdfGeneratorComponent, canActivate: [AuthGuard]},
   {
     path: 'homeeventmanager/werknemersoverview/employeedetails/:employeeId',
     component: WerknemersDetailsComponent,

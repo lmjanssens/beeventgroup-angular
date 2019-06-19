@@ -65,6 +65,7 @@ import { ReserveringenUpdateComponent } from './components/eventmanager-reserver
 import { UploadFileService } from './services/upload-file.service';
 import { DetailsUploadComponent } from './components/details-upload/details-upload.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +117,7 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     EventDetailsComponent,
     DetailsUploadComponent,
     ImageUploadComponent
+    PdfGeneratorComponent,
   ],
   imports: [
     BrowserModule,

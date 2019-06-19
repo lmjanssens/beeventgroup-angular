@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'evenementFormulier' ||
       this.globals.getHuidigePagina() === 'eventupdate' ||
       this.globals.getHuidigePagina() === 'klantupdate' ||
+      this.globals.getHuidigePagina() === 'htmlFormulier' ||
       this.globals.getHuidigePagina() === 'werknemerFormulier' ||
       this.globals.getHuidigePagina() === 'leverancierFormulier' ||
       this.globals.getHuidigePagina() === 'Agenda') {
@@ -95,6 +96,9 @@ export class HeaderComponent implements OnInit {
     }
     if (this.globals.getHuidigePagina() === 'leverancierFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/supplieroverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'htmlFormulier ' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager/reserveringenoverview']);
     }
   }
 
