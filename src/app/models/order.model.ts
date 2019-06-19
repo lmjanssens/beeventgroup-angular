@@ -1,9 +1,8 @@
 import {Customer} from './customer.model';
 import {Quotation} from './quotation.model';
-import {Invoice} from './invoice.model';
 import {EventModel} from './event.model';
 import {CateringOrder} from './catering-order.model';
-import {RegisteredEvents} from "./registered-events.model";
+import {RegisteredEvents} from './registered-events.model';
 
 
 export class Order {
@@ -14,16 +13,14 @@ export class Order {
   public note: string;
   public startTime: any;
   public endTime: any;
-  public maxinstructors: number;
   public cateringsOrders: CateringOrder[];
-  public invoices: Invoice[];
-  public eventid: EventModel[];
+  public event: EventModel;
   public quotations: Quotation[];
   public registeredEvents: RegisteredEvents[];
 
   constructor(orderId: number, customer: Customer, dateOrder: any, dateEvent: any, note: string,
-              startTime: any, endTime: any, cateringsOrders: CateringOrder[], invoices: Invoice[],
-              events: EventModel[], quotations: Quotation[]) {
+              startTime: any, endTime: any, cateringsOrders: CateringOrder[],
+              events: EventModel, quotations: Quotation[]) {
     this.orderId = orderId;
     this.customer = customer;
     this.dateorder = dateOrder;
@@ -32,8 +29,7 @@ export class Order {
     this.startTime = startTime;
     this.endTime = endTime;
     this.cateringsOrders = cateringsOrders;
-    this.invoices = invoices;
-    this.eventid = events;
+    this.event = events;
     this.quotations = quotations;
   }
 }

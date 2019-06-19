@@ -60,6 +60,8 @@ import { CateringDetailsComponent } from './components/catering/catering-details
 import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
 import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
 import { EventDetailsComponent } from './components/event/event-details/event-details.component';
+import { ReserveringenCreateComponent } from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
+import { ReserveringenUpdateComponent } from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +106,9 @@ import { EventDetailsComponent } from './components/event/event-details/event-de
     CateringCreateComponent,
     CateringDetailsComponent,
     CateringUpdateComponent,
+    WerknemersDetailsComponent,
+    ReserveringenCreateComponent,
+    ReserveringenUpdateComponent
     WerknemersDetailsComponent,
     EventDetailsComponent
   ],
