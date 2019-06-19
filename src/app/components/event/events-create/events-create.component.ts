@@ -80,10 +80,10 @@ export class EventsCreateComponent implements OnInit {
 
   onDeleteLocation() {
     if (this.newLocations.length === 0) {
-      this.alertService.setMessage('Geen locatie om te verwijderen!', 'error');
+      alert('Geen locatie om te verwijderen!');
       return;
     } else {
-      this.alertService.setMessage('Locatie succesvol verwijderd.', 'success');
+      alert('Locatie succesvol verwijderd.');
       this.newLocations.splice(0, 1);
     }
   }
