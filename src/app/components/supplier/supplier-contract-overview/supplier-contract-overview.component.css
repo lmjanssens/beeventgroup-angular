@@ -55,39 +55,35 @@ button {
   margin-top: 1em;
 }
 
-.tableName {
+.tableContractTitle {
   width: 20%;
 }
 
-.tableContactPerson {
+.tableContractDescription {
   width: 20%;
 }
 
-.tableSupervisor {
+.tableContractInclBTW {
   width: 19%;
 }
 
-.tableWebsite {
+.tableContractExclBTW {
   width: 15%;
 }
 
-.tableNote {
+.tableContractResponsibility {
   width: 15%;
 }
 
-.tablePhone {
+.tableContractStartDate {
   width: 15%;
 }
 
-.tableEmail {
+.tableContractEndDate {
   width: 15%;
 }
 
 .tableEdit {
-  width: 40px;
-}
-
-.tableContract {
   width: 40px;
 }
 
