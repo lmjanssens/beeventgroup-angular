@@ -116,7 +116,7 @@ import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.co
     WerknemersDetailsComponent,
     EventDetailsComponent,
     DetailsUploadComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
     PdfGeneratorComponent,
   ],
   imports: [
@@ -146,7 +146,8 @@ import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.co
     AuthorizationService,
     InstructorService,
     ReservationService,
-    UploadFileService
+    UploadFileService,
+    CateringService
   ],
   bootstrap: [AppComponent]
 })
