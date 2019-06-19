@@ -33,10 +33,17 @@ export class WerknemersDetailsComponent implements OnInit {
 
 
   onDelete() {
-    if (!confirm(`Wilt u de werknemer "${this.employee.first_name + ' ' + this.employee.last_name}" verwijderen ?`)) {
-      return;
+    if (this.employee.infix === '' || this.employee.infix === undefined || this.employee.infix === null) {
+      if (!confirm(`Wilt u de werknemer "${this.employee.first_name + ' ' + this.employee.last_name}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de werknemer "${this.employee.first_name + ' ' +
+      this.employee.infix + ' ' + this.employee.last_name}" verwijderen ?`)) {
+        return;
+      }
     }
-    this.employeeService.delete(this.currentId).subscribe(() => {
+    this.employeeService.delete(this.employee.employee_id).subscribe(() => {
       this.location.back();
     });
   }

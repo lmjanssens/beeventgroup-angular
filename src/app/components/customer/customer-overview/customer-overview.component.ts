@@ -78,9 +78,15 @@ export class CustomerOverviewComponent implements OnInit {
     return list;
   }
 
-  onDelete(id, lastName, firstName) {
-    if (!confirm(`Wilt u de klant "${firstName + ' ' + lastName}" verwijderen ?`)) {
-      return;
+  onDelete(id, lastName, infix, firstName) {
+    if (infix === '' || infix === undefined) {
+      if (!confirm(`Wilt u de klant "${firstName + ' ' + lastName}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de klant "${firstName + ' ' + infix + ' ' + lastName}" verwijderen ?`)) {
+        return;
+      }
     }
     this.customerService.delete(id).subscribe(() => {
       this.customerService.getAll().subscribe(customer => this.customerList = this.sortByName(this.nullRemover(customer)));

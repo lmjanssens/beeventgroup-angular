@@ -5,8 +5,8 @@ import {NavbarComponent} from '../../../navbar/navbar.component';
 import {Router} from '@angular/router';
 import {InstructorService} from '../../../services/instructor.service';
 import {UserService} from '../../../services/user.service';
-import {AuthorizationService} from "../../../services/authorization.service";
-import {Role} from "../../../enums/Role";
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-eventmanager-instructeurs',
@@ -47,7 +47,7 @@ export class EventmanagerInstructeursComponent implements OnInit {
   updateAuthentication() {
     this.authenticated = this.authService.hasAuthorization();
 
-    if (!this.authenticated){
+    if (!this.authenticated) {
       this.currentUser = {};
       return;
     }
@@ -64,17 +64,19 @@ export class EventmanagerInstructeursComponent implements OnInit {
     return list;
   }
 
-  onDelete(id, userId, lastName, firstName) {
-    console.log(id);
-    console.log(userId);
-    if (!confirm(`Wilt u de instructeur "${firstName + ' ' + lastName}" verwijderen ?`)) {
-      return;
+  onDelete(id, lastName, infix, firstName) {
+    if (infix === '' || infix === undefined) {
+      if (!confirm(`Wilt u de instructeur "${firstName + ' ' + lastName}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de instructeur "${firstName + ' ' + infix + ' ' + lastName}" verwijderen ?`)) {
+        return;
+      }
     }
-    this.instructorService.delete(id).subscribe(
-      () => {
-        console.log('Instructor with supplierid ' + id + ' is deleted.');
-        this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
-      });
+    this.instructorService.delete(id).subscribe(() => {
+      this.instructorService.getAll().subscribe(customer => this.instructorList = this.sortByName(this.nullRemover(customer)));
+    });
   }
 
   sortByName(list) {
