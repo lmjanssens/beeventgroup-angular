@@ -4,6 +4,7 @@ import {QuotationService} from '../../../services/quotation.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ReservationService} from '../../../services/reservation.service';
 import {Quotation} from '../../../models/quotation.model';
+import {Order} from '../../../models/order.model';
 
 @Component({
   selector: 'app-quotation-create',
@@ -12,6 +13,7 @@ import {Quotation} from '../../../models/quotation.model';
 })
 export class QuotationCreateComponent implements OnInit {
   quotation: Quotation = new Quotation(0, null, '', '', 0, 0);
+  order: Order;
   private currentId: any;
   sub: any;
 
@@ -28,9 +30,14 @@ export class QuotationCreateComponent implements OnInit {
   }
 
   ngSubmit(f: Form) {
-    const data = JSON.parse(JSON.stringify(this.quotation)) as any;
-    this.quotationService.save(data).subscribe(() => {
-      this.router.navigate(['homeeventmanager/reserveringenoverview']);
+    this.orderService.getById(this.currentId).subscribe(order => {
+      this.order = order;
+      this.quotation.order = this.order;
+      const data = JSON.parse(JSON.stringify(this.quotation)) as any;
+      this.quotationService.save(data).subscribe(() => {
+        this.router.navigate(['homeeventmanager/reserveringenoverview']);
+      });
     });
+
   }
 }
