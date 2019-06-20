@@ -1,0 +1,31 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="quotationPage" style="padding: 3em 0 0 3em">
+  <h3 style="padding-bottom: 2em">Offerte</h3>
+  <button *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em" routerLink="createquotation/">Nieuwe offerte<i
+    class="fa fa-plus-circle fa-lg"
+    style="color: green; margin-left: 10px;"></i>
+  </button>
+  <div class="fullTable" style="padding-top: 2em">
+    <table>
+      <th class="tableDatum">Offerte datum</th>
+      <th class="tableBank">Bank rekening</th>
+      <th class="tabelBtw">Prijs btw</th>
+      <th class="tablePrijsPP">Prijs per persoon</th>
+      <tr
+        *ngFor="let quotation of quotationList | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
+        <td>{{quotation.datequotation}}</td>
+        <td>{{quotation.bankaccount}}</td>
+        <td>{{quotation.pricebtw}}</td>
+        <td>{{quotation.pricepp}}</td>
+    </table>
+  </div>
+  <div>
+    <pagination-controls (pageChange)="firstPage = $event" autoHide="true"
+                         class="pagination"></pagination-controls>
+  </div>
+
+  </div>
+<div>
+<button class="btn btn-primary" routerLink="html_template/">pdf</button>
+</div>
