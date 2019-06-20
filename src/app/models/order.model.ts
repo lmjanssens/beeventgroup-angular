@@ -3,7 +3,6 @@ import {Quotation} from './quotation.model';
 import {EventModel} from './event.model';
 import {CateringOrder} from './catering-order.model';
 import {RegisteredEvents} from './registered-events.model';
-import {Invoice} from './invoice.model';
 
 
 export class Order {

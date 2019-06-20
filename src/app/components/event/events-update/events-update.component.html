@@ -16,12 +16,14 @@
           <label class="col-sm-2" for="maxInstructors">Hoeveel instructeurs?</label>
           <input type="number" id="maxInstructors" name="maxInstructors" placeholder="Max. instructeurs"
                  [(ngModel)]="event.maxinstructors"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="btw">BTW</label>
           <input type="text" id="btw" name="btw" placeholder="BTW"
                  [(ngModel)]="event.btw"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
                  [disabled]="loading">
         </div>
         <div>
@@ -34,6 +36,7 @@
           <label class="col-sm-2" for="pricePerPerson">Prijs per persoon</label>
           <input type="text" id="pricePerPerson" name="pricePerPerson" placeholder="Prijs per persoon" required
                  [(ngModel)]="event.pricePerPerson"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
                  [disabled]="loading">
         </div>
         <div>

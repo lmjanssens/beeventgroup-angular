@@ -32,13 +32,14 @@
         </div>
         <div>
           <label class="col-sm-2" for="persons">Hoeveel deelnemers</label>
-          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers"
+          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers" required
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
                  [(ngModel)]="order.persons">
         </div>
         <div id="note-div">
           <label class="col-sm-2" for="note">Notitie</label>
           <textarea type="text" id="note" name="note" placeholder="Notitie"
-                 [(ngModel)]="order.note"
+                    [(ngModel)]="order.note"
                     [disabled]="loading"></textarea>
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
@@ -61,7 +62,8 @@
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <div class="buttons">
-            <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/reserveringenoverview">
+            <button class="btn btn-warning" style="margin-right: 10px"
+                    routerLink="/homeeventmanager/reserveringenoverview">
               <i class="fa fa-close"></i> Annuleren
             </button>
             <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
