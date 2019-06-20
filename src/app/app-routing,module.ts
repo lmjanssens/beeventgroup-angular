@@ -35,6 +35,7 @@ import {SupplierDetailsComponent} from './components/supplier/supplier-details/s
 import {EventDetailsComponent} from './components/event/event-details/event-details.component';
 import {ReserveringenCreateComponent} from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
 import {ReserveringenUpdateComponent} from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
+import {ReserveringDetailsComponent} from './components/eventmanager-reserveringen/reservering-details/reservering-details.component';
 
 
 const appRoutes: Routes = [
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/reserveringenoverview/createorder', component: ReserveringenCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview/orderedit', component: ReserveringenUpdateComponent , canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview/orderedit/:orderId', component: ReserveringenUpdateComponent , canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/reserveringenoverview/orderdetails/:orderId', component: ReserveringDetailsComponent , canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},

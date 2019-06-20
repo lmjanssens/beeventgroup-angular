@@ -28,8 +28,8 @@ export class EventmanagerAgendaComponent implements OnInit {
     while (this.i < list.length) {
       this.getInstructors(list[this.i]);
       this.calendarComponent.getApi().addEvent({
-        title: list[this.i].event.name + '\n' + ' ' +
-          '\n' + 'Instructeurs: ' +  this.instructorsString, start: list[this.i].dateevent, color: '#394365'
+        title: list[this.i].event.name.toUpperCase() + '\n' + ' ' +
+          '\n' + 'Instructeurs: ' + this.instructorsString, date: list[this.i].dateevent, color: '#394365'
       });
       this.i = this.i + 1;
     }

@@ -53,6 +53,7 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'htmlFormulier' ||
       this.globals.getHuidigePagina() === 'werknemerFormulier' ||
       this.globals.getHuidigePagina() === 'leverancierFormulier' ||
+      this.globals.getHuidigePagina() === 'reserveringFormulier' ||
       this.globals.getHuidigePagina() === 'Agenda') {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
@@ -121,8 +122,16 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['homeinstructor/supplieroverview']);
       }
     }
-    if (this.globals.getHuidigePagina() === 'htmlFormulier ' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+    if (this.globals.getHuidigePagina() === 'htmlFormulier '
+      && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'reserveringFormulier') {
+      if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+        this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+      } else {
+        this.router.navigate(['homeinstructor/reserveringenoverview']);
+      }
     }
   }
 

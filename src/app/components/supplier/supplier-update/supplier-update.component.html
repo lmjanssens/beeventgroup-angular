@@ -30,7 +30,8 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel">
+                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel"
+                     pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
             </tr>
             <tr *ngFor="let telephone of supplier.phone_numbers" class="spacer">
               <td>
