@@ -30,19 +30,19 @@
         </div>
         <div>
           <label class="col-sm-2" for="inclubtw">Incl. BTW</label>
-          <input type="text" id="inclubtw" name="inclubtw" placeholder="Incl. BTW" required
+          <input type="number" id="inclubtw" name="inclubtw" placeholder="Incl. BTW" required
                  [(ngModel)]="contract.inclubtw"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="exclubtw">Excl. BTW</label>
-          <input type="text" id="exclubtw" name="exclubtw" placeholder="Excl. BTW" required
+          <input type="number" id="exclubtw" name="exclubtw" placeholder="Excl. BTW" required
                  [(ngModel)]="contract.exclubtw"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="percentage">BTW percentage</label>
-          <input type="text" id="percentage" name="percentage" placeholder="BTW percentage"
+          <input type="number" id="percentage" name="percentage" placeholder="BTW percentage"
                  [(ngModel)]="contract.btw_percentage"
                  [disabled]="loading">
         </div>
