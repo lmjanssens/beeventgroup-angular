@@ -31,6 +31,7 @@ export class EventmanagerAgendaComponent implements OnInit {
         title: list[this.i].event.name.toUpperCase() + '\n' + ' ' +
           '\n' + 'Instructeurs: ' + this.instructorsString, start: list[this.i].dateevent + 'T' + list[this.i].startTime, color: '#394365'
       });
+
       this.i = this.i + 1;
     }
     this.i = 0;
