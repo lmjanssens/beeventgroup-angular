@@ -32,6 +32,7 @@ import {CateringUpdateComponent} from './components/catering/catering-update/cat
 import {WerknemersDetailsComponent} from './components/werknemers/werknemers-details/werknemers-details.component';
 import {SupplierDetailsComponent} from './components/supplier/supplier-details/supplier-details.component';
 import {EventDetailsComponent} from './components/event/event-details/event-details.component';
+import {SupplierContractCreateComponent} from './components/supplier/supplier-contract-create/supplier-contract-create.component';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/supplieroverview', component: SupplierOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/suppliercontract/:supplierid', component: SupplierContractOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/suppliercontract/:supplierid/suppliercontractedit/:supplierid/:id', component: SupplierContractUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/supplieroverview/suppliercontract/:supplierid/suppliercontractcreate', component: SupplierContractCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/createsupplier', component: SupplierCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/supplieredit/:supplierid', component: SupplierUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/supplieroverview/supplierdetails/:supplierid', component: SupplierDetailsComponent, canActivate: [AuthGuard]},

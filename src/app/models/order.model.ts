@@ -3,7 +3,7 @@ import {Quotation} from './quotation.model';
 import {Invoice} from './invoice.model';
 import {EventModel} from './event.model';
 import {CateringOrder} from './catering-order.model';
-import {RegisteredEvents} from "./registered-events.model";
+import {RegisteredEvents} from './registered-events.model';
 
 
 export class Order {
@@ -20,10 +20,11 @@ export class Order {
   public eventid: EventModel[];
   public quotations: Quotation[];
   public registeredEvents: RegisteredEvents[];
+  public persons: number;
 
   constructor(orderId: number, customer: Customer, dateOrder: any, dateEvent: any, note: string,
               startTime: any, endTime: any, cateringsOrders: CateringOrder[], invoices: Invoice[],
-              events: EventModel[], quotations: Quotation[]) {
+              events: EventModel[], quotations: Quotation[], persons: number) {
     this.orderId = orderId;
     this.customer = customer;
     this.dateorder = dateOrder;
@@ -35,5 +36,6 @@ export class Order {
     this.invoices = invoices;
     this.eventid = events;
     this.quotations = quotations;
+    this.persons = persons;
   }
 }

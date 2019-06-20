@@ -27,7 +27,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
   amountRows = 0;
   searchTerm: string;
   emptyOrder: Order = new Order(null, null, '', '',
-    '', '', '', null, null, null, null);
+    '', '', '', null, null, null, null, 0);
 
   currentUser: any;
   authenticated = false;

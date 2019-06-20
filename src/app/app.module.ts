@@ -62,6 +62,7 @@ import { CateringDetailsComponent } from './components/catering/catering-details
 import { CateringUpdateComponent } from './components/catering/catering-update/catering-update.component';
 import { WerknemersDetailsComponent } from './components/werknemers/werknemers-details/werknemers-details.component';
 import { EventDetailsComponent } from './components/event/event-details/event-details.component';
+import { SupplierContractCreateComponent } from './components/supplier/supplier-contract-create/supplier-contract-create.component';
 
 
 @NgModule({
@@ -110,7 +111,8 @@ import { EventDetailsComponent } from './components/event/event-details/event-de
     CateringDetailsComponent,
     CateringUpdateComponent,
     WerknemersDetailsComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    SupplierContractCreateComponent
   ],
   imports: [
     BrowserModule,
