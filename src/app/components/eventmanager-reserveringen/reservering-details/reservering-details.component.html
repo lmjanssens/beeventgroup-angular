@@ -42,18 +42,17 @@
                  [(ngModel)]="order.event.name" disabled>
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
-          <div class="buttons">
-            <button class="btn btn-warning" style="margin-right: 10px"
-                    routerLink="/homeeventmanager/reserveringenoverview">
-              <i class="fa fa-close"></i> Annuleren
+          <div class="buttons" style="padding-top: 1em">
+
+            <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
+              <i class="fa fa-trash"></i> Verwijderen
             </button>
-            <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
-              Toevoegen
+            <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary" [routerLink]="['/homeeventmanager/reserveringenoverview/orderedit/'+ order.orderId]"><i class="fa fa-pencil"></i>
+              Bewerken
             </button>
-            <app-alerts></app-alerts>
+          </div>
           </div>
         </div>
       </div>
-    </div>
   </form>
 </div>
