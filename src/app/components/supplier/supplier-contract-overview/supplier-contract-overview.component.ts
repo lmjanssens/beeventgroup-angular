@@ -6,7 +6,7 @@ import {AuthorizationService} from '../../../services/authorization.service';
 import {Role} from '../../../enums/Role';
 import {SupplierContract} from '../../../models/supplier-contract.model';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Supplier} from "../../../models/supplier.model";
+import {Supplier} from '../../../models/supplier.model';
 
 @Component({
   selector: 'app-supplier-contract-overview',
