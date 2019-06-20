@@ -33,6 +33,8 @@ import {SupplierDetailsComponent} from './components/supplier/supplier-details/s
 import {EventDetailsComponent} from './components/event/event-details/event-details.component';
 import {ReserveringenCreateComponent} from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
 import {ReserveringenUpdateComponent} from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
+import {QuotationComponent} from './components/quotation/quotation.component';
+import {QuotationCreateComponent} from './components/quotation/quotation-create/quotation-create.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -46,8 +48,8 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/customeroverview/createcustomer', component: CustomerCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/reserveringenoverview/createorder', component: ReserveringenCreateComponent, canActivate: [AuthGuard]},
-  {path: 'homeeventmanager/reserveringenoverview/orderedit', component: ReserveringenUpdateComponent , canActivate: [AuthGuard]},
-  {path: 'homeeventmanager/reserveringenoverview/orderedit/:orderId', component: ReserveringenUpdateComponent , canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/reserveringenoverview/orderedit', component: ReserveringenUpdateComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/reserveringenoverview/orderedit/:orderId', component: ReserveringenUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
@@ -93,8 +95,20 @@ const appRoutes: Routes = [
     component: EventmanagerUpdateComponent,
     canActivate: [AuthGuard]
   },
-  {path: 'homeeventmanager/reserveringenoverview/html_template', component: PdfGeneratorComponent, canActivate: [AuthGuard]},
+
+  {path: 'homeeventmanager/reserveringenoverview/quotation/:orderId', component: QuotationComponent, canActivate: [AuthGuard]},
   {
+    path: 'homeeventmanager/reserveringenoverview/quotation/:orderId/html_template',
+    component: PdfGeneratorComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'homeeventmanager/reserveringenoverview/quotation/:orderId/createquotation',
+    component: QuotationCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+
     path: 'homeeventmanager/werknemersoverview/employeedetails/:employeeId',
     component: WerknemersDetailsComponent,
     canActivate: [AuthGuard]

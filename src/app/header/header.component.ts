@@ -53,7 +53,11 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'htmlFormulier' ||
       this.globals.getHuidigePagina() === 'werknemerFormulier' ||
       this.globals.getHuidigePagina() === 'leverancierFormulier' ||
-      this.globals.getHuidigePagina() === 'Agenda') {
+      this.globals.getHuidigePagina() === 'reserveringFormulier' ||
+      this.globals.getHuidigePagina() === 'Agenda' ||
+      this.globals.getHuidigePagina() === 'quotation' ||
+      this.globals.getHuidigePagina() === 'htmlFormulier'
+    ) {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
       document.getElementById('terugKnop').style.cursor = 'pointer';
@@ -98,6 +102,15 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/homeeventmanager/supplieroverview']);
     }
     if (this.globals.getHuidigePagina() === 'htmlFormulier ' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'reserveringFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'quotation' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
+      this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+    }
+    if (this.globals.getHuidigePagina() === 'htmlFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/reserveringenoverview']);
     }
   }

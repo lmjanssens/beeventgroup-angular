@@ -1,6 +1,14 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ContentChild, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Globals} from '../globals';
 import * as jsPDF from 'jspdf';
+import {CustomerService} from '../../services/customer.service';
+import {ReservationService} from '../../services/reservation.service';
+import {Customer} from '../../models/customer.model';
+import {ActivatedRoute} from '@angular/router';
+import {Order} from '../../models/order.model';
+import {EventService} from '../../services/event.service';
+import {Quotation} from '../../models/quotation.model';
+import {QuotationService} from '../../services/quotation.service';
 
 @Component({
   selector: 'app-pdf-generator',
@@ -9,12 +17,29 @@ import * as jsPDF from 'jspdf';
 })
 export class PdfGeneratorComponent implements OnInit {
 
-  constructor(private globals: Globals) {
-  }
+  customer: Customer = new Customer();
+  order: Order = new Order(null, null, null, null, null, null, null, null, 0, null, null);
+  private sub: any;
+  currentId: any;
+  currenQuotationId: any;
 
+  constructor(private globals: Globals, private quotationService: QuotationService, private  reservationService: ReservationService, private customerService: CustomerService, private reserviationService: ReservationService, private eventService: EventService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.globals.setHuidigePagina('htmlFormulier');
+    this.sub = this.route.params.subscribe(params => {
+      this.currentId = params.orderId;
+      this.reservationService.getById(this.currentId).subscribe(order => {
+        this.order = order;
+        this.customer = order.customer;
+        this.order.event = order.event;
+        this.order.cateringOrders = order.cateringOrders;
+        console.log(order.cateringOrders);
+        this.order.quotations = order.quotations;
+      });
+    });
+
   }
 
   downloadPDF() {
@@ -22,7 +47,6 @@ export class PdfGeneratorComponent implements OnInit {
     doc.fromHTML(document.getElementById('content'), 15, 15, null, function (dispose) {
       doc.save('test12456.pdf');
     });
-    console.log('Callback');
-    // doc.save('tesSt.pdf');
+
   }
 }

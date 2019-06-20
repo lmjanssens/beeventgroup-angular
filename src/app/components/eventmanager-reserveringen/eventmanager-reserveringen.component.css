@@ -61,7 +61,9 @@ button {
 .tableCustomer {
   width: 100%;
 }
-
+.makePDF{
+  width: 40px;
+}
 .tableEvenement {
   width: 100%;
 }
