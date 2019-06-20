@@ -28,17 +28,20 @@
         <div>
           <label class="col-sm-2" for="inclubtw">Incl. BTW</label>
           <input type="text" id="inclubtw" name="inclubtw" placeholder="Incl. BTW" required
-                 [(ngModel)]="contract.inclubtw">
+                 [(ngModel)]="contract.inclubtw"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
         </div>
         <div>
           <label class="col-sm-2" for="exclubtw">Excl. BTW</label>
           <input type="text" id="exclubtw" name="exclubtw" placeholder="Excl. BTW" required
-                 [(ngModel)]="contract.exclubtw">
+                 [(ngModel)]="contract.exclubtw"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
         </div>
         <div>
           <label class="col-sm-2" for="percentage">BTW percentage</label>
           <input type="text" id="percentage" name="percentage" placeholder="BTW percentage"
-                 [(ngModel)]="contract.btw_percentage">
+                 [(ngModel)]="contract.btw_percentage"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
         </div>
         <div>
           <label class="col-sm-2" for="preconditions">Precondities</label>

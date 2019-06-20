@@ -58,6 +58,8 @@ export class ReserveringenUpdateComponent implements OnInit {
   fetchOrderById() {
     this.reservationService.getById(this.currentId).subscribe(order => {
       this.order = order;
+      this.selectedEvent = this.order.event;
+      this.selectedCustomer = this.order.customer;
       this.updatedEvent = true;
     });
   }

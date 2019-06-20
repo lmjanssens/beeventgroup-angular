@@ -115,13 +115,12 @@ export class EventsCreateComponent implements OnInit {
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
       this.eventService.save(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
-          this.router.navigate(['/homeeventmanager/evenementenoverview']
-          );
+        this.router.navigate(['/homeeventmanager/evenementenoverview']
+        );
       });
-      (document.getElementById('submit') as HTMLInputElement).disabled = true;
-      this.alertService.setMessage('Het evenement ' + this.event.name + ' is toegevoegd.', 'success');
+      alert('Het evenement ' + this.event.name + ' is toegevoegd.');
     } else {
-      this.alertService.setMessage('Vul de belangrijke velden in.', 'error');
+      alert('Vul de belangrijke velden in.');
     }
   }
 }

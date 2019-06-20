@@ -18,17 +18,18 @@
         </div>
         <div>
           <label class="col-sm-2" for="startTime">Starttijd</label>
-          <input type="time" id="startTime" name="startTime" placeholder="Starttijd"
+          <input type="time" id="startTime" name="startTime" placeholder="Starttijd" required
                  [(ngModel)]="order.startTime">
         </div>
         <div>
           <label class="col-sm-2" for="endTime">Eindtijd</label>
-          <input type="time" id="endTime" name="endTime" placeholder="Eindtijd"
+          <input type="time" id="endTime" name="endTime" placeholder="Eindtijd" required
                  [(ngModel)]="order.endTime">
         </div>
         <div>
           <label class="col-sm-2" for="persons">Hoeveel deelnemers</label>
-          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers"
+          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers" required
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
                  [(ngModel)]="order.persons">
         </div>
         <div id="note-div">
