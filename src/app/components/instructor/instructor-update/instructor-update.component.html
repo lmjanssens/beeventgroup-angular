@@ -14,7 +14,8 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="instructor.phone_number" name="phone" required minlength="10" maxlength="10">
+                     [(ngModel)]="instructor.phone_number" name="phone" required minlength="10" maxlength="10"
+                     pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
             </tr>
           </table>
 

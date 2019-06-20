@@ -15,7 +15,8 @@
             <tr>
               <input class="input" id="phone"
                      [(ngModel)]="catering.phone" name="phone" required minlength="10" maxlength="10"
-                     placeholder="telefoonnummer">
+                     placeholder="telefoonnummer"
+                     pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
             </tr>
           </table>
           <br>
