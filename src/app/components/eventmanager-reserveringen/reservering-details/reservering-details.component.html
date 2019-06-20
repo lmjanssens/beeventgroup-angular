@@ -27,14 +27,19 @@
                  [(ngModel)]="order.endTime" disabled>
         </div>
         <div>
+          <label class="col-sm-2" for="persons">Hoeveel deelnemers</label>
+          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers"
+                 [(ngModel)]="order.persons">
+        </div>
+        <div id="note-div">
           <label class="col-sm-2" for="note">Notitie</label>
-          <input type="text" id="note" name="note"
-                 [(ngModel)]="order.note" disabled>
+          <textarea type="text" id="note" name="note"
+                    [(ngModel)]="order.note" disabled></textarea>
         </div>
         <div>
           <label class="col-sm-2" for="customer">Klant</label>
           <input type="text" id="customer" name="customer"
-                 [(ngModel)]="order.orderId" disabled>
+                 [(ngModel)]="order.customer.last_name" disabled>
         </div>
         <div>
           <label class="col-sm-2" for="event">Evenement</label>
@@ -44,7 +49,7 @@
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <div class="buttons" style="padding-top: 1em">
 
-            <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
+            <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px" (click)="OnDelete(order.orderId)">
               <i class="fa fa-trash"></i> Verwijderen
             </button>
             <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary" [routerLink]="['/homeeventmanager/reserveringenoverview/orderedit/'+ order.orderId]"><i class="fa fa-pencil"></i>
