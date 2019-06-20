@@ -62,6 +62,8 @@ export class EventsUpdateComponent implements OnInit {
     this.eventService.getById(this.currentId).subscribe(event => {
       this.event = event;
       this.updatedEvent = true;
+      this.selectedLocation = this.event.location;
+      this.selectedSupplier = this.event.supplier ;
     });
   }
 
