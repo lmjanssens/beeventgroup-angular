@@ -109,7 +109,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
 
     while (index < order.registeredEvents.length) {
 
-      if (order.registeredEvents[index].instructor.first_name === this.currentUser.username) {
+      if (order.registeredEvents[index].instructor.instructor_id === this.currentUser.uid) {
         duplicate = true;
         break;
       }

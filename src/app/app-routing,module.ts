@@ -75,7 +75,7 @@ const appRoutes: Routes = [
   {path: 'homeinstructor/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
 
   {path: 'homeinstructor/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
-  {path: 'homeeventinstructor/evenementenoverview/eventdetails/:eventId', component: EventDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'homeinstructor/evenementenoverview/eventdetails/:eventId', component: EventDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/werknemersoverview/employeedetails/:employeeId', component: WerknemersDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/instructeursoverview', component: EventmanagerInstructeursComponent, canActivate: [AuthGuard]},
