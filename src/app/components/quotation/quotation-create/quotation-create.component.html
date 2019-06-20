@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+    <div class="page-content">
+      <div style="height: 590px;">
+        <h3>
+          Offerte toevoegen
+        </h3>
+        <!--<div>-->
+          <!--<label for="orderid" class="col-sm-2">Reservering ID</label>-->
+          <!--<input type="number" id="orderid" name="orderid" [(ngModel)]="currentId">-->
+        <!--</div>-->
+        <div>
+          <label class="col-sm-2" for="date">Datum reservering</label>
+          <input type="date" id="date" name="date" placeholder="Vervaldatum" required
+                 [(ngModel)]="quotation.datequotation">
+        </div>
+        <div>
+          <label class="col-sm-2" for="account">Bankrekening</label>
+          <input type="text" id="account" name="account" placeholder="Bankrekening"
+                 [(ngModel)]="quotation.bankaccount">
+        </div>
+        <div>
+          <label class="col-sm-2" for="btw">BTW</label>
+          <input type="text" id="btw" name="btw" placeholder="btw"
+                 [(ngModel)]="quotation.pricebtw">
+        </div>
+        <div>
+          <label class="col-sm-2" for="prijsPP">Prijs per persoon</label>
+          <input type="number" id="prijsPP" name="prijsPP" placeholder="prijsPP"
+                 [(ngModel)]="quotation.pricepp">
+        </div>
+        <div class="buttons">
+          <button class="btn btn-warning" style="margin-right: 10px"
+                  routerLink="/homeeventmanager/reserveringenoverview">
+            <i class="fa fa-close"></i> Annuleren
+          </button>
+          <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+            Toevoegen
+          </button>
+          <app-alerts></app-alerts>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
