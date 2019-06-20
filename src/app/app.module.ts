@@ -69,6 +69,7 @@ import { DetailsUploadComponent } from './components/details-upload/details-uplo
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
 import { ReserveringDetailsComponent } from './components/eventmanager-reserveringen/reservering-details/reservering-details.component';
+import { SupplierContractCreateComponent } from './components/supplier/supplier-contract-create/supplier-contract-create.component';
 
 
 @NgModule({
@@ -125,6 +126,7 @@ import { ReserveringDetailsComponent } from './components/eventmanager-reserveri
     ImageUploadComponent,
     PdfGeneratorComponent,
     ReserveringDetailsComponent,
+    SupplierContractCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
 <div class="leverancierContractPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Leveranciers Contracten</h3>
   <div>
-    <button routerLink="createsuppliercontract" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuw Contract<i class="fa fa-plus-circle fa-lg"
+    <button routerLink="suppliercontractcreate" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuw Contract<i class="fa fa-plus-circle fa-lg"
                                                                                                                                                                                                 style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."

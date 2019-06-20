@@ -3,7 +3,7 @@
 <div class="horecaPage" style="padding: 3em 0 0 3em">
   <h3 style="padding-bottom: 2em">Horeca</h3>
   <div>
-    <button routerLink="createcatering/" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Leverancier<i class="fa fa-plus-circle fa-lg"
+    <button routerLink="createcatering/" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuwe Horeca<i class="fa fa-plus-circle fa-lg"
                                                                                                                                                                                                 style="color: green; margin-left: 10px;"></i>
     </button>
     <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
@@ -28,19 +28,37 @@
         <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.city}}</td>
         <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.phone}}</td>
         <td [routerLink]="['cateringdetails/' + catering.id]">{{catering.supplier.name}}</td>
-        <td class="tableEdit">
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE else disabledEditButton" class="tableEdit">
           <button [routerLink]="['cateringedit/' + catering.id]"
                   style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
             style="color: purple; "></i>
           </button>
         </td>
-        <td class="tableDelete">
+        <ng-template #disabledEditButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-pencil fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE else disabledDeleteButton" class="tableDelete">
           <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none"
                   (click)="onDelete(catering.id, catering.cateringName)"><i
             class="fa fa-trash fa-2x"
             style="color: red;"></i></button>
         </td>
+        <ng-template #disabledDeleteButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-trash fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
       </tr>
     </table>
     <div>
