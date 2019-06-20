@@ -19,8 +19,8 @@
       <th class="tableCity">Stad
       <th class="tablePhone">Telefoon</th>
       <th class="tableEmail">Email</th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit"></th>
-      <th *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete"></th>
+      <th class="tableEdit"></th>
+      <th class="tableDelete"></th>
       <tr
         *ngFor="let customer of customerList | customerFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.first_name}} {{customer.infix}} {{customer.last_name}}</td>
@@ -29,18 +29,36 @@
         <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.city}}</td>
         <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.phone_numbers[0].phonenumber}}</td>
         <td [routerLink]="['customerdetails/' + customer.customerId]">{{customer.email_addresses[0].email}}</td>
-        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableEdit">
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE else disabledEditButton" class="tableEdit">
           <button style="margin-left: -8px; background-color: white; width: 39px; height: 40px; border: none"><i
             class="fa fa-pencil fa-2x"
             style="color: purple; " [routerLink]="['customeredit/'+ customer.customerId]"></i>
           </button>
         </td>
-        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="tableDelete">
+        <ng-template #disabledEditButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-pencil fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
+        <td *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE else disabledDeleteButton" class="tableDelete">
           <button style="margin-left: -8px; background-color: white; width: 38px; height: 40px; border: none" ><i
             class="fa fa-trash fa-2x"
             style="color: red;" (click)="onDelete(customer.customerId,customer.last_name, customer.infix, customer.first_name)"></i>
           </button>
         </td>
+        <ng-template #disabledDeleteButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-trash fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
       </tr>
     </table>
     <div>
