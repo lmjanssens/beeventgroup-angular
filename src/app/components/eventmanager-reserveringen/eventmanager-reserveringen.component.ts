@@ -8,6 +8,8 @@ import {ReservationService} from '../../services/reservation.service';
 import {AlertsService} from 'angular-alert-module';
 import {Router} from '@angular/router';
 import {ApiService} from '../../services/api.service';
+import {iterator} from "rxjs/internal-compatibility";
+import {Instructor} from "../../models/instructor.model";
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -105,14 +107,16 @@ export class EventmanagerReserveringenComponent implements OnInit {
   checkIfAlreadySubscribed(order: Order) {
 
     let index = 0;
+
     let duplicate = false;
 
     while (index < order.registeredEvents.length) {
 
-      if (order.registeredEvents[index].instructor.first_name === this.currentUser.username) {
+      if (order.registeredEvents[index].instructor.user_id.id === this.currentUser.uid) {
         duplicate = true;
         break;
       }
+
       index++;
 
     }
