@@ -72,7 +72,7 @@ export class ReservationService {
 
   getEmptyOrder() {
     this.newOrder = new Order(null, null, null, null, null,
-      null, null, null, null, null, null, null);
+      null, null, null, null, null, null);
     return this.newOrder;
   }
 }

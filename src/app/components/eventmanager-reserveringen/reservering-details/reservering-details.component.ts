@@ -72,6 +72,14 @@ export class ReserveringDetailsComponent implements OnInit {
     return Role;
   }
 
+  OnDelete(orderId) {
+    if (!confirm(`Wilt deze reservering verwijderen?`)) {
+      return;
+    }
+    this.reservationService.delete(orderId).subscribe(() => {
+      this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+    });
+  }
 
 }
 

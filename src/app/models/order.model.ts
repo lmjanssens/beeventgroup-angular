@@ -14,15 +14,15 @@ export class Order {
   public note: string;
   public startTime: any;
   public endTime: any;
+  public persons: number;
   public cateringsOrders: CateringOrder[];
   public event: EventModel;
   public quotations: Quotation[];
   public registeredEvents: RegisteredEvents[];
-  public persons: number;
 
   constructor(orderId: number, customer: Customer, dateOrder: any, dateEvent: any, note: string,
-              startTime: any, endTime: any, cateringsOrders: CateringOrder[], invoices: Invoice[],
-              events: EventModel, quotations: Quotation[], persons: number) {
+              startTime: any, endTime: any, persons: number, cateringsOrders: CateringOrder[],
+              events: EventModel, quotations: Quotation[]) {
     this.orderId = orderId;
     this.customer = customer;
     this.dateorder = dateOrder;
@@ -30,9 +30,9 @@ export class Order {
     this.note = note;
     this.startTime = startTime;
     this.endTime = endTime;
+    this.persons = persons;
     this.cateringsOrders = cateringsOrders;
     this.event = events;
     this.quotations = quotations;
-    this.persons = persons;
   }
 }

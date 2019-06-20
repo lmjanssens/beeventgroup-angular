@@ -27,9 +27,14 @@
                  [(ngModel)]="order.endTime">
         </div>
         <div>
+          <label class="col-sm-2" for="persons">Hoeveel deelnemers</label>
+          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers"
+                 [(ngModel)]="order.persons">
+        </div>
+        <div id="note-div">
           <label class="col-sm-2" for="note">Notitie</label>
-          <input type="text" id="note" name="note" placeholder="Notitie"
-                 [(ngModel)]="order.note">
+          <textarea type="text" id="note" name="note" placeholder="Notitie"
+                    [(ngModel)]="order.note"></textarea>
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Klant</label>
