@@ -13,6 +13,7 @@ export class Customer {
   public country: string;
   public gender: string;
   public city: string;
+  public note: string;
   public email_addresses: CustomerEmail[];
   public customer_orders: CustomerOrder[];
   public phone_numbers: CustomerPhone[];

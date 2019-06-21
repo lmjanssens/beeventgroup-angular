@@ -9,4 +9,5 @@ export class Instructor {
   public last_name: string;
   public phone_number: string;
   public email_address: string;
+  public note: string;
 }

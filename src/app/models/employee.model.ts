@@ -11,4 +11,5 @@ export class Employee {
   public last_name: string;
   public email_addresses: EmployeeEmail[];
   public phone_numbers: EmployeePhone[];
+  public note: string;
 }
