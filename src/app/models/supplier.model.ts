@@ -15,4 +15,15 @@ export class Supplier {
   public phone_numbers: SupplierPhone[];
   public contracts: SupplierContract[];
   public addresses: SupplierAddress[];
+
+
+  constructor(supplierId: number, name: string, contact_person: string, supervisor: string, website: string, note: string, image: string) {
+    this.supplierid = supplierId;
+    this.name = name;
+    this.contact_person = contact_person;
+    this.supervisor = supervisor;
+    this.website = website;
+    this.note = note;
+    this.image = image;
+  }
 }

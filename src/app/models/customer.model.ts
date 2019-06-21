@@ -16,6 +16,4 @@ export class Customer {
   public email_addresses: CustomerEmail[];
   public customer_orders: CustomerOrder[];
   public phone_numbers: CustomerPhone[];
-
-
 }
