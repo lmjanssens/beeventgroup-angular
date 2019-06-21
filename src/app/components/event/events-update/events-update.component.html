@@ -60,6 +60,10 @@
                  [(ngModel)]="event.note"
                     [disabled]="loading"></textarea>
         </div>
+        <div>
+          <label class="col-sm-2">Afbeelding</label>
+          <app-image-upload [imagePath]="image" (valueChange)="updateImageName($event)"  #imageUpload></app-image-upload>
+        </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Eigen evenement?</label>
           <select id="ownEvent" required>

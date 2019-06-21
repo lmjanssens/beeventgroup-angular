@@ -75,7 +75,7 @@ export class QuotationComponent implements OnInit {
       this.currentId = params.orderId;
     });
 
-      this.fetchOrders();
+    this.fetchOrders();
 
 
   }
