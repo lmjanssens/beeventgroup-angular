@@ -40,7 +40,6 @@ export class PdfGeneratorComponent implements OnInit {
         this.customer = order.customer;
         this.order.event = order.event;
         this.order.cateringsOrders = order.cateringOrders;
-        console.log(order.cateringOrders);
         this.order.quotations = order.quotations;
         this.imgURL = this.order.event.eventImages[0].imagePath;
       });
