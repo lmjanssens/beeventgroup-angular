@@ -34,7 +34,6 @@ export class CustomerUpdateComponent implements OnInit {
       this.currentId = params['customerId'];
       this.customerService.getById(this.currentId).subscribe(customer => {
         this.customer = customer;
-        console.log(customer)
         this.tel = this.customer.phone_numbers[0].phonenumber;
         this.mail = this.customer.email_addresses[0].email;
 
