@@ -37,11 +37,6 @@
           <textarea type="text" id="note" name="note" placeholder="Notitie"
                     [(ngModel)]="order.note"></textarea>
         </div>
-        <div>
-          <label for="persons" class="col-sm-2">Aantal personen</label>
-          <input type="number" id="persons" name="persons" placeholder="Aantal personen" required
-                 [(ngModel)]="order.persons">
-        </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Klant</label>
           <select id="customer" name="customer" [(ngModel)]="selectedCustomer" required>

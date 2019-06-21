@@ -5,8 +5,8 @@ import {NavbarComponent} from '../../navbar/navbar.component';
 import {Order} from '../../models/order.model';
 import {ReservationService} from '../../services/reservation.service';
 import {FullCalendarComponent} from '@fullcalendar/angular';
-import {AuthorizationService} from "../../services/authorization.service";
-import {Role} from "../../enums/Role";
+import {AuthorizationService} from '../../services/authorization.service';
+import {Role} from '../../enums/Role';
 
 
 @Component({
@@ -52,7 +52,6 @@ export class EventmanagerAgendaComponent implements OnInit {
   }
 
   fillCalenderEvents(list) {
-    console.log(list);
     while (this.i < list.length) {
       this.getInstructors(list[this.i]);
       this.calendarComponent.getApi().addEvent({
@@ -60,12 +59,15 @@ export class EventmanagerAgendaComponent implements OnInit {
           '\n' + 'Instructeurs: ' + this.instructorsString,
         start: list[this.i].dateevent + 'T' + list[this.i].startTime,
         color: '#394365',
-        url: (this.authorized && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) ? 'homeeventmanager/reserveringenoverview/orderdetails/' + list[this.i].orderId : 'homeinstructor/reserveringenoverview/orderdetails/' + list[this.i].orderId
+        url: (this.authorized && this.currentUser.role === Role.ADMIN
+          || this.currentUser.role === Role.EMPLOYEE) ? 'homeeventmanager/reserveringenoverview/orderdetails/' +
+          list[this.i].orderId : 'homeinstructor/reserveringenoverview/orderdetails/' + list[this.i].orderId
       });
-
+      console.log(this.calendarComponent.getApi().getEvents());
       this.i = this.i + 1;
     }
     this.i = 0;
+
     return list;
   }
 
@@ -82,11 +84,11 @@ export class EventmanagerAgendaComponent implements OnInit {
         if (order.registeredEvents[this.j].instructor.infix === null) {
           this.instructorsString = this.instructorsString + '\n' + order.registeredEvents[this.j].instructor.first_name
             + ' ' + order.registeredEvents[this.j].instructor.last_name;
-          this.registeredEventId = order.registeredEvents[this.i].id;
+          this.registeredEventId = order.registeredEvents[this.j].id;
         } else {
           this.instructorsString = this.instructorsString + '\n' + order.registeredEvents[this.j].instructor.first_name
             + ' ' + order.registeredEvents[this.j].instructor.infix + ' ' + order.registeredEvents[this.j].instructor.last_name;
-          this.registeredEventId = order.registeredEvents[this.i].id;
+          this.registeredEventId = order.registeredEvents[this.j].id;
         }
         this.j = this.j + 1;
       }

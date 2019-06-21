@@ -17,16 +17,6 @@
                      [(ngModel)]="catering.phone" name="phone" disabled minlength="10" maxlength="10">
             </tr>
           </table>
-          <br>
-          <table>
-            <th class="noteHeader"><label class="col-sm-2">Notitie</label>
-            </th>
-            <tr>
-              <td>
-                <textarea name="note" type="text" disabled [(ngModel)]="catering.note"></textarea>
-              </td>
-            </tr>
-          </table>
         </div>
 
         <div>
@@ -65,6 +55,12 @@
           <input type="text" id="zipcode" name="zipode" disabled
 
                  [(ngModel)]=catering.zipcode>
+        </div>
+
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea type="text" id="note" name="note" disabled
+                    [(ngModel)]="catering.note"></textarea>
         </div>
 
         <div>
