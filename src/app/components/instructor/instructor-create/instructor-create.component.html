@@ -53,6 +53,12 @@
 
                  [(ngModel)]="user.username">
         </div>
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea type="text" id="note" name="note " placeholder="Notitie"
+
+                    [(ngModel)]="instructor.note"></textarea>
+        </div>
         <div>
           <label class="col-sm-2" for="password">Wachtwoord</label>
           <input type="password" id="password" name="password" placeholder="password" required
