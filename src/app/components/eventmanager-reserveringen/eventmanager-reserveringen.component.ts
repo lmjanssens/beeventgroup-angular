@@ -104,6 +104,19 @@ export class EventmanagerReserveringenComponent implements OnInit {
     }
   }
 
+  OnUnsubscribeInstructorEvent(registeredEventId: number) {
+
+    this.reservationService.unsubscribeToEvent(registeredEventId).subscribe(
+      success => {
+        this.ngOnInit();
+      },
+      error1 => {
+        console.log(error1);
+      }
+    );
+
+  }
+
   OnDelete(orderId) {
     if (!confirm(`Wilt deze reservering verwijderen?`)) {
       return;
