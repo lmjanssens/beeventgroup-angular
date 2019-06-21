@@ -80,7 +80,7 @@
           </button>
         </td>
         <td *ngIf="currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
-          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success"
+          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success" style="margin-right: 1em"
                   (click)="OnSubscribeToEvent(order, order.event.id);">Inschrijven voor evenement
           </button>
           <button *ngIf="checkIfAlreadySubscribed(order)" class="btn btn-outline-danger"
