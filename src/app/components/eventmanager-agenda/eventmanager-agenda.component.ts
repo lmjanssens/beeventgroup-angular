@@ -29,7 +29,11 @@ export class EventmanagerAgendaComponent implements OnInit {
       this.getInstructors(list[this.i]);
       this.calendarComponent.getApi().addEvent({
         title: list[this.i].event.name.toUpperCase() + '\n' + ' ' +
-          '\n' + 'Instructeurs: ' + this.instructorsString, start: list[this.i].dateevent + 'T' + list[this.i].startTime, color: '#394365'
+          '\n' + 'Instructeurs: ' + this.instructorsString,
+        start: list[this.i].dateevent + 'T' + list[this.i].startTime,
+        color: '#394365',
+        url: 'homeeventmanager/reserveringenoverview/orderdetails/' + list[this.i].orderId
+
       });
 
       this.i = this.i + 1;
