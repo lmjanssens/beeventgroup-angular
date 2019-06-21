@@ -29,7 +29,7 @@
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.event.maxinstructors}}</td>
         <td>
           <div *ngFor="let registeredEvent of order.registeredEvents">
-            {{registeredEvent.instructor.first_name}}
+            {{registeredEvent.instructor.first_name}} {{registeredEvent.instructor.infix}} {{registeredEvent.instructor.last_name}}
             <img *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
             cursor: pointer;
              width: 20px;
