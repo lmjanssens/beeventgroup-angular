@@ -8,12 +8,12 @@
         </h3>
         <div>
           <label for="dateevent" class="col-sm-2">Datum evenement</label>
-          <input type="date" id="dateevent" name="dateevent"  disabled
+          <input type="date" id="dateevent" name="dateevent" disabled
                  [(ngModel)]="order.dateevent">
         </div>
         <div>
           <label class="col-sm-2" for="dateorder">Datum reservering</label>
-          <input type="date" id="dateorder" name="dateorder"  disabled
+          <input type="date" id="dateorder" name="dateorder" disabled
                  [(ngModel)]="order.dateorder">
         </div>
         <div>
@@ -36,11 +36,21 @@
           <textarea type="text" id="note" name="note"
                     [(ngModel)]="order.note" disabled></textarea>
         </div>
-        <div>
+
+        <div *ngIf="order.customer.infix === null; else infix">
           <label class="col-sm-2" for="customer">Klant</label>
           <input type="text" id="customer" name="customer"
-                 [(ngModel)]="order.customer.last_name" disabled>
+                 [value]="order.customer.first_name + ' ' + order.customer.last_name"
+                 disabled>
         </div>
+        <ng-template #infix>
+          <div>
+            <label class="col-sm-2" for="customer2">Klant</label>
+            <input type="text" id="customer2" name="customer"
+                   [value]="order.customer.first_name + ' ' +order.customer.infix + ' ' + order.customer.last_name"
+                   disabled>
+          </div>
+        </ng-template>
         <div>
           <label class="col-sm-2" for="event">Evenement</label>
           <input type="text" id="event" name="event"
@@ -49,15 +59,21 @@
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <div class="buttons" style="padding-top: 1em">
 
-            <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px" (click)="OnDelete(order.orderId)">
+            <button style="background-color: red; color: white"
+                    *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE"
+                    class="btn btn-danger" style="margin-right: 10px" (click)="OnDelete(order.orderId)">
               <i class="fa fa-trash"></i> Verwijderen
             </button>
-            <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary" [routerLink]="['/homeeventmanager/reserveringenoverview/orderedit/'+ order.orderId]"><i class="fa fa-pencil"></i>
+            <button style="background-color: #651BC8"
+                    *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE"
+                    class="btn btn-primary"
+                    [routerLink]="['/homeeventmanager/reserveringenoverview/orderedit/'+ order.orderId]"><i
+              class="fa fa-pencil"></i>
               Bewerken
             </button>
           </div>
-          </div>
         </div>
       </div>
+    </div>
   </form>
 </div>

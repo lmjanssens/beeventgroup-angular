@@ -77,6 +77,7 @@ const appRoutes: Routes = [
   {path: 'homeinstructor/customeroverview', component: CustomerOverviewComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/customeroverview/customerdetails/:customer_id', component: CustomerDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
+  {path: 'homeinstructor/reserveringenoverview/orderdetails/:orderId', component: ReserveringDetailsComponent , canActivate: [AuthGuard]},
 
   {path: 'homeinstructor/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/evenementenoverview/eventdetails/:eventId', component: EventDetailsComponent, canActivate: [AuthGuard]},
