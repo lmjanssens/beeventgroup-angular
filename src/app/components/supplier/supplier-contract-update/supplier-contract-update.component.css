@@ -19,6 +19,12 @@ label {
   margin-right: 20px;
 }
 
+.containerTables {
+  float: right;
+  margin-right: -64px;
+  margin-top: -730px;
+}
+
 select {
   margin-left: 0.5em;
   -webkit-appearance: button;
