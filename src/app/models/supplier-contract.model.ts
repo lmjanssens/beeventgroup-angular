@@ -1,5 +1,6 @@
 
 import {Supplier} from './supplier.model';
+import {SupplierContractOption} from './supplier-contract-option.model';
 export class SupplierContract {
   public id: number;
   public supplier: Supplier;
@@ -15,5 +16,6 @@ export class SupplierContract {
   public extras: string;
   public startDate: Date;
   public endDate: Date;
+  public options: SupplierContractOption[];
 
 }

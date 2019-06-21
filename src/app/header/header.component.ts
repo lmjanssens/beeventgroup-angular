@@ -137,8 +137,8 @@ export class HeaderComponent implements OnInit {
       }
     }
     if (this.globals.getHuidigePagina() === 'quotation' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
-    }
       this.router.navigate(['/homeeventmanager/reserveringenoverview']);
+    }
     if (this.globals.getHuidigePagina() === 'htmlFormulier' && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
       this.router.navigate(['/homeeventmanager/reserveringenoverview']);
     }
