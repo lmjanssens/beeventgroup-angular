@@ -5,8 +5,8 @@ import {NavbarComponent} from '../../navbar/navbar.component';
 import {Order} from '../../models/order.model';
 import {ReservationService} from '../../services/reservation.service';
 import {FullCalendarComponent} from '@fullcalendar/angular';
-import {AuthorizationService} from "../../services/authorization.service";
-import {Role} from "../../enums/Role";
+import {AuthorizationService} from '../../services/authorization.service';
+import {Role} from '../../enums/Role';
 
 
 @Component({
@@ -59,7 +59,9 @@ export class EventmanagerAgendaComponent implements OnInit {
           '\n' + 'Instructeurs: ' + this.instructorsString,
         start: list[this.i].dateevent + 'T' + list[this.i].startTime,
         color: '#394365',
-        url: (this.authorized && this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) ? 'homeeventmanager/reserveringenoverview/orderdetails/' + list[this.i].orderId : 'homeinstructor/reserveringenoverview/orderdetails/' + list[this.i].orderId
+        url: (this.authorized && this.currentUser.role === Role.ADMIN
+          || this.currentUser.role === Role.EMPLOYEE) ? 'homeeventmanager/reserveringenoverview/orderdetails/' +
+          list[this.i].orderId : 'homeinstructor/reserveringenoverview/orderdetails/' + list[this.i].orderId
       });
       console.log(this.calendarComponent.getApi().getEvents());
       this.i = this.i + 1;

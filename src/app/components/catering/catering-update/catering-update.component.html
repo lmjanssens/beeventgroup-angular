@@ -19,16 +19,6 @@
                      pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
             </tr>
           </table>
-          <br>
-          <table>
-            <th class="noteHeader"><label class="col-sm-2">Notitie</label>
-            </th>
-            <tr>
-              <td>
-                <textarea name="note" type="text" [(ngModel)]="catering.note"></textarea>
-              </td>
-            </tr>
-          </table>
         </div>
 
         <div>
@@ -71,7 +61,11 @@
 
                  [(ngModel)]=catering.zipcode>
         </div>
-
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea type="text" id="note" name="note"
+                    [(ngModel)]="catering.note"></textarea>
+        </div>
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
           <input type="text" id="city" placeholder="stad" required
