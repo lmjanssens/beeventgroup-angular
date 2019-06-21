@@ -17,6 +17,7 @@
       <th class="tableEvenement">Evenement</th>
       <th class="tableDatum">Datum</th>
       <th class="tableMaxInstructor">Max instructor</th>
+      <th class="tableInstructorList">Geregistreerde instructeurs</th>
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
       <th *ngIf="currentUser.role === getRoles().INSTRUCTOR" class="tableSubscribeEvent"></th>
@@ -25,6 +26,11 @@
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.event.name}}</td>
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.dateorder}}</td>
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.event.maxinstructors}}</td>
+        <td>
+          <div *ngFor="let registeredEvents of order.registeredEvents">
+            {{registeredEvents.instructor.first_name}}
+          </div>
+        </td>
         <td
           *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledEditButton"
           class="tableEdit">

@@ -74,6 +74,10 @@ button {
   width: 50%;
 }
 
+.tableInstructorList{
+  width: 100%;
+}
+
 .tableEdit {
   width: 40px;
 }
