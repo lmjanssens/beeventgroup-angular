@@ -17,6 +17,7 @@ export class EventmanagerAgendaComponent implements OnInit {
   j = 0;
   calendarPlugins = [dayGridPlugin];
   instructorsString;
+  registeredEventId;
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
 
 
@@ -28,7 +29,7 @@ export class EventmanagerAgendaComponent implements OnInit {
     while (this.i < list.length) {
       this.getInstructors(list[this.i]);
       this.calendarComponent.getApi().addEvent({
-        title: list[this.i].event.name.toUpperCase() + '\n' + ' ' +
+        title: list[this.i].event.name.toUpperCase() + '\n' + 'Start-/eindtijd: ' + list[this.i].startTime + ' - ' + list[this.i].endTime +
           '\n' + 'Instructeurs: ' + this.instructorsString, start: list[this.i].dateevent + 'T' + list[this.i].startTime, color: '#394365'
       });
 
@@ -51,9 +52,11 @@ export class EventmanagerAgendaComponent implements OnInit {
         if (order.registeredEvents[this.j].instructor.infix === null) {
           this.instructorsString = this.instructorsString + '\n' + order.registeredEvents[this.j].instructor.first_name
             + ' ' + order.registeredEvents[this.j].instructor.last_name;
+          this.registeredEventId = order.registeredEvents[this.i].id;
         } else {
           this.instructorsString = this.instructorsString + '\n' + order.registeredEvents[this.j].instructor.first_name
             + ' ' + order.registeredEvents[this.j].instructor.infix + ' ' + order.registeredEvents[this.j].instructor.last_name;
+          this.registeredEventId = order.registeredEvents[this.i].id;
         }
         this.j = this.j + 1;
       }

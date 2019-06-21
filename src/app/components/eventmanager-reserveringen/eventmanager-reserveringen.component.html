@@ -64,7 +64,7 @@
                   (click)="OnSubscribeToEvent(order, order.event.id);">Inschrijven voor evenement
           </button>
           <button *ngIf="checkIfAlreadySubscribed(order)" class="btn btn-outline-danger"
-                  (click)="OnUnsubscribeToEvent(order.registeredEvents[0].id);">Uitschrijven
+                  (click)="OnUnsubscribeToEvent(order);">Uitschrijven
           </button>
         </td>
 

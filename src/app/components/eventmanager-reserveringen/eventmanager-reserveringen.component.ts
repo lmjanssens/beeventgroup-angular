@@ -76,7 +76,6 @@ export class EventmanagerReserveringenComponent implements OnInit {
 
   OnSubscribeToEvent(order: Order, eventId: number) {
 
-    console.log(order);
     this.reservationService.subscribeToEvent(order.orderId, eventId, this.currentUser.username).subscribe(() => {
       alert('Uw registratie bij een evenement is succesvol verlopen.');
       this.ngOnInit();
@@ -84,15 +83,20 @@ export class EventmanagerReserveringenComponent implements OnInit {
 
   }
 
-  OnUnsubscribeToEvent(eventId: number) {
-    this.reservationService.unsubscribeToEvent(eventId).subscribe(
-      success => {
-        this.ngOnInit();
-      },
-      error1 => {
-        console.log(error1);
-      }
-    );
+  OnUnsubscribeToEvent(order: Order) {
+
+    if (this.canUnsubscribeToEvent(order)) {
+      this.reservationService.unsubscribeToEvent(order.registeredEvents[0].id).subscribe(
+        success => {
+          this.ngOnInit();
+        },
+        error1 => {
+          console.log(error1);
+        }
+      );
+    } else {
+      alert('Sorry, het is niet mogelijk om minder dan 7 dagen van te voren afzeggen op een evenement');
+    }
   }
 
   OnDelete(orderId) {
@@ -122,6 +126,14 @@ export class EventmanagerReserveringenComponent implements OnInit {
     }
 
     return duplicate;
+  }
+
+  canUnsubscribeToEvent(order: Order): boolean {
+
+    let diff = Math.abs(new Date(order.dateevent).getTime() - new Date().getTime());
+    let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+
+    return (diffDays >= 7);
   }
 
 }
