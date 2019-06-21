@@ -20,6 +20,7 @@
       <th class="tableInstructorList">Geregistreerde instructeurs</th>
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
+      <th class="makePDF"></th>
       <th *ngIf="currentUser.role === getRoles().INSTRUCTOR" class="tableSubscribeEvent"></th>
       <tr
         *ngFor="let order of orderList | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
@@ -53,6 +54,7 @@
             </button>
           </td>
         </ng-template>
+
         <td
           *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledDeleteButton"
           class="tableDelete">
@@ -82,6 +84,23 @@
 
         </ng-template>
 
+        <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledPDFButton" class="makePDF">
+          <button style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+            class="fa fa-file-pdf-o fa-2x"
+            style="color: purple; "
+            [routerLink]="['quotation/' + order.orderId]"></i>
+
+          </button>
+        </td>
+        <ng-template #disabledPDFButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-file-pdf-o fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
       </tr>
     </table>
     <div>
@@ -90,5 +109,5 @@
     </div>
 
   </div>
-  <button class="btn btn-primary" routerLink="html_template/"> Offerte</button>
+    <!--<button class="btn btn-primary" routerLink="html_template/">pdf</button>-->
 </div>

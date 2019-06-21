@@ -10,6 +10,8 @@ import {NgForm} from '@angular/forms';
 import {Supplier} from '../../../models/supplier.model';
 import {EventlocationService} from '../../../services/eventlocation.service';
 import {SupplierService} from '../../../services/supplier.service';
+import {CustomerEmail} from '../../../models/customer-email.model';
+import {EventImage} from '../../../models/event-image.model';
 
 @Component({
   selector: 'app-events-create',
@@ -23,7 +25,9 @@ export class EventsCreateComponent implements OnInit {
   locationName = '';
   eventLocations: EventLocation[];
   suppliers: Supplier[];
-  selectTag;
+  image: '';
+  newImage: EventImage = new EventImage(null, null, '');
+
   ownEvent: string;
   locationToDelete;
   selectedEvent;
@@ -39,7 +43,7 @@ export class EventsCreateComponent implements OnInit {
     this.globals.setHuidigePagina('evenementFormulier');
     console.log(this.globals.getHuidigePagina());
     this.event = this.eventService.getEmptyEvent();
-
+    this.event.eventImages = [];
     this.fetchSuppliers();
     this.fetchEventLocations();
   }
@@ -109,11 +113,14 @@ export class EventsCreateComponent implements OnInit {
     this.setOwnEvent();
     this.event.supplier = this.selectedSupplier;
     this.event.location = this.selectedLocation;
-    console.log(this.event.supplier);
-    console.log(this.event.location);
+    this.newImage = new EventImage(null, null, '');
+    this.newImage.imagePath = this.image;
+    this.event.eventImages.push(this.newImage);
+    console.log(this.image);
 
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
+      console.log(data);
       this.eventService.save(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
         this.router.navigate(['/homeeventmanager/evenementenoverview']
         );

@@ -33,5 +33,6 @@ export class Order {
     this.cateringsOrders = cateringsOrders;
     this.event = events;
     this.quotations = quotations;
+    this.persons = persons;
   }
 }

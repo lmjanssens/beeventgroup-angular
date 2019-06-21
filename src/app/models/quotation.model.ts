@@ -8,10 +8,10 @@ export class Quotation {
   public pricebtw: number;
   public pricepp: number;
 
-  constructor(quotationNumber: number, order: Order, dateQuotation: any, bankAccount: string, priceBtw: number, pricePp: number) {
+  constructor(quotationNumber: number, order: Order, datequotation: any, bankAccount: string, priceBtw: number, pricePp: number) {
     this.quotationNumber = quotationNumber;
     this.order = order;
-    this.datequotation = dateQuotation;
+    this.datequotation = datequotation;
     this.bankaccount = bankAccount;
     this.pricebtw = priceBtw;
     this.pricepp = pricePp;

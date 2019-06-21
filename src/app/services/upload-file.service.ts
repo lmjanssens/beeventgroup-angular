@@ -13,18 +13,12 @@ export class UploadFileService {
   private apiPath = 'images';
 
   constructor(private authService: AuthorizationService, private apiService: ApiService) {
-
   }
-
   pushFileToStorage(file: File) {
-
     const uri = this.apiPath + '/post';
-
     const formData = new FormData();
     formData.append('file', file);
-
     return this.apiService.postImageFile(uri, formData);
-
   }
 
   deleteFile(fileName: string) {

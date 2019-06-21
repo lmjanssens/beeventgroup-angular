@@ -24,6 +24,7 @@ export class SupplierContractOverviewComponent implements OnInit {
   contracts: SupplierContract[] = [];
   authenticated = false;
   sub: any;
+
   constructor(private globals: Globals, private navbar: NavbarComponent,
               private authService: AuthorizationService, private  supplierService: SupplierService, private route: ActivatedRoute) {
     this.authenticated = this.authService.hasAuthorization();
@@ -52,7 +53,7 @@ export class SupplierContractOverviewComponent implements OnInit {
       this.currentId = params.supplierid;
       this.supplierService.getById(this.currentId).subscribe(supplier => {
         this.supplier = supplier;
-        this.contracts = this.supplier.contracts
+        this.contracts = this.supplier.contracts;
         console.log(this.supplier.contracts[0].title);
       });
     });
@@ -60,13 +61,16 @@ export class SupplierContractOverviewComponent implements OnInit {
     this.navbar.checkNavBarStyle();
   }
 
-  onDelete(contractid) {
+  onDelete(contract) {
     if (!confirm(`Wilt u het contract verwijderen ?`)) {
       return;
     }
-    this.supplierService.delete(contractid).subscribe(() => {
-      console.log('contract with contractid ' + contractid + ' is deleted.');
-      this.supplierService.getAll().subscribe(supplierContract => this.contracts);
+    this.supplierService.deleteContract(this.currentId, contract.id).subscribe(() => {
+      console.log('contract with contractid ' + contract.id + ' is deleted.');
+      this.supplierService.getById(this.currentId).subscribe(supplier => {
+        this.contracts = supplier.contracts;
+      });
+
     });
   }
 

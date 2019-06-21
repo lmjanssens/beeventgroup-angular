@@ -37,6 +37,8 @@ import {SupplierContractCreateComponent} from './components/supplier/supplier-co
 import {ReserveringenCreateComponent} from './components/eventmanager-reserveringen/reserveringen-create/reserveringen-create.component';
 import {ReserveringenUpdateComponent} from './components/eventmanager-reserveringen/reserveringen-update/reserveringen-update.component';
 import {ReserveringDetailsComponent} from './components/eventmanager-reserveringen/reservering-details/reservering-details.component';
+import {QuotationComponent} from './components/quotation/quotation.component';
+import {QuotationCreateComponent} from './components/quotation/quotation-create/quotation-create.component';
 
 
 const appRoutes: Routes = [
@@ -110,8 +112,20 @@ const appRoutes: Routes = [
     component: EventmanagerUpdateComponent,
     canActivate: [AuthGuard]
   },
-  {path: 'homeeventmanager/reserveringenoverview/html_template', component: PdfGeneratorComponent, canActivate: [AuthGuard]},
+
+  {path: 'homeeventmanager/reserveringenoverview/quotation/:orderId', component: QuotationComponent, canActivate: [AuthGuard]},
   {
+    path: 'homeeventmanager/reserveringenoverview/quotation/:orderId/html_template',
+    component: PdfGeneratorComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'homeeventmanager/reserveringenoverview/quotation/:orderId/createquotation',
+    component: QuotationCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+
     path: 'homeeventmanager/werknemersoverview/employeedetails/:employeeId',
     component: WerknemersDetailsComponent,
     canActivate: [AuthGuard]
