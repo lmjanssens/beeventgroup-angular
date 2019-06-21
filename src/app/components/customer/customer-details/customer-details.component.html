@@ -79,6 +79,12 @@
 
                  [(ngModel)]="customer.gender"  disabled>
         </div>
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea disabled type="text" id="note" name="note " placeholder="Notitie"
+
+                    [(ngModel)]="customer.note"></textarea>
+        </div>
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
           <input type="text" id="city"
