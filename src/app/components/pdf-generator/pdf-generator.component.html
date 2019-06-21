@@ -1,118 +1,106 @@
 <app-header></app-header>
 <app-navbar></app-navbar>
 
-<div  id="content" style="margin-top: 75px; position: relative;">
+
+<div id="content" style="margin-top: 75px; position: relative;">
   <div
     style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
     <div style="position:relative;left:0px;top:0px">
       <img src="../assets/img/offerteHeader.PNG" width=595
-           height=150></div>
+           height=100></div>
     <div style="position:relative;left:0px;top:0px">
       <img src="../assets/img/line.PNG" width=595
            height=10px></div>
     <div class="infoContent">
-      <p class="cls_002">Offerte voor: Jan Peter Balkenende </p>
-      <p class="cls_002">Bedrijf naam: DHL</p>
-      <p class="cls_002">Offerte nummer: 221552224552255</p>
-      <p class="cls_003">Event: Be Event Summer</p>
-      <p class="cls_004">arrangementsdatum: 20/06/2019</p>
-      <p class="cls_004">Aantal personen: 20</p>
-      <h2 class="cls_005">Programma voorstel: </h2>
-      <p class="cls_005">12:00 - Test</p>
-      <p class="cls_005">12:15</p>
-      <p class="cls_005">12:30 - Test</p>
-      <p class="cls_005">12:50 - Test</p>
-      <p class="cls_005">13:00 - Test</p>
-      <p class="cls_005">14:00 - Test</p>
-      <p class="cls_005">Telefoonnummer: 0631919684</p>
-      <div style="margin-bottom: 10px"><p class="cls_005">Deze optie/offerte is geldig tm: </p></div>
+      <p class="cls_002">Offerte voor: {{order.customer.first_name}} {{order.customer.last_name}} </p>
+      <p class="cls_002">Offerte nummer: {{order.quotations[0].quotationNumber}}</p>
+      <p class="cls_003">Event: {{order.event.name}}</p>
+      <p class="cls_004">arrangementsdatum: {{order.dateevent}}</p>
+      <p class="cls_004">Aantal personen: </p>
+      <h2 class="cls_005">Programma voorstel </h2>
+      {{order.event.program}}
+      <p class="cls_005">Telefoonnummer: 703504648</p>
+      <div style="margin-bottom: 10px"><p class="cls_005">Vervaldatum: {{order.quotations[0].datequotation}} </p></div>
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Test image</h3>
+        <div style="position:absolute;left:636.05px;top:330.54px" class="cls_006">
+          <!--<img src="../assets/img/addIcon.png" width=300-->
+          <!--height=300></div>-->
+          <img [src]=order.event.eventImages[0].imagePath width=300
+               height=300>
+        </div>
+      </div>
     </div>
-  </div>
-  <div
-    style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
-    <div style="position:relative;left:0px;top:0px">
-      <img src="../assets/img/line.PNG" width=595
-           height=10px></div>
-    <div class="infoContent">
-      <h3>Programma Kosten(Prijzen PP exl BTW)</h3>
-      <table>
-        <tr>
-          <th>aantal personen</th>
-          <th>Omschrijving</th>
-          <th>prijs p.p</th>
-          <th>totaal prijs</th>
-        </tr>
-        <!--{{#each Form.ExpensesTable}}-->
-        <tr>
-          <td>Test</td>
-          <td>Test</td>
-          <td>$43423</td>
-          <td>434234324</td>
-        </tr>
-
-      </table>
-    </div>
-  </div>
-  <hr>
-  <div
-    style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
-    <div class="infoContent">
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
       <div style="position:relative;left:0px;top:0px">
         <img src="../assets/img/line.PNG" width=595
              height=10px></div>
-      <h3>Bijzonderheden</h3>
+      <div class="infoContent">
+        <h3>Programma Kosten(Prijzen PP exl BTW)</h3>
+        <table>
+          <tr>
+            <th>Aantal personen</th>
+            <th>Omschrijving</th>
+            <th>prijs p.p</th>
+            <th>totaal prijs</th>
+          </tr>
+          <tr>
+            <td>{{order.persons}}</td>
+            <td>{{order.event.description}}</td>
+            <td>{{order.quotations[0].pricepp}}</td>
+            <td>{{order.persons * order.quotations[0].pricepp}}</td>
+          </tr>
 
+        </table>
+      </div>
     </div>
-  </div>
-  <hr noshade="noshade" align="center"
-      style="border-color: #CFCFCF; border-style: dashed; color: #CFCFCF; height: 1px; margin-top: -5px; text-align: center;">
-  <div
-    style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
-    <div style="position:relative;left:0px;top:0px">
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Bijzonderheden</h3>
+        {{order.note}}
+      </div>
+    </div>
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
       <div style="position:relative;left:0px;top:0px">
-        <img src="../assets/img/line.PNG" width=595
-             height=10px></div>
-      <h3>Evenement</h3>
-      <p>Deze interactieve Fietstocht is de ideale</p>
-      <p> manier om meer van Amsterdam te ontdekken</p>
-      <p> op een ontspannen manier. In groepjes</p>
-      <p> beleven de deelnemers een leuke fietstocht,</p>
-      <p> waarbij inzicht, oriëntatievermogen en</p>
-      <p> navigatievermogen centraal staan. De route</p>
-      <p> gaat langs de Amstel, even ontspannen buiten</p>
-      <p> het drukke centrum.</p>
-      <p> Tijdens deze City fietstocht krijg je geen</p>
-      <p> routebeschrijving mee, maar coördinaten of</p>
-      <p> Points of Interest. Met behulp van de app kun</p>
-      <p> je de weg vinden van punt naar punt. Op de</p>
-      <p> route is het zeker 'sightseeing'. Je krijgt bij</p>
-      <p> bijna elk punt wel een opdracht of vraag. Dat</p>
-      <p> kunnen kennisopdrachten of 'fun' opdrachten</p>
-      <p> zijn. Natuurlijk gaat het om de punten.</p>
-
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Evenement</h3>
+        {{order.event.options}}
+      </div>
     </div>
-  </div>
 
-  <div
-    style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
-    <div class="infoContent">
-      <div style="position:relative;left:0px;top:0px">
-        <img src="../assets/img/line.PNG" width=595
-             height=10px></div>
-      <h3>Horeca inhoud</h3>
+
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Horeca inhoud</h3>
+        {{order.cateringOrders[0].catering.note}}
+      </div>
     </div>
-  </div>
-  <div
-    style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
-    <div class="infoContent">
-      <div style="position:relative;left:0px;top:0px">
-        <img src="../assets/img/line.PNG" width=595
-             height=10px></div>
-      <h3>Overige info</h3>
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Overige info</h3>
+        {{order.note}}
+      </div>
     </div>
+
+    <button class="btn btn-primary" (click)="downloadPDF()">Downloaden als pdf</button>
   </div>
-</div>
-<button class="btn btn-primary" (click)="downloadPDF()">Downloaden als pdf</button>
-
-
 

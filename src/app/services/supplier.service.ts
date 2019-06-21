@@ -37,7 +37,7 @@ export class SupplierService {
     return this.apiService.delete<void>(uri + id);
   }
 
-  deleteContract(id: number, contractId: number) {
+  deleteContract(id: number, contractId) {
     const uri = 'suppliers/';
     return this.apiService.delete<void>(uri + id + '/' + contractId);
   }

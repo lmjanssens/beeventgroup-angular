@@ -70,6 +70,8 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
 import {PdfGeneratorComponent} from './components/pdf-generator/pdf-generator.component';
 import { ReserveringDetailsComponent } from './components/eventmanager-reserveringen/reservering-details/reservering-details.component';
 import { SupplierContractCreateComponent } from './components/supplier/supplier-contract-create/supplier-contract-create.component';
+import {QuotationComponent} from './components/quotation/quotation.component';
+import { QuotationCreateComponent } from './components/quotation/quotation-create/quotation-create.component';
 
 
 @NgModule({
@@ -125,6 +127,8 @@ import { SupplierContractCreateComponent } from './components/supplier/supplier-
     DetailsUploadComponent,
     ImageUploadComponent,
     PdfGeneratorComponent,
+    QuotationComponent,
+    QuotationCreateComponent,
     ReserveringDetailsComponent,
     SupplierContractCreateComponent
   ],

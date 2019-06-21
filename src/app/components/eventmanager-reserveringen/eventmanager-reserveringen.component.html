@@ -17,14 +17,25 @@
       <th class="tableEvenement">Evenement</th>
       <th class="tableDatum">Datum</th>
       <th class="tableMaxInstructor">Max instructor</th>
+      <th class="tableInstructorList">Geregistreerde instructeurs</th>
       <th class="tableEdit"></th>
       <th class="tableDelete"></th>
+      <th class="makePDF"></th>
       <th *ngIf="currentUser.role === getRoles().INSTRUCTOR" class="tableSubscribeEvent"></th>
       <tr
         *ngFor="let order of orderList | orderFilter: searchTerm | paginate: { itemsPerPage: itemsPerPage, currentPage: firstPage }">
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.event.name}}</td>
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.dateorder}}</td>
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.event.maxinstructors}}</td>
+        <td>
+          <div *ngFor="let registeredEvent of order.registeredEvents">
+            {{registeredEvent.instructor.first_name}}
+            <img *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
+            cursor: pointer;
+             width: 20px;
+              height: 20px;" (click)="OnUnsubscribeInstructorEvent(registeredEvent.id)">
+          </div>
+        </td>
         <td
           *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledEditButton"
           class="tableEdit">
@@ -43,6 +54,7 @@
             </button>
           </td>
         </ng-template>
+
         <td
           *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledDeleteButton"
           class="tableDelete">
@@ -64,7 +76,7 @@
                   (click)="OnSubscribeToEvent(order, order.event.id);">Inschrijven voor evenement
           </button>
           <button *ngIf="checkIfAlreadySubscribed(order)" class="btn btn-outline-danger"
-                  (click)="OnUnsubscribeToEvent(order.registeredEvents[0].id);">Uitschrijven
+                  (click)="OnUnsubscribeToEvent(order);">Uitschrijven
           </button>
         </td>
 
@@ -72,6 +84,23 @@
 
         </ng-template>
 
+        <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledPDFButton" class="makePDF">
+          <button style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+            class="fa fa-file-pdf-o fa-2x"
+            style="color: purple; "
+            [routerLink]="['quotation/' + order.orderId]"></i>
+
+          </button>
+        </td>
+        <ng-template #disabledPDFButton>
+          <td>
+            <button disabled
+                    style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+              class="fa fa-file-pdf-o fa-2x"
+              style="color: silver; "></i>
+            </button>
+          </td>
+        </ng-template>
       </tr>
     </table>
     <div>
@@ -80,5 +109,5 @@
     </div>
 
   </div>
-  <button class="btn btn-primary" routerLink="html_template/"> Offerte</button>
+    <!--<button class="btn btn-primary" routerLink="html_template/">pdf</button>-->
 </div>
