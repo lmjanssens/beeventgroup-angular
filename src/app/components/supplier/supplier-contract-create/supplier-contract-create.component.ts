@@ -16,7 +16,6 @@ export class SupplierContractCreateComponent implements OnInit {
   contract: SupplierContract = new SupplierContract();
   loading: true;
   currentId;
-  currentContractId;
   private sub: any;
   newContract: any;
 
@@ -26,8 +25,6 @@ export class SupplierContractCreateComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
-      this.currentContractId = params.id;
-      console.log(this.currentId + this.currentContractId);
       this.supplierService.getById(this.currentId).subscribe(supplier => {
         this.supplier = supplier;
       });
@@ -35,7 +32,7 @@ export class SupplierContractCreateComponent implements OnInit {
   }
   ngSubmit(f: NgForm) {
     this.newContract = new SupplierContract();
-    this.newContract.supplierid = this.supplier.supplierid
+    this.newContract.supplierid = this.currentId
     this.newContract.type = this.contract.type;
     this.newContract.title = this.contract.title;
     this.newContract.description = this.contract.description;
@@ -48,6 +45,7 @@ export class SupplierContractCreateComponent implements OnInit {
     this.newContract.extras = this.contract.extras;
     this.newContract.startDate = this.contract.startDate;
     this.newContract.endDate = this.contract.endDate;
+    console.log(this.newContract)
     this.supplier.contracts.push(this.newContract);
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
     console.log(data);
