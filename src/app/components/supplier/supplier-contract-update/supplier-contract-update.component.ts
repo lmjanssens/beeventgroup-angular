@@ -34,6 +34,7 @@ export class SupplierContractUpdateComponent implements OnInit {
         for (let a of this.contracts) {
           if (a.id.toString() === this.currentContractId) {
             this.contract = a;
+            console.log(this.contract);
           }
         }
 
