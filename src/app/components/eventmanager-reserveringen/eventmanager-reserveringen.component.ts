@@ -8,8 +8,6 @@ import {ReservationService} from '../../services/reservation.service';
 import {AlertsService} from 'angular-alert-module';
 import {Router} from '@angular/router';
 import {ApiService} from '../../services/api.service';
-import {iterator} from "rxjs/internal-compatibility";
-import {Instructor} from "../../models/instructor.model";
 
 @Component({
   selector: 'app-eventmanager-reserveringen',
@@ -86,14 +84,21 @@ export class EventmanagerReserveringenComponent implements OnInit {
   OnUnsubscribeToEvent(order: Order) {
 
     if (this.canUnsubscribeToEvent(order)) {
-      this.reservationService.unsubscribeToEvent(order.registeredEvents[0].id).subscribe(
-        success => {
-          this.ngOnInit();
-        },
-        error1 => {
-          console.log(error1);
+      let index = 0;
+      while (index < order.registeredEvents.length) {
+        if (order.registeredEvents[index].instructor.user_id.id === this.currentUser.uid) {
+          this.reservationService.unsubscribeToEvent(order.registeredEvents[index].id).subscribe(
+            success => {
+              this.ngOnInit();
+            },
+            error1 => {
+              console.log(error1);
+            }
+          );
+          break;
         }
-      );
+        index++;
+      }
     } else {
       alert('Sorry, het is niet mogelijk om minder dan 7 dagen van te voren afzeggen op een evenement');
     }
