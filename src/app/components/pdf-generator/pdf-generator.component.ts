@@ -19,7 +19,7 @@ import {ImageUploadComponent} from '../image-upload/image-upload.component';
 export class PdfGeneratorComponent implements OnInit {
 
   customer: Customer = new Customer();
-  order: Order = new Order(null, null, null, null, null, null, null, null, 0, null, null);
+  order: Order = new Order(null, null, null, null, null, null, null, null, null, null, null);
   private sub: any;
   currentId: any;
   currenQuotationId: any;
@@ -39,7 +39,7 @@ export class PdfGeneratorComponent implements OnInit {
         this.order = order;
         this.customer = order.customer;
         this.order.event = order.event;
-        this.order.cateringOrders = order.cateringOrders;
+        this.order.cateringsOrders = order.cateringOrders;
         console.log(order.cateringOrders);
         this.order.quotations = order.quotations;
         this.imgURL = this.order.event.eventImages[0].imagePath;
@@ -48,27 +48,9 @@ export class PdfGeneratorComponent implements OnInit {
 
   }
 
-  preview(files) {
-    if (files.length === 0)
-      return;
-
-    const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = 'Only images are supported.';
-      return;
-    }
-
-    const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = (_event) => {
-      this.imgURL = reader.result;
-    };
-  }
-
   downloadPDF() {
     const doc = new jsPDF('p', 'pt', 'A4');
-    doc.fromHTML(document.getElementById('content'), 15, 15, null, function (dispose) {
+    doc.fromHTML(document.getElementById('content'), 15, 15, null, function(dispose) {
       doc.save('test12456.pdf');
     });
 

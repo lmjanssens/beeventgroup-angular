@@ -128,7 +128,7 @@ import { QuotationCreateComponent } from './components/quotation/quotation-creat
     ImageUploadComponent,
     PdfGeneratorComponent,
     QuotationComponent,
-    QuotationCreateComponent
+    QuotationCreateComponent,
     ReserveringDetailsComponent,
     SupplierContractCreateComponent
   ],
