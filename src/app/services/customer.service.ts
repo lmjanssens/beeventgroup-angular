@@ -13,6 +13,7 @@ export class CustomerService {
   constructor(private apiService: ApiService) {
   }
 
+  newCustomer: Customer;
   customer: Customer;
 
   getAll(): Observable<Customer[]> {
@@ -38,5 +39,11 @@ export class CustomerService {
   delete(id: number) {
     const uri = 'customers/';
     return this.apiService.delete<void>(uri + id);
+  }
+
+  getEmptyCustomer() {
+    return this.newCustomer = new Customer(null, '', '', '', '',
+      '', '', '', '', '', null, null,
+      null);
   }
 }

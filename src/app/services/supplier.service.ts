@@ -11,6 +11,7 @@ export class SupplierService {
   constructor(private apiService: ApiService) {
   }
 
+  newSupplier: Supplier;
   supplier: Supplier;
 
   getAll(): Observable<Supplier[]> {
@@ -35,5 +36,10 @@ export class SupplierService {
   delete(id: number) {
     const uri = 'suppliers/';
     return this.apiService.delete<void>(uri + id);
+  }
+
+  getEmptySupplier() {
+    return this.newSupplier = new Supplier(null, '', '', '',
+      '', '', '');
   }
 }

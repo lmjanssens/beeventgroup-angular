@@ -41,9 +41,9 @@ describe('EventService', () => {
     expect(call.request.method).toBe('GET');
 
     call.flush({
-      supplier: new Supplier('Testleverancier', 'Testman', 'Testsupervisor',
+      supplier: new Supplier(3, 'Testleverancier', 'Testman', 'Testsupervisor',
         'www.test.nl', 'notitie test', 'image.jpg'),
-      location: new EventLocation('Amsterdam', 'Stad in Nederland', 'route.jpg'),
+      location: new EventLocation(3, 'Amsterdam', 'Stad in Nederland', 'route.jpg'),
       ownEvent: true,
       name: 'Fietsen',
       description: 'Frisse lucht',
@@ -66,5 +66,47 @@ describe('EventService', () => {
     expect(call.request.method).toBe('DELETE');
 
     call.flush(3);
+  });
+
+  it('should post an event', () => {
+    const mockSupplier = new Supplier(3, 'Testleverancier', 'Testman', 'Testsupervisor',
+      'www.test.nl', 'notitie test', 'image.jpg');
+    const mockEventLocation = new EventLocation(3, 'Amsterdam', 'Stad in Nederland', 'route.jpg');
+    const mockEvent = new EventModel(3, mockSupplier, mockEventLocation, null, null,
+      null, true, 'Fietsen', '', 'Fietsen in Amsterdam, hele middag lang',
+      '1:30 uur', 'Elektrische fiets', 10, 10, 21,
+      'Neem zonnebrand mee', 5);
+
+    service.save(mockEvent, mockSupplier, mockEventLocation).subscribe((event: EventModel) => {
+      expect(event.name).toEqual('Fietsen');
+      expect(event.location.name).toEqual('Amsterdam');
+      expect(event.supplier.name).toEqual('Testleverancier');
+    });
+
+    const call = httpTestingController.expectOne('http://localhost:8080/api/events/'
+      + mockSupplier.supplierid + '/' + mockEventLocation.id, 'Post to API');
+    expect(call.request.method).toBe('POST');
+
+    call.flush(mockEvent);
+  });
+
+  it('should update an event', () => {
+    const mockEvent = service.getEmptyEvent();
+    mockEvent.id = 3;
+    const mockSupplier = new Supplier(3, 'Testleverancier', 'Testman', 'Testsupervisor',
+      'www.test.nl', 'notitie test', 'image.jpg');
+    const mockEventLocation = new EventLocation(3, 'Amsterdam', 'Stad in Nederland', 'route.jpg');
+
+    service.updateEvent(mockEvent, mockSupplier, mockEventLocation).subscribe((event: EventModel) => {
+      expect(event.name).toEqual('Voetballen');
+    });
+
+    const call = httpTestingController.expectOne('http://localhost:8080/api/events/' + mockEvent.id
+      + '/' + mockSupplier.supplierid + '/' + mockSupplier.supplierid, 'Put to API');
+    expect(call.request.method).toBe('PUT');
+
+    call.flush({
+      name: 'Voetballen'
+    });
   });
 });

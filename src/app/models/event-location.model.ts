@@ -6,7 +6,8 @@ export class EventLocation implements BaseModel {
   public description: string;
   public routePicture: string;
 
-  constructor(name: string, description: string, routePicture: string) {
+  constructor(id: number, name: string, description: string, routePicture: string) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.routePicture = routePicture;

@@ -67,22 +67,11 @@ describe('CustomerService', () => {
   });
 
   it('should post a customer', () => {
-    const mockCustomer = {
-      title: 'Heer',
-      first_name: 'Luuk',
-      infix: null,
-      last_name: 'Janssens',
-      address: 'Straat 123',
-      zipcode: '2929KS',
-      country: 'Nederland',
-      gender: 'm',
-      city: 'New York',
-      email_addressess: null,
-      customer_orders: null,
-      phone_numbers: null
-    };
+    const mockCustomer = new Customer(3, 'Heer', 'Luuk', null,
+      'Janssens', 'Straat 123', '2929KS', 'Nederland', 'm',
+      'New York', null, null, null);
 
-    service.save(mockCustomer).subscribe((customer: any) => {
+    service.save(mockCustomer).subscribe((customer: Customer) => {
       expect(customer.first_name).toEqual('Luuk');
       expect(customer.last_name).toEqual('Janssens');
     });
@@ -94,7 +83,7 @@ describe('CustomerService', () => {
   });
 
   it('should update a customer', () => {
-    const mockCustomer = new Customer();
+    const mockCustomer = service.getEmptyCustomer();
 
     service.updateCustomer(mockCustomer).subscribe((customer: Customer) => {
       expect(customer.first_name).toEqual('Arjan');

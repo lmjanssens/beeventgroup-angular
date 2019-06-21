@@ -71,28 +71,37 @@ describe('CateringService', () => {
     const mockSupplier = new Supplier(3, 'Testleverancier', 'Testman', 'Testsupervisor',
       'www.test.nl', 'notitie test', 'image.jpg');
 
-    const mockCatering = {
-      id: 3,
-      supplier: mockSupplier,
-      supplierContracts: null,
-      cateringName: 'Jumbo',
-      contactPerson: 'Klaasje',
-      zipcode: '1263XD',
-      address: 'Straat 13',
-      city: 'Leiden',
-      phone: '0610011001',
-      cateringPrice: 12,
-      note: 'Zakelijke test notitie'
-    };
+    const mockCatering = new Catering(3, mockSupplier, null, 'Jumbo',
+      'Klaasje', '1263XD', 'Straat 13', 'Leiden', '0610011001',
+      12, 'Zakelijke test notitie');
 
-    service.save(mockCatering, mockSupplier).subscribe((catering: any) => {
+
+    service.save(mockCatering, mockSupplier).subscribe((catering: Catering) => {
       expect(catering.cateringName).toEqual('Jumbo');
     });
 
     const call = httpTestingController.expectOne('http://localhost:8080/api/caterings/'
-      + mockCatering.id + '/' + mockSupplier.supplierid, 'Post to API');
+      + mockSupplier.supplierid, 'Post to API');
     expect(call.request.method).toBe('POST');
 
     call.flush(mockCatering);
+  });
+
+  it('should update a catering appointment', () => {
+    const mockCatering = service.getEmptyCatering();
+    const mockSupplier = new Supplier(3, 'Testleverancier', 'Testman', 'Testsupervisor',
+      'www.test.nl', 'notitie test', 'image.jpg');
+
+    service.updateCatering(mockCatering, mockSupplier).subscribe((catering: Catering) => {
+      expect(catering.cateringName).toEqual('Lidl');
+    });
+
+    const call = httpTestingController.expectOne('http://localhost:8080/api/caterings/' + mockCatering.id
+      + '/' + mockSupplier.supplierid, 'Put to API');
+    expect(call.request.method).toBe('PUT');
+
+    call.flush({
+      cateringName: 'Lidl'
+    });
   });
 });

@@ -13,4 +13,14 @@ export class Employee {
   public phone_numbers: EmployeePhone[];
 
 
+  constructor(employee_id: number, user_id: User, first_name: string, infix: string, last_name: string,
+              email_addresses: EmployeeEmail[], phone_numbers: EmployeePhone[]) {
+    this.employee_id = employee_id;
+    this.user_id = user_id;
+    this.first_name = first_name;
+    this.infix = infix;
+    this.last_name = last_name;
+    this.email_addresses = email_addresses;
+    this.phone_numbers = phone_numbers;
+  }
 }

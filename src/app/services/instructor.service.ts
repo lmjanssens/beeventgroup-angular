@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Observable, pipe} from 'rxjs';
-import {first, retry, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {first} from 'rxjs/operators';
 import {ApiService} from './api.service';
 import {Instructor} from '../models/instructor.model';
 
@@ -13,6 +13,7 @@ export class InstructorService {
   constructor(private apiService: ApiService) {
   }
 
+  newInstructor: Instructor;
   instructor: Instructor;
 
   getAll(): Observable<Instructor[]> {
@@ -34,9 +35,13 @@ export class InstructorService {
     return this.apiService.post(uri, instructor);
   }
 
-
   delete(id: number) {
     const uri = 'instructors/';
     return this.apiService.delete(uri + id);
+  }
+
+  getEmptyInstructor() {
+    return this.newInstructor = new Instructor(null, null, '', '',
+      '', '', '');
   }
 }

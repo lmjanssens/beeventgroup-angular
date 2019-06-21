@@ -62,16 +62,12 @@ describe('EmployeeService', () => {
   });
 
   it('should post an employee', () => {
-    const mockEmployee = {
-      user_id: new User(1, 'Luuk', 'password', null),
-      first_name: 'Luuk',
-      infix: null,
-      last_name: 'Janssens',
-      email_addresses: null,
-      phone_numbers: null
-    };
+    const mockUser = new User(1, 'Luuk', 'password', null);
+    const mockEmployee = new Employee(3, mockUser, 'Luuk', null,
+      'Janssens', null, null
+    );
 
-    service.save(mockEmployee).subscribe((employee: any) => {
+    service.save(mockEmployee).subscribe((employee: Employee) => {
       expect(employee.first_name).toEqual('Luuk');
       expect(employee.last_name).toEqual('Janssens');
       expect(employee.user_id.username).toEqual('Luuk');
@@ -85,7 +81,7 @@ describe('EmployeeService', () => {
   });
 
   it('should update an employee', () => {
-    const mockEmployee = new Employee();
+    const mockEmployee = service.getEmptyEmployee();
 
     service.updateEmployee(mockEmployee).subscribe((employee: Employee) => {
       expect(employee.first_name).toEqual('Karel');
