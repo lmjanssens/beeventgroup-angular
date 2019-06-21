@@ -70,7 +70,6 @@ export class ReserveringenCreateComponent implements OnInit {
         this.router.navigate(['/homeeventmanager/reserveringenoverview']
         );
       });
-      (document.getElementById('submit') as HTMLInputElement).disabled = true;
       alert('De reservering is toegevoegd.');
     } else {
       alert('Vul de belangrijke velden in.');
