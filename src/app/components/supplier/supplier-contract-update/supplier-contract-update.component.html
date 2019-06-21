@@ -108,15 +108,15 @@
             <table class="locationTable">
               <th class="locations">Opties
                 <img src="../assets/img/addIcon.png"
-                     *ngIf="optionString.length != 0; else hidden"
-                     style=" margin-left: 50px;
+                     *ngIf="optionList.length < 4 && optionString.length != 0; else hidden"
+                     style=" margin-left: 200px;
                 width: 20px;
                 height: 20px;
                 cursor: pointer"
                      (click)="onCreateOption()"
                      id="addLocation">
                 <ng-template #hidden>
-                  <img src="../assets/img/addIcon.png" style=" margin-left: 50px;
+                  <img src="../assets/img/addIcon.png" style=" margin-left: 200px;
                 width: 20px;
                 height: 20px;
                 opacity: 0"
@@ -128,7 +128,8 @@
                 >
               </th>
               <tr>
-              <textarea type="text" id="note" name="note" placeholder="Opties" style="margin-top: 0.5em; height: 200px"
+              <textarea type="text" id="note" name="note" placeholder="Opties"
+                        style="margin-top: 0.5em; padding: 10px; display: inline-block; border-radius: 4px; width: 400px; height: 160px;"
                         [(ngModel)]="optionString"></textarea>
               </tr>
               <tr *ngFor="let option of this.optionList">
@@ -141,38 +142,38 @@
                       type="submit"
                       style="width: 50%;
                 margin-left: 25%;
-                margin-right: 25%"
+                margin-right: 25%; margin-top: 1em"
                       [disabled]="this.optionList.length === 0">
                 Toevoegen
               </button>
             </table>
           </div>
         </form>
-<!--        <form class="container" role="form" #fa="ngForm">-->
-<!--          <div class="containerTables" style="margin-top: -370px;">-->
-<!--            <table class="locationTableDel">-->
-<!--              <th class="locations">Verwijder locatie</th>-->
-<!--              <tr>-->
-<!--                <select id="delLocation" name="delLocation" [(ngModel)]="locationToDelete" style="margin-top: 10px;"-->
-<!--                        required>-->
-<!--                  <option *ngFor="let delEventLocation of getEventLocations()" [ngValue]="delEventLocation">-->
-<!--                    {{delEventLocation.name}}-->
-<!--                  </option>-->
-<!--                </select>-->
-<!--              </tr>-->
-<!--              <button [disabled]="!fa.valid" class="btn btn-primary"-->
-<!--                      id="deleteLocation"-->
-<!--                      type="submit"-->
-<!--                      style="width: 50%;-->
-<!--                margin-left: 25%;-->
-<!--                margin-right: 25%;-->
-<!--                margin-top: 2%;"-->
-<!--                      (click)="onDeleteOldLocation(locationToDelete)">-->
-<!--                Verwijder-->
-<!--              </button>-->
-<!--            </table>-->
-<!--          </div>-->
-<!--        </form>-->
+        <!--        <form class="container" role="form" #fa="ngForm">-->
+        <!--          <div class="containerTables" style="margin-top: -370px;">-->
+        <!--            <table class="locationTableDel">-->
+        <!--              <th class="locations">Verwijder locatie</th>-->
+        <!--              <tr>-->
+        <!--                <select id="delLocation" name="delLocation" [(ngModel)]="locationToDelete" style="margin-top: 10px;"-->
+        <!--                        required>-->
+        <!--                  <option *ngFor="let delEventLocation of getEventLocations()" [ngValue]="delEventLocation">-->
+        <!--                    {{delEventLocation.name}}-->
+        <!--                  </option>-->
+        <!--                </select>-->
+        <!--              </tr>-->
+        <!--              <button [disabled]="!fa.valid" class="btn btn-primary"-->
+        <!--                      id="deleteLocation"-->
+        <!--                      type="submit"-->
+        <!--                      style="width: 50%;-->
+        <!--                margin-left: 25%;-->
+        <!--                margin-right: 25%;-->
+        <!--                margin-top: 2%;"-->
+        <!--                      (click)="onDeleteOldLocation(locationToDelete)">-->
+        <!--                Verwijder-->
+        <!--              </button>-->
+        <!--            </table>-->
+        <!--          </div>-->
+        <!--        </form>-->
 
       </div>
     </div>
