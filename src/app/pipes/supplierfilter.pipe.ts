@@ -16,8 +16,10 @@ export class SupplierFilterPipe implements PipeTransform {
       const contactPerson = supplier.contact_person.toLowerCase().includes(searchTerm.toLowerCase());
       const supervisor = supplier.supervisor.toLowerCase().includes(searchTerm.toLowerCase());
       const website = supplier.website.toLowerCase().includes(searchTerm.toLowerCase());
-      const note = supplier.note.toLowerCase().includes(searchTerm.toLowerCase());
-      return (naam + contactPerson + supervisor + website + note);
+      const phone = supplier.phone_numbers[0].phone.toLowerCase().includes(searchTerm.toLowerCase());
+      const email = supplier.email_addresses[0].email.toLowerCase().includes(searchTerm.toLowerCase());
+
+      return (naam + contactPerson + supervisor + website + phone + email);
     });
   }
 
