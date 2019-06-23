@@ -64,7 +64,7 @@ export class EventmanagerEventsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imageUpload.get();
+    // this.imageUpload.get();
     this.globals.setHuidigePagina('Evenementen');
     this.navbar.checkNavBarStyle();
 
