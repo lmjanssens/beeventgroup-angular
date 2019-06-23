@@ -7,6 +7,18 @@ input {
 
 }
 
+table {
+  width: 250px;
+  table-layout: fixed;
+}
+
+td {
+  padding: 0.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 h1 {
   padding: 10px;
 }

@@ -7,6 +7,18 @@ input {
 
 }
 
+table {
+  width: 250px;
+  table-layout: fixed;
+}
+
+td {
+  padding: 0.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 h1 {
   padding: 10px;
 }
@@ -60,6 +72,7 @@ tr:nth-child(even) {
 
 tr {
   text-align: center;
+
 }
 
 .ng-valid[required], .ng-valid.required {
@@ -68,13 +81,6 @@ tr {
 
 .ng-invalid:not(form) {
   border-left: 5px solid red;
-}
-
-td {
-  padding: 0.25em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 
