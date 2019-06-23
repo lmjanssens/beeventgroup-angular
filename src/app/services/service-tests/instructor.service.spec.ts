@@ -64,7 +64,7 @@ describe('InstructorService', () => {
   it('should post an instructor', () => {
     const mockUser = new User(3, 'Luuk', 'password', null);
     const mockInstructor = new Instructor(3, mockUser, 'Luuk', null, ''
-      + 'Janssens', '0642800851', 'testen@isleuk.nl');
+      + 'Janssens', '0642800851', 'testen@isleuk.nl', 'Leuke notitie!!');
 
     service.save(mockInstructor).subscribe((instructor: Instructor) => {
       expect(instructor.first_name).toEqual('Luuk');

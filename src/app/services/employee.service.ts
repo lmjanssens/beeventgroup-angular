@@ -1,12 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Employee} from '../models/employee.model';
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
 import {tap} from 'rxjs/operators';
 import {ApiService} from './api.service';
 import {until} from 'selenium-webdriver';
-import urlIs = until.urlIs;
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +40,6 @@ export class EmployeeService {
 
   getEmptyEmployee() {
     return this.newEmployee = new Employee(null, null, '', '',
-      '', null, null);
+      '', null, null, null);
   }
 }

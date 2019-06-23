@@ -13,7 +13,7 @@ import {NgForm} from '@angular/forms';
 })
 export class InstructorUpdateComponent implements OnInit {
 
-  instructor = new Instructor();
+  instructor;
   user = new User();
   private sub: any;
   currentId: number;
@@ -24,6 +24,7 @@ export class InstructorUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('instructeurFormulier');
+    this.instructor = this.instructorService.getEmptyInstructor();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.instructor_id;

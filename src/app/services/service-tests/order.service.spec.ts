@@ -24,7 +24,7 @@ describe('ReservationService', () => {
     'Janssens', 'Straat 123', '2929KS', 'Nederland', 'm',
     'New York', null, null, null);
   const mockOrder = new Order(3, mockCustomer, '12-04-2019', '14-04-2019', 'Notitie',
-    '12:00', '17:00', null, mockEvent, null);
+    '12:00', '17:00', null,null,  mockEvent, null);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -50,7 +50,7 @@ describe('ReservationService', () => {
   it('should correctly return a specific order', () => {
     service.getById(3).subscribe((order: Order) => {
       expect(order.event.name).toBe('Fietsen');
-      expect(order.note).toBe('Frisse lucht');
+      expect(order.note).toBe('Nog niet betaald.');
     });
 
     const call = httpTestingController.expectOne('http://localhost:8080/api/orders/3', 'Calling API');

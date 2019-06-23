@@ -18,7 +18,7 @@ export class EventmanagerCreateComponent implements OnInit {
 
   password1: string;
   password2: string;
-  employee: Employee = new Employee();
+  employee: Employee;
   user: User = new User();
 
   phones: EmployeePhone[] = [];
@@ -31,11 +31,13 @@ export class EventmanagerCreateComponent implements OnInit {
   private teller = 0;
   private userNameAvailable = true;
 
-  constructor(private globals: Globals, private employeeService: EmployeeService, private router: Router, private userService: UserService) {
+  constructor(private globals: Globals, private employeeService: EmployeeService, private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     this.globals.setHuidigePagina('werknemerFormulier');
+    this.employee = this.employeeService.getEmptyEmployee();
   }
 
   userNameChecker(list) {

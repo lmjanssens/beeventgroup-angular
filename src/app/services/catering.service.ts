@@ -44,8 +44,7 @@ export class CateringService {
   }
 
   getEmptyCatering() {
-    this.newCatering = new Catering(null, null, null, '',
+    return this.newCatering = new Catering(null, null, null, '',
       '', '', '', '', '', 0, '');
-    return this.newCatering;
   }
 }

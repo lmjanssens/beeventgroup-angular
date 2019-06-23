@@ -13,7 +13,7 @@ import {AuthorizationService} from '../../../services/authorization.service';
   styleUrls: ['./supplier-details.component.css']
 })
 export class SupplierDetailsComponent implements OnInit {
-  supplier: Supplier = new Supplier();
+  supplier: Supplier;
   tel = '';
   mail = '';
   zipcode = '';
@@ -51,6 +51,8 @@ export class SupplierDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('leverancierFormulier');
+    this.supplier = this.supplierService.getEmptySupplier();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       console.log(this.currentId);

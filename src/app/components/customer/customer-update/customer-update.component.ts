@@ -13,7 +13,7 @@ import {Globals} from '../../globals';
   styleUrls: ['./customer-update.component.css']
 })
 export class CustomerUpdateComponent implements OnInit {
-  customer: Customer = new Customer();
+  customer: Customer;
   tel = '';
   mail = '';
   newMail: CustomerEmail = new CustomerEmail();
@@ -29,6 +29,7 @@ export class CustomerUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('klantenFormulier');
+    this.customer = this.customerService.getEmptyCustomer();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params['customerId'];

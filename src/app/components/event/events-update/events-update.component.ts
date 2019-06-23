@@ -24,7 +24,6 @@ export class EventsUpdateComponent implements OnInit {
   newImage: EventImage = new EventImage(null, null, '');
   event: EventModel;
 
-
   eventLocations: EventLocation[];
   suppliers: Supplier[];
   loading: true;

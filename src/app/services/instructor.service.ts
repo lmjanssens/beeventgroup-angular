@@ -42,6 +42,6 @@ export class InstructorService {
 
   getEmptyInstructor() {
     return this.newInstructor = new Instructor(null, null, '', '',
-      '', '', '');
+      '', '', '', null);
   }
 }

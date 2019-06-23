@@ -31,11 +31,7 @@ export class SupplierCreateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('leverancierFormulier');
-    this.supplier = new Supplier();
-    this.supplier.email_addresses = [];
-    this.supplier.phone_numbers = [];
-    this.supplier.addresses = [];
-    this.supplier.contracts = [];
+    this.supplier = this.supplierService.getEmptySupplier();
   }
 
   onCreateMail() {

@@ -64,7 +64,7 @@ describe('EmployeeService', () => {
   it('should post an employee', () => {
     const mockUser = new User(1, 'Luuk', 'password', null);
     const mockEmployee = new Employee(3, mockUser, 'Luuk', null,
-      'Janssens', null, null
+      'Janssens', null, null, 'Notitie'
     );
 
     service.save(mockEmployee).subscribe((employee: Employee) => {

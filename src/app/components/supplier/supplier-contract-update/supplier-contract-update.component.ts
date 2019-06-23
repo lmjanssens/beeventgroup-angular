@@ -12,7 +12,7 @@ import {SupplierContract} from '../../../models/supplier-contract.model';
   styleUrls: ['./supplier-contract-update.component.css']
 })
 export class SupplierContractUpdateComponent implements OnInit {
-  supplier: Supplier = new Supplier();
+  supplier: Supplier;
   contracts: SupplierContract[] = [];
   contract: SupplierContract = new SupplierContract();
   loading: true;
@@ -24,6 +24,8 @@ export class SupplierContractUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.supplier = this.supplierService.getEmptySupplier();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       this.currentContractId = params.id;
@@ -41,6 +43,7 @@ export class SupplierContractUpdateComponent implements OnInit {
       });
     });
   }
+
   ngSubmit(f: NgForm) {
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
     console.log(data);
