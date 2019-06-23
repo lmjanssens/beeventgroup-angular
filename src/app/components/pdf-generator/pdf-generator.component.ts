@@ -7,9 +7,7 @@ import {Customer} from '../../models/customer.model';
 import {ActivatedRoute} from '@angular/router';
 import {Order} from '../../models/order.model';
 import {EventService} from '../../services/event.service';
-import {Quotation} from '../../models/quotation.model';
 import {QuotationService} from '../../services/quotation.service';
-import {ImageUploadComponent} from '../image-upload/image-upload.component';
 
 @Component({
   selector: 'app-pdf-generator',
@@ -25,6 +23,7 @@ export class PdfGeneratorComponent implements OnInit {
   currenQuotationId: any;
   public imagePath;
   imgURL: any;
+  image: any;
   public message: string;
 
 
@@ -42,6 +41,8 @@ export class PdfGeneratorComponent implements OnInit {
         this.order.cateringsOrders = order.cateringOrders;
         this.order.quotations = order.quotations;
         this.imgURL = this.order.event.eventImages[0].imagePath;
+
+        console.log(this.imgURL);
       });
     });
 
@@ -50,7 +51,7 @@ export class PdfGeneratorComponent implements OnInit {
   downloadPDF() {
     const doc = new jsPDF('p', 'pt', 'A4');
     doc.fromHTML(document.getElementById('content'), 15, 15, null, function(dispose) {
-      doc.save('test12456.pdf');
+      doc.save('offerte.pdf');
     });
 
   }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {EventModel} from '../../../models/event.model';
 import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
@@ -6,6 +6,7 @@ import {EventService} from '../../../services/event.service';
 import {EventLocation} from '../../../models/event-location.model';
 import {Role} from '../../../enums/Role';
 import {AuthorizationService} from '../../../services/authorization.service';
+import {ImageUploadComponent} from '../../image-upload/image-upload.component';
 
 
 @Component({
@@ -14,6 +15,8 @@ import {AuthorizationService} from '../../../services/authorization.service';
   styleUrls: ['./eventmanager-events.component.css']
 })
 export class EventmanagerEventsComponent implements OnInit {
+  @ViewChild(ImageUploadComponent)
+  public imageUpload: ImageUploadComponent;
   events: EventModel[] = [];
   eventLocation: EventLocation = new EventLocation();
   event: EventModel;
@@ -61,6 +64,7 @@ export class EventmanagerEventsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.imageUpload.get();
     this.globals.setHuidigePagina('Evenementen');
     this.navbar.checkNavBarStyle();
 
