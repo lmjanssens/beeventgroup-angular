@@ -35,7 +35,7 @@ export class ReserveringenUpdateComponent implements OnInit {
     this.fetchEvents();
     this.order = this.reservationService.getEmptyOrder();
 
-    this.globals.setHuidigePagina('reserveringupdate');
+    this.globals.setHuidigePagina('reserveringFormulier');
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.orderId;
@@ -58,6 +58,8 @@ export class ReserveringenUpdateComponent implements OnInit {
   fetchOrderById() {
     this.reservationService.getById(this.currentId).subscribe(order => {
       this.order = order;
+      this.selectedEvent = this.order.event;
+      this.selectedCustomer = this.order.customer;
       this.updatedEvent = true;
     });
   }

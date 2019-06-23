@@ -35,7 +35,7 @@
         <div>
           <div>
             <label class="col-sm-2" for="fname">Voornaam</label>
-            <input type="text" id="fname" name="fname" placeholder="voornaam" disabled
+            <input type="text" id="fname" name="fname" disabled
                    [(ngModel)]="employee.first_name">
           </div>
           <div>
@@ -55,14 +55,20 @@
 
                    [(ngModel)]="employee.user_id.username">
           </div>
+          <div id="note-div">
+            <label class="col-sm-2" for="note">Notitie</label>
+            <textarea disabled type="text" id="note" name="note " placeholder="Notitie"
+
+                      [(ngModel)]="employee.note"></textarea>
+          </div>
         </div>
       </div>
       <div class="buttons" style="margin-top: 0.5em">
 
-        <button style="background-color: red; color: white" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
+        <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
           <i class="fa fa-trash"></i> Verwijderen
         </button>
-        <button style="background-color: #651BC8" class="btn btn-primary" [routerLink]="['/homeeventmanager/werknemersoverview/employeeedit/' + employee.employee_id]"><i class="fa fa-pencil"></i>
+        <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary" [routerLink]="['/homeeventmanager/werknemersoverview/employeeedit/' + employee.employee_id]"><i class="fa fa-pencil"></i>
           Bewerken
         </button>
       </div>

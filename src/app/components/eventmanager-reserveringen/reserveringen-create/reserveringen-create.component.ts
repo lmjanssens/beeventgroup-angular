@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+ import {Component, OnInit} from '@angular/core';
 import {Order} from '../../../models/order.model';
 import {Customer} from '../../../models/customer.model';
 import {EventModel} from '../../../models/event.model';
@@ -8,6 +8,7 @@ import {ReservationService} from '../../../services/reservation.service';
 import {NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AlertsService} from 'angular-alert-module';
+import {Globals} from '../../globals';
 
 @Component({
   selector: 'app-reserveringen-create',
@@ -25,10 +26,11 @@ export class ReserveringenCreateComponent implements OnInit {
 
   constructor(private customerService: CustomerService, private eventService: EventService,
               private reservationService: ReservationService, private router: Router,
-              private alertService: AlertsService) {
+              private alertService: AlertsService, private globals: Globals) {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('reserveringFormulier');
     this.fetchCustomers();
     this.fetchEvents();
     this.order = this.reservationService.getEmptyOrder();
@@ -68,7 +70,6 @@ export class ReserveringenCreateComponent implements OnInit {
         this.router.navigate(['/homeeventmanager/reserveringenoverview']
         );
       });
-      (document.getElementById('submit') as HTMLInputElement).disabled = true;
       alert('De reservering is toegevoegd.');
     } else {
       alert('Vul de belangrijke velden in.');

@@ -38,6 +38,11 @@ export class SupplierService {
     return this.apiService.delete<void>(uri + id);
   }
 
+  deleteContract(id: number, contractId) {
+    const uri = 'suppliers/';
+    return this.apiService.delete<void>(uri + id + '/' + contractId);
+  }
+
   getEmptySupplier() {
     return this.newSupplier = new Supplier(null, '', '', '',
       '', '', '');

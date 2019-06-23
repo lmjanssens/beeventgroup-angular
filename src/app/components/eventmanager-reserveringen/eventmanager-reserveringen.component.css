@@ -61,7 +61,9 @@ button {
 .tableCustomer {
   width: 100%;
 }
-
+.makePDF{
+  width: 40px;
+}
 .tableEvenement {
   width: 100%;
 }
@@ -72,6 +74,10 @@ button {
 
 .tableMaxInstructor{
   width: 50%;
+}
+
+.tableInstructorList{
+  width: 100%;
 }
 
 .tableEdit {
@@ -85,4 +91,8 @@ button {
 
 .tableSubscribeEvent{
   width: 100%;
+}
+
+table tbody tr td:nth-child(4){
+  padding-top: 2px;
 }

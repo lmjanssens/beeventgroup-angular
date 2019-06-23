@@ -17,14 +17,9 @@ import {ApiService} from '../../services/api.service';
 export class EventmanagerReserveringenComponent implements OnInit {
 
   orderList: Order[] = [];
-  rest: number;
   firstPage = 1;
   itemsPerPage = 5;
-  teller = 0;
-  amountRows = 0;
   searchTerm: string;
-  emptyOrder: Order = new Order(null, null, '', '',
-    '', '', '', null, null, null);
 
   currentUser: any;
   authenticated = false;
@@ -62,6 +57,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
   fetchOrders() {
     this.reservationService.getAll().subscribe(data => {
       this.orderList = data;
+      console.log(data);
     });
   }
 
@@ -78,7 +74,6 @@ export class EventmanagerReserveringenComponent implements OnInit {
 
   OnSubscribeToEvent(order: Order, eventId: number) {
 
-    console.log(order);
     this.reservationService.subscribeToEvent(order.orderId, eventId, this.currentUser.username).subscribe(() => {
       alert('Uw registratie bij een evenement is succesvol verlopen.');
       this.ngOnInit();
@@ -86,8 +81,32 @@ export class EventmanagerReserveringenComponent implements OnInit {
 
   }
 
-  OnUnsubscribeToEvent(eventId: number) {
-    this.reservationService.unsubscribeToEvent(eventId).subscribe(
+  OnUnsubscribeToEvent(order: Order) {
+
+    if (this.canUnsubscribeToEvent(order)) {
+      let index = 0;
+      while (index < order.registeredEvents.length) {
+        if (order.registeredEvents[index].instructor.user_id.id === this.currentUser.uid) {
+          this.reservationService.unsubscribeToEvent(order.registeredEvents[index].id).subscribe(
+            success => {
+              this.ngOnInit();
+            },
+            error1 => {
+              console.log(error1);
+            }
+          );
+          break;
+        }
+        index++;
+      }
+    } else {
+      alert('Sorry, het is niet mogelijk om minder dan 7 dagen van te voren afzeggen op een evenement');
+    }
+  }
+
+  OnUnsubscribeInstructorEvent(registeredEventId: number) {
+
+    this.reservationService.unsubscribeToEvent(registeredEventId).subscribe(
       success => {
         this.ngOnInit();
       },
@@ -95,6 +114,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
         console.log(error1);
       }
     );
+
   }
 
   OnDelete(orderId) {
@@ -109,19 +129,29 @@ export class EventmanagerReserveringenComponent implements OnInit {
   checkIfAlreadySubscribed(order: Order) {
 
     let index = 0;
+
     let duplicate = false;
 
     while (index < order.registeredEvents.length) {
 
-      if (order.registeredEvents[index].instructor.first_name === this.currentUser.username) {
+      if (order.registeredEvents[index].instructor.user_id.id === this.currentUser.uid) {
         duplicate = true;
         break;
       }
+
       index++;
 
     }
 
     return duplicate;
+  }
+
+  canUnsubscribeToEvent(order: Order): boolean {
+
+    let diff = Math.abs(new Date(order.dateevent).getTime() - new Date().getTime());
+    let diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+
+    return (diffDays >= 7);
   }
 
 }

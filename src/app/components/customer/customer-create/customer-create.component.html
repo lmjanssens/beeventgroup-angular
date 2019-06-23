@@ -28,9 +28,10 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel " name="phones" required minlength="10" maxlength="10">
+                     [(ngModel)]="tel " name="phones" required minlength="10" maxlength="10"
+                     pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
             </tr>
-            <tr *ngFor="let tel of customer.phone_numbers" class="spacer">
+            <tr *ngFor=" let tel of customer.phone_numbers" class="spacer">
               <td>
                 {{tel.phonenumber}}
                 <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
@@ -120,6 +121,12 @@
             <option value="v">Vrouw</option>
           </select>
 
+        </div>
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea type="text" id="note" name="note " placeholder="Notitie"
+
+                    [(ngModel)]="customer.note"></textarea>
         </div>
         <div>
           <label class=" col-sm-2" for="city">Stad</label>

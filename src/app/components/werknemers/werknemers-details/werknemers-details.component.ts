@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
 import {Employee} from '../../../models/employee.model';
 import {Location} from '@angular/common';
+import {AuthorizationService} from '../../../services/authorization.service';
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-werknemers-details',
@@ -14,11 +16,31 @@ export class WerknemersDetailsComponent implements OnInit {
   private employee: Employee;
   private currentId: any;
   private sub: any;
+  currentUser: any;
+  authenticated = false;
 
-  constructor(private employeeService: EmployeeService,
+  constructor(private employeeService: EmployeeService, private authService: AuthorizationService,
               private route: ActivatedRoute, private router: Router, private globals: Globals, private location: Location) {
+    this.authenticated = this.authService.hasAuthorization();
+    this.authService.authorized$.subscribe(
+      authorized => {
+        this.updateAuthentication();
+      }
+    );
+
+    this.updateAuthentication();
   }
 
+  updateAuthentication() {
+    this.authenticated = this.authService.hasAuthorization();
+
+    if (!this.authenticated) {
+      this.currentUser = {};
+      return;
+    }
+
+    this.currentUser = this.authService.getAuthenticator();
+  }
   ngOnInit() {
     this.globals.setHuidigePagina('werknemerFormulier');
 
@@ -33,11 +55,21 @@ export class WerknemersDetailsComponent implements OnInit {
 
 
   onDelete() {
-    if (!confirm(`Wilt u de werknemer "${this.employee.first_name + ' ' + this.employee.last_name}" verwijderen ?`)) {
-      return;
+    if (this.employee.infix === '' || this.employee.infix === undefined || this.employee.infix === null) {
+      if (!confirm(`Wilt u de werknemer "${this.employee.first_name + ' ' + this.employee.last_name}" verwijderen ?`)) {
+        return;
+      }
+    } else {
+      if (!confirm(`Wilt u de werknemer "${this.employee.first_name + ' ' +
+      this.employee.infix + ' ' + this.employee.last_name}" verwijderen ?`)) {
+        return;
+      }
     }
-    this.employeeService.delete(this.currentId).subscribe(() => {
+    this.employeeService.delete(this.employee.employee_id).subscribe(() => {
       this.location.back();
     });
+  }
+  getRoles() {
+    return Role;
   }
 }

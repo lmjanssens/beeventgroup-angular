@@ -1,9 +1,8 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Supplier} from '../../../models/supplier.model';
 import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 import {SupplierService} from '../../../services/supplier.service';
-import {Router} from '@angular/router';
 import {AuthorizationService} from '../../../services/authorization.service';
 import {Role} from '../../../enums/Role';
 

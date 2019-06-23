@@ -35,13 +35,13 @@
         <div>
 
           <label for="title" class="col-sm-2">Title</label>
-          <input type="text" id="title" name="title" placeholder="title"
+          <input type="text" id="title" name="title"
                  [(ngModel)]="customer.title" disabled>
 
         </div>
         <div>
           <label class="col-sm-2" for="fname">Voornaam</label>
-          <input type="text" id="fname" name="fname" placeholder="voornaam"
+          <input type="text" id="fname" name="fname"
                  [(ngModel)]="customer.first_name" disabled>
         </div>
         <div>
@@ -51,45 +51,51 @@
         </div>
         <div>
           <label class="col-sm-2" for="lname">Achternaam</label>
-          <input type="text" id="lname" name="lname" placeholder="achternaam"
+          <input type="text" id="lname" name="lname"
 
                  [(ngModel)]="customer.last_name" disabled>
         </div>
         <div>
           <label class="col-sm-2" for="address">Adres</label>
-          <input type="text" id="address" name="address " placeholder="adres"
+          <input type="text" id="address" name="address"
 
                  [(ngModel)]="customer.address"  disabled>
         </div>
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
-          <input type="text" id="zipcode" name="zipode" placeholder="postcode"
+          <input type="text" id="zipcode" name="zipode"
 
                  [(ngModel)]="customer.zipcode" disabled>
         </div>
         <div>
           <label class="col-sm-2" for="country">Land</label>
-          <input type="text" id="country" name="country" placeholder="land"
+          <input type="text" id="country" name="country"
 
                  [(ngModel)]="customer.country"  disabled>
         </div>
         <div>
           <label class="col-sm-2" for="gender">Geslacht</label>
-          <input type="text" id="gender" name="gender" placeholder="gender"
+          <input type="text" id="gender" name="gender"
 
                  [(ngModel)]="customer.gender"  disabled>
         </div>
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea disabled type="text" id="note" name="note " placeholder="Notitie"
+
+                    [(ngModel)]="customer.note"></textarea>
+        </div>
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
-          <input type="text" id="city" placeholder="stad"
+          <input type="text" id="city"
                  [(ngModel)]="customer.city" name="city"  disabled>
 
           <div class="buttons" style="padding-top: 1em">
 
-            <button style="background-color: red; color: white" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
+            <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
               <i class="fa fa-trash"></i> Verwijderen
             </button>
-            <button style="background-color: #651BC8" class="btn btn-primary" [routerLink]="['/homeeventmanager/customeroverview/customeredit/'+ customer.customerId]"><i class="fa fa-pencil"></i>
+            <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary" [routerLink]="['/homeeventmanager/customeroverview/customeredit/'+ customer.customerId]"><i class="fa fa-pencil"></i>
               Bewerken
             </button>
           </div>

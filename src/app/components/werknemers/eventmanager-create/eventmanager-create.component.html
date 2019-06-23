@@ -15,6 +15,7 @@
               <input class="input" id="phone" maxlength="10" minlength="10"
                      name="phone" required
                      [(ngModel)]="tel"
+                     pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
               >
             </tr>
           </table>
@@ -53,6 +54,12 @@
           <input type="text" id="username" name="address " placeholder="username" maxlength="24" minlength="4" required
                  [(ngModel)]="user.username"
           >
+        </div>
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea type="text" id="note" name="note " placeholder="Notitie"
+
+                    [(ngModel)]="employee.note"></textarea>
         </div>
         <div>
           <label class="col-sm-2" for="password">Wachtwoord</label>

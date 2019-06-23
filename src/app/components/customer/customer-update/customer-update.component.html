@@ -30,7 +30,8 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel">
+                     [(ngModel)]="tel" name="phones" required minlength="10" maxlength="10" #phone="ngModel"
+                     pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
             </tr>
             <tr *ngFor="let telephone of customer.phone_numbers" class="spacer">
               <td>
@@ -66,7 +67,7 @@
                      [(ngModel)]="mail" name="email" required #email="ngModel" [disabled]="loading">
 
             </tr>
-              <tr *ngFor="let mail of customer.email_addresses" class="spacer">
+            <tr *ngFor="let mail of customer.email_addresses" class="spacer">
               <td>
                 {{mail.email}}
                 <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
@@ -131,6 +132,12 @@
             <option value="m">Man</option>
             <option value="v">Vrouw</option>
           </select>
+        </div>
+        <div id="note-div">
+          <label class="col-sm-2" for="note">Notitie</label>
+          <textarea type="text" id="note" name="note " placeholder="Notitie"
+
+                    [(ngModel)]="customer.note"></textarea>
         </div>
         <div>
           <label class=" col-sm-2" for="city">Stad</label>

@@ -8,7 +8,7 @@
         </h3>
         <div>
           <label for="name" class="col-sm-2">Naam</label>
-          <input type="text" id="name" name="name" placeholder="Naam" required
+          <input type="text" id="name" name="name" required
                  [(ngModel)]="event.name" disabled>
         </div>
         <div>
@@ -18,12 +18,12 @@
         </div>
         <div>
           <label class="col-sm-2" for="btw">BTW</label>
-          <input type="text" id="btw" name="btw" placeholder="BTW" disabled
+          <input type="text" id="btw" name="btw" disabled
                  [(ngModel)]="event.btw">
         </div>
         <div>
           <label class="col-sm-2" for="duration">Tijdsduur</label>
-          <input type="text" id="duration" name="duration" placeholder="Tijdsduur" disabled
+          <input type="text" id="duration" name="duration" disabled
                  [(ngModel)]="event.duration">
         </div>
         <div>
@@ -44,7 +44,7 @@
         </div>
         <div>
           <label class="col-sm-2" for="options">Opties</label>
-          <input type="text" id="options" name="options" placeholder="Opties"
+          <input type="text" id="options" name="options"
                  [(ngModel)]="event.options"
                  disabled>
         </div>
@@ -69,10 +69,10 @@
           <input type="text" id="location" name="locstion"
                  [(ngModel)]="eventLocation.name" disabled>
           <div class="buttons" style="margin-top: 1em">
-            <button style="background-color: red; color: white" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
+            <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px" (click)="onDelete()">
               <i class="fa fa-trash"></i> Verwijderen
             </button>
-            <button style="background-color: #651BC8" class="btn btn-primary" [routerLink]="['/homeeventmanager/evenementenoverview/eventedit/'+ event.id]"><i class="fa fa-pencil"></i>
+            <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary" [routerLink]="['/homeeventmanager/evenementenoverview/eventedit/'+ event.id]"><i class="fa fa-pencil"></i>
               Bewerken
             </button>
           </div>

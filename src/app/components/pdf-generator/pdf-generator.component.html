@@ -1,0 +1,106 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+
+
+<div id="content" style="margin-top: 75px; position: relative;">
+  <div
+    style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+    <div style="position:relative;left:0px;top:0px">
+      <img src="../assets/img/offerteHeader.PNG" width=595
+           height=100></div>
+    <div style="position:relative;left:0px;top:0px">
+      <img src="../assets/img/line.PNG" width=595
+           height=10px></div>
+    <div class="infoContent">
+      <p class="cls_002">Offerte voor: {{order.customer.first_name}} {{order.customer.last_name}} </p>
+      <p class="cls_002">Offerte nummer: {{order.quotations[0].quotationNumber}}</p>
+      <p class="cls_003">Event: {{order.event.name}}</p>
+      <p class="cls_004">arrangementsdatum: {{order.dateevent}}</p>
+      <p class="cls_004">Aantal personen: </p>
+      <h2 class="cls_005">Programma voorstel </h2>
+      {{order.event.program}}
+      <p class="cls_005">Telefoonnummer: 703504648</p>
+      <div style="margin-bottom: 10px"><p class="cls_005">Vervaldatum: {{order.quotations[0].datequotation}} </p></div>
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Test image</h3>
+        <div style="position:absolute;left:636.05px;top:330.54px" class="cls_006">
+          <!--<img src="../assets/img/addIcon.png" width=300-->
+          <!--height=300></div>-->
+          <img [src]=order.event.eventImages[0].imagePath width=300
+               height=300>
+        </div>
+      </div>
+    </div>
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div style="position:relative;left:0px;top:0px">
+        <img src="../assets/img/line.PNG" width=595
+             height=10px></div>
+      <div class="infoContent">
+        <h3>Programma Kosten(Prijzen PP exl BTW)</h3>
+        <table>
+          <tr>
+            <th>Aantal personen</th>
+            <th>Omschrijving</th>
+            <th>prijs p.p</th>
+            <th>totaal prijs</th>
+          </tr>
+          <tr>
+            <td>{{order.persons}}</td>
+            <td>{{order.event.description}}</td>
+            <td>{{order.quotations[0].pricepp}}</td>
+            <td>{{order.persons * order.quotations[0].pricepp}}</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Bijzonderheden</h3>
+        {{order.note}}
+      </div>
+    </div>
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div style="position:relative;left:0px;top:0px">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Evenement</h3>
+        {{order.event.options}}
+      </div>
+    </div>
+
+
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Horeca inhoud</h3>
+        {{order.cateringOrders[0].catering.note}}
+      </div>
+    </div>
+    <div
+      style="position:relative;left:50%;margin-left:-421px;top:0px;width:595px;height:842px;border-style:outset;overflow:hidden">
+      <div class="infoContent">
+        <div style="position:relative;left:0px;top:0px">
+          <img src="../assets/img/line.PNG" width=595
+               height=10px></div>
+        <h3>Overige info</h3>
+        {{order.note}}
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="downloadPDF()">Downloaden als pdf</button>
+  </div>
+

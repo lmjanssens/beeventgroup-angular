@@ -1,0 +1,96 @@
+<app-header></app-header>
+<div class="page">
+  <form class="container" role="form" #f="ngForm" (ngSubmit)="ngSubmit(f)">
+
+    <div class="page-content">
+
+      <div style="height: 590px;">
+        <h3>
+          Contract aanmaken
+        </h3>
+        <div>
+
+          <label for="typeContract" class="col-sm-2">Type contract</label>
+          <input type="text" id="typeContract" name="typeContract" placeholder="Type contract" required
+                 [(ngModel)]="contract.type">
+
+        </div>
+        <div>
+          <label class="col-sm-2" for="title">Contracttitel</label>
+          <input type="text" id="title" name="title" placeholder="Titel" required
+                 [(ngModel)]="contract.title">
+        </div>
+        <div>
+          <label class="col-sm-2" for="description">Omschrijving</label>
+          <input type="text" id="description" name="description" placeholder="Omschrijving" required
+                 [(ngModel)]="contract.description">
+        </div>
+        <div>
+          <label class="col-sm-2" for="inclubtw">Incl. BTW</label>
+          <input type="text" id="inclubtw" name="inclubtw" placeholder="Incl. BTW" required
+                 [(ngModel)]="contract.inclubtw"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
+        </div>
+        <div>
+          <label class="col-sm-2" for="exclubtw">Excl. BTW</label>
+          <input type="text" id="exclubtw" name="exclubtw" placeholder="Excl. BTW" required
+                 [(ngModel)]="contract.exclubtw"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
+        </div>
+        <div>
+          <label class="col-sm-2" for="percentage">BTW percentage</label>
+          <input type="text" id="percentage" name="percentage" placeholder="BTW percentage"
+                 [(ngModel)]="contract.btw_percentage"
+                 pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$">
+        </div>
+        <div>
+          <label class="col-sm-2" for="preconditions">Precondities</label>
+          <input type="text" id="preconditions" name="preconditions" placeholder="Precondities"
+
+                 [(ngModel)]="contract.pre_conditions">
+        </div>
+        <div>
+          <label class="col-sm-2" for="insurance">Verzekering</label>
+          <input type="text" id="insurance" name="insurance" placeholder="Verzekering"
+
+                 [(ngModel)]="contract.insurance">
+        </div>
+        <div>
+          <label class="col-sm-2" for="responsibility">Verantwoordelijkheid</label>
+          <input type="text" id="responsibility" name="responsibility" placeholder="Verantwoordelijkheid"
+
+                 [(ngModel)]="contract.responsibility">
+        </div>
+        <div>
+          <label class="col-sm-2" for="extras">Extra's</label>
+          <input type="text" id="extras" name="extras" placeholder="Extra's"
+
+                 [(ngModel)]="contract.extras">
+        </div>
+        <div>
+          <label class="col-sm-2" for="start">Startdatum</label>
+          <input type="date" id="start" name="start" placeholder="Startdatum"
+
+                 [(ngModel)]="contract.startDate">
+        </div>
+        <div>
+          <label class="col-sm-2" for="end">Einddatum</label>
+          <input type="date" id="end" name="end" placeholder="Einddatum"
+
+                 [(ngModel)]="contract.endDate">
+        </div>
+
+        <div class="buttons" style="padding-top: 1.5em">
+
+          <button class="btn btn-warning" style="margin-right: 10px" routerLink="/homeeventmanager/supplieroverview/suppliercontract/:supplierid">
+            <i class="fa fa-close"></i> Annuleren
+          </button>
+          <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
+            Toevoegen
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

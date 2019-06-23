@@ -14,8 +14,7 @@
             </th>
             <tr>
               <input class="input" id="phone"
-                     [(ngModel)]="catering.phone" name="phone" disabled minlength="10" maxlength="10"
-                     placeholder="telefoonnummer">
+                     [(ngModel)]="catering.phone" name="phone" disabled minlength="10" maxlength="10">
             </tr>
           </table>
           <br>
@@ -33,53 +32,53 @@
         <div>
 
           <label for="name" class="col-sm-2">Naam</label>
-          <input type="text" id="name" name="name" placeholder="naam" disabled
+          <input type="text" id="name" name="name" disabled
                  [(ngModel)]="catering.cateringName">
 
         </div>
         <div>
           <label class="col-sm-2" for="fname">Contactpersoon</label>
-          <input type="text" id="fname" name="fname" placeholder="voornaam" disabled
+          <input type="text" id="fname" name="fname" disabled
                  [(ngModel)]="catering.contactPerson">
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Leverancier</label>
-          <input type="text" id="supplier" name="supplier" placeholder="" disabled
+          <input type="text" id="supplier" name="supplier" disabled
                  [(ngModel)]="catering.supplier.name">
         </div>
         <div>
           <label class="col-sm-2" for="address">Horecaprijs</label>
-          <input type="text" id="price" name="price" placeholder="horecaprijs"disabled
+          <input type="text" id="price" name="price" disabled
 
                  [(ngModel)]="catering.cateringPrice">
         </div>
 
         <div>
           <label class="col-sm-2" for="address">Adres</label>
-          <input type="text" id="address" name="address " placeholder="adres" disabled
+          <input type="text" id="address" name="address" disabled
 
                  [(ngModel)]="catering.address">
         </div>
 
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
-          <input type="text" id="zipcode" name="zipode" placeholder="postcode" disabled
+          <input type="text" id="zipcode" name="zipode" disabled
 
                  [(ngModel)]=catering.zipcode>
         </div>
 
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
-          <input type="text" id="city" placeholder="stad" disabled
+          <input type="text" id="city" disabled
                  [(ngModel)]="catering.city" name="city">
         </div>
         <div class="buttons" style="margin-top: 4em">
 
-          <button style="background-color: red; color: white" class="btn btn-danger" style="margin-right: 10px"
+          <button style="background-color: red; color: white" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-danger" style="margin-right: 10px"
                   (click)="onDelete()">
             <i class="fa fa-trash"></i> Verwijderen
           </button>
-          <button style="background-color: #651BC8" class="btn btn-primary"
+          <button style="background-color: #651BC8" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" class="btn btn-primary"
                   [routerLink]="['/homeeventmanager/horecaoverview/cateringedit/' + catering.id]"><i
             class="fa fa-pencil"></i>
             Bewerken

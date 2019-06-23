@@ -52,7 +52,7 @@ export class EventmanagerCreateComponent implements OnInit {
     if (this.employee.infix === undefined || this.employee.infix === '' || this.employee.infix === null) {
       alert('De werknemer ' + this.employee.first_name + ' ' + this.employee.last_name + ' is toegevoegd.');
     } else {
-      alert('Dewerknemer ' + this.employee.first_name + ' ' +
+      alert('De werknemer ' + this.employee.first_name + ' ' +
         this.employee.infix + ' ' + this.employee.last_name + ' is toegevoegd.');
     }
   }
