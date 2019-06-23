@@ -60,7 +60,14 @@ export class ImageUploadComponent implements OnInit, AfterContentChecked {
       this.selectedFiles = undefined;
     }
   }
+  get() {
+    if (this.imagePath !== undefined && this.selectedFiles !== undefined) {
+      this.currentFileUpload = this.selectedFiles.item(0);
+      this.uploadFileService.getFile(this.currentFileUpload).subscribe();
 
+      this.selectedFiles = undefined;
+    }
+  }
   delete() {
     if (this.hasImage && this.selectedFiles === undefined) {
       this.uploadFileService.deleteFile(this.oldImage).subscribe(event => {
