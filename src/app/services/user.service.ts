@@ -15,6 +15,8 @@ export class UserService {
 
   }
 
+  newUser: User;
+
   /**
    * This is for logging in the user to dashboard
    * @param user JSON-object with credentials
@@ -69,7 +71,7 @@ export class UserService {
    * @param id supplierid of a user
    * @author Robin Silverio
    */
-  public deleteUser(id: string) {
+  public deleteUser(id: number) {
     const uri = 'users';
     return this.apiService.delete(uri, id);
   }
@@ -79,9 +81,9 @@ export class UserService {
    * @param user an user object
    * @author Robin Silverio
    */
-  public updateUser(user: any) {
-    const uri = 'users';
-    return this.apiService.put(uri, user);
+  public updateUser(user: User) {
+    const uri = 'users/';
+    return this.apiService.put(uri + user.id, user);
   }
 
   /**
@@ -111,4 +113,7 @@ export class UserService {
     return body || { };
   }
 
+  getEmptyUser() {
+    return this.newUser = new User(null, '', '', null);
+  }
 }
