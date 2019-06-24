@@ -23,12 +23,11 @@ export class PdfGeneratorComponent implements OnInit {
   currenQuotationId: any;
   public imagePath;
   imgURL: any;
+  image: any;
   public message: string;
 
 
-  constructor(private globals: Globals, private quotationService: QuotationService,
-              private reservationService: ReservationService, private customerService: CustomerService,
-              private eventService: EventService, private route: ActivatedRoute) {
+  constructor(private globals: Globals, private quotationService: QuotationService, private  reservationService: ReservationService, private customerService: CustomerService, private reserviationService: ReservationService, private eventService: EventService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -45,6 +44,8 @@ export class PdfGeneratorComponent implements OnInit {
         this.order.cateringsOrders = order.cateringOrders;
         this.order.quotations = order.quotations;
         this.imgURL = this.order.event.eventImages[0].imagePath;
+
+        console.log(this.imgURL);
       });
     });
 
@@ -52,8 +53,8 @@ export class PdfGeneratorComponent implements OnInit {
 
   downloadPDF() {
     const doc = new jsPDF('p', 'pt', 'A4');
-    doc.fromHTML(document.getElementById('content'), 15, 15, null, function (dispose) {
-      doc.save('test12456.pdf');
+    doc.fromHTML(document.getElementById('content'), 15, 15, null, function(dispose) {
+      doc.save('offerte.pdf');
     });
 
   }

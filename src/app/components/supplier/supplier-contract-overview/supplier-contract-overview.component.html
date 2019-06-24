@@ -6,9 +6,6 @@
     <button routerLink="suppliercontractcreate" *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" style="padding: 0.25em 1em 0.25em 1.5em">Nieuw Contract<i class="fa fa-plus-circle fa-lg"
                                                                                                                                                                                                 style="color: green; margin-left: 10px;"></i>
     </button>
-    <input [(ngModel)]="searchTerm" class="searchbar" placeholder="Zoeken..."
-           style="background-image: url('../../../../assets/img/search icon.png');"
-           type="text">
   </div>
   <div class="fullTable" style="padding-top: 2em">
     <table>

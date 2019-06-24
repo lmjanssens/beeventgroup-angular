@@ -66,11 +66,9 @@ export class SupplierContractOverviewComponent implements OnInit {
       return;
     }
     this.supplierService.deleteContract(this.currentId, contract.id).subscribe(() => {
-      console.log('contract with contractid ' + contract.id + ' is deleted.');
       this.supplierService.getById(this.currentId).subscribe(supplier => {
         this.contracts = supplier.contracts;
       });
-
     });
   }
 

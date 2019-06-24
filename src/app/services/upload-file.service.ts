@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { AuthorizationService } from './authorization.service';
-import { Form } from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {ApiService} from './api.service';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {AuthorizationService} from './authorization.service';
+import {Form} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class UploadFileService {
 
   constructor(private authService: AuthorizationService, private apiService: ApiService) {
   }
+
   pushFileToStorage(file: File) {
     const uri = this.apiPath + '/post';
     const formData = new FormData();
@@ -21,10 +22,17 @@ export class UploadFileService {
     return this.apiService.postImageFile(uri, formData);
   }
 
-  deleteFile(fileName: string) {
-     const uri = this.apiPath + '/delete/' + fileName;
+  getFile(file: File) {
+    const uri = this.apiPath + '/get';
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.apiService.getFile(uri, formData);
+  }
 
-     return this.apiService.deleteImageFile(uri);
+  deleteFile(fileName: string) {
+    const uri = this.apiPath + '/delete/' + fileName;
+
+    return this.apiService.deleteImageFile(uri);
   }
 
 }

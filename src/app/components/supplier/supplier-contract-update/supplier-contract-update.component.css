@@ -15,8 +15,19 @@ h1 {
   padding: 1em 5em;
 }
 
+table{
+  width: 400px;
+  table-layout: fixed;
+}
+
 label {
   margin-right: 20px;
+}
+
+.containerTables {
+  float: right;
+  margin-right: -64px;
+  margin-top: -730px;
 }
 
 select {
@@ -60,7 +71,16 @@ tr:nth-child(even) {
 
 tr {
   text-align: center;
+
 }
+
+td {
+  padding: 0 0 0 0.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 
 .ng-valid[required], .ng-valid.required {
   border-left: 5px solid green;
@@ -79,8 +99,3 @@ th {
   color: white;
   border-radius: 10px;
 }
-
-app-alerts {
-  width: 1000px;
-}
-

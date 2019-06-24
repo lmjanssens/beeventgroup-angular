@@ -27,7 +27,7 @@ td {
   border: 1px solid;
 }
 td .btn-outline-success{
-  margin: 5px;
+  margin: auto;
 }
 
 .searchbar {
@@ -86,11 +86,11 @@ button {
 
 .tableDelete {
   width: 40px;
-  border: 1px solid black;
 }
 
 .tableSubscribeEvent{
   width: 100%;
+  border: 1px solid black;
 }
 
 table tbody tr td:nth-child(4){

@@ -104,6 +104,7 @@ export class EventsUpdateComponent implements OnInit {
     this.imageUpload.delete();
     this.imageUpload.upload();
 
+
     this.linkLocationSuppliersOwnEvent();
 
     if (f.form.valid) {

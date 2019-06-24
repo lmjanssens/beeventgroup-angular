@@ -21,7 +21,6 @@ export class CustomerFilterPipe implements PipeTransform {
     }
     return item.filter(customer => {
       this.splitted = searchTerm.split(' ', 4);
-      console.log(this.splitted);
 
       const zipcode = customer.zipcode.toLowerCase().includes(searchTerm.toLowerCase());
       const address = customer.address.toLowerCase().includes(searchTerm.toLowerCase());

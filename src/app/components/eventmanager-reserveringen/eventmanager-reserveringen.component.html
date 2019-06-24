@@ -29,7 +29,7 @@
         <td [routerLink]="['orderdetails/' + order.orderId]">{{order.event.maxinstructors}}</td>
         <td>
           <div *ngFor="let registeredEvent of order.registeredEvents">
-            {{registeredEvent.instructor.first_name}}
+            {{registeredEvent.instructor.first_name}} {{registeredEvent.instructor.infix}} {{registeredEvent.instructor.last_name}}
             <img *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE" src="../assets/img/removeIcon.png" style="margin-left: 30px; float:right; margin-right: 20px;
             cursor: pointer;
              width: 20px;
@@ -71,8 +71,16 @@
               style="color: silver;"></i></button>
           </td>
         </ng-template>
+        <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledPDFButton" class="makePDF">
+          <button style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
+            class="fa fa-file-pdf-o fa-2x"
+            style="color: purple; "
+            [routerLink]="['quotation/' + order.orderId]"></i>
+
+          </button>
+        </td>
         <td *ngIf="currentUser.role === getRoles().INSTRUCTOR; else hideSubscribeEventCell" class="tableDelete">
-          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success"
+          <button *ngIf="!checkIfAlreadySubscribed(order)" class="btn btn-outline-success" style="margin-right: 1em"
                   (click)="OnSubscribeToEvent(order, order.event.id);">Inschrijven voor evenement
           </button>
           <button *ngIf="checkIfAlreadySubscribed(order)" class="btn btn-outline-danger"
@@ -83,15 +91,6 @@
         <ng-template #hideSubscribeEventCell>
 
         </ng-template>
-
-        <td *ngIf="order.orderId != null && currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE; else disabledPDFButton" class="makePDF">
-          <button style="margin-left: -8px; width: 39px; height: 40px; border: none; background-color: white"><i
-            class="fa fa-file-pdf-o fa-2x"
-            style="color: purple; "
-            [routerLink]="['quotation/' + order.orderId]"></i>
-
-          </button>
-        </td>
         <ng-template #disabledPDFButton>
           <td>
             <button disabled

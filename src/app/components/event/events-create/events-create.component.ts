@@ -87,7 +87,7 @@ export class EventsCreateComponent implements OnInit {
       return;
     } else {
       alert('Locatie succesvol verwijderd.');
-      this.newLocations.splice(0, 1);
+      this.newLocations.splice(-1, 1);
     }
   }
 

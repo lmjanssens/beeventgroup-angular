@@ -20,7 +20,7 @@ export class EventmanagerReserveringenComponent implements OnInit {
   firstPage = 1;
   itemsPerPage = 5;
   searchTerm: string;
-
+  i = 0;
   currentUser: any;
   authenticated = false;
 
@@ -56,8 +56,8 @@ export class EventmanagerReserveringenComponent implements OnInit {
 
   fetchOrders() {
     this.reservationService.getAll().subscribe(data => {
-      this.orderList = data;
-      console.log(data);
+      this.orderList = this.nullRemover(data);
+      console.log(this.orderList);
     });
   }
 
@@ -144,6 +144,19 @@ export class EventmanagerReserveringenComponent implements OnInit {
     }
 
     return duplicate;
+  }
+
+  nullRemover(list) {
+    while (this.i < list.length) {
+      for (let a of list[this.i].registeredEvents) {
+        if (a.instructor.infix === null) {
+          a.instructor.infix = '';
+        }
+      }
+      this.i = this.i + 1;
+    }
+    this.i = 0;
+    return list;
   }
 
   canUnsubscribeToEvent(order: Order): boolean {

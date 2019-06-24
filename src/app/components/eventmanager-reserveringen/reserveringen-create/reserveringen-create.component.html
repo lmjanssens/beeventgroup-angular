@@ -28,7 +28,7 @@
         </div>
         <div>
           <label class="col-sm-2" for="persons">Hoeveel deelnemers</label>
-          <input type="number" id="persons" name="persons" placeholder="Hoeveel deelnemers" required
+          <input type="number" id="person2" name="persons" placeholder="Hoeveel deelnemers" required
                  pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
                  [(ngModel)]="order.persons">
         </div>
@@ -36,11 +36,6 @@
           <label class="col-sm-2" for="note">Notitie</label>
           <textarea type="text" id="note" name="note" placeholder="Notitie"
                     [(ngModel)]="order.note"></textarea>
-        </div>
-        <div>
-          <label for="persons" class="col-sm-2">Aantal personen</label>
-          <input type="number" id="persons" name="persons" placeholder="Aantal personen" required
-                 [(ngModel)]="order.persons">
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
           <label class="col-sm-2">Klant</label>

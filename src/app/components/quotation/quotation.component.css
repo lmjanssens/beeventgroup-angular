@@ -13,6 +13,11 @@ th {
 
 }
 
+td{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 tr:hover {
   cursor: pointer;
   background-color: #ddd;
