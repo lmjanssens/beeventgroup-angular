@@ -9,6 +9,7 @@
         <div>
           <label for="name" class="col-sm-2">Naam</label>
           <input type="text" id="name" name="name" placeholder="Naam" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="event.name"
                  [disabled]="loading">
         </div>
@@ -42,6 +43,7 @@
         <div>
           <label class="col-sm-2" for="program">Programma</label>
           <input type="text" id="program" name="program" placeholder="Programma" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="event.program"
                  [disabled]="loading">
         </div>
@@ -54,6 +56,7 @@
         <div>
           <label class="col-sm-2" for="options">Opties</label>
           <input type="text" id="options" name="options" placeholder="Opties"
+                 pattern="[\w -]*$"
                  [(ngModel)]="event.options"
                  [disabled]="loading">
         </div>

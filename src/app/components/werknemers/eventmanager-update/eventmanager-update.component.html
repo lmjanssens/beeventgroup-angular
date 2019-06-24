@@ -78,17 +78,19 @@
         <div>
           <label class="col-sm-2" for="fname">Voornaam</label>
           <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="employee.first_name">
         </div>
         <div>
           <label class="col-sm-2" for="infix">Tussenvoegsel</label>
           <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
+                 pattern="[\w -]*$"
                  [(ngModel)]="employee.infix">
         </div>
         <div style="padding: 0 0 2em">
           <label class="col-sm-2" for="lname">Achternaam</label>
           <input type="text" id="lname" name="lname" placeholder="achternaam" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="employee.last_name">
         </div>
         <div id="note-div">

@@ -25,12 +25,14 @@
 
           <label for="name" class="col-sm-2">Naam</label>
           <input type="text" id="name" name="name" placeholder="naam" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="catering.cateringName">
 
         </div>
         <div>
           <label class="col-sm-2" for="fname">Contactpersoon</label>
           <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="catering.contactPerson">
         </div>
         <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
@@ -51,14 +53,14 @@
         <div>
           <label class="col-sm-2" for="address">Adres</label>
           <input type="text" id="address" name="address " placeholder="adres" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="catering.address">
         </div>
 
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
           <input type="text" id="zipcode" name="zipode" placeholder="postcode" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]=catering.zipcode>
         </div>
         <div id="note-div">
@@ -69,6 +71,7 @@
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
           <input type="text" id="city" placeholder="stad" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="catering.city" name="city">
         </div>
         <div class="buttons" style="padding-top: 1em; margin-top: 4em">
