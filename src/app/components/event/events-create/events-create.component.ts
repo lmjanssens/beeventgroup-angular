@@ -95,7 +95,6 @@ export class EventsCreateComponent implements OnInit {
       this.eventLocationService.save(location).subscribe(() => console.log('Locatie toegevoegd.'));
     });
     alert('Locaties toegevoegd.');
-    window.location.reload();
     this.newLocations = [];
   }
 
@@ -104,7 +103,6 @@ export class EventsCreateComponent implements OnInit {
       alert('Oude locatie verwijderd.');
     });
     this.fetchEventLocations();
-    window.location.reload();
   }
 
   ngSubmit(f: NgForm) {
