@@ -58,11 +58,9 @@ export class EventDetailsComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.eventId;
-      console.log(this.currentId);
       this.eventService.getById(this.currentId).subscribe(event => {
         this.event = event;
         this.eventLocation = this.event.location;
-        console.log(event);
       });
     });
   }

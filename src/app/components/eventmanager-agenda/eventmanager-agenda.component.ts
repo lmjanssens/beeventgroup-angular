@@ -63,7 +63,6 @@ export class EventmanagerAgendaComponent implements OnInit {
           || this.currentUser.role === Role.EMPLOYEE) ? 'homeeventmanager/reserveringenoverview/orderdetails/' +
           list[this.i].orderId : 'homeinstructor/reserveringenoverview/orderdetails/' + list[this.i].orderId
       });
-      console.log(this.calendarComponent.getApi().getEvents());
       this.i = this.i + 1;
     }
     this.i = 0;

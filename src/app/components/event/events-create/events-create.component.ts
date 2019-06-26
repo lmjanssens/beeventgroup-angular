@@ -40,7 +40,6 @@ export class EventsCreateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('evenementFormulier');
-    console.log(this.globals.getHuidigePagina());
 
     this.event = this.eventService.getEmptyEvent();
     this.newLocation = this.eventLocationService.getEmptyEventLocation();
@@ -115,11 +114,9 @@ export class EventsCreateComponent implements OnInit {
     this.newImage = new EventImage(null, null, '');
     this.newImage.imagePath = this.image;
     this.event.eventImages.push(this.newImage);
-    console.log(this.image);
 
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
-      console.log(data);
       this.eventService.save(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
         this.router.navigate(['/homeeventmanager/evenementenoverview']
         );

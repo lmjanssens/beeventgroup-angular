@@ -109,10 +109,8 @@ export class EventsUpdateComponent implements OnInit {
 
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.event)) as any;
-      console.log(data);
       this.eventService.updateEvent(data, this.selectedSupplier, this.selectedLocation).subscribe(() => {
         this.router.navigate(['/homeeventmanager/evenementenoverview']);
-        console.log(data);
       });
     } else {
       alert('geen data ingevuld');

@@ -84,7 +84,6 @@ export class ReserveringenUpdateComponent implements OnInit {
       const data = JSON.parse(JSON.stringify(this.order)) as any;
       this.reservationService.updateReservation(data, this.selectedCustomer, this.selectedEvent).subscribe(() => {
         this.router.navigate(['/homeeventmanager/reserveringenoverview']);
-        console.log(data);
       });
     } else {
       alert('geen data ingevuld');

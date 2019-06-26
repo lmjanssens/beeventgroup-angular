@@ -38,9 +38,7 @@ export class CustomerCreateComponent implements OnInit {
     this.newMail = new CustomerEmail();
     this.newMail.email = this.mail;
     this.customer.email_addresses.push(this.newMail);
-    console.log(this.customer.email_addresses);
     this.mail = '';
-
   }
 
   onDeleteMail(mail) {
@@ -56,7 +54,6 @@ export class CustomerCreateComponent implements OnInit {
 
   onDeleteTel(tel) {
     this.customer.phone_numbers.splice(this.customer.phone_numbers.indexOf(tel), 1);
-    console.log(tel);
   }
 
   setGeslacht() {

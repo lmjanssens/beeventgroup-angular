@@ -65,7 +65,6 @@ export class InstructorCreateComponent implements OnInit {
       this.instructor.user_id = this.user;
       this.user.password = this.password1;
       const data = JSON.parse(JSON.stringify(this.instructor)) as any;
-      console.log(data);
       this.userService.getAllUsers().subscribe(users => {
         this.userNameChecker(users);
         if (this.userNameAvailable === false) {
