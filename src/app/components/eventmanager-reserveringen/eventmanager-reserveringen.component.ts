@@ -57,14 +57,12 @@ export class EventmanagerReserveringenComponent implements OnInit {
   fetchOrders() {
     this.reservationService.getAll().subscribe(data => {
       this.orderList = this.nullRemover(data);
-      console.log(this.orderList);
     });
   }
 
   ngOnInit() {
     this.globals.setHuidigePagina('Reserveringen');
     this.navbar.checkNavBarStyle();
-    console.log(this.globals.getHuidigePagina());
     this.fetchOrders();
   }
 
@@ -92,7 +90,6 @@ export class EventmanagerReserveringenComponent implements OnInit {
               this.ngOnInit();
             },
             error1 => {
-              console.log(error1);
             }
           );
           break;
@@ -111,7 +108,6 @@ export class EventmanagerReserveringenComponent implements OnInit {
         this.ngOnInit();
       },
       error1 => {
-        console.log(error1);
       }
     );
 

@@ -50,7 +50,6 @@ export class SupplierOverviewComponent implements OnInit {
     this.navbar.checkNavBarStyle();
     this.supplierService.getAll().subscribe(supplier => {
       this.supplierList = this.sortByName(supplier);
-      console.log(supplier);
     });
   }
 

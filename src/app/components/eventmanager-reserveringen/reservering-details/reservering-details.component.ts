@@ -64,7 +64,6 @@ export class ReserveringDetailsComponent implements OnInit {
   fetchOrderById() {
     this.reservationService.getById(this.currentId).subscribe(order => {
       this.order = order;
-      console.log(this.order);
     });
   }
 

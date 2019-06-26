@@ -70,6 +70,12 @@ export class ApiService {
     return this.http.get<Object>(uri, {headers: headers});
   }
 
+  public getString(path: string, queryParameters?: Object): Observable<any> {
+    const uri = this.createURI(path, queryParameters);
+    const headers = this.createRequestHeaders();
+    return this.http.get(uri, {headers: headers, responseType: 'text'});
+  }
+
   public getFile<T>(path: string, queryParameters?: Object): Observable<any> {
     const uri = this.createURI(path, queryParameters);
     const headers = this.createRequestHeaders();

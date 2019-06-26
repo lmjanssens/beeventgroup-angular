@@ -19,7 +19,6 @@ export class InstructorFilterPipe implements PipeTransform {
     }
     return item.filter(instructor => {
       this.splitted = searchTerm.split(' ', 4);
-      console.log(this.splitted);
       if (this.splitted.length >= 3) {
         this.firstName = instructor.first_name.toLowerCase().includes(this.splitted[0].toLowerCase()) &&
           instructor.infix.toLowerCase().includes(this.splitted[1].toLowerCase())

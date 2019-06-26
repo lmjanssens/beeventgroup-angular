@@ -16,7 +16,6 @@ export class EventManagerFilterPipe implements PipeTransform {
     }
     return item.filter(eventmanager => {
       this.splitted = searchTerm.split(' ', 3);
-      console.log(this.splitted);
       if (this.splitted.length === 3) {
         this.firstName = eventmanager.first_name.toLowerCase().includes(this.splitted[0].toLowerCase()) &&
           eventmanager.infix.toLowerCase().includes(this.splitted[1].toLowerCase())

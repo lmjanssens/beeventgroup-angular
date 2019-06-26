@@ -77,7 +77,6 @@ export class CustomerUpdateComponent implements OnInit {
     this.setGeslacht();
 
     const data = <any>JSON.parse(JSON.stringify(this.customer));
-    console.log(data);
     this.customerService.updateCustomer(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/customeroverview']);
     });

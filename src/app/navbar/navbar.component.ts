@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
   }
   checkNavBarStyle() {
     const currentPage = this.globals.getHuidigePagina();
-    console.log(currentPage);
     document.getElementById(currentPage).style.fontWeight = 'bold';
     document.getElementById(currentPage).style.color = '#FFFFFF';
     document.getElementById(currentPage).style.opacity = '0.5';

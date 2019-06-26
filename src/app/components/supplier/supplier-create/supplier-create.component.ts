@@ -38,7 +38,6 @@ export class SupplierCreateComponent implements OnInit {
     this.newMail = new SupplierEmail();
     this.newMail.email = this.mail;
     this.supplier.email_addresses.push(this.newMail);
-    console.log(this.supplier.email_addresses);
     this.mail = '';
   }
 
