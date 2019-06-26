@@ -1,5 +1,5 @@
-<!--<select name="emailtemplate" id="">-->
-<!--  <option *ngFor="template in templates" value="{{ template }}">{{ template }}</option>-->
-<!--</select>-->
+<select [(ngModel)]="this.emailId" name="emailtemplate" id="">
+  <option *ngFor="let emailtext of emailtexts" value="{{ emailtext.id }}">{{ emailtext.emailType }}</option>
+</select>
 
-<!--<button>E-mail</button>-->
+<button class="btn btn-success" type="button" (click)="send()">E-mail template openen</button>

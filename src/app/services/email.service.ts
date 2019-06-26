@@ -39,4 +39,8 @@ export class EmailService {
   getEmptyEmployee() {
     return this.newEmailText = new Email(null, null);
   }
+
+  render(id: number, invoiceId: number) {
+    return this.apiService.getString('emailtexts/' + id + '/' + invoiceId);
+  }
 }
