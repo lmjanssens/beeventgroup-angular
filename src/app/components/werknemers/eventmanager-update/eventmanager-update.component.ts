@@ -1,12 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Instructor} from '../../../models/instructor.model';
 import {User} from '../../../models/user.model';
-import {InstructorService} from '../../../services/instructor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
 import {NgForm} from '@angular/forms';
 import {EmployeePhone} from '../../../models/employee-phone.model';
-import {Employee} from '../../../models/employee.model';
 import {EmployeeService} from '../../../services/employee.service';
 import {EmployeeEmail} from '../../../models/employee-email.model';
 
@@ -17,7 +14,7 @@ import {EmployeeEmail} from '../../../models/employee-email.model';
 })
 export class EventmanagerUpdateComponent implements OnInit {
 
-  employee = new Employee();
+  employee;
   tel = '';
   mail = '';
   newMail: EmployeeEmail = new EmployeeEmail();
@@ -58,6 +55,7 @@ export class EventmanagerUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('werknemerFormulier');
+    this.employee = this.employeeService.getEmptyEmployee();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.employeeId;

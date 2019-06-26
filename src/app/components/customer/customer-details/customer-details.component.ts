@@ -14,8 +14,7 @@ import {AuthorizationService} from '../../../services/authorization.service';
   styleUrls: ['./customer-details.component.css']
 })
 export class CustomerDetailsComponent implements OnInit {
-
-  customer = new Customer();
+  customer;
   user = new User();
   private sub: any;
   currentId: number;
@@ -46,6 +45,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
   ngOnInit() {
     this.globals.setHuidigePagina('klantenFormulier');
+    this.customer = this.customerService.getEmptyCustomer();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.customer_id;

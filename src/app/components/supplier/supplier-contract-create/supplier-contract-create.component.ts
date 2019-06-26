@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SupplierService} from '../../../services/supplier.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Supplier} from '../../../models/supplier.model';
@@ -12,7 +12,7 @@ import {SupplierContract} from '../../../models/supplier-contract.model';
   styleUrls: ['./supplier-contract-create.component.css']
 })
 export class SupplierContractCreateComponent implements OnInit {
-  supplier: Supplier = new Supplier();
+  supplier: Supplier;
   contract: SupplierContract = new SupplierContract();
   loading: true;
   currentId;
@@ -23,6 +23,8 @@ export class SupplierContractCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.supplier = this.supplierService.getEmptySupplier();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       this.supplierService.getById(this.currentId).subscribe(supplier => {
@@ -30,9 +32,10 @@ export class SupplierContractCreateComponent implements OnInit {
       });
     });
   }
+
   ngSubmit(f: NgForm) {
     this.newContract = new SupplierContract();
-    this.newContract.supplierid = this.currentId
+    this.newContract.supplierid = this.currentId;
     this.newContract.type = this.contract.type;
     this.newContract.title = this.contract.title;
     this.newContract.description = this.contract.description;
@@ -45,7 +48,7 @@ export class SupplierContractCreateComponent implements OnInit {
     this.newContract.extras = this.contract.extras;
     this.newContract.startDate = this.contract.startDate;
     this.newContract.endDate = this.contract.endDate;
-    console.log(this.newContract)
+    console.log(this.newContract);
     this.supplier.contracts.push(this.newContract);
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
     console.log(data);

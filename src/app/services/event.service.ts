@@ -44,9 +44,8 @@ export class EventService {
   }
 
   getEmptyEvent() {
-    this.newEvent = new EventModel(null, null, null, null, null,
+    return this.newEvent = new EventModel(null, null, null, null, null,
       null, null, '', '', '', '', '',
       0, 0, 0, '', 0);
-    return this.newEvent;
   }
 }

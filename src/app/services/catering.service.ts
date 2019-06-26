@@ -16,6 +16,7 @@ export class CateringService {
   constructor(private apiService: ApiService) {
   }
 
+  newCatering: Catering;
   catering: Catering;
 
   getAll(): Observable<Catering[]> {
@@ -37,9 +38,13 @@ export class CateringService {
     return this.apiService.post(uri + '/' + supplier.supplierid, catering);
   }
 
-
   delete(id: number) {
     const uri = 'caterings/';
     return this.apiService.delete<void>(uri + id);
+  }
+
+  getEmptyCatering() {
+    return this.newCatering = new Catering(null, null, null, '',
+      '', '', '', '', '', 0, '');
   }
 }

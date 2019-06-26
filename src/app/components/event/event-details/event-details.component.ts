@@ -8,8 +8,8 @@ import {EventModel} from '../../../models/event.model';
 import {EventLocation} from '../../../models/event-location.model';
 import {Supplier} from '../../../models/supplier.model';
 import {Location} from '@angular/common';
-import {Role} from "../../../enums/Role";
-import {AuthorizationService} from "../../../services/authorization.service";
+import {Role} from '../../../enums/Role';
+import {AuthorizationService} from '../../../services/authorization.service';
 
 @Component({
   selector: 'app-event-details',
@@ -18,7 +18,7 @@ import {AuthorizationService} from "../../../services/authorization.service";
 })
 export class EventDetailsComponent implements OnInit {
   event: EventModel;
-  eventLocation: EventLocation = new EventLocation();
+  eventLocation: EventLocation;
   suppliers: Supplier[];
   loading: true;
   private sub: any;
@@ -51,10 +51,10 @@ export class EventDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.globals.setHuidigePagina('eventupdate');
 
     this.event = this.eventService.getEmptyEvent();
+    this.eventLocation = this.eventLocationService.getEmptyEventLocation();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.eventId;
@@ -75,6 +75,7 @@ export class EventDetailsComponent implements OnInit {
       this.location.back();
     });
   }
+
   getRoles() {
     return Role;
   }

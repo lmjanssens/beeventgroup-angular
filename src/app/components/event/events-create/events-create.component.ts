@@ -10,7 +10,6 @@ import {NgForm} from '@angular/forms';
 import {Supplier} from '../../../models/supplier.model';
 import {EventlocationService} from '../../../services/eventlocation.service';
 import {SupplierService} from '../../../services/supplier.service';
-import {CustomerEmail} from '../../../models/customer-email.model';
 import {EventImage} from '../../../models/event-image.model';
 
 @Component({
@@ -20,7 +19,7 @@ import {EventImage} from '../../../models/event-image.model';
 })
 export class EventsCreateComponent implements OnInit {
   event: EventModel;
-  newLocation: EventLocation = new EventLocation();
+  newLocation: EventLocation;
   newLocations: EventLocation[] = [];
   locationName = '';
   eventLocations: EventLocation[];
@@ -42,7 +41,9 @@ export class EventsCreateComponent implements OnInit {
   ngOnInit() {
     this.globals.setHuidigePagina('evenementFormulier');
     console.log(this.globals.getHuidigePagina());
+
     this.event = this.eventService.getEmptyEvent();
+    this.newLocation = this.eventLocationService.getEmptyEventLocation();
     this.event.eventImages = [];
     this.fetchSuppliers();
     this.fetchEventLocations();
@@ -69,14 +70,12 @@ export class EventsCreateComponent implements OnInit {
   }
 
   setOwnEvent() {
-    // this.selectTag = document.getElementById('ownEvent');
-    // this.selectedEvent = this.selectTag.options[this.selectTag.selectedIndex].value;
-    // this.selectedEvent === 'J' ? this.event.ownEvent = true : this.event.ownEvent = false;
     this.event.ownEvent = this.ownEvent === 'Ja';
   }
 
   onCreateLocation() {
-    this.newLocation = new EventLocation();
+    this.newLocation = this.eventLocationService.getEmptyEventLocation();
+
     this.newLocation.name = this.locationName;
     this.locationName = '';
     this.newLocations.push(this.newLocation);

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Catering} from '../../../models/catering.model';
 import {Supplier} from '../../../models/supplier.model';
 import {CateringService} from '../../../services/catering.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,8 +13,8 @@ import {NgForm} from '@angular/forms';
 })
 export class CateringUpdateComponent implements OnInit {
 
-  catering = new Catering();
-  supplier = new Supplier();
+  catering;
+  supplier;
   private sub: any;
   currentId: number;
   private supplierList: Supplier[] = [];
@@ -27,6 +26,8 @@ export class CateringUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('horecaFormulier');
+    this.catering = this.cateringService.getEmptyCatering();
+    this.supplier = this.supplierService.getEmptySupplier();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.id;
@@ -51,10 +52,8 @@ export class CateringUpdateComponent implements OnInit {
   }
 
   ngSubmit(f: NgForm) {
-    console.log(this.selectedSupplier)
     this.catering.supplier = this.selectedSupplier;
     const data = JSON.parse(JSON.stringify(this.catering)) as any;
-    console.log(data);
     this.cateringService.updateCatering(data, this.catering.supplier).subscribe(() => {
       this.router.navigate(['/homeeventmanager/horecaoverview']
       );

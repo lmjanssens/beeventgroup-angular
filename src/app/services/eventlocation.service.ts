@@ -11,6 +11,7 @@ export class EventlocationService {
   constructor(private apiService: ApiService) {
   }
 
+  newEventLocation: EventLocation;
   eventlocation: EventLocation;
 
   getAll(): Observable<EventLocation[]> {
@@ -22,7 +23,7 @@ export class EventlocationService {
     return this.apiService.get(uri, id).pipe(first());
   }
 
-  updateCustomer(updatedCustomer: EventLocation): Observable<EventLocation> {
+  updateLocation(updatedCustomer: EventLocation): Observable<EventLocation> {
     const uri = 'eventlocation/';
     return this.apiService.put<EventLocation>(uri + updatedCustomer.id, updatedCustomer);
   }
@@ -35,5 +36,9 @@ export class EventlocationService {
   delete(id: number) {
     const uri = 'eventlocation/';
     return this.apiService.delete<void>(uri + id);
+  }
+
+  getEmptyEventLocation() {
+    return this.newEventLocation = new EventLocation(null, '', '', '');
   }
 }

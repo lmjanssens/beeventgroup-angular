@@ -13,7 +13,7 @@ import {SupplierContractOption} from '../../../models/supplier-contract-option.m
   styleUrls: ['./supplier-contract-update.component.css']
 })
 export class SupplierContractUpdateComponent implements OnInit {
-  supplier: Supplier = new Supplier();
+  supplier: Supplier;
   contracts: SupplierContract[] = [];
   contract: SupplierContract = new SupplierContract();
   loading: true;
@@ -28,6 +28,9 @@ export class SupplierContractUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.globals.setHuidigePagina('contractFormulier');
+    this.supplier = this.supplierService.getEmptySupplier();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       this.currentContractId = params.id;
@@ -38,6 +41,7 @@ export class SupplierContractUpdateComponent implements OnInit {
         for (let a of this.contracts) {
           if (a.id.toString() === this.currentContractId) {
             this.contract = a;
+            // this.optionString = this.contract.options[0].option;
             console.log(this.contract);
           }
         }
@@ -54,17 +58,12 @@ export class SupplierContractUpdateComponent implements OnInit {
   }
 
 
-  onDeleteOption() {
-    if (this.optionList.length === 0) {
-      alert('Geen optie om te verwijderen!');
-      return;
-    } else {
-      alert('Locatie succesvol verwijderd.');
-      this.optionList.splice(-1, 1);
-    }
+  onDeleteOption(option) {
+    this.contract.options.splice(this.contract.options.indexOf(option), 1);
+    console.log(option);
   }
 
-  addAllOptions() {
+  ngSubmit(f: NgForm) {
     this.contract.options = this.optionList;
     for (let a of this.supplier.contracts) {
       if (a.id.toString() === this.currentContractId) {
@@ -74,30 +73,11 @@ export class SupplierContractUpdateComponent implements OnInit {
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
     console.log(data);
     this.optionList.forEach(option => {
-      this.supplierService.updateSupplier(data).subscribe(() => console.log('Locatie toegevoegd.'));
+      this.supplierService.updateSupplier(data).subscribe(() => console.log('Contract toegevoegd.'));
+      this.router.navigate(['/homeeventmanager/supplieroverview/suppliercontract/', this.currentId]);
     });
-    alert('Optie toegevoegd.');
     // window.location.reload();
     this.optionList = [];
-  }
-
-  onDeleteOldLocation(oldLocation) {
-    this.supplierService.delete(oldLocation.id).subscribe(
-      () => {
-        alert(
-          'Oude optie verwijderd.');
-      });
-    window.location.reload();
-    this.supplierService.getById(this.currentId).subscribe(supplier => {
-      this.supplier = supplier;
-      this.contracts = this.supplier.contracts;
-      for (let a of this.contracts) {
-        if (a.id.toString() === this.currentContractId) {
-          this.contract = a;
-          console.log(this.contract);
-        }
-      }
-    });
   }
 }
 

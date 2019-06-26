@@ -13,7 +13,7 @@ import {UserService} from '../../../services/user.service';
   styleUrls: ['./instructor-create.component.css']
 })
 export class InstructorCreateComponent implements OnInit {
-  instructor: Instructor = new Instructor();
+  instructor: Instructor;
   user: User = new User();
   password2: string;
   password1: string;
@@ -26,6 +26,7 @@ export class InstructorCreateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('instructeurFormulier');
+    this.instructor = this.instructorService.getEmptyInstructor();
   }
 
   userNameChecker(list) {

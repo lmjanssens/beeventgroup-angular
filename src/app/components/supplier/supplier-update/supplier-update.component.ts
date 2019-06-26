@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { SupplierService } from '../../../services/supplier.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Supplier } from '../../../models/supplier.model';
-import { SupplierEmail } from '../../../models/supplier-email.model';
-import { SupplierPhone } from '../../../models/supplier-phone.model';
-import { NgForm } from '@angular/forms';
-import { Globals } from '../../globals';
-import { SupplierAddress } from '../../../models/supplier-address.model';
-import { ImageUploadComponent } from '../../image-upload/image-upload.component';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {SupplierService} from '../../../services/supplier.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Supplier} from '../../../models/supplier.model';
+import {SupplierEmail} from '../../../models/supplier-email.model';
+import {SupplierPhone} from '../../../models/supplier-phone.model';
+import {NgForm} from '@angular/forms';
+import {Globals} from '../../globals';
+import {SupplierAddress} from '../../../models/supplier-address.model';
+import {ImageUploadComponent} from '../../image-upload/image-upload.component';
 
 @Component({
   selector: 'app-supplier-update',
@@ -15,7 +15,7 @@ import { ImageUploadComponent } from '../../image-upload/image-upload.component'
   styleUrls: ['./supplier-update.component.css']
 })
 export class SupplierUpdateComponent implements OnInit {
-  supplier: Supplier = new Supplier();
+  supplier: Supplier;
   tel = '';
   mail = '';
   zipcode = '';
@@ -40,6 +40,8 @@ export class SupplierUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('leverancierFormulier');
+    this.supplier = this.supplierService.getEmptySupplier();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       this.supplierService.getById(this.currentId).subscribe(supplier => {

@@ -18,7 +18,7 @@
                 cursor: pointer"
                    (click)="onCreateTel()"
                    id="addTel"
-                   *ngIf="tel.length == 10 && tel != '' && customer.phone_numbers.length < 3; else hidden"
+                   *ngIf="tel.length == 10 && tel.match('^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$') && tel != '' && customer.phone_numbers.length < 3; else hidden"
               >
               <ng-template #hidden>
                 <img src="../assets/img/addIcon.png" style="
@@ -82,6 +82,7 @@
 
           <label for="title" class="col-sm-2">Title</label>
           <input type="text" id="title" name="title" placeholder="title" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.title"
                  [disabled]="loading">
 
@@ -89,40 +90,42 @@
         <div>
           <label class="col-sm-2" for="fname">Voornaam</label>
           <input type="text" id="fname" name="fname" placeholder="voornaam" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.first_name"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="infix">Tussenvoegsel</label>
           <input type="text" id="infix" name="infix" placeholder="tussenvoegsel"
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.infix"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="lname">Achternaam</label>
           <input type="text" id="lname" name="lname" placeholder="achternaam" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.last_name"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="address">Adres</label>
           <input type="text" id="address" name="address " placeholder="adres" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.address"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
           <input type="text" id="zipcode" name="zipode" placeholder="postcode" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.zipcode"
                  [disabled]="loading">
         </div>
         <div>
           <label class="col-sm-2" for="country">Land</label>
           <input type="text" id="country" name="country" placeholder="land" required
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.country"
                  [disabled]="loading">
         </div>
@@ -142,6 +145,7 @@
         <div>
           <label class=" col-sm-2" for="city">Stad</label>
           <input type="text" id="city" placeholder="stad" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="customer.city" name="city"
                  [disabled]="loading">
           <div class="buttons" style="padding-top: 1.5em">

@@ -1,4 +1,4 @@
-import {Component, ContentChild, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Globals} from '../globals';
 import * as jsPDF from 'jspdf';
 import {CustomerService} from '../../services/customer.service';
@@ -16,8 +16,8 @@ import {QuotationService} from '../../services/quotation.service';
 })
 export class PdfGeneratorComponent implements OnInit {
 
-  customer: Customer = new Customer();
-  order: Order = new Order(null, null, null, null, null, null, null, null, null, null, null);
+  customer: Customer;
+  order: Order;
   private sub: any;
   currentId: any;
   currenQuotationId: any;
@@ -32,6 +32,9 @@ export class PdfGeneratorComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('htmlFormulier');
+    this.customer = this.customerService.getEmptyCustomer();
+    this.order = this.reservationService.getEmptyOrder();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.orderId;
       this.reservationService.getById(this.currentId).subscribe(order => {
