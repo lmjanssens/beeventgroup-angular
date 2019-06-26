@@ -39,6 +39,7 @@ import {ReserveringenUpdateComponent} from './components/eventmanager-reserverin
 import {ReserveringDetailsComponent} from './components/eventmanager-reserveringen/reservering-details/reservering-details.component';
 import {QuotationComponent} from './components/quotation/quotation.component';
 import {QuotationCreateComponent} from './components/quotation/quotation-create/quotation-create.component';
+import {MailUpdateComponent} from './components/mail-update/mail-update.component';
 
 
 const appRoutes: Routes = [
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
   {path: 'homeeventmanager/horecaoverview/createcatering', component: CateringCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/horecaoverview/cateringedit/:id', component: CateringUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/horecaoverview/cateringdetails/:id', component: CateringDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'homeeventmanager/mailoverview', component: MailUpdateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview/createevenement', component: EventsCreateComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/evenementenoverview/eventedit', component: EventsUpdateComponent, canActivate: [AuthGuard]},
@@ -80,7 +82,6 @@ const appRoutes: Routes = [
   {path: 'homeinstructor/customeroverview/customerdetails/:customer_id', component: CustomerDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/reserveringenoverview', component: EventmanagerReserveringenComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/reserveringenoverview/orderdetails/:orderId', component: ReserveringDetailsComponent , canActivate: [AuthGuard]},
-
   {path: 'homeinstructor/evenementenoverview', component: EventmanagerEventsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/evenementenoverview/eventdetails/:eventId', component: EventDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/werknemersoverview', component: EventmanagerEventmanagersComponent, canActivate: [AuthGuard]},

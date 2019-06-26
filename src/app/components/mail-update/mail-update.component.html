@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="mailPage" style="padding: 3em 0 0 3em">
+  <h3 style="padding-bottom: 2em">Mailen</h3>
+  <div>
+    <form role="form" #f="ngForm">
+      <div style="padding-bottom: 0.5em; padding-top: 0.5em ">
+        <label class="col-sm-2">Soort Email</label>
+        <select id="mail" name="emailType" [(ngModel)]="selectedEmail">
+          <option *ngFor="let mails of emails" [ngValue]="mails">{{mails.emailType}}</option>
+        </select>
+
+      </div>
+      <div id="note-div">
+        <label class="col-sm-2" for="note">Email</label>
+        <textarea type="text" id="note" name="emailLayout" [(ngModel)]=selectedEmail.emailText>
+        </textarea>
+      </div>
+      <div>
+        <button (click)="update()" style="background-color: #651BC8; float: right; margin-right: 17%; margin-top: 1.5em"
+                *ngIf="currentUser.role === getRoles().ADMIN || currentUser.role === getRoles().EMPLOYEE"
+                class="btn btn-primary"><i
+          class="fa fa-pencil"></i>
+          Bewerken
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
