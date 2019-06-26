@@ -51,7 +51,6 @@ export class CateringDetailsComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.id;
-      console.log(this.currentId);
       this.cateringService.getById(this.currentId).subscribe(catering => {
         this.catering = catering;
       });

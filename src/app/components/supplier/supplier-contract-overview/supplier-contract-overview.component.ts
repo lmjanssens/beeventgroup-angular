@@ -54,7 +54,6 @@ export class SupplierContractOverviewComponent implements OnInit {
       this.supplierService.getById(this.currentId).subscribe(supplier => {
         this.supplier = supplier;
         this.contracts = this.supplier.contracts;
-        console.log(this.supplier.contracts[0].title);
       });
     });
     this.globals.setHuidigePagina('Leveranciers');
@@ -73,7 +72,6 @@ export class SupplierContractOverviewComponent implements OnInit {
   }
 
   test(a) {
-    console.log('TEST' + a);
   }
 
   getRoles() {

@@ -21,7 +21,7 @@ export class EmployeeService {
 
   getById(id: number): Observable<Employee> {
     return this.apiService.get<Employee>('employees/' + id).pipe(
-      tap(selectedEmployee => console.log(`selectedEmployee = ${JSON.stringify(selectedEmployee)}`))
+      tap(selectedEmployee => {})
     );
   }
 

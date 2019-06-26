@@ -26,7 +26,6 @@ export class EmailComponent implements OnInit {
 
   send() {
     this.emailService.render(this.emailId, this.order.orderId).subscribe((data: string) => {
-      console.log(data);
       window.location.href = 'mailto:' + this.order.customer.email_addresses[0].email + '?subject=' + this.emailtexts[this.emailId].emailType + '&body=' + data;
     });
   }

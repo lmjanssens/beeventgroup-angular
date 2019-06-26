@@ -55,7 +55,6 @@ export class SupplierDetailsComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
-      console.log(this.currentId);
       this.supplierService.getById(this.currentId).subscribe(supplier => {
         this.supplier = supplier;
         this.tel = this.supplier.phone_numbers[0].phone;

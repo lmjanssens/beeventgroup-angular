@@ -48,10 +48,8 @@ export class SupplierContractCreateComponent implements OnInit {
     this.newContract.extras = this.contract.extras;
     this.newContract.startDate = this.contract.startDate;
     this.newContract.endDate = this.contract.endDate;
-    console.log(this.newContract);
     this.supplier.contracts.push(this.newContract);
     const data = JSON.parse(JSON.stringify(this.supplier)) as any;
-    console.log(data);
     this.supplierService.updateSupplier(data).subscribe(() => {
       this.router.navigate(['/homeeventmanager/supplieroverview']);
     });

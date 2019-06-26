@@ -92,7 +92,7 @@ export class EventsCreateComponent implements OnInit {
 
   addNewLocations() {
     this.newLocations.forEach(location => {
-      this.eventLocationService.save(location).subscribe(() => console.log('Locatie toegevoegd.'));
+      this.eventLocationService.save(location).subscribe(() => {});
     });
     alert('Locaties toegevoegd.');
     this.newLocations = [];

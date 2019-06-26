@@ -92,11 +92,9 @@ export class EventmanagerInstructeursComponent implements OnInit {
     this.globals.setHuidigePagina('Instructeurs');
     this.navbar.checkNavBarStyle();
     this.instructorService.getAll().subscribe(instructor => this.instructorList = this.sortByName(this.nullRemover(instructor)));
-    this.instructorService.getAll().subscribe(instructor => console.log(instructor));
   }
 
   test(id) {
-    console.log(id);
   }
 
   getRoles() {

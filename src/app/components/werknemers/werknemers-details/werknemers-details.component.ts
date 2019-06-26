@@ -46,7 +46,6 @@ export class WerknemersDetailsComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.employeeId;
-      console.log(this.currentId);
       this.employeeService.getById(this.currentId).subscribe(employee => {
         this.employee = employee;
       });

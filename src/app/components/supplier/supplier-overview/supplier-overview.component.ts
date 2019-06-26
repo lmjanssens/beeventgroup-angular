@@ -63,13 +63,11 @@ export class SupplierOverviewComponent implements OnInit {
       return;
     }
     this.supplierService.delete(supplierid).subscribe(() => {
-      console.log('Supplier with supplierid ' + supplierid + ' is deleted.');
       this.supplierService.getAll().subscribe(supplier => this.supplierList = this.sortByName(supplier));
     });
   }
 
   test(a) {
-    console.log('TEST' + a);
   }
 
   getRoles() {

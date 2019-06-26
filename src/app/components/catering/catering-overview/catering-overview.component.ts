@@ -46,7 +46,6 @@ export class CateringOverviewComponent implements OnInit {
   ngOnInit() {
     this.globals.setHuidigePagina('Horeca');
     this.navbar.checkNavBarStyle();
-    console.log(this.globals.getHuidigePagina());
     this.cateringService.getAll().subscribe(catering => {
       this.cateringList = this.sortByName(catering);
     });

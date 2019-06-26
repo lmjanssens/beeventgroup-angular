@@ -30,7 +30,6 @@ export class ImageUploadComponent implements OnInit, AfterContentChecked {
       this.oldImage = this.imagePath;
     }
 
-    console.log(this.hasImage);
   }
 
   selectFile(event) {

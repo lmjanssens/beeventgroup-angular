@@ -60,7 +60,6 @@ export class QuotationComponent implements OnInit {
   fetchOrders() {
     this.orderService.getById(this.currentId).subscribe(data => {
       this.quotationList[0] = data.quotations[0];
-      console.log(this.quotationList);
     });
 
   }

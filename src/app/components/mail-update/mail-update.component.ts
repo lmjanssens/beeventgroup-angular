@@ -65,7 +65,6 @@ export class MailUpdateComponent implements OnInit {
   update() {
     const data = JSON.parse(JSON.stringify(this.selectedEmail)) as any;
     this.emailService.updateEmailText(this.selectedEmail.id, data).subscribe(() => {
-      console.log(data);
     });
   }
 }

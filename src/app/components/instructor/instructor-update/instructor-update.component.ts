@@ -28,7 +28,6 @@ export class InstructorUpdateComponent implements OnInit {
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.instructor_id;
-      console.log(this.currentId);
       this.instructorService.getById(this.currentId).subscribe(instructor => {
         this.instructor = instructor;
       });

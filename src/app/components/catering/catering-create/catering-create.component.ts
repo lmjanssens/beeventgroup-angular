@@ -41,7 +41,6 @@ export class CateringCreateComponent implements OnInit {
   ngSubmit(f: NgForm) {
     this.catering.supplier = this.selectedSupplier;
     const data = JSON.parse(JSON.stringify(this.catering)) as any;
-    console.log(data);
     this.cateringService.save(data, this.selectedSupplier).subscribe(() => {
       this.router.navigate(['/homeeventmanager/horecaoverview']
       );
