@@ -72,6 +72,7 @@ import { ReserveringDetailsComponent } from './components/eventmanager-reserveri
 import { SupplierContractCreateComponent } from './components/supplier/supplier-contract-create/supplier-contract-create.component';
 import {QuotationComponent} from './components/quotation/quotation.component';
 import { QuotationCreateComponent } from './components/quotation/quotation-create/quotation-create.component';
+import { EmailComponent } from './components/email/email.component';
 import { MailUpdateComponent } from './components/mail-update/mail-update.component';
 
 
@@ -131,8 +132,8 @@ import { MailUpdateComponent } from './components/mail-update/mail-update.compon
     QuotationComponent,
     QuotationCreateComponent,
     ReserveringDetailsComponent,
-    SupplierContractCreateComponent,
     MailUpdateComponent
+    EmailComponent
   ],
   imports: [
     BrowserModule,
