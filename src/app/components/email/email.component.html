@@ -1,0 +1,5 @@
+<select [(ngModel)]="this.emailId" name="emailtemplate" id="">
+  <option *ngFor="let emailtext of emailtexts" value="{{ emailtext.id }}">{{ emailtext.emailType }}</option>
+</select>
+
+<button class="btn btn-success" type="button" (click)="send()">E-mail template openen</button>
