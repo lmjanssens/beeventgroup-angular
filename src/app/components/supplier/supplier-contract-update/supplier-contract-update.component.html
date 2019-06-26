@@ -120,7 +120,6 @@
                 opacity: 0"
                   >
                 </ng-template>
-                >
               </th>
               <tr>
               <textarea type="text" id="note" name="note" placeholder="Opties"
@@ -132,7 +131,7 @@
                   {{option.option}}
                   <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
             cursor: pointer;width: 20px;
-                height: 20px;" (click)="onDeleteOption()"
+                height: 20px;" (click)="onDeleteOption(option)"
                   >
                 </td>
               </tr>

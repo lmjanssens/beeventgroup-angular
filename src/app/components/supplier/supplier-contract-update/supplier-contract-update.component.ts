@@ -58,14 +58,9 @@ export class SupplierContractUpdateComponent implements OnInit {
   }
 
 
-  onDeleteOption() {
-    if (this.optionList.length === 0) {
-      alert('Geen optie om te verwijderen!');
-      return;
-    } else {
-      alert('Locatie succesvol verwijderd.');
-      this.optionList.splice(-1, 1);
-    }
+  onDeleteOption(option) {
+    this.contract.options.splice(this.contract.options.indexOf(option), 1);
+    console.log(option);
   }
 
   ngSubmit(f: NgForm) {
