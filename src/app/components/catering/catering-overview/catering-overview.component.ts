@@ -4,7 +4,7 @@ import {Globals} from '../../globals';
 import {NavbarComponent} from '../../../navbar/navbar.component';
 import {CateringService} from '../../../services/catering.service';
 import {Role} from '../../../enums/Role';
-import {AuthorizationService} from "../../../services/authorization.service";
+import {AuthorizationService} from '../../../services/authorization.service';
 
 @Component({
   selector: 'app-catering-overview',
@@ -20,7 +20,8 @@ export class CateringOverviewComponent implements OnInit {
   currentUser: any;
   authenticated = false;
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private cateringService: CateringService,  private authService: AuthorizationService) {
+  constructor(private globals: Globals, private navbar: NavbarComponent, private cateringService: CateringService,
+              private authService: AuthorizationService) {
     this.authenticated = this.authService.hasAuthorization();
     this.authService.authorized$.subscribe(
       authorized => {

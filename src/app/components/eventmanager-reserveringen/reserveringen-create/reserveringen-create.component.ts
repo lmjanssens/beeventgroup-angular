@@ -21,6 +21,8 @@ export class ReserveringenCreateComponent implements OnInit {
   events: EventModel[];
   selectedCustomer;
   selectedEvent;
+  date;
+  time = new Date(this.date);
 
   constructor(private customerService: CustomerService, private eventService: EventService,
               private reservationService: ReservationService, private router: Router,
@@ -61,8 +63,6 @@ export class ReserveringenCreateComponent implements OnInit {
 
   ngSubmit(f: NgForm) {
     this.bindCustomerAndEventToOrder();
-    console.log(this.order.customer);
-    console.log(this.order.event);
 
     if (f.form.valid) {
       const data = JSON.parse(JSON.stringify(this.order)) as any;

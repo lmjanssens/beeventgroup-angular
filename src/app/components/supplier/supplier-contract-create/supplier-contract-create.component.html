@@ -12,12 +12,14 @@
 
           <label for="typeContract" class="col-sm-2">Type contract</label>
           <input type="text" id="typeContract" name="typeContract" placeholder="Type contract" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="contract.type">
 
         </div>
         <div>
           <label class="col-sm-2" for="title">Contracttitel</label>
           <input type="text" id="title" name="title" placeholder="Titel" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="contract.title">
         </div>
         <div>
@@ -46,19 +48,17 @@
         <div>
           <label class="col-sm-2" for="preconditions">Precondities</label>
           <input type="text" id="preconditions" name="preconditions" placeholder="Precondities"
-
                  [(ngModel)]="contract.pre_conditions">
         </div>
         <div>
           <label class="col-sm-2" for="insurance">Verzekering</label>
           <input type="text" id="insurance" name="insurance" placeholder="Verzekering"
-
+                 pattern="[\w -]*$"
                  [(ngModel)]="contract.insurance">
         </div>
         <div>
           <label class="col-sm-2" for="responsibility">Verantwoordelijkheid</label>
           <input type="text" id="responsibility" name="responsibility" placeholder="Verantwoordelijkheid"
-
                  [(ngModel)]="contract.responsibility">
         </div>
         <div>

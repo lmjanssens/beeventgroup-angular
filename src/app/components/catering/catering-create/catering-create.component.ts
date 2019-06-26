@@ -6,9 +6,6 @@ import {CateringService} from '../../../services/catering.service';
 import {Supplier} from '../../../models/supplier.model';
 import {SupplierService} from '../../../services/supplier.service';
 import {NgForm} from '@angular/forms';
-import {SupplierEmail} from '../../../models/supplier-email.model';
-import {SupplierAddress} from '../../../models/supplier-address.model';
-import {SupplierPhone} from '../../../models/supplier-phone.model';
 
 @Component({
   selector: 'app-catering-create',
@@ -26,7 +23,7 @@ export class CateringCreateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('horecaFormulier');
-    this.catering = new Catering();
+    this.catering = this.cateringService.getEmptyCatering();
     this.fetchSuppliers();
   }
 

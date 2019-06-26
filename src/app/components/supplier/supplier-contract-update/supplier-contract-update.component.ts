@@ -13,7 +13,7 @@ import {SupplierContractOption} from '../../../models/supplier-contract-option.m
   styleUrls: ['./supplier-contract-update.component.css']
 })
 export class SupplierContractUpdateComponent implements OnInit {
-  supplier: Supplier = new Supplier();
+  supplier: Supplier;
   contracts: SupplierContract[] = [];
   contract: SupplierContract = new SupplierContract();
   loading: true;
@@ -29,6 +29,8 @@ export class SupplierContractUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('contractFormulier');
+    this.supplier = this.supplierService.getEmptySupplier();
+
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.supplierid;
       this.currentContractId = params.id;

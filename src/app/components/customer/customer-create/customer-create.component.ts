@@ -6,8 +6,6 @@ import {Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../../globals';
-import {AlertsService} from 'angular-alert-module';
-
 
 @Component({
   selector: 'app-customer-create',
@@ -15,7 +13,6 @@ import {AlertsService} from 'angular-alert-module';
   styleUrls: ['./customer-create.component.css']
 })
 export class CustomerCreateComponent implements OnInit {
-
   customer: Customer;
   tel = '';
   mail = '';
@@ -24,7 +21,6 @@ export class CustomerCreateComponent implements OnInit {
   selectTag;
   selectedItem;
 
-
   constructor(private globals: Globals,
               private customerService: CustomerService, private router: Router) {
   }
@@ -32,7 +28,7 @@ export class CustomerCreateComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('klantenFormulier');
-    this.customer = new Customer();
+    this.customer = this.customerService.getEmptyCustomer();
     this.customer.email_addresses = [];
     this.customer.phone_numbers = [];
     this.customer.customer_orders = [];

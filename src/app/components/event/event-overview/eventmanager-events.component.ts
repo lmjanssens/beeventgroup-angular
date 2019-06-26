@@ -18,7 +18,7 @@ export class EventmanagerEventsComponent implements OnInit {
   @ViewChild(ImageUploadComponent)
   public imageUpload: ImageUploadComponent;
   events: EventModel[] = [];
-  eventLocation: EventLocation = new EventLocation();
+  eventLocation: EventLocation;
   event: EventModel;
   firstPage = 1;
   itemsPerPage = 5;
@@ -27,7 +27,8 @@ export class EventmanagerEventsComponent implements OnInit {
   currentUser: any;
   authenticated = false;
 
-  constructor(private globals: Globals, private navbar: NavbarComponent, private eventService: EventService, private authService: AuthorizationService) {
+  constructor(private globals: Globals, private navbar: NavbarComponent, private eventService: EventService,
+              private authService: AuthorizationService) {
     this.authenticated = this.authService.hasAuthorization();
 
     this.authService.authorized$.subscribe(

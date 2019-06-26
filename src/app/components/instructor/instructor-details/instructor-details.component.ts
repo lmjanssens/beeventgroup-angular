@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Instructor} from '../../../models/instructor.model';
 import {User} from '../../../models/user.model';
 import {InstructorService} from '../../../services/instructor.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Globals} from '../../globals';
 import {Location} from '@angular/common';
 import {AuthorizationService} from '../../../services/authorization.service';
-import {Role} from "../../../enums/Role";
+import {Role} from '../../../enums/Role';
 
 @Component({
   selector: 'app-instructor-details',
@@ -15,7 +14,7 @@ import {Role} from "../../../enums/Role";
 })
 export class InstructorDetailsComponent implements OnInit {
 
-  instructor = new Instructor();
+  instructor;
   user = new User();
   private sub: any;
   currentId: number;
@@ -47,6 +46,7 @@ export class InstructorDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.globals.setHuidigePagina('instructeurFormulier');
+    this.instructor = this.instructorService.getEmptyInstructor();
 
     this.sub = this.route.params.subscribe(params => {
       this.currentId = params.instructor_id;

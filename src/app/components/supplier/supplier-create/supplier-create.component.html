@@ -78,39 +78,42 @@
         <div>
 
           <label for="name" class="col-sm-2">Naam</label>
-          <input type="text" id="name" name="name" placeholder="Naam" required
+          <input type="text" id="name" name="name" placeholder="Naam" required pattern="[\w -]*$"
                  [(ngModel)]="supplier.name">
 
         </div>
         <div>
           <label class="col-sm-2" for="contactperson">Contactpersoon</label>
           <input type="text" id="contactperson" name="contactperson" placeholder="Contactpersoon" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="supplier.contact_person">
         </div>
         <div>
           <label class="col-sm-2" for="zipcode">Postcode</label>
           <input type="text" id="zipcode" name="zipcode" placeholder="Postcode" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="zipcode">
         </div>
         <div>
           <label class="col-sm-2" for="address">Adres</label>
           <input type="text" id="address" name="address" placeholder="Adres" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="address">
         </div>
         <div>
           <label class="col-sm-2" for="city">Stad</label>
           <input type="text" id="city" name="city" placeholder="Stad"
-                 [(ngModel)]="city" required>
+                 [(ngModel)]="city" required pattern="[\w -]*$">
         </div>
         <div>
           <label class="col-sm-2" for="supervisor">Leidinggevende</label>
           <input type="text" id="supervisor" name="supervisor" placeholder="Leidinggevende" required
+                 pattern="[\w -]*$"
                  [(ngModel)]="supplier.supervisor">
         </div>
         <div>
           <label class="col-sm-2" for="website">Website</label>
           <input type="text" id="website" name="website" placeholder="Website"
-
                  [(ngModel)]="supplier.website">
         </div>
         <div id="note-div">
