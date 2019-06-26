@@ -16,7 +16,7 @@
                 cursor: pointer"
                    (click)="onCreateTel()"
                    id="addTel"
-                   *ngIf="tel.length == 10 && tel != '' && customer.phone_numbers.length < 3; else hidden"
+                   *ngIf="tel.length == 10 && tel.match('^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$') && tel != '' && customer.phone_numbers.length < 3; else hidden"
               >
               <ng-template #hidden>
                 <img src="../assets/img/addIcon.png" style="

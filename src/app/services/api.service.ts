@@ -2,6 +2,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {AuthorizationService} from "./authorization.service";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ApiService {
@@ -33,7 +34,7 @@ export class ApiService {
   public createURI(path: string, queryParameters: Object): string {
     const queryString = this.createQueryString(queryParameters);
 
-    return `http://localhost:8080/api/${path}${queryString}`;
+    return `${environment.apiHostname}${path}${queryString}`;
   }
 
   private createRequestHeaders(): HttpHeaders {

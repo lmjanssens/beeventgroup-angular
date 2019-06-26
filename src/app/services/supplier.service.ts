@@ -44,7 +44,13 @@ export class SupplierService {
   }
 
   getEmptySupplier() {
-    return this.newSupplier = new Supplier(null, '', '', '',
+    this.newSupplier = new Supplier(null, '', '', '',
       '', '', '');
+    this.newSupplier.email_addresses = [];
+    this.newSupplier.phone_numbers = [];
+    this.newSupplier.addresses = [];
+    this.newSupplier.contracts = [];
+
+    return this.newSupplier;
   }
 }
