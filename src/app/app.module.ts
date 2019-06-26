@@ -72,6 +72,7 @@ import { ReserveringDetailsComponent } from './components/eventmanager-reserveri
 import { SupplierContractCreateComponent } from './components/supplier/supplier-contract-create/supplier-contract-create.component';
 import {QuotationComponent} from './components/quotation/quotation.component';
 import { QuotationCreateComponent } from './components/quotation/quotation-create/quotation-create.component';
+import { EmailComponent } from './components/email/email.component';
 
 
 @NgModule({
@@ -130,7 +131,8 @@ import { QuotationCreateComponent } from './components/quotation/quotation-creat
     QuotationComponent,
     QuotationCreateComponent,
     ReserveringDetailsComponent,
-    SupplierContractCreateComponent
+    SupplierContractCreateComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,
