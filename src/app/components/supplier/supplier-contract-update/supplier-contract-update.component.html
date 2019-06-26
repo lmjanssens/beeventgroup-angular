@@ -95,15 +95,13 @@
         <div class="buttons" style="padding-top: 1.5em">
 
           <button class="btn btn-warning" style="margin-right: 10px"
-                  routerLink="/homeeventmanager/supplieroverview/suppliercontract/:supplierid">
+                  [routerLink]="['/homeeventmanager/supplieroverview/suppliercontract/', this.currentId]">
             <i class="fa fa-close"></i> Annuleren
           </button>
           <button class="btn btn-primary" id="submit" type="submit" [disabled]="!f.valid"><i class="fa fa-save"></i>
             Toevoegen
           </button>
         </div>
-
-        <form role="form" #fo="ngForm" (ngSubmit)="addAllOptions()">
           <div class="containerTables">
             <table class="locationTable">
               <th class="locations">Opties
@@ -122,9 +120,6 @@
                 opacity: 0"
                   >
                 </ng-template>
-                <img src="../assets/img/removeIcon.png" style="color: red; margin-left: 30px;
-            cursor: pointer;width: 20px;
-                height: 20px;" (click)="onDeleteOption()"
                 >
               </th>
               <tr>
@@ -132,48 +127,17 @@
                         style="margin-top: 0.5em; padding: 10px; display: inline-block; border-radius: 4px; width: 400px; height: 160px;"
                         [(ngModel)]="optionString"></textarea>
               </tr>
-              <tr *ngFor="let option of this.optionList">
+              <tr *ngFor="let option of this.contract.options">
                 <td>
                   {{option.option}}
+                  <img src="../assets/img/removeIcon.png" style="color: red; float:right; margin-right: 20px;
+            cursor: pointer;width: 20px;
+                height: 20px;" (click)="onDeleteOption()"
+                  >
                 </td>
               </tr>
-              <button class="btn btn-primary"
-                      id="submitLocation"
-                      type="submit"
-                      style="width: 50%;
-                margin-left: 25%;
-                margin-right: 25%; margin-top: 1em"
-                      [disabled]="this.optionList.length === 0">
-                Toevoegen
-              </button>
             </table>
           </div>
-        </form>
-        <!--        <form class="container" role="form" #fa="ngForm">-->
-        <!--          <div class="containerTables" style="margin-top: -370px;">-->
-        <!--            <table class="locationTableDel">-->
-        <!--              <th class="locations">Verwijder locatie</th>-->
-        <!--              <tr>-->
-        <!--                <select id="delLocation" name="delLocation" [(ngModel)]="locationToDelete" style="margin-top: 10px;"-->
-        <!--                        required>-->
-        <!--                  <option *ngFor="let delEventLocation of getEventLocations()" [ngValue]="delEventLocation">-->
-        <!--                    {{delEventLocation.name}}-->
-        <!--                  </option>-->
-        <!--                </select>-->
-        <!--              </tr>-->
-        <!--              <button [disabled]="!fa.valid" class="btn btn-primary"-->
-        <!--                      id="deleteLocation"-->
-        <!--                      type="submit"-->
-        <!--                      style="width: 50%;-->
-        <!--                margin-left: 25%;-->
-        <!--                margin-right: 25%;-->
-        <!--                margin-top: 2%;"-->
-        <!--                      (click)="onDeleteOldLocation(locationToDelete)">-->
-        <!--                Verwijder-->
-        <!--              </button>-->
-        <!--            </table>-->
-        <!--          </div>-->
-        <!--        </form>-->
 
       </div>
     </div>
