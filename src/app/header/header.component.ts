@@ -57,7 +57,8 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Agenda' ||
       this.globals.getHuidigePagina() === 'quotation' ||
       this.globals.getHuidigePagina() === 'htmlFormulier' ||
-      this.globals.getHuidigePagina() === 'contractFormulier'
+      this.globals.getHuidigePagina() === 'contractFormulier' ||
+      this.globals.getHuidigePagina() === 'Mailen'
     ) {
       document.getElementById('backIcon').style.visibility = 'visible';
       document.getElementById('uitlogKnop').style.visibility = 'visible';
@@ -76,7 +77,9 @@ export class HeaderComponent implements OnInit {
       this.globals.getHuidigePagina() === 'Instructeurs' ||
       this.globals.getHuidigePagina() === 'Werknemers' ||
       this.globals.getHuidigePagina() === 'Klanten' ||
-      this.globals.getHuidigePagina() === 'Agenda') {
+      this.globals.getHuidigePagina() === 'Agenda' ||
+      this.globals.getHuidigePagina() === 'Mailen'
+    ) {
 
       if (this.currentUser.role === Role.ADMIN || this.currentUser.role === Role.EMPLOYEE) {
         this.router.navigate(['/homeeventmanager']);

@@ -92,6 +92,7 @@ const appRoutes: Routes = [
   {path: 'homeinstructor/horecaoverview/cateringdetails/:id', component: CateringDetailsComponent, canActivate: [AuthGuard]},
   {path: 'homeinstructor/agenda', component: EventmanagerAgendaComponent, canActivate: [AuthGuard]},
   {path: 'homeeventmanager/instructeursoverview/createinstructor', component: InstructorCreateComponent, canActivate: [AuthGuard]},
+  {path: 'homeinstructor/mailoverview', component: MailUpdateComponent, canActivate: [AuthGuard]},
   {
     path: 'homeeventmanager/instructeursoverview/instructoredit/:instructor_id',
     component: InstructorUpdateComponent,
